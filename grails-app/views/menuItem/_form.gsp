@@ -15,7 +15,7 @@
 		<g:message code="menuItem.description.label" default="Description" />
 		
 	</label>
-	<g:textField name="description" maxlength="250" value="${menuItemInstance?.description}"/>
+	<g:textArea name="description" maxlength="250" value="${menuItemInstance?.description}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'status', 'error')} required">

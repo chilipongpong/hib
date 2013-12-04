@@ -15,7 +15,7 @@
 		<g:message code="bundledItem.description.label" default="Description" />
 		
 	</label>
-	<g:textField name="description" maxlength="250" value="${bundledItemInstance?.description}"/>
+	<g:textArea name="description" maxlength="250" value="${bundledItemInstance?.description}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: bundledItemInstance, field: 'status', 'error')} required">
