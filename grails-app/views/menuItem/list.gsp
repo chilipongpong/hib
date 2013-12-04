@@ -34,8 +34,6 @@
 					
 						<g:sortableColumn property="status" title="${message(code: 'menuItem.status.label', default: 'Status')}" />
 					
-						<g:sortableColumn property="imageFileName" title="${message(code: 'menuItem.imageFileName.label', default: 'Image File Name')}" />
-					
 						<g:sortableColumn property="image" title="${message(code: 'menuItem.image.label', default: 'Image')}" />
 					
 						<g:sortableColumn property="level" title="${message(code: 'menuItem.level.label', default: 'Level')}" />
@@ -52,10 +50,8 @@
 					
 						<td>${fieldValue(bean: menuItemInstance, field: "status")}</td>
 					
-						<td>${fieldValue(bean: menuItemInstance, field: "imageFileName")}</td>
-					
-						<td>${fieldValue(bean: menuItemInstance, field: "image")}</td>
-					
+						<td><g:img file="${menuItemInstance.imageFileName}" dir="uploaded-files" width="200"/>
+						
 						<td>${fieldValue(bean: menuItemInstance, field: "level")}</td>
 					
 					</tr>

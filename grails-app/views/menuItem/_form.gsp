@@ -26,20 +26,21 @@
 	<g:select name="status" from="${menuItemInstance.constraints.status.inList}" required="" value="${menuItemInstance?.status}" valueMessagePrefix="menuItem.status"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'imageFileName', 'error')} ">
-	<label for="imageFileName">
-		<g:message code="menuItem.imageFileName.label" default="Image File Name" />
-		
-	</label>
-	<g:textField name="imageFileName" value="${menuItemInstance?.imageFileName}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'image', 'error')} ">
-	<label for="image">
-		<g:message code="menuItem.image.label" default="Image" />
-		
-	</label>
-	<g:textField name="image" value="${menuItemInstance?.image}"/>
+<div
+	class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'imageFileName', 'error')} required">
+	<g:if test="${menuItemInstance?.imageFileName == null || menuItemInstance?.image == null }">
+		<label for="image"> <g:message code="menuItem.image.label"
+				default="Image" />
+		</label>
+		<input type="file" name="imageFilename" id="imageFilename"/>
+	</g:if>
+	<g:else>
+		<label for="image"> <g:message code="menuItem.image.label"
+				default="Image" />
+		</label>
+			<input type="file" name="imageFilename" id="imageFilename"/>
+	</g:else>
+	
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'level', 'error')} required">

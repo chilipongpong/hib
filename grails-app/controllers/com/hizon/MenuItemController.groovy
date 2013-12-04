@@ -1,6 +1,7 @@
 package com.hizon
 
 import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.web.multipart.commons.CommonsMultipartFile
 import org.compass.core.engine.SearchEngineQueryParseException
 
 class MenuItemController {
@@ -25,13 +26,34 @@ class MenuItemController {
 
     def save() {
         def menuItemInstance = new MenuItem(params)
-        if (!menuItemInstance.save(flush: true)) {
-            render(view: "create", model: [menuItemInstance: menuItemInstance])
-            return
-        }
+        // will move this to a service in God's perfect time ;)
+		CommonsMultipartFile uploadedFile = request.getFile('imageFilename')
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'menuItem.label', default: 'MenuItem'), menuItemInstance.id])
-        redirect(action: "show", id: menuItemInstance.id)
+		if(!uploadedFile.empty){
+			println "Filename: ${uploadedFile.originalFilename}"
+
+			def webRootDir = servletContext.getRealPath("/")
+			def directory = new File(webRootDir, "/uploaded-files")
+			directory.mkdirs()
+			uploadedFile.transferTo(new File(directory, uploadedFile.originalFilename))
+			menuItemInstance.image = "${directory}/${uploadedFile.originalFilename}"
+			menuItemInstance.imageFileName = uploadedFile.originalFilename
+		}
+
+		if (menuItemInstance.hasErrors()) {
+			respond menuItemInstance.errors, view:'create'
+			return
+		}
+
+		menuItemInstance.save flush:true
+
+
+		if (!menuItemInstance.save(flush: true)) {
+			render(view: "create", model: [menuItemInstance: menuItemInstance])
+			return
+		}
+		
+		redirect(action: "show", id: menuItemInstance.id)
     }
 
     def show(Long id) {
