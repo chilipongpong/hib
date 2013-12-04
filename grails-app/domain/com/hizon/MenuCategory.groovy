@@ -12,4 +12,9 @@ class MenuCategory {
 		status inList:['Active', 'Inactive'], blank:false
 	}
     
+	static searchable = true
+	
+	String toString() {
+		return name
+	}
 }
