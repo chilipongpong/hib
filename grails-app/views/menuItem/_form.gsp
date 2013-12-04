@@ -27,18 +27,18 @@
 </div>
 
 <div
-	class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'imageFileName', 'error')} required">
-	<g:if test="${menuItemInstance?.imageFileName == null || menuItemInstance?.image == null }">
+	class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'image', 'error')} required">
+	<g:if test="${menuItemInstance?.image == null }">
 		<label for="image"> <g:message code="menuItem.image.label"
 				default="Image" />
 		</label>
-		<input type="file" name="imageFilename" id="imageFilename"/>
+		<input type="file" name="image" id="image"/>
 	</g:if>
 	<g:else>
 		<label for="image"> <g:message code="menuItem.image.label"
 				default="Image" />
 		</label>
-			<input type="file" name="imageFilename" id="imageFilename"/>
+			<g:img file="${menuItemInstance.imageFileName}" dir="uploaded-files" width="200"/>
 	</g:else>
 	
 </div>

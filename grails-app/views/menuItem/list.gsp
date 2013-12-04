@@ -50,7 +50,14 @@
 					
 						<td>${fieldValue(bean: menuItemInstance, field: "status")}</td>
 					
-						<td><g:img file="${menuItemInstance.imageFileName}" dir="uploaded-files" width="200"/>
+						<td>
+							<g:if test="${menuItemInstance.image == ''}">
+								<g:img file="no-image-available.jpg" dir="uploaded-files" width="200"/>
+							</g:if>
+							<g:else>
+								<g:img file="${menuItemInstance.image}" dir="uploaded-files" width="200"/>
+							</g:else>
+						</td>
 						
 						<td>${fieldValue(bean: menuItemInstance, field: "level")}</td>
 					

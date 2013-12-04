@@ -27,7 +27,7 @@ class MenuItemController {
     def save() {
         def menuItemInstance = new MenuItem(params)
         // will move this to a service in God's perfect time ;)
-		CommonsMultipartFile uploadedFile = request.getFile('imageFilename')
+		CommonsMultipartFile uploadedFile = request.getFile('image')
 
 		if(!uploadedFile.empty){
 			println "Filename: ${uploadedFile.originalFilename}"
@@ -36,8 +36,7 @@ class MenuItemController {
 			def directory = new File(webRootDir, "/uploaded-files")
 			directory.mkdirs()
 			uploadedFile.transferTo(new File(directory, uploadedFile.originalFilename))
-			menuItemInstance.image = "${directory}/${uploadedFile.originalFilename}"
-			menuItemInstance.imageFileName = uploadedFile.originalFilename
+			menuItemInstance.image = uploadedFile.originalFilename
 		}
 
 		if (menuItemInstance.hasErrors()) {
