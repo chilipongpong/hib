@@ -50,16 +50,16 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${menuItemInstance?.imageFileName}">
+				<g:if test="${menuItemInstance?.image}">
 					<li class="fieldcontain">
 					<span id="image-label" class="property-label"><g:message code="menuItem.image.label" default="Image" /></span>
 					
 						<span class="property-value" aria-labelledby="image-label">
-							<g:if test="${menuItemInstance.imageFileName == null}">
+							<g:if test="${menuItemInstance.image == null}">
 								<g:img dir="/uploaded-files" file="no-image-available.jpg" width="400" alt=""/>
 							</g:if>
 							<g:else>
-								<g:img dir="/uploaded-files" file="${menuItemInstance.imageFileName}" width="400" alt=""/>
+								<g:img dir="/uploaded-files" file="${menuItemInstance.image}" width="400" alt=""/>
 							</g:else>
 						</span>
 					

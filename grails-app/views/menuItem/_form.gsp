@@ -38,7 +38,7 @@
 		<label for="image"> <g:message code="menuItem.image.label"
 				default="Image" />
 		</label>
-			<g:img file="${menuItemInstance.imageFileName}" dir="uploaded-files" width="200"/>
+			<g:img file="${menuItemInstance.image}" dir="uploaded-files" width="200"/>
 	</g:else>
 	
 </div>
