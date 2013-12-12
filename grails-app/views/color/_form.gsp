@@ -1,6 +1,5 @@
 <%@ page import="com.hizon.Color" %>
-
-
+<g:javascript src="spectrum.js" />
 
 <div class="fieldcontain ${hasErrors(bean: colorInstance, field: 'name', 'error')} required">
 	<label for="name">
@@ -23,6 +22,15 @@
 		<g:message code="color.hex.label" default="Hex" />
 		
 	</label>
+	<input type='text' id="custom" />
+	<script>
+		$("#custom").spectrum({
+			color: "#f00",
+			change: function(color) {
+				$("#hex").val(color.toHexString());
+			}
+		});
+	</script>
 	<g:textField name="hex" value="${colorInstance?.hex}"/>
 </div>
 
