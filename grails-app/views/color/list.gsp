@@ -30,6 +30,8 @@
 					
 						<g:sortableColumn property="hex" title="${message(code: 'color.hex.label', default: 'Hex')}" />
 					
+						<g:sortableColumn property="status" title="${message(code: 'color.status.label', default: 'Status')}" />
+					
 					</tr>
 				</thead>
 				<tbody>
@@ -41,6 +43,8 @@
 						<td>${fieldValue(bean: colorInstance, field: "pantone")}</td>
 					
 						<td>${fieldValue(bean: colorInstance, field: "hex")}</td>
+					
+						<td>${fieldValue(bean: colorInstance, field: "status")}</td>
 					
 					</tr>
 				</g:each>
