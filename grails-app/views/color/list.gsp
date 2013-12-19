@@ -26,7 +26,7 @@
 					
 						<g:sortableColumn property="name" title="${message(code: 'color.name.label', default: 'Name')}" />
 					
-						<g:sortableColumn property="description" title="${message(code: 'color.description.label', default: 'Description')}" />
+						<g:sortableColumn property="pantone" title="${message(code: 'color.pantone.label', default: 'Pantone')}" />
 					
 						<g:sortableColumn property="hex" title="${message(code: 'color.hex.label', default: 'Hex')}" />
 					
@@ -38,7 +38,7 @@
 					
 						<td><g:link action="show" id="${colorInstance.id}">${fieldValue(bean: colorInstance, field: "name")}</g:link></td>
 					
-						<td>${fieldValue(bean: colorInstance, field: "description")}</td>
+						<td>${fieldValue(bean: colorInstance, field: "pantone")}</td>
 					
 						<td>${fieldValue(bean: colorInstance, field: "hex")}</td>
 					

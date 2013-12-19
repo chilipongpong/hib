@@ -32,11 +32,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${colorInstance?.description}">
+				<g:if test="${colorInstance?.pantone}">
 				<li class="fieldcontain">
-					<span id="description-label" class="property-label"><g:message code="color.description.label" default="Description" /></span>
+					<span id="pantone-label" class="property-label"><g:message code="color.pantone.label" default="Pantone" /></span>
 					
-						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${colorInstance}" field="description"/></span>
+						<span class="property-value" aria-labelledby="pantone-label"><g:fieldValue bean="${colorInstance}" field="pantone"/></span>
 					
 				</li>
 				</g:if>

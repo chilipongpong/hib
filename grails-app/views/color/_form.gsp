@@ -9,12 +9,12 @@
 	<g:textField name="name" maxlength="6" required="" value="${colorInstance?.name}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: colorInstance, field: 'description', 'error')} ">
-	<label for="description">
-		<g:message code="color.description.label" default="Description" />
+<div class="fieldcontain ${hasErrors(bean: colorInstance, field: 'pantone', 'error')} ">
+	<label for="pantone">
+		<g:message code="color.pantone.label" default="Pantone" />
 		
 	</label>
-	<g:textField name="description" maxlength="250" value="${colorInstance?.description}"/>
+	<g:textField name="pantone" maxlength="100" value="${colorInstance?.pantone}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: colorInstance, field: 'hex', 'error')} ">
@@ -23,6 +23,7 @@
 		
 	</label>
 	<input type='text' id="custom" />
+	<g:textField name="hex" value="${colorInstance?.hex}"/>
 	<script>
 		$("#custom").spectrum({
 			color: "#f00",
@@ -30,7 +31,15 @@
 				$("#hex").val(color.toHexString());
 			}
 		});
+
+		$("#hex").change(function() {
+			$("#custom").spectrum({
+				color: $(this).val(),
+				change: function(color) {
+					$("#hex").val(color.toHexString());
+				}
+			});	
+		});
 	</script>
-	<g:textField name="hex" value="${colorInstance?.hex}"/>
 </div>
 
