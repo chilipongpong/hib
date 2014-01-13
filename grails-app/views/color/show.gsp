@@ -44,9 +44,8 @@
 				<g:if test="${colorInstance?.hex}">
 				<li class="fieldcontain">
 					<span id="hex-label" class="property-label"><g:message code="color.hex.label" default="Hex" /></span>
-					
-						<span class="property-value" aria-labelledby="hex-label"><g:fieldValue bean="${colorInstance}" field="hex"/></span>
-					
+						<span class="property-value" aria-labelledby="hex-label"><g:fieldValue bean="${colorInstance}" field="hex"/></span><br>
+						<div class="property-value color-box" style="background-color: <g:fieldValue bean='${colorInstance}' field='hex'/>"></div>
 				</li>
 				</g:if>
 			
