@@ -32,6 +32,24 @@
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<script>
+						$(document).ready(function() {
+							var setColorsId = function() {
+								var colorsId = "";
+								$('#colorSelectionTo option').each(function() {
+									if (colorsId !== "") {
+										colorsId += ","
+									}
+									colorsId += $(this).val();
+								});
+								$('#colorsId').val(colorsId);
+							};
+
+							$('#create').click(function() {
+								setColorsId();
+							});
+						});
+					</script>
 				</fieldset>
 			</g:form>
 		</div>

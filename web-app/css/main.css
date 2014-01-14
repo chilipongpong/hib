@@ -594,3 +594,30 @@ a.skip {
 	position: absolute;
 	left: -9999px;
 }
+
+.color-box {
+	width: 100px;
+	height: 100px;
+}
+
+.selectionMultiple div {
+	float: left;
+}
+
+.selectionMultiple label {
+	float: left;
+}
+
+.selectionMultipleBox {
+	text-align: center;
+}
+
+.selectionMultipleBox select {
+	width: 200px;
+}
+
+.selectionMultipleArrows {
+	margin-top: 50px;
+	width:50px;
+	text-align: center;
+}
