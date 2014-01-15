@@ -7,7 +7,7 @@ class MenuItem {
 	String image
 	String imageFileName
 	String status
-	String level
+	Level level
 
 	static belongsTo = [menuCategory: MenuCategory]
 	static constraints = {
@@ -16,7 +16,6 @@ class MenuItem {
 		status inList: ["Active", "Inactive"], blank:false
 		imageFileName blank:true, nullable: true
 		image blank:true, nullable: true
-		level blank:false, nullable: false, size: 1..50
 	}
 	
 	static searchable = [except:'image*']

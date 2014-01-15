@@ -48,7 +48,7 @@
 		<g:message code="menuItem.level.label" default="Level" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="level" maxlength="50" required="" value="${menuItemInstance?.level}"/>
+	<g:select id="level" name="level.id" from="${com.hizon.Level.list()}" optionKey="id" required="" value="${menuItemInstance?.level?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'menuCategory', 'error')} required">

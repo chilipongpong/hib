@@ -1,0 +1,28 @@
+<%@ page import="com.hizon.Level" %>
+
+
+
+<div class="fieldcontain ${hasErrors(bean: levelInstance, field: 'name', 'error')} required">
+	<label for="name">
+		<g:message code="level.name.label" default="Name" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="name" maxlength="100" required="" value="${levelInstance?.name}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: levelInstance, field: 'description', 'error')} ">
+	<label for="description">
+		<g:message code="level.description.label" default="Description" />
+		
+	</label>
+	<g:textField name="description" maxlength="250" value="${levelInstance?.description}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: levelInstance, field: 'status', 'error')} required">
+	<label for="status">
+		<g:message code="level.status.label" default="Status" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select name="status" from="${levelInstance.constraints.status.inList}" required="" value="${levelInstance?.status}" valueMessagePrefix="level.status"/>
+</div>
+

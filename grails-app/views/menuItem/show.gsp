@@ -70,7 +70,7 @@
 				<li class="fieldcontain">
 					<span id="level-label" class="property-label"><g:message code="menuItem.level.label" default="Level" /></span>
 					
-						<span class="property-value" aria-labelledby="level-label"><g:fieldValue bean="${menuItemInstance}" field="level"/></span>
+						<span class="property-value" aria-labelledby="level-label"><g:link controller="level" action="show" id="${menuItemInstance?.level?.id}">${menuItemInstance?.level?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
