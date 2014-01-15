@@ -40,6 +40,15 @@
 					
 				</li>
 				</g:if>
+				
+				<g:if test="${themeInstance?.level}">
+				<li class="fieldcontain">
+					<span id="level-label" class="property-label"><g:message code="theme.level.label" default="Level" /></span>
+					
+						<span class="property-value" aria-labelledby="level-label"><g:link controller="level" action="show" id="${themeInstance?.level?.id}">${themeInstance?.level?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
 			
 				<g:if test="${themeInstance?.colors}">
 				<li class="fieldcontain">

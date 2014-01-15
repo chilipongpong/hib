@@ -17,6 +17,14 @@
 	<g:textField name="description" maxlength="250" value="${themeInstance?.description}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'level', 'error')} required">
+	<label for="level">
+		<g:message code="menuItem.level.label" default="Level" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="level" name="level.id" from="${com.hizon.Level.list()}" optionKey="id" required="" value="${menuItemInstance?.level?.id}" class="many-to-one"/>
+</div>
+
 <div class="selectionMultiple fieldcontain ${hasErrors(bean: themeInstance, field: 'colors', 'error')} ">
 	<label for="colors">
 		<g:message code="theme.colors.label" default="Colors" />
@@ -60,3 +68,4 @@
 
 	});
 </script>
+

@@ -4,6 +4,7 @@ class Theme {
 
 	String name
 	String description
+	Level level
 	
 	static hasMany = [colors: Color]
 	

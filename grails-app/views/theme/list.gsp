@@ -27,6 +27,8 @@
 						<g:sortableColumn property="name" title="${message(code: 'theme.name.label', default: 'Name')}" />
 					
 						<g:sortableColumn property="description" title="${message(code: 'theme.description.label', default: 'Description')}" />
+						
+						<g:sortableColumn property="level" title="${message(code: 'theme.level.label', default: 'Level')}" />
 					
 					</tr>
 				</thead>
@@ -37,6 +39,8 @@
 						<td><g:link action="show" id="${themeInstance.id}">${fieldValue(bean: themeInstance, field: "name")}</g:link></td>
 					
 						<td>${fieldValue(bean: themeInstance, field: "description")}</td>
+						
+						<td>${fieldValue(bean: themeInstance, field: "level")}</td>
 					
 					</tr>
 				</g:each>
