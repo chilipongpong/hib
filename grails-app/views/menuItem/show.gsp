@@ -84,14 +84,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${menuItemInstance?.packageCategory}">
-				<li class="fieldcontain">
-					<span id="packageCategory-label" class="property-label"><g:message code="menuItem.packageCategory.label" default="Package Category" /></span>
-					
-						<span class="property-value" aria-labelledby="packageCategory-label"><g:fieldValue bean="${menuItemInstance}" field="packageCategory"/></span>
-					
-				</li>
-				</g:if>
 			
 			</ol>
 			<g:form>

@@ -34,9 +34,9 @@
 					
 						<g:sortableColumn property="status" title="${message(code: 'menuItem.status.label', default: 'Status')}" />
 					
-						<g:sortableColumn property="image" title="${message(code: 'menuItem.image.label', default: 'Image')}" />
-					
 						<g:sortableColumn property="level" title="${message(code: 'menuItem.level.label', default: 'Level')}" />
+
+						<g:sortableColumn property="menuCategory" title="${message(code: 'menuItem.menuCategory.label', default: 'Menu Category')}" />
 					
 					</tr>
 				</thead>
@@ -50,16 +50,9 @@
 					
 						<td>${fieldValue(bean: menuItemInstance, field: "status")}</td>
 					
-						<td>
-							<g:if test="${menuItemInstance.image == ''}">
-								<g:img file="no-image-available.jpg" dir="uploaded-files" width="200"/>
-							</g:if>
-							<g:else>
-								<g:img file="${menuItemInstance.image}" dir="uploaded-files" width="200"/>
-							</g:else>
-						</td>
-						
 						<td>${fieldValue(bean: menuItemInstance, field: "level")}</td>
+						
+						<td>${fieldValue(bean: menuItemInstance, field: "menuCategory")}</td>
 					
 					</tr>
 				</g:each>

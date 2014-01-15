@@ -59,11 +59,4 @@
 	<g:select id="menuCategory" name="menuCategory.id" from="${com.hizon.MenuCategory.list()}" optionKey="id" required="" value="${menuItemInstance?.menuCategory?.id}" class="many-to-one"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'packageCategory', 'error')} ">
-	<label for="packageCategory">
-		<g:message code="menuItem.packageCategory.label" default="Package Category" />
-		
-	</label>
-	<g:textField name="packageCategory" value="${menuItemInstance?.packageCategory}"/>
-</div>
 

@@ -6,7 +6,6 @@ class MenuItem {
 	String description
 	String image
 	String imageFileName
-	String packageCategory
 	String status
 	String level
 
@@ -20,7 +19,7 @@ class MenuItem {
 		level blank:false, nullable: false, size: 1..50
 	}
 	
-	static searchable = [except:['image*', 'menuCategory']]
+	static searchable = [except:'image*']
 	
 	String toString() {
 		return name
