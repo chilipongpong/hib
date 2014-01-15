@@ -79,6 +79,10 @@
 
             </div>
 		</g:if>
+		<g:else>
+			<br />
+			<h3>Sorry, no Menu Categories found</h3>
+		</g:else>
 	</div>
 </body>
 </html>

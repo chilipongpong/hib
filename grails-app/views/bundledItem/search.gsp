@@ -1,11 +1,11 @@
 
-<%@ page import="com.hizon.MenuCategory"%>
+<%@ page import="com.hizon.BundledItem"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="layout" content="main">
 <g:set var="entityName"
-	value="${message(code: 'menuCategory.label', default: 'MenuCategory')}" />
+	value="${message(code: 'bundledItem.label', default: 'Bundled Item')}" />
 <title><g:message code="default.list.label" args="[entityName]" /></title>
 </head>
 <body>
@@ -79,6 +79,10 @@
 
             </div>
 		</g:if>
+		<g:else>
+			<br />
+			<h3>Sorry, no Bundled Items found</h3>
+		</g:else>
 	</div>
 </body>
 </html>

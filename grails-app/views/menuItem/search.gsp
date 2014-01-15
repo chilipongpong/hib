@@ -93,6 +93,10 @@
 
             </div>
 		</g:if>
+		<g:else>
+			<br />
+			<h3>Sorry, no Menu Items found</h3>
+		</g:else>
 	</div>
 </body>
 </html>
