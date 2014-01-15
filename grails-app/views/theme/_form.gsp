@@ -17,12 +17,20 @@
 	<g:textField name="description" maxlength="250" value="${themeInstance?.description}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'level', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: themeInstance, field: 'level', 'error')} required">
 	<label for="level">
-		<g:message code="menuItem.level.label" default="Level" />
+		<g:message code="theme.level.label" default="Level" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="level" name="level.id" from="${com.hizon.Level.list()}" optionKey="id" required="" value="${menuItemInstance?.level?.id}" class="many-to-one"/>
+	<g:select id="level" name="level.id" from="${com.hizon.Level.list()}" optionKey="id" required="" value="${themeInstance?.level?.id}" class="many-to-one"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: themeInstance, field: 'status', 'error')} required">
+	<label for="status">
+		<g:message code="theme.status.label" default="Status" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select name="status" from="${themeInstance.constraints.status.inList}" required="" value="${themeInstance?.status}" valueMessagePrefix="theme.status"/>
 </div>
 
 <div class="selectionMultiple fieldcontain ${hasErrors(bean: themeInstance, field: 'colors', 'error')} ">

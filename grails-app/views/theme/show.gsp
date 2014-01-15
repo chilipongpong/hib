@@ -49,6 +49,15 @@
 					
 				</li>
 				</g:if>
+				
+				<g:if test="${themeInstance?.status}">
+				<li class="fieldcontain">
+					<span id="status-label" class="property-label"><g:message code="theme.status.label" default="Status" /></span>
+					
+						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${themeInstance}" field="status"/></span>
+					
+				</li>
+				</g:if>
 			
 				<g:if test="${themeInstance?.colors}">
 				<li class="fieldcontain">
