@@ -77,6 +77,12 @@ class ThemeController {
         }
 
         themeInstance.properties = params
+		def colors = [] as Set
+		def colorsId = params.colorsId.split(",")
+		for(colorId in colorsId) {
+			colors.add(Color.get(colorId))
+		}
+		themeInstance.colors = colors;
 
         if (!themeInstance.save(flush: true)) {
             render(view: "edit", model: [themeInstance: themeInstance])

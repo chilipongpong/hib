@@ -41,7 +41,7 @@
 
 	<div class="selectionMultipleBox">
 		<select id="colorSelectionFrom" size="8" multiple>
-			<g:each var="color" in="${Color.list()}">
+			<g:each var="color" in="${Color.list() - themeInstance?.colors}">
 				<option value="${color.id}">${color.name}</option>
 			</g:each>
 		</select>
@@ -52,9 +52,11 @@
 	</div>
 	<div class="selectionMultipleBox">
 		<select id="colorSelectionTo" size="8" multiple>
+			<g:each var="color" in="${themeInstance?.colors}">
+				<option value="${color.id}">${color.name}</option>
+			</g:each>
 		</select>
 	</div>
-	${themeInstance?.colors*.id}
 	<g:hiddenField id="colorsId" name="colorsId" value=""/>
 </div>
 
@@ -73,7 +75,6 @@
 				$(this).remove();
 			});
 		});
-
 	});
 </script>
 
