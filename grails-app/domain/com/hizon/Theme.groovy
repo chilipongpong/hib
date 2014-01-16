@@ -14,4 +14,10 @@ class Theme {
 		description blank:true, nullable:true, size: 0..250
 		status blank:false
     }	
+	
+	static searchable = true
+	
+	String toString() {
+		return name
+	}
 }
