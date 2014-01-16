@@ -23,6 +23,6 @@
 		<g:message code="menuCategory.status.label" default="Status" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select name="status" from="${menuCategoryInstance.constraints.status.inList}" required="" value="${menuCategoryInstance?.status}" valueMessagePrefix="menuCategory.status"/>
+	<g:select name="status" from="${com.hizon.Status?.values().name}" keys="${com.hizon.Status.values()*.name()}" required="" value="${menuCategoryInstance?.status?.name()}"/>
 </div>
 

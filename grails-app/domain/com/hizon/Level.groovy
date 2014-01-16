@@ -4,12 +4,12 @@ class Level {
 
 	String name
 	String description
-	String status
+	Status status
 
 	static constraints = {
 		name unique:true, blank:false, nullable: false, size: 1..100
 		description blank:true, nullable: true, size: 0..250
-		status inList:['Active', 'Inactive'], blank:false
+		status blank:false
 	}
 
 	static searchable = true

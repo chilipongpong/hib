@@ -23,6 +23,6 @@
 		<g:message code="bundledItem.status.label" default="Status" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select name="status" from="${bundledItemInstance.constraints.status.inList}" required="" value="${bundledItemInstance?.status}" valueMessagePrefix="bundledItem.status"/>
+	<g:select name="status" from="${com.hizon.Status?.values().name}" keys="${com.hizon.Status.values()*.name()}" required="" value="${bundledItemInstance?.status?.name()}"/>
 </div>
 

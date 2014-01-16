@@ -51,6 +51,6 @@
 		<g:message code="color.status.label" default="Status" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select name="status" from="${com.hizon.Status?.values()}" keys="${com.hizon.Status.values()*.name()}" required="" value="${colorInstance?.status?.name()}"/>
+	<g:select name="status" from="${com.hizon.Status?.values().name}" keys="${com.hizon.Status.values()*.name()}" required="" value="${colorInstance?.status?.name()}"/>
 </div>
 

@@ -67,7 +67,7 @@
 							</td>
 
 							<td>
-								${fieldValue(bean: bundledItemInstance, field: "status")}
+								${fieldValue(bean: bundledItemInstance, field: "status.name")}
 							</td>
 
 						</tr>

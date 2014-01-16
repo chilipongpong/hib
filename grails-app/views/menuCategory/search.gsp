@@ -67,7 +67,7 @@
 							</td>
 
 							<td>
-								${fieldValue(bean: menuCategoryInstance, field: "status")}
+								${fieldValue(bean: menuCategoryInstance, field: "status.name")}
 							</td>
 
 						</tr>

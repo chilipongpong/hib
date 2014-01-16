@@ -44,7 +44,7 @@
 					
 						<td>${fieldValue(bean: bundledItemInstance, field: "description")}</td>
 					
-						<td>${fieldValue(bean: bundledItemInstance, field: "status")}</td>
+						<td>${fieldValue(bean: bundledItemInstance, field: "status.name")}</td>
 					
 					</tr>
 				</g:each>

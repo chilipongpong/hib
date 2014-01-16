@@ -44,7 +44,7 @@
 					
 						<td>${fieldValue(bean: colorInstance, field: "hex")}</td>
 					
-						<td>${fieldValue(bean: colorInstance, field: "status")}</td>
+						<td>${fieldValue(bean: colorInstance, field: "status.name")}</td>
 					
 					</tr>
 				</g:each>

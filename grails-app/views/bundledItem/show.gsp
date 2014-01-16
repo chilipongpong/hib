@@ -45,7 +45,7 @@
 				<li class="fieldcontain">
 					<span id="status-label" class="property-label"><g:message code="bundledItem.status.label" default="Status" /></span>
 					
-						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${bundledItemInstance}" field="status"/></span>
+						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${bundledItemInstance}" field="status.name"/></span>
 					
 				</li>
 				</g:if>

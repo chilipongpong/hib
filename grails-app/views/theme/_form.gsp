@@ -30,7 +30,7 @@
 		<g:message code="theme.status.label" default="Status" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select name="status" from="${themeInstance.constraints.status.inList}" required="" value="${themeInstance?.status}" valueMessagePrefix="theme.status"/>
+	<g:select name="status" from="${com.hizon.Status?.values().name}" keys="${com.hizon.Status.values()*.name()}" required="" value="${themeInstance?.status?.name()}"/>
 </div>
 
 <div class="selectionMultiple fieldcontain ${hasErrors(bean: themeInstance, field: 'colors', 'error')} ">

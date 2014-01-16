@@ -23,6 +23,6 @@
 		<g:message code="level.status.label" default="Status" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select name="status" from="${levelInstance.constraints.status.inList}" required="" value="${levelInstance?.status}" valueMessagePrefix="level.status"/>
+	<g:select name="status" from="${com.hizon.Status?.values().name}" keys="${com.hizon.Status.values()*.name()}" required="" value="${levelInstance?.status?.name()}"/>
 </div>
 

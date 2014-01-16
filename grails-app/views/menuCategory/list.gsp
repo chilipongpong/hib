@@ -44,7 +44,7 @@
 					
 						<td>${fieldValue(bean: menuCategoryInstance, field: "description")}</td>
 					
-						<td>${fieldValue(bean: menuCategoryInstance, field: "status")}</td>
+						<td>${fieldValue(bean: menuCategoryInstance, field: "status.name")}</td>
 					
 					</tr>
 				</g:each>

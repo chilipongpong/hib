@@ -53,7 +53,7 @@
 				<li class="fieldcontain">
 					<span id="status-label" class="property-label"><g:message code="color.status.label" default="Status" /></span>
 					
-						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${colorInstance}" field="status"/></span>
+						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${colorInstance}" field="status.name"/></span>
 					
 				</li>
 				</g:if>

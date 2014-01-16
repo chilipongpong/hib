@@ -48,7 +48,7 @@
 					
 						<td>${fieldValue(bean: menuItemInstance, field: "description")}</td>
 					
-						<td>${fieldValue(bean: menuItemInstance, field: "status")}</td>
+						<td>${fieldValue(bean: menuItemInstance, field: "status.name")}</td>
 					
 						<td>${fieldValue(bean: menuItemInstance, field: "level")}</td>
 						
