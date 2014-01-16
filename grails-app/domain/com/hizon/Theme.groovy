@@ -15,7 +15,9 @@ class Theme {
 		status blank:false
     }	
 	
-	static searchable = true
+	static searchable = {
+		colors component: true
+	}
 	
 	String toString() {
 		return name
