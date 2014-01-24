@@ -27,7 +27,7 @@
 	<g:textField name="hex" maxlength="7" required="" value="${colorInstance?.hex}"/>
 	<script>
 		$("#custom").spectrum({
-			color: "#f00",
+			color: $("#hex").val(),
 			change: function(color) {
 				$("#hex").val(color.toHexString());
 			}
