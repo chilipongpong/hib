@@ -13,14 +13,32 @@
 		<link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
 		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'adminstyle.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'spectrum.css')}" type="text/css">
+		<!-- <link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap.css')}" type="text/css"> -->
 		<g:javascript src="jquery-2.0.3.min.js" />
 		<g:layoutHead/>
 		<r:layoutResources />
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'hizons-logo.png')}" alt="Grails"/></a></div>
+		<section>
+			<div role="banner"><a class="hizonsLogo" href="/hib"> </a></div>
+			<div id="navi">
+				<ul>
+					<li><a href="#">Food Menu</a></li>
+						<ul>
+							<li><a href="#">Menu Categories</a></li>
+							<li><a href="#">Food Items</a></li>					
+						</ul>
+					<li><a href="#">Colors</a></li>
+					<li><a href="#">Themes</a></li>
+					<li><a href="#">Bundled Items</a></li>
+					<li><a href="#">Levels</a></li>
+				</ul>
+			</div>
+			<div style="clear:both"></div>
+		</section>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>

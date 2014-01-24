@@ -1,0 +1,28 @@
+#navi{
+	padding-left: 200px;
+}
+
+#navi li{
+	display: inline-block;
+	padding: 40px 30px 40px 0;
+	float: left;
+	
+}
+
+#navi li a{
+	text-decoration:none;
+	color: #fff;
+}
+
+
+#navi li a:hover	{
+	padding-bottom: 5px;
+	border-bottom: 5px solid #fff;
+}
+
+section {
+	background: #ff851b;
+	box-shadow: 0px 2px 10px #aaaaaa;
+	color: #fff;
+	margin-bottom: 75px;
+}

@@ -47,8 +47,13 @@ body {
 	        box-shadow: 0 0 0.3em #255b17;
 }
 
-#grailsLogo {
-	background-color: orange;
+.hizonsLogo {
+	background: url(../images/hizons-logo.png) 50% 0 no-repeat;
+	background-size: 120px 163px;
+	width: 120px;
+	height: 163px;
+	padding-left: 100px;
+	position: absolute;
 }
 
 /* replace with .no-boxshadow body if you have modernizr available */
@@ -108,7 +113,7 @@ img {
 }
 
 .footer {
-	background: orange;
+	background: #ff851b;
 	color: #000;
 	clear: both;
 	font-size: 0.8em;
