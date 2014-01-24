@@ -20,7 +20,7 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<g:form action="search" method="get">
+			<g:form action="search" method="get" class="search">
 				<g:textField name="q" value="${params.q}" />
 				<g:submitButton name="search" />
 			</g:form>
