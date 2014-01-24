@@ -16,6 +16,7 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'adminstyle.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'spectrum.css')}" type="text/css">
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'superfish.css')}" type="text/css">
 		<g:javascript src="jquery-2.0.3.min.js" />
 		<g:layoutHead/>
 		<r:layoutResources />
@@ -24,12 +25,13 @@
 		<section>
 			<div role="banner"><a class="hizonsLogo" href="/hib"> </a></div>
 			<div id="navi">
-				<ul>
-					<li><a href="#">Food Menu</a></li>
+				<ul class="sf-menu">
+					<li><a href="#">Food Menu</a>
 						<ul>
 							<li><a href="/hib/menuCategory">Menu Categories</a></li>
 							<li><a href="/hib/menuItem">Food Items</a></li>					
 						</ul>
+					</li>
 					<li><a href="/hib/color">Colors</a></li>
 					<li><a href="/hib/theme">Themes</a></li>
 					<li><a href="/hib/bundledItem">Bundled Items</a></li>
