@@ -89,3 +89,6 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+hib.images.upload.directory = "${userHome}" + "/images/upload"
+hib.images.max.size= 1024 * 1024 * 5

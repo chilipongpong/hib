@@ -34,7 +34,7 @@
 						<label for="status" style="margin-top: 1em">
 							<g:message code="theme.images.label" default="Images" />
 						</label>
-						<uploadr:add name="uploadrTemp" path="${imagesPath}" maxVisible="8" unsupported="/my/controller/action" allowedExtensions="gif,png,jpg,jpeg" viewable="false" downloadable="false" maxSize="204800" />
+						<uploadr:add name="uploadrTemp" path="${imagesPath}" maxVisible="8" unsupported="/my/controller/action" allowedExtensions="gif,png,jpg,jpeg,GIF,PNG,JPG,JPEG" viewable="false" downloadable="false" maxSize="${imageMaxSize}" />
 					</div>
 				</fieldset>
 				<fieldset class="buttons">
