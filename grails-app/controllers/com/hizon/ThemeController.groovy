@@ -27,14 +27,17 @@ class ThemeController {
 
     def save() {
         def themeInstance = new Theme(params)
-		def colors = [] as Set
-		def colorsId = params.colorsId.split(",")
-		for(colorId in colorsId) {
-			colors.add(Color.get(colorId))
+		if (params.colorsId) {
+			def colors = [] as Set
+			def colorsId = params.colorsId.split(",")
+			for(colorId in colorsId) {
+				colors.add(Color.get(colorId))
+			}
+			themeInstance.colors = colors;
 		}
-		themeInstance.colors = colors;
         if (!themeInstance.save(flush: true)) {
-            render(view: "create", model: [themeInstance: themeInstance])
+			themeService.deleteFolder(themeService.imagesTempPath)
+            render(view: "create", model: [themeInstance: themeInstance, imagesPath: themeService.imagesTempPath, imageMaxSize: themeService.imagesMaxSize])
             return
         }
 		themeService.deleteFolder(themeService.imagesRootPath + File.separator + themeInstance.id)
@@ -89,26 +92,33 @@ class ThemeController {
             return
         }
 
+		def imagesPath = themeService.imagesRootPath + File.separator + themeInstance.id
+		def imagesDirectory = new File(imagesPath)
         if (version != null) {
             if (themeInstance.version > version) {
                 themeInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                           [message(code: 'theme.label', default: 'Theme')] as Object[],
                           "Another user has updated this Theme while you were editing")
-                render(view: "edit", model: [themeInstance: themeInstance])
+                render(view: "edit", model: [themeInstance: themeInstance, imagesPath: imagesPath, images: imagesDirectory.listFiles(), imageMaxSize: themeService.imagesMaxSize])
                 return
             }
         }
 
         themeInstance.properties = params
 		def colors = [] as Set
-		def colorsId = params.colorsId.split(",")
-		for(colorId in colorsId) {
-			colors.add(Color.get(colorId))
+		if (params.colorsId) {
+			def colorsId = params.colorsId.split(",")
+					for(colorId in colorsId) {
+						colors.add(Color.get(colorId))
+					}
+			themeInstance.colors = colors;		
+		} else {
+			themeInstance.colors = null;
 		}
-		themeInstance.colors = colors;
+		
 
         if (!themeInstance.save(flush: true)) {
-            render(view: "edit", model: [themeInstance: themeInstance])
+            render(view: "edit", model: [themeInstance: themeInstance, imagesPath: imagesPath, images: imagesDirectory.listFiles(), imageMaxSize: themeService.imagesMaxSize])
             return
         }
 
