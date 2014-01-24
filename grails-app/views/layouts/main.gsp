@@ -16,7 +16,6 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'adminstyle.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'spectrum.css')}" type="text/css">
-		<!-- <link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap.css')}" type="text/css"> -->
 		<g:javascript src="jquery-2.0.3.min.js" />
 		<g:layoutHead/>
 		<r:layoutResources />
