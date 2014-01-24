@@ -36,8 +36,8 @@ class ThemeController {
 			themeInstance.colors = colors;
 		}
         if (!themeInstance.save(flush: true)) {
-			themeService.deleteFolder(themeService.imagesTempPath)
-            render(view: "create", model: [themeInstance: themeInstance, imagesPath: themeService.imagesTempPath, imageMaxSize: themeService.imagesMaxSize])
+			def imagesDirectory = new File(themeService.imagesTempPath)
+            render(view: "create", model: [themeInstance: themeInstance, imagesPath: themeService.imagesTempPath, images: imagesDirectory.listFiles(), imageMaxSize: themeService.imagesMaxSize])
             return
         }
 		themeService.deleteFolder(themeService.imagesRootPath + File.separator + themeInstance.id)
