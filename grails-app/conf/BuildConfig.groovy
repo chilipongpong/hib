@@ -64,5 +64,9 @@ grails.project.dependency.resolution = {
         compile ':cache:1.0.1'
 		
 		compile ":searchable:0.6.4"
+		
+		runtime ":modernizr:2.7.1.1"
+		
+		compile ":uploadr:latest.integration"
     }
 }

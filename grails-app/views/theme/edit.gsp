@@ -5,6 +5,7 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'theme.label', default: 'Theme')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
+		<r:require modules="uploadr"/>
 	</head>
 	<body>
 		<a href="#edit-theme" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -32,28 +33,22 @@
 				<g:hiddenField name="version" value="${themeInstance?.version}" />
 				<fieldset class="form">
 					<g:render template="form"/>
+					<div class="fieldcontain ${hasErrors(bean: themeInstance, field: 'images', 'error')}">
+						<label for="status" style="margin-top: 1em">
+							<g:message code="theme.images.label" default="Images" />
+						</label>
+						<uploadr:add name="uploadr${themeInstance.id}" path="${imagesPath}" maxVisible="8" unsupported="/my/controller/action" allowedExtensions="gif,png,jpg,jpeg" viewable="false" downloadable="false" maxSize="204800">
+							<g:each in="${images}" var="image">
+							    <uploadr:file name="${image.name}">
+							        <uploadr:fileSize>${image.size()}</uploadr:fileSize>
+							    </uploadr:file>
+							</g:each>
+						</uploadr:add>
+					</div>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:actionSubmit id="update" class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+					<g:actionSubmit id="save" class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" formnovalidate="" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-					<script>
-						$(document).ready(function() {
-							var setColorsId = function() {
-								var colorsId = "";
-								$('#colorSelectionTo option').each(function() {
-									if (colorsId !== "") {
-										colorsId += ","
-									}
-									colorsId += $(this).val();
-								});
-								$('#colorsId').val(colorsId);
-							};
-
-							$('#update').click(function() {
-								setColorsId();
-							});
-						});
-					</script>
 				</fieldset>
 			</g:form>
 		</div>

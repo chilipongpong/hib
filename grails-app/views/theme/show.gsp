@@ -69,8 +69,21 @@
 					
 				</li>
 				</g:if>
-			
+	
+				<li class="fieldcontain">
+					<span id="images-label" class="property-label"><g:message code="theme.images.label" default="Images" /></span>
+					
+						<g:each in="${images}" var="img">
+							<span class="property-value" aria-labelledby="colors-label">
+								${img.name}<br/>
+								<img class="thumbnail" height="100" width="100" src='${createLink(controller: "theme", action: "displayImage", params:[img: img.name, themeId: themeInstance?.id])}' />
+							</span>
+						</g:each>
+					
+				</li>
+				
 			</ol>
+			
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${themeInstance?.id}" />

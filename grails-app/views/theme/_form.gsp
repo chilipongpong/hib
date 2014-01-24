@@ -75,6 +75,22 @@
 				$(this).remove();
 			});
 		});
+
+		$('#save').click(function() {
+			setColorsId();
+		});
+
+		var setColorsId = function() {
+			var colorsId = "";
+			$('#colorSelectionTo option').each(function() {
+				if (colorsId !== "") {
+					colorsId += ","
+				}
+				colorsId += $(this).val();
+			});
+			$('#colorsId').val(colorsId);
+		};
 	});
+
 </script>
 

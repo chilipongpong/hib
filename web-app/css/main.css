@@ -621,3 +621,15 @@ a.skip {
 	width:50px;
 	text-align: center;
 }
+
+.files.uploadr-dropable {
+	margin: 25px !important;
+}
+
+.uploadr .fileinput {
+	height: 35px !important;
+}
+
+.uploadr {
+	margin-left: 210px;
+}

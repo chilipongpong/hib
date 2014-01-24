@@ -5,6 +5,7 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'theme.label', default: 'Theme')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
+		<r:require modules="uploadr"/>
 	</head>
 	<body>
 		<a href="#create-theme" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -29,27 +30,15 @@
 			<g:form action="save" >
 				<fieldset class="form">
 					<g:render template="form"/>
+					<div class="fieldcontain ${hasErrors(bean: themeInstance, field: 'images', 'error')}">
+						<label for="status" style="margin-top: 1em">
+							<g:message code="theme.images.label" default="Images" />
+						</label>
+						<uploadr:add name="uploadrTemp" path="${imagesPath}" maxVisible="8" unsupported="/my/controller/action" allowedExtensions="gif,png,jpg,jpeg" viewable="false" downloadable="false" maxSize="204800" />
+					</div>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-					<script>
-						$(document).ready(function() {
-							var setColorsId = function() {
-								var colorsId = "";
-								$('#colorSelectionTo option').each(function() {
-									if (colorsId !== "") {
-										colorsId += ","
-									}
-									colorsId += $(this).val();
-								});
-								$('#colorsId').val(colorsId);
-							};
-
-							$('#create').click(function() {
-								setColorsId();
-							});
-						});
-					</script>
+					<g:submitButton id="save" name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 				</fieldset>
 			</g:form>
 		</div>
