@@ -27,13 +27,13 @@
 				<ul>
 					<li><a href="#">Food Menu</a></li>
 						<ul>
-							<li><a href="menuCategory">Menu Categories</a></li>
-							<li><a href="menuItem">Food Items</a></li>					
+							<li><a href="/hib/menuCategory">Menu Categories</a></li>
+							<li><a href="/hib/menuItem">Food Items</a></li>					
 						</ul>
-					<li><a href="color">Colors</a></li>
-					<li><a href="theme">Themes</a></li>
-					<li><a href="bundledItem">Bundled Items</a></li>
-					<li><a href="level">Levels</a></li>
+					<li><a href="/hib/color">Colors</a></li>
+					<li><a href="/hib/theme">Themes</a></li>
+					<li><a href="/hib/bundledItem">Bundled Items</a></li>
+					<li><a href="/hib/level">Levels</a></li>
 				</ul>
 			</div>
 			<div style="clear:both"></div>
