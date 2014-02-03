@@ -7,9 +7,9 @@ grails.project.source.level = 1.6
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
 // uncomment (and adjust settings) to fork the JVM to isolate classpaths
-//grails.project.fork = [
-//   run: [maxMemory:1024, minMemory:64, debug:false, maxPerm:256]
-//]
+grails.project.fork = [
+   run: [maxMemory:1024, minMemory:64, debug:false, maxPerm:512]
+]
 
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
@@ -36,15 +36,18 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
+	mavenRepo "http://repo1.maven.org/maven2/"
 		
 		// for searchable
 		mavenRepo "http://repo.grails.org/grails/core"
+		// for spring security
+		mavenRepo "http://repo.spring.io/milestone/"
     }
 
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
 
-        // runtime 'mysql:mysql-connector-java:5.1.22'
+        runtime 'mysql:mysql-connector-java:5.1.22'
     }
 
     plugins {
@@ -67,6 +70,8 @@ grails.project.dependency.resolution = {
 		
 		runtime ":modernizr:2.7.1.1"
 		
-		compile ":uploadr:latest.integration"
+		compile ":uploadr:0.8.2"
+		
+		compile ':spring-security-core:2.0-RC2'
     }
 }

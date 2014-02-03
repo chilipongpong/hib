@@ -92,3 +92,21 @@ log4j = {
 
 hib.images.upload.directory = "${userHome}" + "/images/upload"
 hib.images.max.size= 1024 * 1024 * 5
+
+
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.hizon.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.hizon.UserRole'
+grails.plugin.springsecurity.authority.className = 'com.hizon.Role'
+grails.plugin.springsecurity.requestMap.className = 'com.hizon.RequestMap'
+grails.plugin.springsecurity.securityConfigType = 'Requestmap'
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+	'/':                              ['permitAll'],
+	'/index':                         ['permitAll'],
+	'/index.gsp':                     ['permitAll'],
+	'/**/js/**':                      ['permitAll'],
+	'/**/css/**':                     ['permitAll'],
+	'/**/images/**':                  ['permitAll'],
+	'/**/favicon.ico':                ['permitAll']
+]
+
