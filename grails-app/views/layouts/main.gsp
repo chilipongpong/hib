@@ -28,14 +28,14 @@
 				<ul class="sf-menu">
 					<li><a href="#">Food Menu</a>
 						<ul>
-							<li><a href="/hib/menuCategory">Menu Categories</a></li>
-							<li><a href="/hib/menuItem">Food Items</a></li>					
+							<li><g:link uri="/menuCategory">Menu Categories</g:link></li>
+							<li><g:link uri="/menuItem">Food Items</g:link></li>					
 						</ul>
 					</li>
-					<li><a href="/hib/color">Colors</a></li>
-					<li><a href="/hib/theme">Themes</a></li>
-					<li><a href="/hib/bundledItem">Bundled Items</a></li>
-					<li><a href="/hib/level">Levels</a></li>
+					<li><g:link uri="/color">Colors</g:link></li>
+					<li><g:link uri="/theme">Themes</g:link></li>
+					<li><g:link uri="/bundledItem">Bundled Items</g:link></li>
+					<li><g:link uri="/level">Levels</g:link></li>
 				</ul>
 			</div>
 			<div style="clear:both"></div>
