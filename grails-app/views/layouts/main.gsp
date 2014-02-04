@@ -41,7 +41,13 @@
 			<div style="clear:both"></div>
 		</section>
 		<g:layoutBody/>
-		<div class="footer" role="contentinfo"></div>
+		<div class="footer" role="contentinfo">
+		<g:form controller="logout">
+				<fieldset class="buttons">
+					<g:submitButton name="logout" class="logout" value="${message(code: 'default.button.logout.label', default: 'Logout')}" />
+				</fieldset>
+			</g:form>
+		</div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 		<g:javascript library="application"/>
 		<r:layoutResources />
