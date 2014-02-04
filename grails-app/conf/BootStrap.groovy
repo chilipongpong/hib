@@ -7,7 +7,8 @@ class BootStrap {
 	def springSecurityService
 	
     def init = { servletContext ->
-		def userRole = Role.findByAuthority('ROLE_USER') ?: new Role(authority: 'ROLE_USER').save(failOnError: true)
+		def clientRole = Role.findByAuthority('ROLE_CLIENT') ?: new Role(authority: 'ROLE_CLIENT').save(failOnError: true)
+		def plannerRole = Role.findByAuthority('ROLE_PLANNER') ?: new Role(authority: 'ROLE_PLANNER').save(failOnError: true)
 		def adminRole = Role.findByAuthority('ROLE_ADMIN') ?: new Role(authority: 'ROLE_ADMIN').save(failOnError: true)
 		
 		def adminUser = User.findByUsername('admin') ?: new User(
@@ -26,8 +27,10 @@ class BootStrap {
 		new RequestMap(url: '/logout/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save(flush:true)
 		new RequestMap(url: '/favicon.ico', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save(flush:true)
 		new RequestMap(url: '/admin/**', configAttribute: 'ROLE_ADMIN').save(flush:true)
-		new RequestMap(url: '/', configAttribute: 'ROLE_ADMIN, ROLE_USER').save(flush:true)
-		new RequestMap(url: '/*/**', configAttribute: 'ROLE_ADMIN, ROLE_USER').save(flush:true)
+		new RequestMap(url: '/', configAttribute: 'ROLE_ADMIN, ROLE_CLIENT, ROLE_PLANNER').save(flush:true)
+		new RequestMap(url: '/client/**', configAttribute: 'ROLE_ADMIN').save(flush:true)
+		new RequestMap(url: '/planner/**', configAttribute: 'ROLE_ADMIN').save(flush:true)
+		new RequestMap(url: '/*/**', configAttribute: 'ROLE_ADMIN, ROLE_CLIENT, ROLE_PLANNER').save(flush:true)
     }
     def destroy = {
     }
