@@ -23,21 +23,19 @@
 			<table>
 				<thead>
 					<tr>
-					
-						<th><g:message code="planner.profile.label" default="Profile" /></th>
-					
-						<th><g:message code="planner.user.label" default="User" /></th>
-					
+						<g:sortableColumn property="user.username" title="${message(code: 'user.username.label', default: 'Username')}" />
+						<g:sortableColumn property="profile.firstName" title="${message(code: 'profile.firstName.label', default: 'First Name')}" />
+						<g:sortableColumn property="profile.lastName" title="${message(code: 'profile.lastName.label', default: 'Last Name')}" />
+						<g:sortableColumn property="profile.email" title="${message(code: 'profile.email.label', default: 'Email')}" />
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${plannerInstanceList}" status="i" var="plannerInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${plannerInstance.id}">${fieldValue(bean: plannerInstance, field: "profile")}</g:link></td>
-					
-						<td>${fieldValue(bean: plannerInstance, field: "user")}</td>
-					
+						<td><g:link action="show" id="${plannerInstance.id}">${fieldValue(bean: plannerInstance.user, field: "username")}</g:link></td>
+						<td>${fieldValue(bean: plannerInstance.profile, field: "firstName")}</td>
+						<td>${fieldValue(bean: plannerInstance.profile, field: "lastName")}</td>
+						<td>${fieldValue(bean: plannerInstance.profile, field: "email")}</td>
 					</tr>
 				</g:each>
 				</tbody>

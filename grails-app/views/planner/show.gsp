@@ -23,21 +23,61 @@
 			</g:if>
 			<ol class="property-list planner">
 			
-				<g:if test="${plannerInstance?.profile}">
+				<g:if test="${plannerInstance?.user}">
 				<li class="fieldcontain">
-					<span id="profile-label" class="property-label"><g:message code="planner.profile.label" default="Profile" /></span>
-					
-						<span class="property-value" aria-labelledby="profile-label"><g:link controller="profile" action="show" id="${plannerInstance?.profile?.id}">${plannerInstance?.profile?.encodeAsHTML()}</g:link></span>
-					
+					<span id="user-label" class="property-label"><g:message code="user.username.label" default="Username" /></span>
+					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${plannerInstance?.user}" field="username"/></span>
 				</li>
 				</g:if>
 			
+				<g:if test="${plannerInstance?.profile}">
+				<li class="fieldcontain">
+					<span id="profile-label" class="property-label"><g:message code="profile.firstName.label" default="First Name" /></span>
+					<span class="property-value" aria-labelledby="profile-label"><g:fieldValue bean="${plannerInstance?.profile}" field="firstName"/></span>
+				</li>
+				<li class="fieldcontain">
+					<span id="profile-label" class="property-label"><g:message code="profile.lastName.label" default="Last Name" /></span>
+					<span class="property-value" aria-labelledby="profile-label"><g:fieldValue bean="${plannerInstance?.profile}" field="lastName"/></span>
+				</li>
+				<li class="fieldcontain">
+					<span id="profile-label" class="property-label"><g:message code="profile.email.label" default="Email" /></span>
+					<span class="property-value" aria-labelledby="profile-label"><g:fieldValue bean="${plannerInstance?.profile}" field="email"/></span>
+				</li>
+				<li class="fieldcontain">
+					<span id="profile-label" class="property-label"><g:message code="profile.mobile.label" default="Mobile" /></span>
+					<span class="property-value" aria-labelledby="profile-label"><g:fieldValue bean="${plannerInstance?.profile}" field="mobile"/></span>
+				</li>
+				<li class="fieldcontain">
+					<span id="profile-label" class="property-label"><g:message code="profile.phone.label" default="Phone" /></span>
+					<span class="property-value" aria-labelledby="profile-label"><g:fieldValue bean="${plannerInstance?.profile}" field="phone"/></span>
+				</li>
+				</g:if>
+				
 				<g:if test="${plannerInstance?.user}">
 				<li class="fieldcontain">
-					<span id="user-label" class="property-label"><g:message code="planner.user.label" default="User" /></span>
-					
-						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${plannerInstance?.user?.id}">${plannerInstance?.user?.encodeAsHTML()}</g:link></span>
-					
+					<span id="user-label" class="property-label"><g:message code="user.enabled.label" default="Enabled" /></span>
+					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${plannerInstance?.user}" field="enabled"/></span>
+				</li>
+				<li class="fieldcontain">
+					<span id="user-label" class="property-label"><g:message code="user.accountExpired.label" default="Account Expired" /></span>
+					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${plannerInstance?.user}" field="accountExpired"/></span>
+				</li>
+				<li class="fieldcontain">
+					<span id="user-label" class="property-label"><g:message code="user.accountLocked.label" default="Account Locked" /></span>
+					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${plannerInstance?.user}" field="accountLocked"/></span>
+				</li>
+				<li class="fieldcontain">
+					<span id="user-label" class="property-label"><g:message code="user.passwordExpired.label" default="Password Expired" /></span>
+					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${plannerInstance?.user}" field="passwordExpired"/></span>
+				</li>
+				</g:if>
+				
+				<g:if test="${plannerInstance?.clients}">
+				<li class="fieldcontain">
+					<span id="clients-label" class="property-label"><g:message code="planner.clients.label" default="Clients" /></span>
+						<g:each in="${plannerInstance.clients}" var="c">
+						<span class="property-value" aria-labelledby="clients-label"><g:link controller="client" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						</g:each>
 				</li>
 				</g:if>
 			

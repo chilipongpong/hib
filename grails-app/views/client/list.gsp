@@ -23,10 +23,10 @@
 			<table>
 				<thead>
 					<tr>
-						<th><g:message code="user.username.label" default="Username" /></th>
-						<th><g:message code="profile.firstName.label" default="First Name" /></th>					
-						<th><g:message code="profile.lastName.label" default="Last Name" /></th>
-						<th><g:message code="profile.email.label" default="Email" /></th>
+						<g:sortableColumn property="user.username" title="${message(code: 'user.username.label', default: 'Username')}" />
+						<g:sortableColumn property="profile.firstName" title="${message(code: 'profile.firstName.label', default: 'First Name')}" />
+						<g:sortableColumn property="profile.lastName" title="${message(code: 'profile.lastName.label', default: 'Last Name')}" />
+						<g:sortableColumn property="profile.email" title="${message(code: 'profile.email.label', default: 'Email')}" />
 						<th><g:message code="client.planner.label" default="Planner" /></th>
 					</tr>
 				</thead>

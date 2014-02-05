@@ -29,22 +29,6 @@
 					<span id="user-label" class="property-label"><g:message code="user.username.label" default="Username" /></span>
 					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${clientInstance?.user}" field="username"/></span>
 				</li>
-				<li class="fieldcontain">
-					<span id="user-label" class="property-label"><g:message code="user.enabled.label" default="Enabled" /></span>
-					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${clientInstance?.user}" field="enabled"/></span>
-				</li>
-				<li class="fieldcontain">
-					<span id="user-label" class="property-label"><g:message code="user.accountExpired.label" default="Account Expired" /></span>
-					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${clientInstance?.user}" field="accountExpired"/></span>
-				</li>
-				<li class="fieldcontain">
-					<span id="user-label" class="property-label"><g:message code="user.accountLocked.label" default="Account Locked" /></span>
-					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${clientInstance?.user}" field="accountLocked"/></span>
-				</li>
-				<li class="fieldcontain">
-					<span id="user-label" class="property-label"><g:message code="user.passwordExpired.label" default="Password Expired" /></span>
-					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${clientInstance?.user}" field="passwordExpired"/></span>
-				</li>
 				</g:if>
 			
 				<g:if test="${clientInstance?.profile}">
@@ -67,6 +51,25 @@
 				<li class="fieldcontain">
 					<span id="profile-label" class="property-label"><g:message code="profile.phone.label" default="Phone" /></span>
 					<span class="property-value" aria-labelledby="profile-label"><g:fieldValue bean="${clientInstance?.profile}" field="phone"/></span>
+				</li>
+				</g:if>
+				
+				<g:if test="${clientInstance?.user}">
+				<li class="fieldcontain">
+					<span id="user-label" class="property-label"><g:message code="user.enabled.label" default="Enabled" /></span>
+					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${clientInstance?.user}" field="enabled"/></span>
+				</li>
+				<li class="fieldcontain">
+					<span id="user-label" class="property-label"><g:message code="user.accountExpired.label" default="Account Expired" /></span>
+					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${clientInstance?.user}" field="accountExpired"/></span>
+				</li>
+				<li class="fieldcontain">
+					<span id="user-label" class="property-label"><g:message code="user.accountLocked.label" default="Account Locked" /></span>
+					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${clientInstance?.user}" field="accountLocked"/></span>
+				</li>
+				<li class="fieldcontain">
+					<span id="user-label" class="property-label"><g:message code="user.passwordExpired.label" default="Password Expired" /></span>
+					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${clientInstance?.user}" field="passwordExpired"/></span>
 				</li>
 				</g:if>
 			

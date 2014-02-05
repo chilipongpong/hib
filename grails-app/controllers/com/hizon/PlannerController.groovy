@@ -21,10 +21,12 @@ class PlannerController {
 
     def save() {
         def plannerInstance = new Planner(params)
-        if (!plannerInstance.save(flush: true)) {
+		def valid = plannerInstance.user.validate() & plannerInstance.profile.validate()
+        if (!valid || !plannerInstance.save(flush: true)) {
             render(view: "create", model: [plannerInstance: plannerInstance])
             return
         }
+		UserRole.create plannerInstance.user, Role.findByAuthority('ROLE_PLANNER')
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'planner.label', default: 'Planner'), plannerInstance.id])
         redirect(action: "show", id: plannerInstance.id)
@@ -72,7 +74,8 @@ class PlannerController {
 
         plannerInstance.properties = params
 
-        if (!plannerInstance.save(flush: true)) {
+		def valid = plannerInstance.user.validate() & plannerInstance.profile.validate()
+        if (!valid || !plannerInstance.save(flush: true)) {
             render(view: "edit", model: [plannerInstance: plannerInstance])
             return
         }
@@ -90,6 +93,7 @@ class PlannerController {
         }
 
         try {
+			UserRole.findByUser(plannerInstance.user).delete()
             plannerInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'planner.label', default: 'Planner'), id])
             redirect(action: "list")
