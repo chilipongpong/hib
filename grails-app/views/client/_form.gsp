@@ -18,6 +18,13 @@
 	<g:passwordField name="user.password" required="" value="${clientInstance?.user?.password}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: clientInstance.user, field: 'enabled', 'error')} ">
+	<label for="enabled">
+		<g:message code="user.enabled.label" default="Enabled" />
+	</label>
+	<g:checkBox name="user.enabled" value="${clientInstance?.user ? clientInstance?.user?.enabled : true}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: clientInstance.profile, field: 'firstName', 'error')} required">
 	<label for="firstName">
 		<g:message code="profile.firstName.label" default="First Name" />
