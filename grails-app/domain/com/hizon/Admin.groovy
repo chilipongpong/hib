@@ -1,12 +1,10 @@
 package com.hizon
 
-class Client {
+class Admin {
 	User user
 	Profile profile
-	Planner planner
-	
+
     static constraints = {
-		planner nullable:true
     }
 	
 	static mapping = {

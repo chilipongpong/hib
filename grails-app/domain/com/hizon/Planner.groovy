@@ -13,4 +13,6 @@ class Planner {
 		user cascade: 'all'
 		profile cascade: 'all'
 	}
+	
+	static searchable = true
 }
