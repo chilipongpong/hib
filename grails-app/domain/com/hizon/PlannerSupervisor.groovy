@@ -2,7 +2,6 @@ package com.hizon
 
 class PlannerSupervisor {
 	User user
-	Profile profile
 	
 	static hasMany = [planners: Planner]
 	
@@ -11,7 +10,6 @@ class PlannerSupervisor {
 	
 	static mapping = {
 		user cascade: 'all'
-		profile cascade: 'all'
 	}
 	
 	static searchable = true

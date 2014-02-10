@@ -29,26 +29,26 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${adminInstance?.profile}">
+				<g:if test="${adminInstance?.user}">
 				<li class="fieldcontain">
-					<span id="profile-label" class="property-label"><g:message code="profile.firstName.label" default="First Name" /></span>
-					<span class="property-value" aria-labelledby="profile-label"><g:fieldValue bean="${adminInstance?.profile}" field="firstName"/></span>
+					<span id="user-label" class="property-label"><g:message code="user.firstName.label" default="First Name" /></span>
+					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${adminInstance?.user}" field="firstName"/></span>
 				</li>
 				<li class="fieldcontain">
-					<span id="profile-label" class="property-label"><g:message code="profile.lastName.label" default="Last Name" /></span>
-					<span class="property-value" aria-labelledby="profile-label"><g:fieldValue bean="${adminInstance?.profile}" field="lastName"/></span>
+					<span id="user-label" class="property-label"><g:message code="user.lastName.label" default="Last Name" /></span>
+					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${adminInstance?.user}" field="lastName"/></span>
 				</li>
 				<li class="fieldcontain">
-					<span id="profile-label" class="property-label"><g:message code="profile.email.label" default="Email" /></span>
-					<span class="property-value" aria-labelledby="profile-label"><g:fieldValue bean="${adminInstance?.profile}" field="email"/></span>
+					<span id="user-label" class="property-label"><g:message code="user.email.label" default="Email" /></span>
+					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${adminInstance?.user}" field="email"/></span>
 				</li>
 				<li class="fieldcontain">
-					<span id="profile-label" class="property-label"><g:message code="profile.mobile.label" default="Mobile" /></span>
-					<span class="property-value" aria-labelledby="profile-label"><g:fieldValue bean="${adminInstance?.profile}" field="mobile"/></span>
+					<span id="user-label" class="property-label"><g:message code="user.mobile.label" default="Mobile" /></span>
+					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${adminInstance?.user}" field="mobile"/></span>
 				</li>
 				<li class="fieldcontain">
-					<span id="profile-label" class="property-label"><g:message code="profile.phone.label" default="Phone" /></span>
-					<span class="property-value" aria-labelledby="profile-label"><g:fieldValue bean="${adminInstance?.profile}" field="phone"/></span>
+					<span id="user-label" class="property-label"><g:message code="user.phone.label" default="Phone" /></span>
+					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${adminInstance?.user}" field="phone"/></span>
 				</li>
 				</g:if>
 				

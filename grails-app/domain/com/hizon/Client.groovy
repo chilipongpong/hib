@@ -2,7 +2,6 @@ package com.hizon
 
 class Client {
 	User user
-	Profile profile
 	Planner planner
 	
     static constraints = {
@@ -11,7 +10,6 @@ class Client {
 	
 	static mapping = {
 		user cascade: 'all'
-		profile cascade: 'all'
 	}
 	
 	static searchable = true

@@ -16,6 +16,9 @@ class BootStrap {
 		def adminUser = User.findByUsername('admin') ?: new User(
 			username: 'admin',
 			password: 'admin123',
+			email: 'email@default.com',
+			firstName: 'super',
+			lastName: 'admin',
 			enabled: true).save(failOnError: true)
 
 		if (!adminUser.authorities.contains(adminRole)) {
@@ -27,6 +30,7 @@ class BootStrap {
 		new RequestMap(url: '/images/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save(flush:true)
 		new RequestMap(url: '/login/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save(flush:true)
 		new RequestMap(url: '/logout/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save(flush:true)
+		new RequestMap(url: '/register/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save(flush:true)
 		new RequestMap(url: '/favicon.ico', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save(flush:true)
 		new RequestMap(url: '/', configAttribute: 'ROLE_CLIENT, ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_ADMIN').save(flush:true)
 		new RequestMap(url: '/client/**', configAttribute: 'ROLE_CLIENT, ROLE_ADMIN').save(flush:true)

@@ -22,8 +22,7 @@ class PlannerSupervisorController {
     def save() {
 		params."user.enabled" = ('on' == params.user.enabled)
         def plannerSupervisorInstance = new PlannerSupervisor(params)
-		def valid = plannerSupervisorInstance.user.validate() & plannerSupervisorInstance.profile.validate()
-        if (!valid || !plannerSupervisorInstance.save(flush: true)) {
+        if (!plannerSupervisorInstance.user.validate() || !plannerSupervisorInstance.save(flush: true)) {
             render(view: "create", model: [plannerSupervisorInstance: plannerSupervisorInstance])
             return
         }
@@ -76,8 +75,7 @@ class PlannerSupervisorController {
 		params."user.enabled" = ('on' == params.user.enabled)
         plannerSupervisorInstance.properties = params
 
-		def valid = plannerSupervisorInstance.user.validate() & plannerSupervisorInstance.profile.validate()
-        if (!valid || !plannerSupervisorInstance.save(flush: true)) {
+        if (!plannerSupervisorInstance.user.validate() || !plannerSupervisorInstance.save(flush: true)) {
             render(view: "edit", model: [plannerSupervisorInstance: plannerSupervisorInstance])
             return
         }

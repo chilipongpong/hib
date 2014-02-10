@@ -24,18 +24,18 @@
 				<thead>
 					<tr>
 						<g:sortableColumn property="user.username" title="${message(code: 'user.username.label', default: 'Username')}" />
-						<g:sortableColumn property="profile.firstName" title="${message(code: 'profile.firstName.label', default: 'First Name')}" />
-						<g:sortableColumn property="profile.lastName" title="${message(code: 'profile.lastName.label', default: 'Last Name')}" />
-						<g:sortableColumn property="profile.email" title="${message(code: 'profile.email.label', default: 'Email')}" />
+						<g:sortableColumn property="user.firstName" title="${message(code: 'user.firstName.label', default: 'First Name')}" />
+						<g:sortableColumn property="user.lastName" title="${message(code: 'user.lastName.label', default: 'Last Name')}" />
+						<g:sortableColumn property="user.email" title="${message(code: 'user.email.label', default: 'Email')}" />
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${contentManagerInstanceList}" status="i" var="contentManagerInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 						<td><g:link action="show" id="${contentManagerInstance.id}">${fieldValue(bean: contentManagerInstance.user, field: "username")}</g:link></td>
-						<td>${fieldValue(bean: contentManagerInstance.profile, field: "firstName")}</td>
-						<td>${fieldValue(bean: contentManagerInstance.profile, field: "lastName")}</td>
-						<td>${fieldValue(bean: contentManagerInstance.profile, field: "email")}</td>
+						<td>${fieldValue(bean: contentManagerInstance.user, field: "firstName")}</td>
+						<td>${fieldValue(bean: contentManagerInstance.user, field: "lastName")}</td>
+						<td>${fieldValue(bean: contentManagerInstance.user, field: "email")}</td>
 					</tr>
 				</g:each>
 				</tbody>

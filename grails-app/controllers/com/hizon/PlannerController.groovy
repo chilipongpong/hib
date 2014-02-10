@@ -22,8 +22,7 @@ class PlannerController {
     def save() {
 		params."user.enabled" = ('on' == params.user.enabled)
         def plannerInstance = new Planner(params)
-		def valid = plannerInstance.user.validate() & plannerInstance.profile.validate()
-        if (!valid || !plannerInstance.save(flush: true)) {
+        if (!plannerInstance.user.validate() || !plannerInstance.save(flush: true)) {
             render(view: "create", model: [plannerInstance: plannerInstance])
             return
         }
@@ -76,8 +75,7 @@ class PlannerController {
 		params."user.enabled" = ('on' == params.user.enabled)
         plannerInstance.properties = params
 
-		def valid = plannerInstance.user.validate() & plannerInstance.profile.validate()
-        if (!valid || !plannerInstance.save(flush: true)) {
+        if (!plannerInstance.user.validate() || !plannerInstance.save(flush: true)) {
             render(view: "edit", model: [plannerInstance: plannerInstance])
             return
         }

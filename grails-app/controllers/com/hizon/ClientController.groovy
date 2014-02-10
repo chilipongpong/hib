@@ -38,8 +38,7 @@ class ClientController {
     def save() {
 		params."user.enabled" = ('on' == params.user.enabled)
         def clientInstance = new Client(params)
-		def valid = clientInstance.user.validate() & clientInstance.profile.validate()
-        if (!valid || !clientInstance.save(flush: true)) {
+        if (!clientInstance.user.validate() || !clientInstance.save(flush: true)) {
             render(view: "create", model: [clientInstance: clientInstance])
             return
         }
@@ -103,8 +102,7 @@ class ClientController {
         params."user.enabled" = ('on' == params.user.enabled)
         clientInstance.properties = params
 
-		def valid = clientInstance.user.validate() & clientInstance.profile.validate()
-        if (!valid || !clientInstance.save(flush: true)) {
+        if (!clientInstance.user.validate() || !clientInstance.save(flush: true)) {
             render(view: "edit", model: [clientInstance: clientInstance])
             return
         }

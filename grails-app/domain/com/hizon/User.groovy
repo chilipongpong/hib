@@ -6,6 +6,12 @@ class User {
 
 	String username
 	String password
+	String firstName
+	String lastName
+	String email
+	String mobile
+	String phone
+
 	boolean enabled = true
 	boolean accountExpired
 	boolean accountLocked
@@ -16,6 +22,11 @@ class User {
 	static constraints = {
 		username blank: false, unique: true, size: 1..100
 		password blank: false, size: 8..100 
+		email email: true, blank: false, size: 0..100
+		firstName blank:false, nullable:false, size: 1..100
+		lastName blank:false, nullable:false, size: 1..100
+		mobile nullable:true, matches:"[0-9]*"
+		phone nullable:true, matches:"[0-9]*"
 	}
 
 	static mapping = {
@@ -38,6 +49,10 @@ class User {
 
 	protected void encodePassword() {
 		password = springSecurityService.encodePassword(password)
+	}
+
+	String toString() {
+		firstName + " " + lastName
 	}
 
 	boolean isClient() {

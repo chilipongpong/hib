@@ -23,43 +23,43 @@
 	<g:checkBox name="user.enabled" value="${adminInstance?.user ? adminInstance?.user?.enabled : true}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: adminInstance.profile, field: 'firstName', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: adminInstance.user, field: 'firstName', 'error')} required">
 	<label for="firstName">
-		<g:message code="profile.firstName.label" default="First Name" />
+		<g:message code="user.firstName.label" default="First Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="profile.firstName" maxlength="100" required="" value="${adminInstance?.profile?.firstName}"/>
+	<g:textField name="user.firstName" maxlength="100" required="" value="${adminInstance?.user?.firstName}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: adminInstance.profile, field: 'lastName', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: adminInstance.user, field: 'lastName', 'error')} required">
 	<label for="lastName">
-		<g:message code="profile.lastName.label" default="Last Name" />
+		<g:message code="user.lastName.label" default="Last Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="profile.lastName" maxlength="100" required="" value="${adminInstance?.profile?.lastName}"/>
+	<g:textField name="user.lastName" maxlength="100" required="" value="${adminInstance?.user?.lastName}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: adminInstance.profile, field: 'email', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: adminInstance.user, field: 'email', 'error')} required">
 	<label for="email">
-		<g:message code="profile.email.label" default="Email" />
+		<g:message code="user.email.label" default="Email" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field type="email" name="profile.email" maxlength="100" required="" value="${adminInstance?.profile?.email}"/>
+	<g:field type="email" name="user.email" maxlength="100" required="" value="${adminInstance?.user?.email}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: adminInstance.profile, field: 'mobile', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: adminInstance.user, field: 'mobile', 'error')} ">
 	<label for="mobile">
-		<g:message code="profile.mobile.label" default="Mobile" />
+		<g:message code="user.mobile.label" default="Mobile" />
 		
 	</label>
-	<g:textField name="profile.mobile" pattern="${adminInstance?.profile?.constraints?.mobile?.matches}" value="${adminInstance?.profile?.mobile}"/>
+	<g:textField name="user.mobile" pattern="${adminInstance?.user?.constraints?.mobile?.matches}" value="${adminInstance?.user?.mobile}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: adminInstance.profile, field: 'phone', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: adminInstance.user, field: 'phone', 'error')} ">
 	<label for="phone">
-		<g:message code="profile.phone.label" default="Phone" />
+		<g:message code="user.phone.label" default="Phone" />
 		
 	</label>
-	<g:textField name="profile.phone" pattern="${adminInstance?.profile?.constraints?.phone?.matches}" value="${adminInstance?.profile?.phone}"/>
+	<g:textField name="user.phone" pattern="${adminInstance?.user?.constraints?.phone?.matches}" value="${adminInstance?.user?.phone}"/>
 </div>
 

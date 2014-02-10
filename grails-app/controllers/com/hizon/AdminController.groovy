@@ -22,8 +22,7 @@ class AdminController {
     def save() {
 		params."user.enabled" = ('on' == params.user.enabled)
         def adminInstance = new Admin(params)
-		def valid = adminInstance.user.validate() & adminInstance.profile.validate()
-        if (!valid || !adminInstance.save(flush: true)) {
+        if (!adminInstance.user.validate() || !adminInstance.save(flush: true)) {
             render(view: "create", model: [adminInstance: adminInstance])
             return
         }
@@ -76,8 +75,7 @@ class AdminController {
 		params."user.enabled" = ('on' == params.user.enabled)
         adminInstance.properties = params
 
-		def valid = adminInstance.user.validate() & adminInstance.profile.validate()
-        if (!valid || !adminInstance.save(flush: true)) {
+        if (!adminInstance.user.validate() || !adminInstance.save(flush: true)) {
             render(view: "edit", model: [adminInstance: adminInstance])
             return
         }

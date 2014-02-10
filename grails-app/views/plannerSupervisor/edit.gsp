@@ -27,6 +27,14 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
+			<g:hasErrors bean="${plannerSupervisorInstance.user}">
+			<ul class="errors" role="alert">
+				<g:eachError bean="${plannerSupervisorInstance.user}" var="error">
+				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+				</g:eachError>
+			</ul>
+			</g:hasErrors>
+
 			<g:form method="post" >
 				<g:hiddenField name="id" value="${plannerSupervisorInstance?.id}" />
 				<g:hiddenField name="version" value="${plannerSupervisorInstance?.version}" />

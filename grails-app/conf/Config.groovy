@@ -110,3 +110,4 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/favicon.ico':                ['permitAll']
 ]
 
+grails.plugin.springsecurity.ui.register.defaultRoleNames = ['ROLE_CLIENT']

@@ -27,6 +27,14 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
+			<g:hasErrors bean="${contentManagerInstance.user}">
+			<ul class="errors" role="alert">
+				<g:eachError bean="${contentManagerInstance.user}" var="error">
+				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+				</g:eachError>
+			</ul>
+			</g:hasErrors>
+
 			<g:form method="post" >
 				<g:hiddenField name="id" value="${contentManagerInstance?.id}" />
 				<g:hiddenField name="version" value="${contentManagerInstance?.version}" />

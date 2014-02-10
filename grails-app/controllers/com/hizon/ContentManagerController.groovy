@@ -22,8 +22,7 @@ class ContentManagerController {
     def save() {
 		params."user.enabled" = ('on' == params.user.enabled)
         def contentManagerInstance = new ContentManager(params)
-		def valid = contentManagerInstance.user.validate() & contentManagerInstance.profile.validate()
-        if (!valid || !contentManagerInstance.save(flush: true)) {
+        if (!contentManagerInstance.user.validate() || !contentManagerInstance.save(flush: true)) {
             render(view: "create", model: [contentManagerInstance: contentManagerInstance])
             return
         }
@@ -76,8 +75,7 @@ class ContentManagerController {
 		params."user.enabled" = ('on' == params.user.enabled)
         contentManagerInstance.properties = params
 
-		def valid = contentManagerInstance.user.validate() & contentManagerInstance.profile.validate()
-        if (!valid || !contentManagerInstance.save(flush: true)) {
+        if (!contentManagerInstance.user.validate() || !contentManagerInstance.save(flush: true)) {
             render(view: "edit", model: [contentManagerInstance: contentManagerInstance])
             return
         }

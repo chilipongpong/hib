@@ -25,43 +25,43 @@
 	<g:checkBox name="user.enabled" value="${plannerInstance?.user ? plannerInstance?.user?.enabled : true}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: plannerInstance.profile, field: 'firstName', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: plannerInstance.user, field: 'firstName', 'error')} required">
 	<label for="firstName">
-		<g:message code="profile.firstName.label" default="First Name" />
+		<g:message code="user.firstName.label" default="First Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="profile.firstName" maxlength="100" required="" value="${plannerInstance?.profile?.firstName}"/>
+	<g:textField name="user.firstName" maxlength="100" required="" value="${plannerInstance?.user?.firstName}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: plannerInstance.profile, field: 'lastName', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: plannerInstance.user, field: 'lastName', 'error')} required">
 	<label for="lastName">
-		<g:message code="profile.lastName.label" default="Last Name" />
+		<g:message code="user.lastName.label" default="Last Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="profile.lastName" maxlength="100" required="" value="${plannerInstance?.profile?.lastName}"/>
+	<g:textField name="user.lastName" maxlength="100" required="" value="${plannerInstance?.user?.lastName}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: plannerInstance.profile, field: 'email', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: plannerInstance.user, field: 'email', 'error')} required">
 	<label for="email">
-		<g:message code="profile.email.label" default="Email" />
+		<g:message code="user.email.label" default="Email" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field type="email" name="profile.email" maxlength="100" required="" value="${plannerInstance?.profile?.email}"/>
+	<g:field type="email" name="user.email" maxlength="100" required="" value="${plannerInstance?.user?.email}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: plannerInstance.profile, field: 'mobile', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: plannerInstance.user, field: 'mobile', 'error')} ">
 	<label for="mobile">
-		<g:message code="profile.mobile.label" default="Mobile" />
+		<g:message code="user.mobile.label" default="Mobile" />
 		
 	</label>
-	<g:textField name="profile.mobile" pattern="${plannerInstance?.profile?.constraints?.mobile?.matches}" value="${plannerInstance?.profile?.mobile}"/>
+	<g:textField name="user.mobile" pattern="${plannerInstance?.user?.constraints?.mobile?.matches}" value="${plannerInstance?.user?.mobile}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: plannerInstance.profile, field: 'phone', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: plannerInstance.user, field: 'phone', 'error')} ">
 	<label for="phone">
-		<g:message code="profile.phone.label" default="Phone" />
+		<g:message code="user.phone.label" default="Phone" />
 		
 	</label>
-	<g:textField name="profile.phone" pattern="${plannerInstance?.profile?.constraints?.phone?.matches}" value="${plannerInstance?.profile?.phone}"/>
+	<g:textField name="user.phone" pattern="${plannerInstance?.user?.constraints?.phone?.matches}" value="${plannerInstance?.user?.phone}"/>
 </div>
 

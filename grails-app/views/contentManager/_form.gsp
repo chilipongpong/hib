@@ -23,42 +23,42 @@
 	<g:checkBox name="user.enabled" value="${contentManagerInstance?.user ? contentManagerInstance?.user?.enabled : true}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: contentManagerInstance.profile, field: 'firstName', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: contentManagerInstance.user, field: 'firstName', 'error')} required">
 	<label for="firstName">
-		<g:message code="profile.firstName.label" default="First Name" />
+		<g:message code="user.firstName.label" default="First Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="profile.firstName" maxlength="100" required="" value="${contentManagerInstance?.profile?.firstName}"/>
+	<g:textField name="user.firstName" maxlength="100" required="" value="${contentManagerInstance?.user?.firstName}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: contentManagerInstance.profile, field: 'lastName', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: contentManagerInstance.user, field: 'lastName', 'error')} required">
 	<label for="lastName">
-		<g:message code="profile.lastName.label" default="Last Name" />
+		<g:message code="user.lastName.label" default="Last Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="profile.lastName" maxlength="100" required="" value="${contentManagerInstance?.profile?.lastName}"/>
+	<g:textField name="user.lastName" maxlength="100" required="" value="${contentManagerInstance?.user?.lastName}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: contentManagerInstance.profile, field: 'email', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: contentManagerInstance.user, field: 'email', 'error')} required">
 	<label for="email">
-		<g:message code="profile.email.label" default="Email" />
+		<g:message code="user.email.label" default="Email" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field type="email" name="profile.email" maxlength="100" required="" value="${contentManagerInstance?.profile?.email}"/>
+	<g:field type="email" name="user.email" maxlength="100" required="" value="${contentManagerInstance?.user?.email}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: contentManagerInstance.profile, field: 'mobile', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: contentManagerInstance.user, field: 'mobile', 'error')} ">
 	<label for="mobile">
-		<g:message code="profile.mobile.label" default="Mobile" />
+		<g:message code="user.mobile.label" default="Mobile" />
 		
 	</label>
-	<g:textField name="profile.mobile" pattern="${contentManagerInstance?.profile?.constraints?.mobile?.matches}" value="${contentManagerInstance?.profile?.mobile}"/>
+	<g:textField name="user.mobile" pattern="${contentManagerInstance?.user?.constraints?.mobile?.matches}" value="${contentManagerInstance?.user?.mobile}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: contentManagerInstance.profile, field: 'phone', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: contentManagerInstance.user, field: 'phone', 'error')} ">
 	<label for="phone">
-		<g:message code="profile.phone.label" default="Phone" />
+		<g:message code="user.phone.label" default="Phone" />
 		
 	</label>
-	<g:textField name="profile.phone" pattern="${contentManagerInstance?.profile?.constraints?.phone?.matches}" value="${contentManagerInstance?.profile?.phone}"/>
+	<g:textField name="user.phone" pattern="${contentManagerInstance?.user?.constraints?.phone?.matches}" value="${contentManagerInstance?.user?.phone}"/>
 </div>
