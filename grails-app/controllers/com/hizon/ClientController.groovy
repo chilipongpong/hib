@@ -3,19 +3,35 @@ package com.hizon
 import org.springframework.dao.DataIntegrityViolationException
 
 class ClientController {
-
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+
+	def springSecurityService
+	def securityService
 
     def index() {
         redirect(action: "list", params: params)
     }
 
+	def validateUser() {
+		User loggedInUser = User.get(springSecurityService.principal.id)
+		if (loggedInUser.isClient()) {
+			def clientInstance = Client.findByUser(User.findById(loggedInUser.id))
+			def params = [:]
+			params.id = clientInstance.id
+		    redirect(action: "show", params: params)
+		    return
+		}
+
+	}
+
     def list(Integer max) {
+	validateUser()
         params.max = Math.min(max ?: 10, 100)
         [clientInstanceList: Client.list(params), clientInstanceTotal: Client.count()]
     }
 
     def create() {
+	validateUser()
         [clientInstance: new Client(params)]
     }
 
@@ -35,11 +51,22 @@ class ClientController {
 
     def show(Long id) {
         def clientInstance = Client.get(id)
+
         if (!clientInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'client.label', default: 'Client'), id])
             redirect(action: "list")
             return
         }
+
+		User loggedInUser = User.get(springSecurityService.principal.id)
+		if (loggedInUser.isClient() && !securityService.loggedInUserOwnsProfile(clientInstance.user)) {
+			flash.message = "You can't see the profile of other users"
+			redirect(action: "list")
+			return
+		}
+		 
+ 
+
 
         [clientInstance: clientInstance]
     }
