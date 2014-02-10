@@ -88,6 +88,8 @@ log4j = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+
+   warn 'grails.app.services.grails.plugin.springsecurity.ui.SpringSecurityUiService'
 }
 
 hib.images.upload.directory = "${userHome}" + "/images/upload"
@@ -111,3 +113,16 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 ]
 
 grails.plugin.springsecurity.ui.register.defaultRoleNames = ['ROLE_CLIENT']
+
+grails {
+   mail {
+     host = "smtp.gmail.com"
+     port = 465
+     username = "youraccount@gmail.com"
+     password = "yourpassword"
+     props = ["mail.smtp.auth":"true", 					   
+              "mail.smtp.socketFactory.port":"465",
+              "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+              "mail.smtp.socketFactory.fallback":"false"]
+   }
+}
