@@ -5,7 +5,7 @@
 		<g:message code="user.username.label" default="Username" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="user.username" required="" value="${plannerSupervisorInstance?.user?.username}"/>
+	<g:textField name="user.username" maxlength="100" required="" value="${plannerSupervisorInstance?.user?.username}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: plannerSupervisorInstance.user, field: 'password', 'error')} required">
@@ -13,7 +13,7 @@
 		<g:message code="user.password.label" default="Password" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:passwordField name="user.password" required="" value="${plannerSupervisorInstance?.user?.password}"/>
+	<g:passwordField name="user.password" maxlength="100" required="" value="${plannerSupervisorInstance?.user?.password}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: plannerSupervisorInstance.user, field: 'enabled', 'error')} ">

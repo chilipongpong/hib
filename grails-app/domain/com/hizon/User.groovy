@@ -14,8 +14,8 @@ class User {
 	static transients = ['springSecurityService']
 
 	static constraints = {
-		username blank: false, unique: true
-		password blank: false
+		username blank: false, unique: true, size: 1..100
+		password blank: false, size: 8..100 
 	}
 
 	static mapping = {
@@ -38,5 +38,9 @@ class User {
 
 	protected void encodePassword() {
 		password = springSecurityService.encodePassword(password)
+	}
+
+	boolean isClient() {
+		this.authorities.contains(Role.findByAuthority('ROLE_CLIENT'))
 	}
 }
