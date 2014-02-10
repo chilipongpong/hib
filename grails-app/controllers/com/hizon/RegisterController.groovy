@@ -28,7 +28,6 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
 			render view: 'index', model: [command: command]
 			return
 		}
-		UserRole.create user, Role.findByAuthority('ROLE_CLIENT')
 
 		def registrationCode = new RegistrationCode(username: user.username).save()
 		String url = generateLink('verifyRegistration', [t: registrationCode.token])
