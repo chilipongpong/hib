@@ -5,11 +5,11 @@
 <head>
 <meta name="layout" content="main">
 <g:set var="entityName"
-	value="${message(code: 'color.label', default: 'color')}" />
+	value="${message(code: 'level.label', default: 'level')}" />
 <title><g:message code="default.list.label" args="[entityName]" /></title>
 </head>
 <body>
-	<a href="#list-color" class="skip" tabindex="-1"><g:message
+	<a href="#list-level" class="skip" tabindex="-1"><g:message
 			code="default.link.skip.label" default="Skip to content&hellip;" /></a>
 	<div class="nav" role="navigation">
 		<ul>
@@ -34,7 +34,7 @@
 			<g:submitButton name="search" />
 		</g:form>
 		
-		<g:set var="haveResults" value="${colorInstanceList?.results}" />
+		<g:set var="haveResults" value="${levelInstanceList?.results}" />
 		
 		<g:if test="${haveResults}">
 			<table>
@@ -42,41 +42,34 @@
 					<tr>
 
 						<g:sortableColumn property="name"
-							title="${message(code: 'color.name.label', default: 'Name')}" />
+							title="${message(code: 'level.name.label', default: 'Name')}" />
 
-						<g:sortableColumn property="pantone"
-							title="${message(code: 'color.pantone.label', default: 'Pantone')}" />
+						<g:sortableColumn property="description"
+							title="${message(code: 'level.description.label', default: 'Description')}" />
 						
-						<g:sortableColumn property="hex"
-							title="${message(code: 'color.hex.label', default: 'Hex')}" />
-							
 						<g:sortableColumn property="status"
-							title="${message(code: 'color.status.label', default: 'Status')}" />
+							title="${message(code: 'level.status.label', default: 'Status')}" />
 					
 					</tr>
 				</thead>
 				<tbody>
-				<g:set var="totalPages" value="${Math.ceil(colorInstanceList.total / colorInstanceList.max)}" />
-					<g:each in="${colorInstanceList.results}" status="i"
-						var="colorInstance">
+				<g:set var="totalPages" value="${Math.ceil(levelInstanceList.total / levelInstanceList.max)}" />
+					<g:each in="${levelInstanceList.results}" status="i"
+						var="levelInstance">
 						<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
 							<td>
-								<g:link action="show" id="${colorInstance.id}">
-									${fieldValue(bean: colorInstance, field: "name")}
+								<g:link action="show" id="${levelInstance.id}">
+									${fieldValue(bean: levelInstance, field: "name")}
 								</g:link>
 							</td>
 
 							<td>
-								${fieldValue(bean: colorInstance, field: "pantone")}
+								${fieldValue(bean: levelInstance, field: "description")}
 							</td>
 
 							<td>
-								${fieldValue(bean: colorInstance, field: "hex")}
-							</td>
-
-							<td>
-								${fieldValue(bean: colorInstance, field: "status.name")}
+								${fieldValue(bean: levelInstance, field: "status.name")}
 							</td>
 														
 						</tr>
@@ -84,13 +77,13 @@
 				</tbody>
 			</table>
 			<div class="paginateButtons">
-			<g:paginate params="[q: params.q]" total="${colorInstanceList.total}"/>
+			<g:paginate params="[q: params.q]" total="${levelInstanceList.total}"/>
 
             </div>
 		</g:if>
 		<g:else>
 			<br />
-			<h3>Sorry, no Colors found</h3>
+			<h3>Sorry, no Levels found</h3>
 		</g:else>
 	</div>
 </body>
