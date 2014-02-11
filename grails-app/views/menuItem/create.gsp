@@ -5,6 +5,7 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'menuItem.label', default: 'MenuItem')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
+		<r:require modules="uploadr"/>
 	</head>
 	<body>
 		<a href="#create-menuItem" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -29,6 +30,13 @@
 			<g:uploadForm action="save" >
 				<fieldset class="form">
 					<g:render template="form"/>
+					<uploadr:add name="uploadrTemp" path="${imagesPath}" maxVisible="8" unsupported="/my/controller/action" allowedExtensions="gif,png,jpg,jpeg,GIF,PNG,JPG,JPEG" viewable="false" downloadable="false" maxSize="${imageMaxSize}" >
+					<g:each in="${images}" var="image">
+					    <uploadr:file name="${image.name}">
+					        <uploadr:fileSize>${image.size()}</uploadr:fileSize>
+					    </uploadr:file>
+					</g:each>
+				</uploadr:add>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

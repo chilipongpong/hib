@@ -37,7 +37,7 @@
 						<label for="status" style="margin-top: 1em">
 							<g:message code="theme.images.label" default="Images" />
 						</label>
-						<uploadr:add name="uploadr${themeInstance.id}" path="${imagesPath}" maxVisible="8" unsupported="/my/controller/action" allowedExtensions="gif,png,jpg,jpeg,GIF,PNG,JPG,JPEG" viewable="false" downloadable="false" maxSize="${imageMaxSize}">
+						<uploadr:add name="themeUploadr${themeInstance.id}" path="${imagesPath}" maxVisible="8" unsupported="/my/controller/action" allowedExtensions="gif,png,jpg,jpeg,GIF,PNG,JPG,JPEG" viewable="false" downloadable="false" maxSize="${imageMaxSize}">
 							<g:each in="${images}" var="image">
 							    <uploadr:file name="${image.name}">
 							        <uploadr:fileSize>${image.size()}</uploadr:fileSize>

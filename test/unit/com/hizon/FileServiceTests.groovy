@@ -9,7 +9,7 @@ import org.junit.*
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
 @TestFor(ThemeService)
-class ThemeServiceTests {
+class FileServiceTests {
 
     void testSomething() {
         fail "Implement me"

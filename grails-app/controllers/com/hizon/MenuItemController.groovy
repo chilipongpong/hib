@@ -9,6 +9,7 @@ class MenuItemController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
 	static String WILDCARD = "*"
+	def fileService 
 	def searchableService
 	
     def index() {
@@ -21,36 +22,21 @@ class MenuItemController {
     }
 
     def create() {
-        [menuItemInstance: new MenuItem(params)]
+		fileService.deleteFolder(fileService.imagesTempPath)
+        [menuItemInstance: new MenuItem(params), imagesPath: fileService.imagesTempPath, imageMaxSize: fileService.imagesMaxSize]
     }
 
     def save() {
         def menuItemInstance = new MenuItem(params)
-        // will move this to a service in God's perfect time ;)
-		CommonsMultipartFile uploadedFile = request.getFile('image')
-
-		if(!uploadedFile.empty){
-			println "Filename: ${uploadedFile.originalFilename}"
-
-			def webRootDir = servletContext.getRealPath("/")
-			def directory = new File(webRootDir, "/uploaded-files")
-			directory.mkdirs()
-			uploadedFile.transferTo(new File(directory, uploadedFile.originalFilename))
-			menuItemInstance.image = uploadedFile.originalFilename
-		}
-
-		if (menuItemInstance.hasErrors()) {
-			respond menuItemInstance.errors, view:'create'
-			return
-		}
-
-		menuItemInstance.save flush:true
-
 
 		if (!menuItemInstance.save(flush: true)) {
-			render(view: "create", model: [menuItemInstance: menuItemInstance])
+			def imagesDirectory = new File(fileService.imagesTempPath)
+			render(view: "create", model: [menuItemInstance: menuItemInstance, imagesPath: fileService.imagesTempPath, images: imagesDirectory.listFiles(), imageMaxSize: fileService.imagesMaxSize])
 			return
 		}
+		fileService.deleteFolder(fileService.imagesRootPath + File.separator + menuItemInstance.id)
+		//move images to its folder
+		fileService.copyFolder(fileService.imagesTempPath, fileService.imagesRootPath + File.separator + 'menuItem' + File.separator + menuItemInstance.id)
 		
 		redirect(action: "show", id: menuItemInstance.id)
     }
@@ -62,9 +48,21 @@ class MenuItemController {
             redirect(action: "list")
             return
         }
-
-        [menuItemInstance: menuItemInstance]
+		def imagesDirectory = new File(fileService.imagesRootPath + File.separator + 'menuItem' + File.separator + menuItemInstance.id)
+        [menuItemInstance: menuItemInstance, images: imagesDirectory.listFiles()]
     }
+
+	def displayImage() {
+		File image = new File(fileService.imagesRootPath + File.separator + 'menuItem' + File.separator + params.menuItemId + File.separator + params.img)
+		if(!image.exists()) {
+			response.status = 404
+		} else {
+			response.setContentType("image/jpeg")
+			OutputStream out = response.getOutputStream();
+			out.write(image.bytes);
+			out.close();
+		}
+	}
 
     def edit(Long id) {
         def menuItemInstance = MenuItem.get(id)
@@ -74,7 +72,9 @@ class MenuItemController {
             return
         }
 
-        [menuItemInstance: menuItemInstance]
+        def imagesPath = fileService.imagesRootPath + File.separator + 'menuItem' + File.separator + menuItemInstance.id
+		def imagesDirectory = new File(imagesPath)
+        [menuItemInstance: menuItemInstance, imagesPath: imagesPath, images: imagesDirectory.listFiles(), imageMaxSize: fileService.imagesMaxSize]
     }
 
     def update(Long id, Long version) {
@@ -85,20 +85,23 @@ class MenuItemController {
             return
         }
 
+		def imagesPath = fileService.imagesRootPath + File.separator + 'menuItem' + File.separator + menuItemInstance.id
+		def imagesDirectory = new File(imagesPath)
         if (version != null) {
             if (menuItemInstance.version > version) {
                 menuItemInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                           [message(code: 'menuItem.label', default: 'MenuItem')] as Object[],
                           "Another user has updated this MenuItem while you were editing")
-                render(view: "edit", model: [menuItemInstance: menuItemInstance])
+                render(view: "edit", model: [menuItemInstance: menuItemInstance, imagesPath: imagesPath, images: imagesDirectory.listFiles(), imageMaxSize: fileService.imagesMaxSize])
                 return
             }
         }
 
         menuItemInstance.properties = params
 
+
         if (!menuItemInstance.save(flush: true)) {
-            render(view: "edit", model: [menuItemInstance: menuItemInstance])
+            render(view: "edit", model: [menuItemInstance: menuItemInstance, imagesPath: imagesPath, images: imagesDirectory.listFiles(), imageMaxSize: fileService.imagesMaxSize])
             return
         }
 

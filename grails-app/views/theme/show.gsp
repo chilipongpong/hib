@@ -70,6 +70,7 @@
 				</li>
 				</g:if>
 	
+				<g:if test="${images.size() > 0}">
 				<li class="fieldcontain">
 					<span id="images-label" class="property-label"><g:message code="theme.images.label" default="Images" /></span>
 					
@@ -81,6 +82,7 @@
 						</g:each>
 					
 				</li>
+				</g:if>
 				
 			</ol>
 			

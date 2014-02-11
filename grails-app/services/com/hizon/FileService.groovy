@@ -1,6 +1,6 @@
 package com.hizon
 
-class ThemeService {
+class FileService {
 	def grailsApplication
 	transient def imagesRootPath 
 	transient def imagesTempPath

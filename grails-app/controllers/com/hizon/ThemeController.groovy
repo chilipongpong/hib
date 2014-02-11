@@ -6,7 +6,7 @@ import org.compass.core.engine.SearchEngineQueryParseException
 class ThemeController {
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
-	def themeService 
+	def fileService 
 	def searchableService
 	
 	static String WILDCARD = "*"
@@ -21,8 +21,8 @@ class ThemeController {
     }
 
     def create() {
-		themeService.deleteFolder(themeService.imagesTempPath)
-        [themeInstance: new Theme(params), imagesPath: themeService.imagesTempPath, imageMaxSize: themeService.imagesMaxSize]
+		fileService.deleteFolder(fileService.imagesTempPath)
+        [themeInstance: new Theme(params), imagesPath: fileService.imagesTempPath, imageMaxSize: fileService.imagesMaxSize]
     }
 
     def save() {
@@ -36,13 +36,13 @@ class ThemeController {
 			themeInstance.colors = colors;
 		}
         if (!themeInstance.save(flush: true)) {
-			def imagesDirectory = new File(themeService.imagesTempPath)
-            render(view: "create", model: [themeInstance: themeInstance, imagesPath: themeService.imagesTempPath, images: imagesDirectory.listFiles(), imageMaxSize: themeService.imagesMaxSize])
+			def imagesDirectory = new File(fileService.imagesTempPath)
+            render(view: "create", model: [themeInstance: themeInstance, imagesPath: fileService.imagesTempPath, images: imagesDirectory.listFiles(), imageMaxSize: fileService.imagesMaxSize])
             return
         }
-		themeService.deleteFolder(themeService.imagesRootPath + File.separator + themeInstance.id)
+		fileService.deleteFolder(fileService.imagesRootPath + File.separator + themeInstance.id)
 		//move images to its folder
-		themeService.copyFolder(themeService.imagesTempPath, themeService.imagesRootPath + File.separator + themeInstance.id)
+		fileService.copyFolder(fileService.imagesTempPath, fileService.imagesRootPath + File.separator + 'theme' + File.separator + themeInstance.id)
 		
         flash.message = message(code: 'default.created.message', args: [message(code: 'theme.label', default: 'Theme'), themeInstance.id])
         redirect(action: "show", id: themeInstance.id)
@@ -55,12 +55,12 @@ class ThemeController {
             redirect(action: "list")
             return
         }
-		def imagesDirectory = new File(themeService.imagesRootPath + File.separator + themeInstance.id)
+		def imagesDirectory = new File(fileService.imagesRootPath + File.separator + 'theme' + File.separator + themeInstance.id)
 		[themeInstance: themeInstance, images: imagesDirectory.listFiles()]
     }
 	
 	def displayImage() {
-		File image = new File(themeService.imagesRootPath + File.separator + params.themeId + File.separator + params.img)
+		File image = new File(fileService.imagesRootPath + File.separator + 'theme' + File.separator + params.themeId + File.separator + params.img)
 		if(!image.exists()) {
 			response.status = 404
 		} else {
@@ -79,9 +79,9 @@ class ThemeController {
             return
         }
 
-        def imagesPath = themeService.imagesRootPath + File.separator + themeInstance.id
+        def imagesPath = fileService.imagesRootPath + File.separator + 'theme' + File.separator + themeInstance.id
 		def imagesDirectory = new File(imagesPath)
-        [themeInstance: themeInstance, imagesPath: imagesPath, images: imagesDirectory.listFiles(), imageMaxSize: themeService.imagesMaxSize]
+        [themeInstance: themeInstance, imagesPath: imagesPath, images: imagesDirectory.listFiles(), imageMaxSize: fileService.imagesMaxSize]
     }
 
     def update(Long id, Long version) {
@@ -92,14 +92,14 @@ class ThemeController {
             return
         }
 
-		def imagesPath = themeService.imagesRootPath + File.separator + themeInstance.id
+		def imagesPath = fileService.imagesRootPath + File.separator + 'theme' + File.separator + themeInstance.id
 		def imagesDirectory = new File(imagesPath)
         if (version != null) {
             if (themeInstance.version > version) {
                 themeInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                           [message(code: 'theme.label', default: 'Theme')] as Object[],
                           "Another user has updated this Theme while you were editing")
-                render(view: "edit", model: [themeInstance: themeInstance, imagesPath: imagesPath, images: imagesDirectory.listFiles(), imageMaxSize: themeService.imagesMaxSize])
+                render(view: "edit", model: [themeInstance: themeInstance, imagesPath: imagesPath, images: imagesDirectory.listFiles(), imageMaxSize: fileService.imagesMaxSize])
                 return
             }
         }
@@ -116,9 +116,8 @@ class ThemeController {
 			themeInstance.colors = null;
 		}
 		
-
         if (!themeInstance.save(flush: true)) {
-            render(view: "edit", model: [themeInstance: themeInstance, imagesPath: imagesPath, images: imagesDirectory.listFiles(), imageMaxSize: themeService.imagesMaxSize])
+            render(view: "edit", model: [themeInstance: themeInstance, imagesPath: imagesPath, images: imagesDirectory.listFiles(), imageMaxSize: fileService.imagesMaxSize])
             return
         }
 

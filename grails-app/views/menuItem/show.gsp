@@ -50,22 +50,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${menuItemInstance?.image}">
-					<li class="fieldcontain">
-					<span id="image-label" class="property-label"><g:message code="menuItem.image.label" default="Image" /></span>
-					
-						<span class="property-value" aria-labelledby="image-label">
-							<g:if test="${menuItemInstance.image == null}">
-								<g:img dir="/uploaded-files" file="no-image-available.jpg" width="400" alt=""/>
-							</g:if>
-							<g:else>
-								<g:img dir="/uploaded-files" file="${menuItemInstance.image}" width="400" alt=""/>
-							</g:else>
-						</span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${menuItemInstance?.level}">
 				<li class="fieldcontain">
 					<span id="level-label" class="property-label"><g:message code="menuItem.level.label" default="Level" /></span>
@@ -80,6 +64,20 @@
 					<span id="menuCategory-label" class="property-label"><g:message code="menuItem.menuCategory.label" default="Menu Category" /></span>
 					
 						<span class="property-value" aria-labelledby="menuCategory-label"><g:link controller="menuCategory" action="show" id="${menuItemInstance?.menuCategory?.id}">${menuItemInstance?.menuCategory?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+
+				<g:if test="${images.size() > 0}">
+				<li class="fieldcontain">
+					<span id="images-label" class="property-label"><g:message code="menuItem.images.label" default="Images" /></span>
+					
+						<g:each in="${images}" var="img">
+							<span class="property-value" aria-labelledby="colors-label">
+								${img.name}<br/>
+								<img class="thumbnail" height="100" width="100" src='${createLink(controller: "menuItem", action: "displayImage", params:[img: img.name, menuItemId: menuItemInstance?.id])}' />
+							</span>
+						</g:each>
 					
 				</li>
 				</g:if>
