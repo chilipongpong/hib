@@ -1,5 +1,6 @@
 <%@ page import="com.hizon.MenuItem" %>
 <%@ page import="com.hizon.Status" %>
+<%@ page import="com.hizon.Level" %>
 <%@ page import="com.hizon.MenuCategory" %>
 
 <div class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'name', 'error')} required">
@@ -48,7 +49,7 @@
 		<g:message code="menuItem.level.label" default="Level" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="level" name="level.id" from="${com.hizon.Level.list()}" optionKey="id" required="" value="${menuItemInstance?.level?.id}" class="many-to-one"/>
+	<g:select id="level" name="level.id" from="${Level.findAllByStatus(Status.ACTIVE)}" optionKey="id" required="" value="${menuItemInstance?.level?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'menuCategory', 'error')} required">
@@ -56,7 +57,7 @@
 		<g:message code="menuItem.menuCategory.label" default="Menu Category" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="menuCategory" name="menuCategory.id" from="${MenuCategory.findByStatus(Status.ACTIVE)}" optionKey="id" required="" value="${menuItemInstance?.menuCategory?.id}" class="many-to-one"/>
+	<g:select id="menuCategory" name="menuCategory.id" from="${MenuCategory.findAllByStatus(Status.ACTIVE)}" optionKey="id" required="" value="${menuItemInstance?.menuCategory?.id}" class="many-to-one"/>
 </div>
 
 

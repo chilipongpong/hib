@@ -1,5 +1,7 @@
 <%@ page import="com.hizon.Theme" %>
 <%@ page import="com.hizon.Color" %>
+<%@ page import="com.hizon.Level" %>
+<%@ page import="com.hizon.Status" %>
 
 <div class="fieldcontain ${hasErrors(bean: themeInstance, field: 'name', 'error')} required">
 	<label for="name">
@@ -22,7 +24,8 @@
 		<g:message code="theme.level.label" default="Level" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="level" name="level.id" from="${com.hizon.Level.list()}" optionKey="id" required="" value="${themeInstance?.level?.id}" class="many-to-one"/>
+	<g:select id="level" name="level.id" from="${Level.findAllByStatus(Status.ACTIVE)}" optionKey="id" required="" value="${themeInstance?.level?.id}" class="many-to-one"/>
+	
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: themeInstance, field: 'status', 'error')} required">
