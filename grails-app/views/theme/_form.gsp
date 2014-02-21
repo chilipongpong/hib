@@ -14,7 +14,7 @@
 		<g:message code="theme.description.label" default="Description" />
 		
 	</label>
-	<g:textField name="description" maxlength="250" value="${themeInstance?.description}"/>
+	<g:textArea name="description" maxlength="250" value="${themeInstance?.description}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: themeInstance, field: 'level', 'error')} required">
