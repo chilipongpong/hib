@@ -1,7 +1,5 @@
 <%@ page import="com.hizon.Planner" %>
 
-
-
 <div class="fieldcontain ${hasErrors(bean: plannerInstance.user, field: 'username', 'error')} required">
 	<label for="username">
 		<g:message code="user.username.label" default="Username" />
@@ -64,4 +62,3 @@
 	</label>
 	<g:textField name="user.phone" pattern="${plannerInstance?.user?.constraints?.phone?.matches}" value="${plannerInstance?.user?.phone}"/>
 </div>
-

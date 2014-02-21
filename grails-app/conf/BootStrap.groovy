@@ -11,9 +11,10 @@ class BootStrap {
 		def plannerRole = Role.findByAuthority('ROLE_PLANNER') ?: new Role(name: 'Planner', authority: 'ROLE_PLANNER').save(failOnError: true)
 		def plannerSupervisorRole = Role.findByAuthority('ROLE_PLANNER_SUPERVISOR') ?: new Role(name: 'Planner Supervisor', authority: 'ROLE_PLANNER_SUPERVISOR').save(failOnError: true)
 		def contentManagerRole = Role.findByAuthority('ROLE_CONTENT_MANAGER') ?: new Role(name: 'Content Manager', authority: 'ROLE_CONTENT_MANAGER').save(failOnError: true)
-		def adminRole = Role.findByAuthority('ROLE_ADMIN') ?: new Role(name: 'Admin', authority: 'ROLE_ADMIN').save(failOnError: true)
+		def userAdminRole = Role.findByAuthority('ROLE_USER_ADMIN') ?: new Role(name: 'USER_ADMIN', authority: 'ROLE_USER_ADMIN').save(failOnError: true)
+		def superAdminRole = Role.findByAuthority('ROLE_SUPER_ADMIN') ?: new Role(name: 'Super Admin', authority: 'ROLE_SUPER_ADMIN').save(failOnError: true)
 		
-		def adminUser = User.findByUsername('admin') ?: new User(
+		def superAdminUser = User.findByUsername('admin') ?: new User(
 			username: 'admin',
 			password: 'admin123',
 			email: 'email@default.com',
@@ -21,8 +22,8 @@ class BootStrap {
 			lastName: 'admin',
 			enabled: true).save(failOnError: true)
 
-		if (!adminUser.authorities.contains(adminRole)) {
-			UserRole.create adminUser, adminRole
+		if (!superAdminUser.authorities.contains(superAdminRole)) {
+			UserRole.create superAdminUser, superAdminRole
 		}
 
 		new RequestMap(url: '/js/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save(flush:true)
@@ -32,13 +33,15 @@ class BootStrap {
 		new RequestMap(url: '/logout/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save(flush:true)
 		new RequestMap(url: '/register/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save(flush:true)
 		new RequestMap(url: '/favicon.ico', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save(flush:true)
-		new RequestMap(url: '/', configAttribute: 'ROLE_CLIENT, ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_ADMIN').save(flush:true)
-		new RequestMap(url: '/client/**', configAttribute: 'ROLE_CLIENT, ROLE_ADMIN').save(flush:true)
-		new RequestMap(url: '/planner/**', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_ADMIN').save(flush:true)
-		new RequestMap(url: '/plannerSupervisor/**', configAttribute: 'ROLE_PLANNER_SUPERVISOR, ROLE_ADMIN').save(flush:true)
-		new RequestMap(url: '/contentManager/**', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_ADMIN').save(flush:true)
-		new RequestMap(url: '/admin/**', configAttribute: 'ROLE_ADMIN').save(flush:true)
-		new RequestMap(url: '/*/**', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_ADMIN').save(flush:true)
+		new RequestMap(url: '/', configAttribute: 'ROLE_CLIENT, ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/userAdmin/**', configAttribute: 'ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/client/**', configAttribute: 'ROLE_CLIENT, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/planner/**', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/plannerSupervisor/**', configAttribute: 'ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/contentManager/**', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/userAdmin/**', configAttribute: 'ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/superAdmin/**', configAttribute: 'ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/*/**', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
     }
     def destroy = {
     }

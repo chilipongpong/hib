@@ -36,6 +36,16 @@
 					<li><g:link uri="/theme">Themes</g:link></li>
 					<li><g:link uri="/bundledItem">Bundled Items</g:link></li>
 					<li><g:link uri="/level">Levels</g:link></li>
+					<li><a href="#">User</a>
+						<ul>
+							<li><g:link uri="/client">Client</g:link></li>
+							<li><g:link uri="/planner">Planner</g:link></li>
+							<li><g:link uri="/plannerSupervisor">Planner Supervisor</g:link></li>
+							<li><g:link uri="/userAdmin">User Admin</g:link></li>
+							<li><g:link uri="/superAdmin">Super Admin</g:link></li>				
+						</ul>
+					</li>
+					
 				</ul>
 			</div>
 			<div style="clear:both"></div>
