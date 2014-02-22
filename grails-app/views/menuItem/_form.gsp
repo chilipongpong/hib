@@ -27,23 +27,6 @@
 	<g:select name="status" from="${com.hizon.Status?.values().name}" keys="${com.hizon.Status.values()*.name()}" required="" value="${menuItemInstance?.status?.name()}"/>
 </div>
 
-<div
-	class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'image', 'error')} required">
-	<g:if test="${menuItemInstance?.image == null }">
-		<label for="image"> <g:message code="menuItem.image.label"
-				default="Image" />
-		</label>
-		<input type="file" name="image" id="image"/>
-	</g:if>
-	<g:else>
-		<label for="image"> <g:message code="menuItem.image.label"
-				default="Image" />
-		</label>
-			<g:img file="${menuItemInstance.image}" dir="uploaded-files" width="200"/>
-	</g:else>
-	
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'level', 'error')} required">
 	<label for="level">
 		<g:message code="menuItem.level.label" default="Level" />
@@ -59,5 +42,3 @@
 	</label>
 	<g:select id="menuCategory" name="menuCategory.id" from="${MenuCategory.findAllByStatus(Status.ACTIVE)}" optionKey="id" required="" value="${menuItemInstance?.menuCategory?.id}" class="many-to-one"/>
 </div>
-
-
