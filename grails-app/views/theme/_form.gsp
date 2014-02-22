@@ -44,7 +44,7 @@
 
 	<div class="selectionMultipleBox">
 		<select id="colorSelectionFrom" size="8" multiple>
-			<g:each var="color" in="${Color.list() - themeInstance?.colors}">
+			<g:each var="color" in="${Color.findAllByStatus(Status.ACTIVE) - themeInstance?.colors}">
 				<option value="${color.id}">${color.name}</option>
 			</g:each>
 		</select>
