@@ -15,7 +15,7 @@
 		<g:message code="level.description.label" default="Description" />
 		
 	</label>
-	<g:textField name="description" maxlength="250" value="${levelInstance?.description}"/>
+	<g:textArea name="description" maxlength="250" value="${levelInstance?.description}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: levelInstance, field: 'status', 'error')} required">

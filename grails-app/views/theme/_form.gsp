@@ -1,5 +1,7 @@
 <%@ page import="com.hizon.Theme" %>
 <%@ page import="com.hizon.Color" %>
+<%@ page import="com.hizon.Level" %>
+<%@ page import="com.hizon.Status" %>
 
 <div class="fieldcontain ${hasErrors(bean: themeInstance, field: 'name', 'error')} required">
 	<label for="name">
@@ -14,7 +16,7 @@
 		<g:message code="theme.description.label" default="Description" />
 		
 	</label>
-	<g:textField name="description" maxlength="250" value="${themeInstance?.description}"/>
+	<g:textArea name="description" maxlength="250" value="${themeInstance?.description}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: themeInstance, field: 'level', 'error')} required">
@@ -22,7 +24,8 @@
 		<g:message code="theme.level.label" default="Level" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="level" name="level.id" from="${com.hizon.Level.list()}" optionKey="id" required="" value="${themeInstance?.level?.id}" class="many-to-one"/>
+	<g:select id="level" name="level.id" from="${Level.findAllByStatus(Status.ACTIVE)}" optionKey="id" required="" value="${themeInstance?.level?.id}" class="many-to-one"/>
+	
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: themeInstance, field: 'status', 'error')} required">
@@ -41,7 +44,7 @@
 
 	<div class="selectionMultipleBox">
 		<select id="colorSelectionFrom" size="8" multiple>
-			<g:each var="color" in="${Color.list() - themeInstance?.colors}">
+			<g:each var="color" in="${Color.findAllByStatus(Status.ACTIVE) - themeInstance?.colors}">
 				<option value="${color.id}">${color.name}</option>
 			</g:each>
 		</select>

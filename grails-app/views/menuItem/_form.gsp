@@ -1,5 +1,6 @@
 <%@ page import="com.hizon.MenuItem" %>
 <%@ page import="com.hizon.Status" %>
+<%@ page import="com.hizon.Level" %>
 <%@ page import="com.hizon.MenuCategory" %>
 
 <div class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'name', 'error')} required">
@@ -26,29 +27,12 @@
 	<g:select name="status" from="${com.hizon.Status?.values().name}" keys="${com.hizon.Status.values()*.name()}" required="" value="${menuItemInstance?.status?.name()}"/>
 </div>
 
-<div
-	class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'image', 'error')} required">
-	<g:if test="${menuItemInstance?.image == null }">
-		<label for="image"> <g:message code="menuItem.image.label"
-				default="Image" />
-		</label>
-		<input type="file" name="image" id="image"/>
-	</g:if>
-	<g:else>
-		<label for="image"> <g:message code="menuItem.image.label"
-				default="Image" />
-		</label>
-			<g:img file="${menuItemInstance.image}" dir="uploaded-files" width="200"/>
-	</g:else>
-	
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'level', 'error')} required">
 	<label for="level">
 		<g:message code="menuItem.level.label" default="Level" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="level" name="level.id" from="${com.hizon.Level.list()}" optionKey="id" required="" value="${menuItemInstance?.level?.id}" class="many-to-one"/>
+	<g:select id="level" name="level.id" from="${Level.findAllByStatus(Status.ACTIVE)}" optionKey="id" required="" value="${menuItemInstance?.level?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'menuCategory', 'error')} required">
@@ -56,7 +40,5 @@
 		<g:message code="menuItem.menuCategory.label" default="Menu Category" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="menuCategory" name="menuCategory.id" from="${MenuCategory.findByStatus(Status.ACTIVE)}" optionKey="id" required="" value="${menuItemInstance?.menuCategory?.id}" class="many-to-one"/>
+	<g:select id="menuCategory" name="menuCategory.id" from="${MenuCategory.findAllByStatus(Status.ACTIVE)}" optionKey="id" required="" value="${menuItemInstance?.menuCategory?.id}" class="many-to-one"/>
 </div>
-
-
