@@ -33,4 +33,8 @@ class Project {
 		serviceStyle blank: true, nullable: true
 		freebies blank: true, nullable: true, size: 0..500
 	}
+	
+	String toString() {
+		return name;
+	}
 }
