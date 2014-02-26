@@ -11,4 +11,8 @@ class SuperAdmin {
 	}
 	
 	static searchable = true
+	
+	String toString() {
+		return user.firstName + " " + user.lastName
+	}
 }
