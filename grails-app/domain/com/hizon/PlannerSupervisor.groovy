@@ -3,8 +3,6 @@ package com.hizon
 class PlannerSupervisor {
 	User user
 	
-	static hasMany = [planners: Planner]
-	
 	static constraints = {
 	}
 	
