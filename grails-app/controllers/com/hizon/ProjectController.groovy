@@ -21,6 +21,26 @@ class ProjectController {
 
     def save() {
         def projectInstance = new Project(params)
+		
+		if (params.colorsId) {
+			def colors = [] as Set
+			def colorsId = params.colorsId.split(",")
+			for(colorId in colorsId) {
+				colors.add(Color.get(colorId))
+			}
+			projectInstance.colors = colors;
+		} 
+		
+		if (params.menuItemsId) {
+			def menuItems = [] as Set
+			def menuItemsId = params.menuItemsId.split(",")
+			for(menuItemId in menuItemsId) {
+				menuItems.add(MenuItem.get(menuItemId))
+			}
+			projectInstance.menuItems = menuItems;
+		}
+		
+		
         if (!projectInstance.save(flush: true)) {
             render(view: "create", model: [projectInstance: projectInstance])
             return
@@ -71,7 +91,28 @@ class ProjectController {
         }
 
         projectInstance.properties = params
-
+		def colors = [] as Set
+		if (params.colorsId) {
+			def colorsId = params.colorsId.split(",")
+					for(colorId in colorsId) {
+						colors.add(Color.get(colorId))
+					}
+			projectInstance.colors = colors;
+		} else {
+			projectInstance.colors = null;
+		}
+		
+		def menuItems = [] as Set
+		if (params.menuItemsId) {
+			def menuItemsId = params.menuItemsId.split(",")
+					for(menuItemId in menuItemsId) {
+						menuItems.add(MenuItem.get(menuItemId))
+					}
+			projectInstance.menuItems = menuItems;
+		} else {
+			projectInstance.menuItems = null;
+		}
+		
         if (!projectInstance.save(flush: true)) {
             render(view: "edit", model: [projectInstance: projectInstance])
             return

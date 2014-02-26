@@ -72,17 +72,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${plannerSupervisorInstance?.planners}">
-				<li class="fieldcontain">
-					<span id="planners-label" class="property-label"><g:message code="plannerSupervisor.planners.label" default="Planners" /></span>
-					
-						<g:each in="${plannerSupervisorInstance.planners}" var="p">
-						<span class="property-value" aria-labelledby="planners-label"><g:link controller="planner" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
 			</ol>
 			<g:form>
 				<fieldset class="buttons">
