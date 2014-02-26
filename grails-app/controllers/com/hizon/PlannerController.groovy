@@ -2,10 +2,13 @@ package com.hizon
 
 import org.springframework.dao.DataIntegrityViolationException
 
+
 class PlannerController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+	def springSecurityService
+	
     def index() {
         redirect(action: "list", params: params)
     }
@@ -33,6 +36,8 @@ class PlannerController {
     }
 
     def show(Long id) {
+		def loggedInUser = Planner.findByUser(springSecurityService.getCurrentUser())
+		
         def plannerInstance = Planner.get(id)
         if (!plannerInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'planner.label', default: 'Planner'), id])
@@ -40,7 +45,7 @@ class PlannerController {
             return
         }
 
-        [plannerInstance: plannerInstance]
+        [plannerInstance: plannerInstance, loggedInUser: loggedInUser]
     }
 
     def edit(Long id) {
@@ -103,4 +108,12 @@ class PlannerController {
             redirect(action: "show", id: id)
         }
     }
+	
+	def dashboard(long id){
+		def user = (User) springSecurityService.getCurrentUser()
+		def loggedInPlanner = Planner.findByUser(user)
+		
+		[loggedInUser: loggedInPlanner, userType: "planner"]
+		
+	}
 }

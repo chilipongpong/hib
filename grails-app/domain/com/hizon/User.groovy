@@ -58,4 +58,13 @@ class User {
 	boolean isClient() {
 		this.authorities.contains(Role.findByAuthority('ROLE_CLIENT'))
 	}
+	
+	boolean isPlanner() {
+		this.authorities.contains(Role.findByAuthority('ROLE_PLANNER'))
+	}
+	
+	boolean isPlannerSupervisor() {
+		this.authorities.contains(Role.findByAuthority('ROLE_PLANNER_SUPERVISOR'))
+	}
+	
 }

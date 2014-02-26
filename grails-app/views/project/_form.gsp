@@ -25,7 +25,7 @@
 		<g:message code="project.client.label" default="Client" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="client" name="client.id" from="${com.hizon.Client.list()}" optionKey="id" required="" value="${projectInstance?.client?.id}" class="many-to-one"/>
+	<g:select id="client" name="client.id" from="${com.hizon.Client.list()}" optionKey="id" required="" value="${projectInstance?.client?.id}" class="many-to-one" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'planner', 'error')} required">
