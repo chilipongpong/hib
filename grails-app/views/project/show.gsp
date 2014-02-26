@@ -148,6 +148,28 @@
 					
 				</li>
 				</g:if>
+				
+				<g:if test="${projectInstance?.colors}">
+				<li class="fieldcontain">
+					<span id="colors-label" class="property-label"><g:message code="project.colors.label" default="Colors" /></span>
+					
+						<g:each in="${projectInstance.colors}" var="c">
+						<span class="property-value" aria-labelledby="colors-label"><g:link controller="color" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+				
+				<g:if test="${projectInstance?.menuItems}">
+				<li class="fieldcontain">
+					<span id="menuItems-label" class="property-label"><g:message code="project.menuItems.label" default="MenuItems" /></span>
+					
+						<g:each in="${projectInstance.menuItems}" var="c">
+						<span class="property-value" aria-labelledby="menuItems-label"><g:link controller="menuItem" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
 			
 			</ol>
 			<g:form>

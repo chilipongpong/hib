@@ -1,5 +1,7 @@
 <%@ page import="com.hizon.Project" %>
-
+<%@ page import="com.hizon.Status" %>
+<%@ page import="com.hizon.Color" %>
+<%@ page import="com.hizon.MenuItem" %>
 
 
 <div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'name', 'error')} required">
@@ -112,3 +114,117 @@
 	<g:select id="theme" name="theme.id" from="${com.hizon.Theme.list()}" optionKey="id" value="${projectInstance?.theme?.id}" class="many-to-one"/>
 </div>
 
+<div class="selectionMultiple fieldcontain ${hasErrors(bean: projectInstance, field: 'colors', 'error')} ">
+	<label for="colors">
+		<g:message code="project.colors.label" default="Colors" />
+		
+	</label>
+
+	<div class="selectionMultipleBox">
+		<select id="colorSelectionFrom" size="8" multiple>
+			<g:each var="color" in="${Color.findAllByStatus(Status.ACTIVE) - projectInstance?.colors}">
+				<option value="${color.id}">${color.name}</option>
+			</g:each>
+		</select>
+	</div>
+	<div class="selectionMultipleArrows">
+		<input type="button" id="colorMoveRight" value="&#62" />
+		<input type="button" id="colorMoveLeft" value="&#60" />
+	</div>
+	<div class="selectionMultipleBox">
+		<select id="colorSelectionTo" size="8" multiple>
+			<g:each var="color" in="${projectInstance?.colors}">
+				<option value="${color.id}">${color.name}</option>
+			</g:each>
+		</select>
+	</div>
+	<g:hiddenField id="colorsId" name="colorsId" value=""/>
+</div>
+
+<div class="selectionMultiple fieldcontain ${hasErrors(bean: projectInstance, field: 'menuItems', 'error')} ">
+	<label for="menuItems">
+		<g:message code="project.menuItems.label" default="menuItems" />
+		
+	</label>
+
+	<div class="selectionMultipleBox">
+		<select id="menuItemSelectionFrom" size="8" multiple>
+			<g:each var="menuItem" in="${MenuItem.findAllByStatus(Status.ACTIVE) - projectInstance?.menuItems}">
+				<option value="${menuItem.id}">${menuItem.name}</option>
+			</g:each>
+		</select>
+	</div>
+	<div class="selectionMultipleArrows">
+		<input type="button" id="menuItemMoveRight" value="&#62" />
+		<input type="button" id="menuItemMoveLeft" value="&#60" />
+	</div>
+	<div class="selectionMultipleBox">
+		<select id="menuItemSelectionTo" size="8" multiple>
+			<g:each var="menuItem" in="${projectInstance?.menuItems}">
+				<option value="${menuItem.id}">${menuItem.name}</option>
+			</g:each>
+		</select>
+	</div>
+	<g:hiddenField id="menuItemsId" name="menuItemsId" value=""/>
+</div>
+
+<script>
+	$(document).ready(function() {
+		$('#colorMoveRight').click(function() {
+			$('#colorSelectionFrom option:selected').each(function() {
+				$('#colorSelectionTo').append('<option value=' +  $(this).val() + '>' + $(this).text() + '</option>');
+				$(this).remove();
+			});
+		});
+
+		$('#colorMoveLeft').click(function() {
+			$('#colorSelectionTo option:selected').each(function() {
+				$('#colorSelectionFrom').append('<option value=' +  $(this).val() + '>' + $(this).text() + '</option>');
+				$(this).remove();
+			});
+		});
+
+		$('#menuItemMoveRight').click(function() {
+			$('#menuItemSelectionFrom option:selected').each(function() {
+				$('#menuItemSelectionTo').append('<option value=' +  $(this).val() + '>' + $(this).text() + '</option>');
+				$(this).remove();
+			});
+		});
+
+		$('#menuItemMoveLeft').click(function() {
+			$('#menuItemSelectionTo option:selected').each(function() {
+				$('#menuItemSelectionFrom').append('<option value=' +  $(this).val() + '>' + $(this).text() + '</option>');
+				$(this).remove();
+			});
+		});
+
+		
+		$('#save').click(function() {
+			setColorsId();
+			setMenuItemsId();
+		});
+
+		var setColorsId = function() {
+			var colorsId = "";
+			$('#colorSelectionTo option').each(function() {
+				if (colorsId !== "") {
+					colorsId += ","
+				}
+				colorsId += $(this).val();
+			});
+			$('#colorsId').val(colorsId);
+		};
+
+		var setMenuItemsId = function() {
+			var menuItemsId = "";
+			$('#menuItemSelectionTo option').each(function() {
+				if (menuItemsId !== "") {
+					menuItemsId += ","
+				}
+				menuItemsId += $(this).val();
+			});
+			$('#menuItemsId').val(menuItemsId);
+		};
+	});
+
+</script>
