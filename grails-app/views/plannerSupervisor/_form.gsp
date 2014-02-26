@@ -62,11 +62,3 @@
 	</label>
 	<g:textField name="user.phone" pattern="${plannerSupervisorInstance?.user?.constraints?.phone?.matches}" value="${plannerSupervisorInstance?.user?.phone}"/>
 </div>
-
-<div class="fieldcontain ${hasErrors(bean: plannerSupervisorInstance, field: 'planners', 'error')} ">
-	<label for="planners">
-		<g:message code="plannerSupervisor.planners.label" default="Planners" />
-		
-	</label>
-	<g:select name="planners" from="${com.hizon.Planner.list()}" multiple="multiple" optionKey="id" size="5" value="${plannerSupervisorInstance?.planners*.id}" class="many-to-many"/>
-</div>
