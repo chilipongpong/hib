@@ -10,12 +10,7 @@
 	<body>
 		<a href="#show-planner" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		
-		<g:if test="${loggedInUser == 'planner'}">
-			<g:render template="navigation" />
-		</g:if>
-		<g:else>
-			<g:render template="../contentManager/navigation" />
-		</g:else>
+		<g:render template="../dashboard/navigation" />
 		
 		<div id="show-planner" class="content scaffold-show" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>

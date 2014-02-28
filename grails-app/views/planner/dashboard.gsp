@@ -8,6 +8,6 @@
 	</head>
 	<body>
 		<a href="#create-planner" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<g:render template="navigation" />
+		<g:render template="../dashboard/navigation" />
 	</body>
 </html>

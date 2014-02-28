@@ -113,7 +113,7 @@ class PlannerController {
 		def user = (User) springSecurityService.getCurrentUser()
 		def loggedInPlanner = Planner.findByUser(user)
 		
-		[loggedInUser: loggedInPlanner, userType: "planner"]
+		[plannerId: loggedInPlanner.id]
 		
 	}
 }
