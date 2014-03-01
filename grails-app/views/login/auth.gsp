@@ -3,12 +3,12 @@
 <head>
 <title><g:message code='spring.security.ui.login.title'/></title>
 <meta name='layout' content='register'/>
+
 </head>
 
 <body>
 
 <p/>
-
 <div class="login s2ui_center ui-corner-all" style='text-align:center;'>
 	<div class="login-inner">
 	<form action='${postUrl}' method='POST' id="loginForm" name="loginForm" autocomplete='off'>
@@ -36,7 +36,7 @@
 		</tr>
 		<tr>
 			<td colspan='2'>
-				<s2ui:linkButton elementId='register' controller='register' messageCode='spring.security.ui.login.register'/>
+				<!--<s2ui:linkButton elementId='register' controller='register' messageCode='spring.security.ui.login.register'/>-->
 				<s2ui:submitButton elementId='loginButton' form='loginForm' messageCode='spring.security.ui.login.login'/>
 			</td>
 		</tr>
