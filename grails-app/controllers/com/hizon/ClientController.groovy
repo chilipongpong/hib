@@ -25,13 +25,13 @@ class ClientController {
 	}
 
     def list(Integer max) {
-	validateUser()
+		validateUser()
         params.max = Math.min(max ?: 10, 100)
         [clientInstanceList: Client.list(params), clientInstanceTotal: Client.count()]
     }
 
     def create() {
-	validateUser()
+		validateUser()
         [clientInstance: new Client(params)]
     }
 

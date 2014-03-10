@@ -20,4 +20,8 @@ class Color {
 	public String toString() {
 		return name;
 	}
+	
+	public static List<Color> listAllActive() {
+		return Color.findAllByStatus(Status.ACTIVE)
+	}
 }
