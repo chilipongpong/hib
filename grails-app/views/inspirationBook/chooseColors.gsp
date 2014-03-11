@@ -19,20 +19,23 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			
-			<g:form>
-				<g:hiddenField name="client.id" value="${clientInstance?.id}" />
+			<g:form action="saveColors">
+				<g:hiddenField name="client.id" value="${inspirationBookColorInstance?.client?.id}" />
 				<g:hiddenField name="id" value="${inspirationBookColorInstance?.id}" />
 				<g:hiddenField name="version" value="${inspirationBookColorInstance?.version}" />
 				<div class="fieldcontain ${hasErrors(bean: inspirationBookColorInstance, field: 'client', 'error')} ">
 					<label for="client">
 						<g:message code="inspirationBook.color.label" default="Color" />
 					</label>
-					<g:select name="colors" from="${com.hizon.Color.listAllActive()}" multiple="multiple" optionKey="id" size="5" value="${inspirationBookColorInstance?.colors*.id}" class="many-to-many"/>
+					<g:select name="color1" from="${com.hizon.Color.listAllActive()}" optionKey="id" size="5" value="${color1}" />
+					<g:select name="color2" from="${com.hizon.Color.listAllActive()}" optionKey="id" size="5" value="${color2}" />
+					<g:select name="color3" from="${com.hizon.Color.listAllActive()}" optionKey="id" size="5" value="${color3}" />
 				</div>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${clientInstance?.id}" />
-					<g:link class="edit" action="edit" id="${clientInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<fieldset class="buttons">
+						<g:submitButton name="save" class="save" value="${message(code: 'default.button.save.label', default: 'Save')}" />
+					</fieldset>
 				</fieldset>
 			</g:form>
 		</div>
