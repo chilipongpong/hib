@@ -14,23 +14,21 @@
 			</ul>
 		</div>
 		<div id="choose-colors" class="content scaffold-show" role="main">
-			<g:link uri="/inspirationBook/chooseTheme">Choose Theme</g:link>
+			<g:link uri="/inspirationBook/chooseColors">Choose Colors</g:link>
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			
-			<g:form action="saveColors">
+			<g:form action="saveTheme">
 				<g:hiddenField name="client.id" value="${inspirationBookInstance?.client?.id}" />
 				<g:hiddenField name="id" value="${inspirationBookInstance?.id}" />
 				<g:hiddenField name="version" value="${inspirationBookInstance?.version}" />
 				<div class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'client', 'error')} ">
 					<label>
-						<g:message code="inspirationBook.color.label" default="Color" />
+						<g:message code="inspirationBook.theme.label" default="Theme" />
 					</label>
-					<g:select name="color1" from="${com.hizon.Color.listAllActive()}" optionKey="id" value="${color1}" noSelection="['':'-Choose a color-']"/>
-					<g:select name="color2" from="${com.hizon.Color.listAllActive()}" optionKey="id" value="${color2}" noSelection="['':'-Choose a color-']"/>
-					<g:select name="color3" from="${com.hizon.Color.listAllActive()}" optionKey="id" value="${color3}" noSelection="['':'-Choose a color-']"/>
+					<g:select name="theme" from="${themes}" optionKey="id" value="${theme}" noSelection="['':'-Choose a theme-']"/>
 				</div>
 				<fieldset class="buttons">
 					<fieldset class="buttons">

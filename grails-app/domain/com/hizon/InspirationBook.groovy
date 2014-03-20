@@ -1,7 +1,8 @@
 package com.hizon
 
-class InspirationBookColor {
+class InspirationBook {
 	Client client;
+	Theme theme;
 	
 	static hasMany = [colors: Color]
 	

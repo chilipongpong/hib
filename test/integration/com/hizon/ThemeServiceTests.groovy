@@ -60,4 +60,16 @@ class ThemeServiceTests {
 		assertTrue(themes.contains(ryoTheme))
 		assertFalse(themes.contains(yoTheme))
     }
+	
+	@Test
+	void getThemesForInspirationBook() {
+		InspirationBook book = new InspirationBook()
+		book.colors = [red, green, blue]
+		Set<Theme> themes = themeService.getThemesForInspirationBook(book)
+		
+		assertTrue(themes.contains(rgbTheme))
+		assertTrue(themes.contains(rbyTheme))
+		assertTrue(themes.contains(ryoTheme))
+		assertFalse(themes.contains(yoTheme))
+	}
 }

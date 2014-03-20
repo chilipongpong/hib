@@ -8,8 +8,8 @@ import org.junit.*
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(InspirationBookColor)
-class InspirationBookColorTests {
+@TestFor(InspirationBook)
+class InspirationBookTests {
 
     void testSomething() {
        fail "Implement me"

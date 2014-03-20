@@ -3,6 +3,7 @@ package com.hizon
 class InspirationBookController {
 	def springSecurityService
 	def clientService
+	def themeService
 	
     def index() { 
 		redirect(action: "chooseColors", params: params)
@@ -11,29 +12,72 @@ class InspirationBookController {
 	def chooseColors() {
 		User loggedInUser = User.get(springSecurityService.principal.id)
 		def client = clientService.getClient(loggedInUser);
+		if (client == null) {
+			flash.message = "Only clients can create their inspiartion book"
+			redirect(action: "index", controller: "client")
+			return
+		}
 		params."client.id" = client.id
-		[inspirationBookColorInstance: new InspirationBookColor(params)]
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id".toLong()))
+		List<Color> colors = []
+		if (inspirationBookInstance) {
+			for (int i = 0; i < inspirationBookInstance.colors.size(); i++) {
+				colors.add(inspirationBookInstance.colors.asList().get(i))
+			}
+		} else {
+			inspirationBookInstance = new InspirationBook(params)
+		}
+		[inspirationBookInstance: inspirationBookInstance, colors: colors]
 	}
 	
 	def saveColors() {
-		def inspirationBookColorInstance = InspirationBookColor.findByClient(Client.get(params."client.id".toLong()))
-		if (!inspirationBookColorInstance) {
-			inspirationBookColorInstance = new InspirationBookColor(params)
+		def inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id".toLong()))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
 		}
-		inspirationBookColorInstance.colors = new HashSet<Color>();
+		inspirationBookInstance.colors = new HashSet<Color>();
 
 		def colors = [params.color1, params.color2, params.color3]		
 		for (String color: colors) {
 			if (color.isLong()) {
-				inspirationBookColorInstance.colors.add(Color.get(color.toLong()))
+				inspirationBookInstance.colors.add(Color.get(color.toLong()))
 			}
 		}
 		
-		if (!inspirationBookColorInstance.save(flush: true)) {
-			render(view: "chooseColors", model: [inspirationBookColorInstance: inspirationBookColorInstance], params)
+		if (!inspirationBookInstance.save(flush: true)) {
+			render(view: "chooseColors", model: [inspirationBookColorInstance: inspirationBookInstance], params)
 			return
 		}
 		flash.message = "Chosen colors saved"
-		redirect(action: "chooseColors")
+		redirect(action: "chooseTheme")
+	}
+	
+	def chooseTheme() {
+		User loggedInUser = User.get(springSecurityService.principal.id)
+		def client = clientService.getClient(loggedInUser);
+		if (client == null) {
+			flash.message = "Only clients can create their inspiartion book"
+			redirect(action: "index", controller: "client")
+			return
+		}
+		params."client.id" = client.id
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id".toLong()))
+		
+		[inspirationBookInstance: inspirationBookInstance, themes: themeService.getThemesForInspirationBook(inspirationBookInstance)]
+	}
+	
+	def saveTheme() {
+		def inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id".toLong()))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
+		inspirationBookInstance.theme = Theme.get(params.theme.toLong())
+		
+		if (!inspirationBookInstance.save(flush: true)) {
+			render(view: "chooseTheme", model: [inspirationBookColorInstance: inspirationBookInstance], params)
+			return
+		}
+		flash.message = "Chosen theme saved"
+		redirect(action: "chooseTheme")
 	}
 }

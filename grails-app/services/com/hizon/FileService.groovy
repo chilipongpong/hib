@@ -16,7 +16,9 @@ class FileService {
 	 }
 	 
 	def copyFolder(sourceDir, destinationDir) {
-		new AntBuilder().copy(todir: destinationDir) {
+		AntBuilder ant = new AntBuilder()
+		ant.mkdir(dir:sourceDir)
+		ant.copy(todir: destinationDir) {
 			fileset(dir: sourceDir)
 		}
 	}
