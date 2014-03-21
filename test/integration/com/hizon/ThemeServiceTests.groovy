@@ -54,7 +54,7 @@ class ThemeServiceTests {
 
     @Test
     void getThemesBasedOnColor() {
-		Set<Theme> themes = themeService.getThemesBasedOnColor(rgb)
+		List<Theme> themes = themeService.getThemesBasedOnColor(rgb)
         assertTrue(themes.contains(rgbTheme))
 		assertTrue(themes.contains(rbyTheme))
 		assertTrue(themes.contains(ryoTheme))
@@ -65,11 +65,18 @@ class ThemeServiceTests {
 	void getThemesForInspirationBook() {
 		InspirationBook book = new InspirationBook()
 		book.colors = [red, green, blue]
-		Set<Theme> themes = themeService.getThemesForInspirationBook(book)
+		List<Theme> themes = themeService.getThemesForInspirationBook(book)
 		
 		assertTrue(themes.contains(rgbTheme))
 		assertTrue(themes.contains(rbyTheme))
 		assertTrue(themes.contains(ryoTheme))
 		assertFalse(themes.contains(yoTheme))
+	}
+	
+	@Test
+	void getThemesBasedOnColorPriority() {
+		List<Theme> themes = themeService.getThemesBasedOnColor(ryo)
+		
+		assertTrue(ryoTheme.equals(themes.get(0)))
 	}
 }

@@ -3,6 +3,7 @@ package com.hizon
 class Client {
 	User user
 	Planner planner
+	Level level
 	
     static constraints = {
 		planner nullable:true

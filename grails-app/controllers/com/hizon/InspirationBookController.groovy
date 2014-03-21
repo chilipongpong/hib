@@ -10,15 +10,14 @@ class InspirationBookController {
 	}
 	
 	def chooseColors() {
-		User loggedInUser = User.get(springSecurityService.principal.id)
-		def client = clientService.getClient(loggedInUser);
+		Client client = getClient()
 		if (client == null) {
 			flash.message = "Only clients can create their inspiartion book"
 			redirect(action: "index", controller: "client")
 			return
 		}
 		params."client.id" = client.id
-		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id".toLong()))
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
 		List<Color> colors = []
 		if (inspirationBookInstance) {
 			for (int i = 0; i < inspirationBookInstance.colors.size(); i++) {
@@ -31,7 +30,7 @@ class InspirationBookController {
 	}
 	
 	def saveColors() {
-		def inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id".toLong()))
+		def inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
 		if (!inspirationBookInstance) {
 			inspirationBookInstance = new InspirationBook(params)
 		}
@@ -40,12 +39,12 @@ class InspirationBookController {
 		def colors = [params.color1, params.color2, params.color3]		
 		for (String color: colors) {
 			if (color.isLong()) {
-				inspirationBookInstance.colors.add(Color.get(color.toLong()))
+				inspirationBookInstance.colors.add(Color.get(color))
 			}
 		}
 		
 		if (!inspirationBookInstance.save(flush: true)) {
-			render(view: "chooseColors", model: [inspirationBookColorInstance: inspirationBookInstance], params)
+			render(view: "chooseColors", model: [inspirationBookInstance: inspirationBookInstance], params: params)
 			return
 		}
 		flash.message = "Chosen colors saved"
@@ -53,31 +52,68 @@ class InspirationBookController {
 	}
 	
 	def chooseTheme() {
-		User loggedInUser = User.get(springSecurityService.principal.id)
-		def client = clientService.getClient(loggedInUser);
+		Client client = getClient()
 		if (client == null) {
 			flash.message = "Only clients can create their inspiartion book"
 			redirect(action: "index", controller: "client")
 			return
 		}
 		params."client.id" = client.id
-		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id".toLong()))
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
 		
 		[inspirationBookInstance: inspirationBookInstance, themes: themeService.getThemesForInspirationBook(inspirationBookInstance)]
 	}
 	
 	def saveTheme() {
-		def inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id".toLong()))
+		def inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
 		if (!inspirationBookInstance) {
 			inspirationBookInstance = new InspirationBook(params)
 		}
-		inspirationBookInstance.theme = Theme.get(params.theme.toLong())
+		inspirationBookInstance.theme = Theme.get(params.theme)
 		
 		if (!inspirationBookInstance.save(flush: true)) {
-			render(view: "chooseTheme", model: [inspirationBookColorInstance: inspirationBookInstance], params)
+			render(view: "chooseTheme", model: [inspirationBookInstance: inspirationBookInstance], params: params)
 			return
 		}
 		flash.message = "Chosen theme saved"
-		redirect(action: "chooseTheme")
+		redirect(action: "indicateGuests")
+	}
+	
+	def indicateGuests() {
+		Client client = getClient()
+		if (client == null) {
+			flash.message = "Only clients can create their inspiartion book"
+			redirect(action: "index", controller: "client")
+			return
+		}
+		params."client.id" = client.id
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		
+		[inspirationBookInstance: inspirationBookInstance]
+	}
+	
+	def saveGuests() {
+		def inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
+		inspirationBookInstance.numberOfGuests = Integer.parseInt(params.numberOfGuests)
+		if (params."sponsorRange" == null) {
+			inspirationBookInstance.sponsorRange = null
+		}
+		inspirationBookInstance.sponsorRange = ValueRange.get(params."sponsorRange")
+		
+		if (!inspirationBookInstance.save(flush: true)) {
+			render(view: "indicateGuests", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			return
+		}
+		flash.message = "Number of guests and sponsors saved"
+		redirect(action: "indicateGuests")
+	}
+	
+	private Client getClient() {
+		User loggedInUser = User.get(springSecurityService.principal.id)
+		Client client = clientService.getClient(loggedInUser);
+		return client
 	}
 }
