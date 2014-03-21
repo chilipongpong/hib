@@ -16,6 +16,7 @@
 		<div id="choose-colors" class="content scaffold-show" role="main">
 			<g:link uri="/inspirationBook/chooseColors">Choose Colors</g:link>
 			<g:link uri="/inspirationBook/indicateGuests">Indicate Guests</g:link>
+			<g:link uri="/inspirationBook/indicateSuppliers">Indicate Suppliers</g:link>
 			
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
@@ -33,7 +34,7 @@
 				<g:hiddenField name="client.id" value="${inspirationBookInstance?.client?.id}" />
 				<g:hiddenField name="id" value="${inspirationBookInstance?.id}" />
 				<g:hiddenField name="version" value="${inspirationBookInstance?.version}" />
-				<div class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'client', 'error')} ">
+				<div class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'theme', 'error')} ">
 					<label>
 						<g:message code="inspirationBook.theme.label" default="Theme" />
 					</label>

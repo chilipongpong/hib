@@ -14,8 +14,8 @@
 			</ul>
 		</div>
 		<div id="choose-colors" class="content scaffold-show" role="main">
+			<g:link uri="/inspirationBook/chooseColors">Choose Colors</g:link>
 			<g:link uri="/inspirationBook/chooseTheme">Choose Theme</g:link>
-			<g:link uri="/inspirationBook/indicateGuests">Indicate Guests</g:link>
 			<g:link uri="/inspirationBook/indicateSuppliers">Indicate Suppliers</g:link>
 			
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
@@ -30,17 +30,22 @@
 			</ul>
 			</g:hasErrors>
 			
-			<g:form action="saveColors">
+			<g:form action="saveGuests">
 				<g:hiddenField name="client.id" value="${inspirationBookInstance?.client?.id}" />
 				<g:hiddenField name="id" value="${inspirationBookInstance?.id}" />
 				<g:hiddenField name="version" value="${inspirationBookInstance?.version}" />
-				<div class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'colors', 'error')} ">
+				<div class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'numberOfGuests', 'error')} ">
 					<label>
-						<g:message code="inspirationBook.color.label" default="Color" />
+						<g:message code="inspirationBook.guest.label" default="Number of Guests" />
 					</label>
-					<g:select name="color1" from="${com.hizon.Color.listAllActive()}" optionKey="id" value="${color1}" noSelection="['':'-Choose a color-']"/>
-					<g:select name="color2" from="${com.hizon.Color.listAllActive()}" optionKey="id" value="${color2}" noSelection="['':'-Choose a color-']"/>
-					<g:select name="color3" from="${com.hizon.Color.listAllActive()}" optionKey="id" value="${color3}" noSelection="['':'-Choose a color-']"/>
+					<g:field name="numberOfGuests" type="number" value="${inspirationBookInstance.numberOfGuests}" />
+				</div>
+				<div class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'sponsorRange', 'error')} ">
+					<label for="planner">
+						<g:message code="inspirationBook.sponsorRange.label" default="Number of Sponsors" />
+						
+					</label>
+					<g:select name="sponsorRange" from="${com.hizon.ValueRange.list()}" optionKey="id" value="${inspirationBookInstance?.sponsorRange?.id}" class="many-to-one" noSelection="['': '-choose range-']"/>
 				</div>
 				<fieldset class="buttons">
 					<fieldset class="buttons">

@@ -108,12 +108,47 @@ class InspirationBookController {
 			return
 		}
 		flash.message = "Number of guests and sponsors saved"
-		redirect(action: "indicateGuests")
+		redirect(action: "indicateSuppliers")
 	}
 	
 	private Client getClient() {
 		User loggedInUser = User.get(springSecurityService.principal.id)
 		Client client = clientService.getClient(loggedInUser);
 		return client
+	}
+	
+	def indicateSuppliers() {
+		Client client = getClient()
+		if (client == null) {
+			flash.message = "Only clients can create their inspiartion book"
+			redirect(action: "index", controller: "client")
+			return
+		}
+		params."client.id" = client.id
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		
+		[inspirationBookInstance: inspirationBookInstance]
+	}
+	
+	def saveSuppliers() {
+		def inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
+		inspirationBookInstance.hasFlowers = params.hasFlowers == null ? false : true
+		inspirationBookInstance.hasBridalCar = params.hasBridalCar == null ? false : true
+		inspirationBookInstance.hasEmcee = params.hasEmcee == null ? false : true
+		inspirationBookInstance.hasCake = params.hasCake == null ? false : true
+		inspirationBookInstance.hasFlowersForEntourage = params.hasFlowersForEntourage == null ? false : true
+		inspirationBookInstance.hasPhotoBooth = params.hasPhotoBooth == null ? false : true
+		inspirationBookInstance.hasMobileBar = params.hasMobileBar == null ? false : true
+		inspirationBookInstance.hasVenue = params.hasVenue == null ? false : true
+		
+		if (!inspirationBookInstance.save(flush: true)) {
+			render(view: "indicateSuppliers", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			return
+		}
+		flash.message = "Number of guests and sponsors saved"
+		redirect(action: "indicateSuppliers")
 	}
 }
