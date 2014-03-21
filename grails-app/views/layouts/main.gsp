@@ -37,6 +37,7 @@
 					<li><g:link uri="/bundledItem">Bundled Items</g:link></li>
 					<li><g:link uri="/level">Levels</g:link></li>
 					<li><g:link uri="/valueRange">Value Range</g:link></li>
+					<li><g:link uri="/inspirationBook">Inspiration Book</g:link></li>
 					<li><a href="#">User</a>
 						<ul>
 							<li><g:link uri="/client">Client</g:link></li>
