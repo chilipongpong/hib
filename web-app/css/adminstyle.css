@@ -1,7 +1,8 @@
 #navi{
-	font-size: 11pt;
-	padding-left: 180px;
+	font-size: 10pt;
+	padding-left: 150px;
 	padding-top: 10px;
+	letter-spacing: 1px;
 }
 
 #navi li{
