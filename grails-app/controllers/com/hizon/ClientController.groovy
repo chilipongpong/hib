@@ -6,7 +6,6 @@ class ClientController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
 	def springSecurityService
-	def securityService
 
     def index() {
         redirect(action: "list", params: params)
@@ -130,4 +129,12 @@ class ClientController {
             redirect(action: "show", id: id)
         }
     }
+	
+	def dashboard(long id){
+		def user = (User) springSecurityService.getCurrentUser()
+		def loggedInClient = Client.findByUser(user)
+		
+		[clientId: loggedInClient.id]
+		
+	}
 }
