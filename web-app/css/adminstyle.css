@@ -1,6 +1,8 @@
 #navi{
-	padding-left: 200px;
+	font-size: 10pt;
+	padding-left: 150px;
 	padding-top: 10px;
+	letter-spacing: 1px;
 }
 
 #navi li{
@@ -9,11 +11,6 @@
 	position: relative;
 	
 }
-
-#navi li:nth-child(4){
-	padding-right: 30px;
-}
-
 
 section {
 	background: #ff851b;

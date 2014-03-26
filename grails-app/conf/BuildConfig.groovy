@@ -42,12 +42,18 @@ grails.project.dependency.resolution = {
 		mavenRepo "http://repo.grails.org/grails/core"
 		// for spring security
 		mavenRepo "http://repo.spring.io/milestone/"
+		
+		mavenRepo "http://mvnrepository.com/artifact/"
     }
 
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
 
         runtime 'mysql:mysql-connector-java:5.1.22'
+		
+		compile 'org.apache.ant:ant:1.7.1'
+		
+		compile 'org.apache.ant:ant-launcher:1.7.1'
     }
 
     plugins {
@@ -77,5 +83,6 @@ grails.project.dependency.resolution = {
 		compile ":spring-security-ui:1.0-RC1"
 
 		compile ":mail:1.0.1"
+		
     }
 }

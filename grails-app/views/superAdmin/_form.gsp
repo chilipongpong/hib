@@ -1,4 +1,4 @@
-<%@ page import="com.hizon.Admin" %>
+<%@ page import="com.hizon.SuperAdmin" %>
 
 <div class="fieldcontain ${hasErrors(bean: superAdminInstance.user, field: 'username', 'error')} required">
 	<label for="username">

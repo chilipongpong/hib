@@ -1,5 +1,5 @@
 
-<%@ page import="com.hizon.Admin" %>
+<%@ page import="com.hizon.SuperAdmin" %>
 <!DOCTYPE html>
 <html>
 	<head>

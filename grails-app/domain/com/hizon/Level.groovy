@@ -5,6 +5,7 @@ class Level {
 	String name
 	String description
 	Status status
+	int value
 
 	static constraints = {
 		name unique:true, blank:false, nullable: false, size: 1..100
