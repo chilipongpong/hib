@@ -5,6 +5,8 @@ import org.springframework.dao.DataIntegrityViolationException
 class UserAdminController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	
+	def springSecurityService
 
     def index() {
         redirect(action: "list", params: params)
@@ -102,4 +104,12 @@ class UserAdminController {
             redirect(action: "show", id: id)
         }
     }
+	
+	def dashboard(long id){
+		def user = (User) springSecurityService.getCurrentUser()
+		def loggedInUserAdmin = UserAdmin.findByUser(user)
+		
+		[userAdminId: loggedInUserAdmin.id]
+		
+	}
 }
