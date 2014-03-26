@@ -9,7 +9,9 @@
 	</head>
 	<body>
 		<a href="#show-contentManager" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+		
 		<g:render template="../dashboard/navigation" />
+		
 		<div id="show-contentManager" class="content scaffold-show" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">

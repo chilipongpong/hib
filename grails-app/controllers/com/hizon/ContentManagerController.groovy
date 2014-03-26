@@ -5,6 +5,9 @@ import org.springframework.dao.DataIntegrityViolationException
 class ContentManagerController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	
+	def springSecurityService
+	
 
     def index() {
         redirect(action: "list", params: params)
@@ -103,4 +106,12 @@ class ContentManagerController {
             redirect(action: "show", id: id)
         }
     }
+	
+	def dashboard(long id){
+		def user = (User) springSecurityService.getCurrentUser()
+		def loggedInContentManager = ContentManager.findByUser(user)
+		
+		[contentManagerId: loggedInContentManager.id]
+		
+	}
 }
