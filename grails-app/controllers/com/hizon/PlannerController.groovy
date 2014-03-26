@@ -1,5 +1,6 @@
 package com.hizon
 
+import org.apache.tools.zip.ZipFile.OffsetEntry;
 import org.springframework.dao.DataIntegrityViolationException
 
 
@@ -113,7 +114,12 @@ class PlannerController {
 		def user = (User) springSecurityService.getCurrentUser()
 		def loggedInPlanner = Planner.findByUser(user)
 		
-		[plannerId: loggedInPlanner.id]
+		def projectsAssignedToMeCriteria = Project.createCriteria()
+		def projectsAssignedToMe = projectsAssignedToMeCriteria.list {
+			eq("planner", loggedInPlanner)
+			eq("status", Status.ACTIVE)
+		} 
+		[plannerId: loggedInPlanner.id, projectsAssignedToMe: projectsAssignedToMe, projectsAssignedToMeCount: projectsAssignedToMe.size()]
 		
 	}
 }
