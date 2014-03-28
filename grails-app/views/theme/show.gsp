@@ -70,6 +70,16 @@
 				</li>
 				</g:if>
 	
+				<g:if test="${themeInstance?.primaryImage}">
+				<li class="fieldcontain">
+					<span id="status-label" class="property-label"><g:message code="theme.status.primaryImage" default="Primary Image" /></span>
+					
+					
+					<span class="property-value" aria-labelledby="status-label"><g:img dir="/uploaded-files" file="${themeInstance.primaryImage}" width="400" alt=""/></span>
+					
+				</li>
+				</g:if>
+				
 				<g:if test="${images.size() > 0}">
 				<li class="fieldcontain">
 					<span id="images-label" class="property-label"><g:message code="theme.images.label" default="Images" /></span>

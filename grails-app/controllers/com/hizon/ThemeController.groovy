@@ -2,11 +2,13 @@ package com.hizon
 
 import org.springframework.dao.DataIntegrityViolationException
 import org.compass.core.engine.SearchEngineQueryParseException
+import org.springframework.web.multipart.commons.CommonsMultipartFile
 
 class ThemeController {
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
 	def fileService 
+	def fileUploadService
 	def searchableService
 	
 	static String WILDCARD = "*"
@@ -35,6 +37,18 @@ class ThemeController {
 			}
 			themeInstance.colors = colors;
 		}
+		
+		themeInstance.id = params.id
+		// primary image saving
+		def CommonsMultipartFile primaryImage = request.getFile('primaryImage')
+		if(!primaryImage.isEmpty()){
+			def webRootDir = servletContext.getRealPath("/")
+			def directory = new File(webRootDir, "/uploaded-files")
+			directory.mkdirs()
+			primaryImage.transferTo(new File(directory, primaryImage.originalFilename))
+			themeInstance.primaryImage = primaryImage.originalFilename
+		}
+		
         if (!themeInstance.save(flush: true)) {
 			def imagesDirectory = new File(fileService.imagesTempPath)
             render(view: "create", model: [themeInstance: themeInstance, imagesPath: fileService.imagesTempPath, images: imagesDirectory.listFiles(), imageMaxSize: fileService.imagesMaxSize])
@@ -116,6 +130,16 @@ class ThemeController {
 			themeInstance.colors = null;
 		}
 		
+		// primary image saving
+		def CommonsMultipartFile primaryImage = request.getFile('primaryImage')
+		if(!primaryImage.isEmpty()){
+			def webRootDir = servletContext.getRealPath("/")
+			def directory = new File(webRootDir, "/uploaded-files")
+			directory.mkdirs()
+			primaryImage.transferTo(new File(directory, primaryImage.originalFilename))
+			themeInstance.primaryImage = primaryImage.originalFilename
+		}
+		
         if (!themeInstance.save(flush: true)) {
             render(view: "edit", model: [themeInstance: themeInstance, imagesPath: imagesPath, images: imagesDirectory.listFiles(), imageMaxSize: fileService.imagesMaxSize])
             return
@@ -170,4 +194,6 @@ class ThemeController {
 		searchableService.unindex()
 		render("unindexAll done")
 	}
+	
+
 }

@@ -63,6 +63,13 @@
 	<g:hiddenField id="colorsId" name="colorsId" value=""/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: themeInstance, field: 'primaryImage', 'error')} required">
+	<g:uploadForm action="upload">
+        <input type="file" name="primaryImage" />
+        <input type="submit" />
+    </g:uploadForm>
+</div>
+
 <script>
 	$(document).ready(function() {
 		$('#colorMoveRight').click(function() {
