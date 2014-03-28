@@ -28,7 +28,7 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form method="post" enctype="multipart/form-data" action="update">
+			<g:uploadForm method="post" enctype="multipart/form-data" action="update">
 				<g:hiddenField name="id" value="${themeInstance?.id}" />
 				<g:hiddenField name="version" value="${themeInstance?.version}" />
 				<fieldset class="form">
@@ -50,7 +50,7 @@
 					<g:actionSubmit id="save" class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" formnovalidate="" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
-			</g:form>
+			</g:uploadForm>
 		</div>
 	</body>
 </html>

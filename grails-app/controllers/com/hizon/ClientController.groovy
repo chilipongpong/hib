@@ -5,6 +5,7 @@ import org.springframework.dao.DataIntegrityViolationException
 class ClientController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+	def fileService
 	def springSecurityService
 
     def index() {
@@ -136,5 +137,38 @@ class ClientController {
 		
 		[clientId: loggedInClient.id]
 		
+	}
+	
+	def themesGallery (){
+		def activeThemesCriteria = Theme.createCriteria()
+		def activeThemes = activeThemesCriteria.list {
+			eq("status", Status.ACTIVE)
+		}
+		[activeThemes: activeThemes, activeThemesTotal: activeThemes.size()]
+				
+	}
+	
+	def displayImage() {
+		File image = new File(fileService.imagesRootPath + File.separator + 'theme' + File.separator + params.themeId + File.separator + params.img)
+		if(!image.exists()) {
+			response.status = 404
+		} else {
+			response.setContentType("image/jpeg")
+			OutputStream out = response.getOutputStream();
+			out.write(image.bytes);
+			out.close();
+		}
+	}
+	
+	def viewTheme (long id){
+		def themeInstance = Theme.get(id)
+		if (!themeInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'theme.label', default: 'Theme'), id])
+			redirect(action: "list")
+			
+		}
+		
+		def imagesDirectory = new File(fileService.imagesRootPath + File.separator + 'theme' + File.separator + themeInstance.id)
+		[themeInstance: themeInstance, images: imagesDirectory.listFiles()]
 	}
 }

@@ -45,8 +45,8 @@ class ThemeController {
 			def webRootDir = servletContext.getRealPath("/")
 			def directory = new File(webRootDir, "/uploaded-files")
 			directory.mkdirs()
-			primaryImage.transferTo(new File(directory, primaryImage.originalFilename))
-			themeInstance.primaryImage = primaryImage.originalFilename
+			primaryImage.transferTo(new File(directory, themeInstance.name + "-" + primaryImage.originalFilename))
+			themeInstance.primaryImage = themeInstance.name + "-" + primaryImage.originalFilename
 		}
 		
         if (!themeInstance.save(flush: true)) {
@@ -136,8 +136,8 @@ class ThemeController {
 			def webRootDir = servletContext.getRealPath("/")
 			def directory = new File(webRootDir, "/uploaded-files")
 			directory.mkdirs()
-			primaryImage.transferTo(new File(directory, primaryImage.originalFilename))
-			themeInstance.primaryImage = primaryImage.originalFilename
+			primaryImage.transferTo(new File(directory, themeInstance.name + "-" + primaryImage.originalFilename))
+			themeInstance.primaryImage = themeInstance.name + "-" + primaryImage.originalFilename
 		}
 		
         if (!themeInstance.save(flush: true)) {

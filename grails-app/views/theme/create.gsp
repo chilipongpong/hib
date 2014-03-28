@@ -27,26 +27,15 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form action="save" enctype="multipart/form-data" >
+			<g:uploadForm action="save" enctype="multipart/form-data" >
 				<fieldset class="form">
 					<g:render template="form"/>
-					<div class="fieldcontain ${hasErrors(bean: themeInstance, field: 'primaryImage', 'error')}">
-						<label for="status" style="margin-top: 1em">
-							<g:message code="theme.primaryImage.label" default="Primary Image" />
-						</label>
-						<uploadr:add name="uploadrTemp1" path="${primaryImagePath}" maxVisible="8" unsupported="/my/controller/action" allowedExtensions="gif,png,jpg,jpeg,GIF,PNG,JPG,JPEG" viewable="false" downloadable="false" maxSize="${imageMaxSize}" >
-							<g:each in="${primaryImages}" var="primaryImage">
-							    <uploadr:file name="${primaryImage.name}">
-							        <uploadr:fileSize>${primaryImage.size()}</uploadr:fileSize>
-							    </uploadr:file>
-							</g:each>
-						</uploadr:add>
-					</div>
+					
 					<div class="fieldcontain ${hasErrors(bean: themeInstance, field: 'images', 'error')}">
 						<label for="status" style="margin-top: 1em">
 							<g:message code="theme.images.label" default="Images" />
 						</label>
-						<uploadr:add name="uploadrTemp2" path="${imagesPath}" maxVisible="8" unsupported="/my/controller/action" allowedExtensions="gif,png,jpg,jpeg,GIF,PNG,JPG,JPEG" viewable="false" downloadable="false" maxSize="${imageMaxSize}" >
+						<uploadr:add name="uploadrTemp" path="${imagesPath}" maxVisible="8" unsupported="/my/controller/action" allowedExtensions="gif,png,jpg,jpeg,GIF,PNG,JPG,JPEG" viewable="false" downloadable="false" maxSize="${imageMaxSize}" >
 							<g:each in="${images}" var="image">
 							    <uploadr:file name="${image.name}">
 							        <uploadr:fileSize>${image.size()}</uploadr:fileSize>
@@ -56,9 +45,9 @@
 					</div>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton id="save" name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<g:submitButton id="save" name="create" class="save" type="submit" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 				</fieldset>
-			</g:form>
+			</g:uploadForm>
 		</div>
 	</body>
 </html>

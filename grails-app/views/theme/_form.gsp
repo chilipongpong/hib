@@ -64,10 +64,11 @@
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: themeInstance, field: 'primaryImage', 'error')} required">
-	<g:uploadForm action="upload">
+<label for="primaryImage">
+		<g:message code="theme.primaryImage.label" default="Primary Image" />
+		<span class="required-indicator">*</span>
+	</label>
         <input type="file" name="primaryImage" />
-        <input type="submit" />
-    </g:uploadForm>
 </div>
 
 <script>
