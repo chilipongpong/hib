@@ -7,6 +7,7 @@ class ClientController {
 
 	def fileService
 	def springSecurityService
+	def securityService
 
     def index() {
         redirect(action: "list", params: params)
