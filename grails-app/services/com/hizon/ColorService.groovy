@@ -7,7 +7,8 @@ class ColorService {
 		Color result = null
 		Theme theme = themeService.getRandomThemeContainingColors(colors)
 		if (theme != null) {
-			def themeColors = theme.colors
+			List<Color> themeColors = []
+			themeColors.addAll(0, theme.colors)
 			for (Color color: colors) {
 				themeColors.remove(color)
 			}

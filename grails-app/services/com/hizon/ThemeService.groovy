@@ -58,11 +58,9 @@ class ThemeService {
 		List<Theme> themes = Theme.findAll()
 		List<Theme> result = []
 		result.addAll(0, themes)
-		if(colors.size() > 0) {
-			for (Theme theme: themes) {
-				if (theme.colors.size() == colors.size() || !containsAllColors(theme.colors, colors)) {
-					result.remove(theme)
-				}
+		for (Theme theme: themes) {
+			if (theme.colors.size() == colors.size() || !containsAllColors(theme.colors, colors)) {
+				result.remove(theme)
 			}
 		}
 		return result
