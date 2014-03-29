@@ -14,10 +14,7 @@
 			</ul>
 		</div>
 		<div id="choose-colors" class="content scaffold-show" role="main">
-			<g:link uri="/inspirationBook/chooseColors">Choose Colors</g:link>
-			<g:link uri="/inspirationBook/chooseTheme">Choose Theme</g:link>
-			<g:link uri="/inspirationBook/indicateSuppliers">Indicate Suppliers</g:link>
-			
+			<g:render template="nav"/>
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>

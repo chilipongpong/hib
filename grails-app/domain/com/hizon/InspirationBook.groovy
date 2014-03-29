@@ -14,7 +14,7 @@ class InspirationBook {
 	boolean hasMobileBar
 	boolean hasVenue
 	
-	static hasMany = [colors: Color]
+	static hasMany = [colors: Color, appetizers: MenuItem, soups: MenuItem]
 	
     static constraints = {
 		client blank:false
@@ -29,6 +29,5 @@ class InspirationBook {
 		hasPhotoBooth nullable:true
 		hasMobileBar nullable:true
 		hasVenue nullable:true
-		colors minSize: 1
     }
 }

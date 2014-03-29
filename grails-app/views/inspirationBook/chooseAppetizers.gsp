@@ -6,6 +6,31 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'inspirationBook.label', default: 'Inspiration Book')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
+		<script>
+			$(document).ready(function() {
+				$(".random").click(function() {
+					$("#errorRandom").html("")
+					
+					var id = $(this).attr('id')
+					var num = id.substring(id.length - 1, id.length)
+					var data = {color1 : $("#color1").val(), color2 : $("#color2").val(), color3 : $("#color3").val()};
+
+					$.ajax({
+						url: 'getRandomColor',
+						data: data,
+						success: function(data) {
+							if (data.color == null) {
+								$("#errorRandom").html("No available theme for selected colors.")
+							}
+							$("#color" + num).val(data.color)
+						},
+						error: function(request, status, error) {
+							$("#errorRandom").html("Getting random color encountered a problem. Pleast try again later.")
+						}
+					});
+				});
+			});
+		</script>
 	</head>
 	<body>
 		<div class="nav" role="navigation">
@@ -27,15 +52,17 @@
 			</ul>
 			</g:hasErrors>
 			
-			<g:form action="saveTheme">
+			<g:form action="saveAppetizers">
 				<g:hiddenField name="client.id" value="${inspirationBookInstance?.client?.id}" />
 				<g:hiddenField name="id" value="${inspirationBookInstance?.id}" />
 				<g:hiddenField name="version" value="${inspirationBookInstance?.version}" />
-				<div class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'theme', 'error')} ">
+				<div class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'appetizers', 'error')} ">
+					<div id="errorRandom"></div>
 					<label>
-						<g:message code="inspirationBook.theme.label" default="Theme" />
+						<g:message code="inspirationBook.appertizer.label" default="Appetizer" />
 					</label>
-					<g:select name="theme" from="${themes}" optionKey="id" value="${theme}" noSelection="['':'-Choose a theme-']"/>
+					<g:select name="appetizer1" from="${com.hizon.MenuItem.listAppetizers()}" optionKey="id" value="${appetizer1}" noSelection="['':'-Choose an appetizer-']"/>
+					<g:select name="appetizer2" from="${com.hizon.MenuItem.listAppetizers()}" optionKey="id" value="${appetizer2}" noSelection="['':'-Choose an appetizer-']"/>
 				</div>
 				<fieldset class="buttons">
 					<fieldset class="buttons">

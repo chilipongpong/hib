@@ -109,13 +109,42 @@ class InspirationBookController {
 			return
 		}
 		flash.message = "Number of guests and sponsors saved"
-		redirect(action: "indicateSuppliers")
+		redirect(action: "chooseAppetizers")
 	}
 	
-	private Client getClient() {
-		User loggedInUser = User.get(springSecurityService.principal.id)
-		Client client = clientService.getClient(loggedInUser);
-		return client
+	def chooseAppetizers() {
+		Client client = getClient()
+		if (client == null) {
+			flash.message = "Only clients can create their inspiartion book"
+			redirect(action: "index", controller: "client")
+			return
+		}
+		params."client.id" = client.id
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		
+		[inspirationBookInstance: inspirationBookInstance]
+	}
+	
+	def saveAppetizers() {
+		def inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
+		inspirationBookInstance.appetizers = new HashSet<MenuItem>();
+
+		def appetizers = [params.appetizer1, params.appetizer2]
+		for (String appetizer: appetizers) {
+			if (appetizer.isLong()) {
+				inspirationBookInstance.appetizers.add(MenuItem.get(appetizer))
+			}
+		}
+		
+		if (!inspirationBookInstance.save(flush: true)) {
+			render(view: "chooseAppetizers", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			return
+		}
+		flash.message = "Chosen appetizers saved"
+		redirect(action: "indicateSuppliers")
 	}
 	
 	def indicateSuppliers() {
@@ -167,5 +196,11 @@ class InspirationBookController {
 		render(contentType: 'text/json') {[
 			'color': randomColor?.id
 		]}
+	}
+	
+	private Client getClient() {
+		User loggedInUser = User.get(springSecurityService.principal.id)
+		Client client = clientService.getClient(loggedInUser);
+		return client
 	}
 }
