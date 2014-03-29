@@ -12,6 +12,7 @@ class ThemeServiceTests {
 	Color blue
 	Color yellow
 	Color orange
+	
 	Level level
 	
 	Set<Color> rgb
@@ -78,5 +79,27 @@ class ThemeServiceTests {
 		List<Theme> themes = themeService.getThemesBasedOnColor(ryo)
 		
 		assertTrue(ryoTheme.equals(themes.get(0)))
+	}
+	
+	@Test
+	void getThemesContainingColors() {
+		List<Theme> themes = themeService.getThemesContainingColors(yo.asList())
+		
+		assertTrue(themes.contains(ryoTheme))
+		assertEquals(1, themes.size())
+	}
+	
+	@Test
+	void randomColor() {
+		Theme theme = themeService.getRandomThemeContainingColors(yo.asList())
+		
+		assertNotNull(theme)
+	}
+	
+	@Test
+	void randomColorNone() {
+		Theme theme = themeService.getRandomThemeContainingColors(ryo.asList())
+		
+		assertNull(theme)
 	}
 }

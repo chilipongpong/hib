@@ -1,7 +1,8 @@
 package com.hizon
 
-class ThemeService {
+import java.util.List;
 
+class ThemeService {
 	def getThemesForInspirationBook(InspirationBook book) {
 		Set colors = new HashSet<Color>(book.colors.asList())
 		return getThemesBasedOnColor(colors)
@@ -50,5 +51,39 @@ class ThemeService {
 			sortedMap.put(entry.getKey(), entry.getValue())
 		}
 		return sortedMap
+	}
+	
+	
+	def getThemesContainingColors(List<Color> colors) {
+		List<Theme> themes = Theme.findAll()
+		List<Theme> result = []
+		result.addAll(0, themes)
+		for (Theme theme: themes) {
+			if (theme.colors.size() == colors.size() || !containsAllColors(theme.colors, colors)) {
+				result.remove(theme)
+			}
+		}
+		return result
+	}
+	
+	private def containsAllColors(Set<Color> colors1, List<Color> colors2) {
+		boolean result = true;
+		for (Color color: colors2) {
+			if(!colors1.contains(color)) {
+				result = false
+			}
+		}
+		return result
+	}
+	
+	def getRandomThemeContainingColors(List<Color> colors) {
+		Theme theme = null
+		List<Theme> themes = getThemesContainingColors(colors)
+		
+		if (themes.size() > 0) {
+			int randomNumber = new Random().nextInt(themes.size())
+			theme = themes.get(randomNumber)
+		}
+		return theme
 	}
 }

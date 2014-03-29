@@ -4,6 +4,7 @@ class InspirationBookController {
 	def springSecurityService
 	def clientService
 	def themeService
+	def colorService
 	
     def index() { 
 		redirect(action: "chooseColors", params: params)
@@ -150,5 +151,21 @@ class InspirationBookController {
 		}
 		flash.message = "Number of guests and sponsors saved"
 		redirect(action: "indicateSuppliers")
+	}
+	
+	def getRandomColor(params) {
+		def colors = []
+		for (int i=1; i<=3; i++) {
+			if(params.("color" + i)) {
+				Color color = Color.get(params.("color" + i))
+				if (color != null) {
+					colors.add(color)
+				}
+			}
+		}
+		Color randomColor = colorService.getRandomColorFromThemesContainingColors(colors)
+		render(contentType: 'text/json') {[
+			'color': randomColor?.id
+		]}
 	}
 }
