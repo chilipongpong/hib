@@ -19,15 +19,15 @@ class InspirationBookController {
 		}
 		params."client.id" = client.id
 		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
-		List<Color> colors = []
+		def colors = [:]
 		if (inspirationBookInstance) {
 			for (int i = 0; i < inspirationBookInstance.colors.size(); i++) {
-				colors.add(inspirationBookInstance.colors.asList().get(i))
+				colors.((i + 1) + "") = inspirationBookInstance.colors.asList().get(i).id
 			}
 		} else {
 			inspirationBookInstance = new InspirationBook(params)
 		}
-		[inspirationBookInstance: inspirationBookInstance, colors: colors]
+		[inspirationBookInstance: inspirationBookInstance, color1: colors."1", color2: colors."2", color3: colors."3"]
 	}
 	
 	def saveColors() {
@@ -144,6 +144,321 @@ class InspirationBookController {
 			return
 		}
 		flash.message = "Chosen appetizers saved"
+		redirect(action: "choosePastas")
+	}
+	
+	def chooseSoups() {
+		Client client = getClient()
+		if (client == null) {
+			flash.message = "Only clients can create their inspiartion book"
+			redirect(action: "index", controller: "client")
+			return
+		}
+		params."client.id" = client.id
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		
+		[inspirationBookInstance: inspirationBookInstance]
+	}
+	
+	def saveSoups() {
+		def inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
+		inspirationBookInstance.soups = new HashSet<MenuItem>();
+
+		def soups = [params.soup1, params.soup2]
+		for (String soup: soups) {
+			if (soup.isLong()) {
+				inspirationBookInstance.soups.add(MenuItem.get(soup))
+			}
+		}
+		
+		if (!inspirationBookInstance.save(flush: true)) {
+			render(view: "chooseSoups", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			return
+		}
+		flash.message = "Chosen soups saved"
+		redirect(action: "chooseSalads")
+	}
+	
+	def chooseSalads() {
+		Client client = getClient()
+		if (client == null) {
+			flash.message = "Only clients can create their inspiartion book"
+			redirect(action: "index", controller: "client")
+			return
+		}
+		params."client.id" = client.id
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		
+		[inspirationBookInstance: inspirationBookInstance]
+	}
+	
+	def saveSalads() {
+		def inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
+		inspirationBookInstance.salads = new HashSet<MenuItem>();
+
+		def salads = [params.salad1, params.salad2]
+		for (String salad: salads) {
+			if (salad.isLong()) {
+				inspirationBookInstance.salads.add(MenuItem.get(salad))
+			}
+		}
+		
+		if (!inspirationBookInstance.save(flush: true)) {
+			render(view: "chooseAppetizers", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			return
+		}
+		flash.message = "Chosen salads saved"
+		redirect(action: "choosePastas")
+	}
+	
+	def choosePastas() {
+		Client client = getClient()
+		if (client == null) {
+			flash.message = "Only clients can create their inspiartion book"
+			redirect(action: "index", controller: "client")
+			return
+		}
+		params."client.id" = client.id
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		
+		[inspirationBookInstance: inspirationBookInstance]
+	}
+	
+	def savePastas() {
+		def inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
+		inspirationBookInstance.pastas = new HashSet<MenuItem>();
+
+		def pastas = [params.pasta1, params.pasta2]
+		for (String pasta: pastas) {
+			if (pasta.isLong()) {
+				inspirationBookInstance.pastas.add(MenuItem.get(pasta))
+			}
+		}
+		
+		if (!inspirationBookInstance.save(flush: true)) {
+			render(view: "choosePastas", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			return
+		}
+		flash.message = "Chosen pastas saved"
+		redirect(action: "chooseBeefs")
+	}
+	
+	def chooseBeefs() {
+		Client client = getClient()
+		if (client == null) {
+			flash.message = "Only clients can create their inspiartion book"
+			redirect(action: "index", controller: "client")
+			return
+		}
+		params."client.id" = client.id
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		
+		[inspirationBookInstance: inspirationBookInstance]
+	}
+	
+	def saveBeefs() {
+		def inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
+		inspirationBookInstance.beefs = new HashSet<MenuItem>();
+
+		def beefs = [params.beef1, params.beef2]
+		for (String beef: beefs) {
+			if (beef.isLong()) {
+				inspirationBookInstance.beefs.add(MenuItem.get(beef))
+			}
+		}
+		
+		if (!inspirationBookInstance.save(flush: true)) {
+			render(view: "chooseBeefs", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			return
+		}
+		flash.message = "Chosen beefs saved"
+		redirect(action: "choosePorks")
+	}
+	
+	def choosePorks() {
+		Client client = getClient()
+		if (client == null) {
+			flash.message = "Only clients can create their inspiartion book"
+			redirect(action: "index", controller: "client")
+			return
+		}
+		params."client.id" = client.id
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		
+		[inspirationBookInstance: inspirationBookInstance]
+	}
+	
+	def savePorks() {
+		def inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
+		inspirationBookInstance.porks = new HashSet<MenuItem>();
+
+		def porks = [params.pork1, params.pork2]
+		for (String pork: porks) {
+			if (pork.isLong()) {
+				inspirationBookInstance.porks.add(MenuItem.get(pork))
+			}
+		}
+		
+		if (!inspirationBookInstance.save(flush: true)) {
+			render(view: "choosePorks", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			return
+		}
+		flash.message = "Chosen porks saved"
+		redirect(action: "chooseChickens")
+	}
+	
+	def chooseChickens() {
+		Client client = getClient()
+		if (client == null) {
+			flash.message = "Only clients can create their inspiartion book"
+			redirect(action: "index", controller: "client")
+			return
+		}
+		params."client.id" = client.id
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		
+		[inspirationBookInstance: inspirationBookInstance]
+	}
+	
+	def saveChickens() {
+		def inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
+		inspirationBookInstance.chickens = new HashSet<MenuItem>();
+
+		def chickens = [params.chicken1, params.chicken2]
+		for (String chicken: chickens) {
+			if (chicken.isLong()) {
+				inspirationBookInstance.chickens.add(MenuItem.get(chicken))
+			}
+		}
+		
+		if (!inspirationBookInstance.save(flush: true)) {
+			render(view: "chooseChickens", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			return
+		}
+		flash.message = "Chosen chickens saved"
+		redirect(action: "chooseSeafoods")
+	}
+	
+	def chooseSeafoods() {
+		Client client = getClient()
+		if (client == null) {
+			flash.message = "Only clients can create their inspiartion book"
+			redirect(action: "index", controller: "client")
+			return
+		}
+		params."client.id" = client.id
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		
+		[inspirationBookInstance: inspirationBookInstance]
+	}
+	
+	def saveSeafoods() {
+		def inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
+		inspirationBookInstance.seafoods = new HashSet<MenuItem>();
+
+		def seafoods = [params.seafood1, params.seafood2]
+		for (String seafood: seafoods) {
+			if (seafood.isLong()) {
+				inspirationBookInstance.seafoods.add(MenuItem.get(seafood))
+			}
+		}
+		
+		if (!inspirationBookInstance.save(flush: true)) {
+			render(view: "chooseSeafoods", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			return
+		}
+		flash.message = "Chosen seafoods saved"
+		redirect(action: "chooseVegetables")
+	}
+	
+	def chooseVegetables() {
+		Client client = getClient()
+		if (client == null) {
+			flash.message = "Only clients can create their inspiartion book"
+			redirect(action: "index", controller: "client")
+			return
+		}
+		params."client.id" = client.id
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		
+		[inspirationBookInstance: inspirationBookInstance]
+	}
+	
+	def saveVegetables() {
+		def inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
+		inspirationBookInstance.vegetables = new HashSet<MenuItem>();
+
+		def vegetables = [params.vegetable1, params.vegetable2]
+		for (String vegetable: vegetables) {
+			if (vegetable.isLong()) {
+				inspirationBookInstance.vegetables.add(MenuItem.get(vegetable))
+			}
+		}
+		
+		if (!inspirationBookInstance.save(flush: true)) {
+			render(view: "chooseVegetables", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			return
+		}
+		flash.message = "Chosen vegetables saved"
+		redirect(action: "chooseDesserts")
+	}
+	
+	def chooseDesserts() {
+		Client client = getClient()
+		if (client == null) {
+			flash.message = "Only clients can create their inspiartion book"
+			redirect(action: "index", controller: "client")
+			return
+		}
+		params."client.id" = client.id
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		
+		[inspirationBookInstance: inspirationBookInstance]
+	}
+	
+	def saveDesserts() {
+		def inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
+		inspirationBookInstance.desserts = new HashSet<MenuItem>();
+
+		def desserts = [params.dessert1, params.dessert2]
+		for (String dessert: desserts) {
+			if (dessert.isLong()) {
+				inspirationBookInstance.desserts.add(MenuItem.get(dessert))
+			}
+		}
+		
+		if (!inspirationBookInstance.save(flush: true)) {
+			render(view: "chooseDesserts", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			return
+		}
+		flash.message = "Chosen desserts saved"
 		redirect(action: "indicateSuppliers")
 	}
 	

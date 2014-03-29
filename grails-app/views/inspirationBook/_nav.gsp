@@ -2,4 +2,13 @@
 <g:link uri="/inspirationBook/chooseTheme">Choose Theme</g:link>
 <g:link uri="/inspirationBook/indicateGuests">Indicate Guests</g:link>
 <g:link uri="/inspirationBook/chooseAppetizers">Choose Appetizers</g:link>
+<g:link uri="/inspirationBook/chooseSoups">Choose Soups</g:link>
+<g:link uri="/inspirationBook/chooseSalads">Choose Salads</g:link>
+<g:link uri="/inspirationBook/choosePastas">Choose Pastas</g:link>
+<g:link uri="/inspirationBook/chooseBeefs">Choose Beefs</g:link>
+<g:link uri="/inspirationBook/choosePorks">Choose Porks</g:link>
+<g:link uri="/inspirationBook/chooseChickens">Choose Chickens</g:link>
+<g:link uri="/inspirationBook/chooseSeafoods">Choose Seafoods</g:link>
+<g:link uri="/inspirationBook/chooseVegetables">Choose Vegetables</g:link>
+<g:link uri="/inspirationBook/chooseDesserts">Choose Desserts</g:link>
 <g:link uri="/inspirationBook/indicateSuppliers">Indicate Suppliers</g:link>

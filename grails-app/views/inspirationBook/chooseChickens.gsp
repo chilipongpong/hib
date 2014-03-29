@@ -27,17 +27,17 @@
 			</ul>
 			</g:hasErrors>
 			
-			<g:form action="saveAppetizers">
+			<g:form action="saveChickens">
 				<g:hiddenField name="client.id" value="${inspirationBookInstance?.client?.id}" />
 				<g:hiddenField name="id" value="${inspirationBookInstance?.id}" />
 				<g:hiddenField name="version" value="${inspirationBookInstance?.version}" />
-				<div class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'appetizers', 'error')} ">
+				<div class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'chickens', 'error')} ">
 					<div id="errorRandom"></div>
 					<label>
-						<g:message code="inspirationBook.appertizer.label" default="Appetizer" />
+						<g:message code="inspirationBook.appertizer.label" default="Chicken" />
 					</label>
-					<g:select name="appetizer1" from="${com.hizon.MenuItem.listAppetizers()}" optionKey="id" value="${appetizer1}" noSelection="['':'-Choose an appetizer-']"/>
-					<g:select name="appetizer2" from="${com.hizon.MenuItem.listAppetizers()}" optionKey="id" value="${appetizer2}" noSelection="['':'-Choose an appetizer-']"/>
+					<g:select name="chicken1" from="${com.hizon.MenuItem.listChickens()}" optionKey="id" value="${chicken1}" noSelection="['':'-Choose a chicken-']"/>
+					<g:select name="chicken2" from="${com.hizon.MenuItem.listChickens()}" optionKey="id" value="${chicken2}" noSelection="['':'-Choose a chicken-']"/>
 				</div>
 				<fieldset class="buttons">
 					<fieldset class="buttons">
