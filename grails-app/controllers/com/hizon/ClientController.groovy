@@ -172,4 +172,12 @@ class ClientController {
 		def imagesDirectory = new File(fileService.imagesRootPath + File.separator + 'theme' + File.separator + themeInstance.id)
 		[themeInstance: themeInstance, images: imagesDirectory.listFiles()]
 	}
+	
+	def menu(){
+		def activeMenuCategoriesCriteria = MenuCategory.createCriteria()
+		def activeMenuCategories = activeMenuCategoriesCriteria.list {
+			eq("status", Status.ACTIVE)
+		}
+		[activeMenuCategories: activeMenuCategories, activeMenuCategoriesTotal: activeMenuCategories.size()]
+	}
 }
