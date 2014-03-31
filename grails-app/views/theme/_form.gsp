@@ -72,13 +72,15 @@
 	<input type="file" name="newPrimaryImage" />
 </div>
 
+<g:if test="${themeInstance?.primaryImage}">
 <div class="fieldcontain ${hasErrors(bean: themeInstance, field: 'primaryImage', 'error')} ">
-	<label for="description">
+	<label for="primaryImage">
 		<g:message code="theme.originalPrimaryImage.label" default="Original Primary Image" />
 		
 	</label>
 	<span class="property-value" aria-labelledby="status-label"><g:img dir="/uploaded-files" file="${themeInstance.primaryImage}" width="400" /></span>
 </div>
+</g:if>
 
 <script>
 	$(document).ready(function() {

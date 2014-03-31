@@ -40,7 +40,7 @@ class ThemeController {
 		
 		themeInstance.id = params.id
 		// primary image saving
-		def CommonsMultipartFile primaryImage = request.getFile('primaryImage')
+		def CommonsMultipartFile primaryImage = request.getFile('newPrimaryImage')
 		if(!primaryImage.isEmpty()){
 			def webRootDir = servletContext.getRealPath("/")
 			def directory = new File(webRootDir, "/uploaded-files")
