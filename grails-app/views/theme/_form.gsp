@@ -63,12 +63,21 @@
 	<g:hiddenField id="colorsId" name="colorsId" value=""/>
 </div>
 
+
 <div class="fieldcontain ${hasErrors(bean: themeInstance, field: 'primaryImage', 'error')} required">
 <label for="primaryImage">
 		<g:message code="theme.primaryImage.label" default="Primary Image" />
 		<span class="required-indicator">*</span>
 	</label>
-        <input type="file" name="primaryImage" />
+	<input type="file" name="newPrimaryImage" />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: themeInstance, field: 'primaryImage', 'error')} ">
+	<label for="description">
+		<g:message code="theme.originalPrimaryImage.label" default="Original Primary Image" />
+		
+	</label>
+	<span class="property-value" aria-labelledby="status-label"><g:img dir="/uploaded-files" file="${themeInstance.primaryImage}" width="400" /></span>
 </div>
 
 <script>
