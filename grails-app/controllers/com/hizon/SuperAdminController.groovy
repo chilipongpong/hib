@@ -107,10 +107,7 @@ class SuperAdminController {
     }
 	
 	def dashboard(long id){
-		def user = (User) springSecurityService.getCurrentUser()
-		def loggedInSuperAdmin = SuperAdmin.findByUser(user)
-		
-		[superAdminId: loggedInSuperAdmin.id]
+		return
 		
 	}
 }
