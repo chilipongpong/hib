@@ -49,6 +49,15 @@
 					
 				</li>
 				</g:if>
+				
+				<g:if test="${menuCategoryInstance?.image}">
+				<li class="fieldcontain">
+					<span id="image-label" class="property-label"><g:message code="menuCategory.image.label" default="Image" /></span>
+					
+					<span class="property-value" aria-labelledby="image-label"><g:img dir="/uploaded-files" file="${menuCategoryInstance.image}" width="400" alt=""/></span>
+					
+				</li>
+				</g:if>
 			
 			</ol>
 			<g:form>

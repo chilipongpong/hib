@@ -26,3 +26,20 @@
 	<g:select name="status" from="${com.hizon.Status?.values().name}" keys="${com.hizon.Status.values()*.name()}" required="" value="${menuCategoryInstance?.status?.name()}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: menuCategoryInstance, field: 'image', 'error')} required">
+<label for="image">
+		<g:message code="menuCategory.image.label" default="Image" />
+		<span class="required-indicator">*</span>
+	</label>
+	<input type="file" name="newImage" />
+</div>
+
+<g:if test="${menuCategoryInstance?.image}">
+<div class="fieldcontain ${hasErrors(bean: menuCategoryInstance, field: 'image', 'error')} ">
+	<label for="image">
+		<g:message code="menuCategory.originalImage.label" default="Original Image" />
+		
+	</label>
+	<span class="property-value" aria-labelledby="image-label"><g:img dir="/uploaded-files" file="${menuCategoryInstance?.image}" width="400" /></span>
+</div>
+</g:if>

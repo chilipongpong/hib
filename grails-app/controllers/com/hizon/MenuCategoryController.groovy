@@ -2,6 +2,7 @@ package com.hizon
 
 import org.springframework.dao.DataIntegrityViolationException
 import org.compass.core.engine.SearchEngineQueryParseException
+import org.springframework.web.multipart.commons.CommonsMultipartFile
 
 class MenuCategoryController {
 
@@ -25,6 +26,17 @@ class MenuCategoryController {
 
     def save() {
         def menuCategoryInstance = new MenuCategory(params)
+		
+		menuCategoryInstance.id = params.id
+		//menuCategory Image saving
+		def CommonsMultipartFile image = request.getFile("newImage")
+		if(!image.isEmpty()){
+			def webRootDir = servletContext.getRealPath("/")
+			def directory = new File(webRootDir, "/uploaded-files")
+			directory.mkdirs()
+			image.transferTo(new File(directory, menuCategoryInstance.name + "-" + image.originalFilename))
+			menuCategoryInstance.image = menuCategoryInstance.name + "-" + image.originalFilename
+		}
         if (!menuCategoryInstance.save(flush: true)) {
             render(view: "create", model: [menuCategoryInstance: menuCategoryInstance])
             return
@@ -75,6 +87,14 @@ class MenuCategoryController {
         }
 
         menuCategoryInstance.properties = params
+		def CommonsMultipartFile image = request.getFile('newImage')
+		if(!image.isEmpty()){
+			def webRootDir = servletContext.getRealPath("/")
+			def directory = new File(webRootDir, "/uploaded-files")
+			directory.mkdirs()
+			image.transferTo(new File(directory, menuCategoryInstance.name + "-" + image.originalFilename))
+			menuCategoryInstance.image = menuCategoryInstance.name + "-" + image.originalFilename
+		}
 
         if (!menuCategoryInstance.save(flush: true)) {
             render(view: "edit", model: [menuCategoryInstance: menuCategoryInstance])
