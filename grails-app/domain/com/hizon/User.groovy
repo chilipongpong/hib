@@ -67,4 +67,16 @@ class User {
 		this.authorities.contains(Role.findByAuthority('ROLE_PLANNER_SUPERVISOR'))
 	}
 	
+	boolean isUserAdmin() {
+		this.authorities.contains(Role.findByAuthority('ROLE_USER_ADMIN'))
+	}
+	
+	boolean isContentManager() {
+		this.authorities.contains(Role.findByAuthority('ROLE_CONTENT_MANAGER'))
+	}
+	
+	boolean isSuperAdmin() {
+		this.authorities.contains(Role.findByAuthority('ROLE_SUPER_ADMIN'))
+	}
+	
 }

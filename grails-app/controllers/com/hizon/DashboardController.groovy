@@ -15,12 +15,24 @@ class DashboardController {
 			redirect (action: "dashboard", controller: "planner")
 		}
 		 
-		if (user.isClient()){
+		else if (user.isClient()){
 			redirect (action: "dashboard", controller: "client")
 		}
 		
-		if (user.isPlannerSupervisor()){
+		else if (user.isPlannerSupervisor()){
 			redirect (action: "dashboard", controller: "plannerSupervisor")
+		}
+		
+		else if (user.isUserAdmin()){
+			redirect (action: "dashboard", controller: "userAdmin")
+		}
+		
+		else if (user.isSuperAdmin()){
+			redirect (action: "dashboard", controller: "superAdmin")
+		}
+		
+		else if (user.isContentManager()){
+			redirect (action: "dashboard", controller: "contentManager")
 		}
 		
 	}
