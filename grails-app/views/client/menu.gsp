@@ -17,14 +17,10 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<g:form action="search" method="get" class="search">
-				<g:textField name="q" value="${params.q}" />
-				<g:submitButton name="search" />
-			</g:form>
 			<g:each in="${activeMenuCategories}" var="activeMenuCategory">
 				<div>
 				<h3>${activeMenuCategory.name}</h3>
-				<g:link controller="client" action="viewMenuCategory" id="${activeMenuCategory.id}"><g:img dir="/uploaded-files" file="${activeMenuCategory.image}" width="400px" /></g:link>
+				<g:link controller="client" action="viewMenuCategory" id="${activeMenuCategory.id}"><g:img dir="/uploaded-files" file="${activeMenuCategory.image}" width="280px" /></g:link>
 				</div>
 			</g:each>
 			<div class="pagination">

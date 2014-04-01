@@ -17,15 +17,11 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<g:form action="search" method="get" class="search">
-				<g:textField name="q" value="${params.q}" />
-				<g:submitButton name="search" />
-			</g:form>
 			<g:each in="${activeThemes}" var="activeTheme">
 				<div>
 				<h3>${activeTheme.name}</h3>
 				<h4>${activeTheme.description}</h4>
-				<g:link controller="client" action="viewTheme" id="${activeTheme.id}"><g:img dir="/uploaded-files" file="${activeTheme.primaryImage}" width="400px" /></g:link>
+				<g:link controller="client" action="viewTheme" id="${activeTheme.id}"><g:img dir="/uploaded-files" file="${activeTheme.primaryImage}" width="280px" /></g:link>
 				</div>
 			</g:each>
 			<div class="pagination">
