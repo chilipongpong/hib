@@ -140,6 +140,14 @@ class ClientController {
 		
 	}
 	
+	def myPlanner(long id){
+		def user = (User) springSecurityService.getCurrentUser()
+		def loggedInClient = Client.findByUser(user)
+		
+		[plannerInstance: loggedInClient.planner]
+		
+	}
+	
 	def themesGallery (){
 		def activeThemesCriteria = Theme.createCriteria()
 		def activeThemes = activeThemesCriteria.list {

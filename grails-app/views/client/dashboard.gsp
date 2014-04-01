@@ -19,7 +19,7 @@
 		<g:link action="show" id="${clientId}" controller="client"><img src="../images/btn-profile.png" alt="My Profile"></g:link>
 		<g:link action="themesGallery" controller="client"><img src="../images/btn-themes.png" alt="Themes"></g:link>
 		<g:link action="menu" controller="client"><img src="../images/btn-menu.png" alt="Menu"></g:link>
-		<g:link action="myPlanner" controller="client"><img src="../images/btn-planner.png" alt="My Planner"></g:link>
+		<g:link action="myPlanner" params="${clientId}" controller="client"><img src="../images/btn-planner.png" alt="My Planner"></g:link>
 		<g:link action="inspirationBook" controller="client"><img src="../images/btn-book.png" alt="My Inspiration Book"></g:link>
 		<g:link action="myPackage" controller="client"><img src="../images/btn-package.png" alt="My Package"></g:link>
 		</div>
