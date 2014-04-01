@@ -136,7 +136,7 @@ class ClientController {
 		def user = (User) springSecurityService.getCurrentUser()
 		def loggedInClient = Client.findByUser(user)
 		
-		[clientId: loggedInClient.id]
+		[clientId: loggedInClient.id, firstName: loggedInClient.getUser().getFirstName()]
 		
 	}
 	
