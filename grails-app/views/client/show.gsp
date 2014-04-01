@@ -13,7 +13,12 @@
 		<g:render template="../dashboard/navigation" />
 		
 		<div id="show-client" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+			<sec:ifAnyGranted roles="ROLE_USER_ADMIN, ROLE_SUPER_ADMIN">
+				<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+			</sec:ifAnyGranted>
+			<sec:ifAnyGranted roles="ROLE_CLIENT">
+				<h1><img src="../../images/head-profile.png" alt="My Profile">My Profile</h1>
+			</sec:ifAnyGranted>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -50,25 +55,28 @@
 				</li>
 				</g:if>
 				
-				<g:if test="${clientInstance?.user}">
-				<li class="fieldcontain">
-					<span id="user-label" class="property-label"><g:message code="user.enabled.label" default="Enabled" /></span>
-					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${clientInstance?.user}" field="enabled"/></span>
-				</li>
-				<li class="fieldcontain">
-					<span id="user-label" class="property-label"><g:message code="user.accountExpired.label" default="Account Expired" /></span>
-					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${clientInstance?.user}" field="accountExpired"/></span>
-				</li>
-				<li class="fieldcontain">
-					<span id="user-label" class="property-label"><g:message code="user.accountLocked.label" default="Account Locked" /></span>
-					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${clientInstance?.user}" field="accountLocked"/></span>
-				</li>
-				<li class="fieldcontain">
-					<span id="user-label" class="property-label"><g:message code="user.passwordExpired.label" default="Password Expired" /></span>
-					<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${clientInstance?.user}" field="passwordExpired"/></span>
-				</li>
-				</g:if>
+				<sec:ifAnyGranted roles="ROLE_USER_ADMIN, ROLE_SUPER_ADMIN">
+					<g:if test="${clientInstance?.user}">
+					<li class="fieldcontain">
+						<span id="user-label" class="property-label"><g:message code="user.enabled.label" default="Enabled" /></span>
+						<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${clientInstance?.user}" field="enabled"/></span>
+					</li>
+					<li class="fieldcontain">
+						<span id="user-label" class="property-label"><g:message code="user.accountExpired.label" default="Account Expired" /></span>
+						<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${clientInstance?.user}" field="accountExpired"/></span>
+					</li>
+					<li class="fieldcontain">
+						<span id="user-label" class="property-label"><g:message code="user.accountLocked.label" default="Account Locked" /></span>
+						<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${clientInstance?.user}" field="accountLocked"/></span>
+					</li>
+					<li class="fieldcontain">
+						<span id="user-label" class="property-label"><g:message code="user.passwordExpired.label" default="Password Expired" /></span>
+						<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${clientInstance?.user}" field="passwordExpired"/></span>
+					</li>
+					</g:if>
+				</sec:ifAnyGranted>
 			
+				
 				<g:if test="${clientInstance?.planner}">
 				<li class="fieldcontain">
 					<span id="planner-label" class="property-label"><g:message code="client.planner.label" default="Planner" /></span>
@@ -81,7 +89,9 @@
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${clientInstance?.id}" />
 					<g:link class="edit" action="edit" id="${clientInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<sec:ifAnyGranted roles="ROLE_USER_ADMIN, ROLE_SUPER_ADMIN">
+						<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					</sec:ifAnyGranted>
 				</fieldset>
 			</g:form>
 		</div>
