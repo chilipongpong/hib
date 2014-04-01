@@ -13,7 +13,7 @@
 		<g:render template="../dashboard/navigation" />
 		
 		<div id="list-menuCategory" class="content scaffold-list" role="main">
-			<h1>Menu</h1>
+			<h1><img src="../images/head-menu.png" alt="Menu">Menu</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
