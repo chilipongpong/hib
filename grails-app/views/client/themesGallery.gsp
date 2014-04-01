@@ -13,7 +13,7 @@
 		<g:render template="../dashboard/navigation" />
 		
 		<div id="list-theme" class="content scaffold-list" role="main">
-			<h1>Themes Gallery</h1>
+			<h1><img src="../images/head-themes.png" alt="Themes">Themes Gallery</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -24,6 +24,7 @@
 			<g:each in="${activeThemes}" var="activeTheme">
 				<div>
 				<h3>${activeTheme.name}</h3>
+				<h4>${activeTheme.description}</h4>
 				<g:link controller="client" action="viewTheme" id="${activeTheme.id}"><g:img dir="/uploaded-files" file="${activeTheme.primaryImage}" width="400px" /></g:link>
 				</div>
 			</g:each>
