@@ -15,12 +15,12 @@
 
 	<div>
 		<div>
-				<h2>
+				<h1>
 					${menuCategory.name}
-				</h2>
-				<h3>
+				</h1>
+				<h2>
 					${menuCategory.description}
-				</h3>
+				</h2>
 
 		</div>
 		<g:each in="${menuItems}" var="menuItem">
