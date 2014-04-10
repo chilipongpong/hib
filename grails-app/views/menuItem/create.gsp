@@ -27,16 +27,9 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:uploadForm action="save" >
+			<g:uploadForm action="save" enctype="multipart/form-data" >
 				<fieldset class="form">
 					<g:render template="form"/>
-					<uploadr:add name="uploadrTemp" path="${imagesPath}" maxVisible="8" unsupported="/my/controller/action" allowedExtensions="gif,png,jpg,jpeg,GIF,PNG,JPG,JPEG" viewable="false" downloadable="false" maxSize="${imageMaxSize}" >
-					<g:each in="${images}" var="image">
-					    <uploadr:file name="${image.name}">
-					        <uploadr:fileSize>${image.size()}</uploadr:fileSize>
-					    </uploadr:file>
-					</g:each>
-				</uploadr:add>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

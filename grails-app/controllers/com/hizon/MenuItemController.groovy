@@ -1,8 +1,8 @@
 package com.hizon
 
 import org.springframework.dao.DataIntegrityViolationException
-import org.springframework.web.multipart.commons.CommonsMultipartFile
 import org.compass.core.engine.SearchEngineQueryParseException
+import org.springframework.web.multipart.commons.CommonsMultipartFile
 
 class MenuItemController {
 
@@ -29,14 +29,20 @@ class MenuItemController {
     def save() {
         def menuItemInstance = new MenuItem(params)
 
+		menuItemInstance.id = params.id
+		//add menuItem image
+		def CommonsMultipartFile image = request.getFile('newImage')
+		if(!image.isEmpty()){
+			def webRootDir = servletContext.getRealPath("/")
+			def directory = new File(webRootDir, "/uploaded-files")
+			directory.mkdirs()
+			image.transferTo(new File(directory, menuItemInstance.name + "-" + image.originalFilename))
+			menuItemInstance.image = menuItemInstance.name + "-" + image.originalFilename
+		}
 		if (!menuItemInstance.save(flush: true)) {
-			def imagesDirectory = new File(fileService.imagesTempPath)
-			render(view: "create", model: [menuItemInstance: menuItemInstance, imagesPath: fileService.imagesTempPath, images: imagesDirectory.listFiles(), imageMaxSize: fileService.imagesMaxSize])
+			render(view: "create", model: [menuItemInstance: menuItemInstance])
 			return
 		}
-		fileService.deleteFolder(fileService.imagesRootPath + File.separator + menuItemInstance.id)
-		//move images to its folder
-		fileService.copyFolder(fileService.imagesTempPath, fileService.imagesRootPath + File.separator + 'menuItem' + File.separator + menuItemInstance.id)
 		
 		redirect(action: "show", id: menuItemInstance.id)
     }
@@ -71,10 +77,9 @@ class MenuItemController {
             redirect(action: "list")
             return
         }
+		
+		[menuItemInstance: menuItemInstance]
 
-        def imagesPath = fileService.imagesRootPath + File.separator + 'menuItem' + File.separator + menuItemInstance.id
-		def imagesDirectory = new File(imagesPath)
-        [menuItemInstance: menuItemInstance, imagesPath: imagesPath, images: imagesDirectory.listFiles(), imageMaxSize: fileService.imagesMaxSize]
     }
 
     def update(Long id, Long version) {
@@ -85,8 +90,6 @@ class MenuItemController {
             return
         }
 
-		def imagesPath = fileService.imagesRootPath + File.separator + 'menuItem' + File.separator + menuItemInstance.id
-		def imagesDirectory = new File(imagesPath)
         if (version != null) {
             if (menuItemInstance.version > version) {
                 menuItemInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
@@ -99,14 +102,24 @@ class MenuItemController {
 
         menuItemInstance.properties = params
 
+		//add menuItem image
+		def CommonsMultipartFile image = request.getFile('newImage')
+		if(!image.isEmpty()){
+			def webRootDir = servletContext.getRealPath("/")
+			def directory = new File(webRootDir, "/uploaded-files")
+			directory.mkdirs()
+			image.transferTo(new File(directory, menuItemInstance.name + "-" + image.originalFilename))
+			menuItemInstance.image = menuItemInstance.name + "-" + image.originalFilename
+		}
+		
+		if (!menuItemInstance.save(flush: true)) {
+			render(view: "edit", model: [menuItemInstance: menuItemInstance])
+			return
+		}
 
-        if (!menuItemInstance.save(flush: true)) {
-            render(view: "edit", model: [menuItemInstance: menuItemInstance, imagesPath: imagesPath, images: imagesDirectory.listFiles(), imageMaxSize: fileService.imagesMaxSize])
-            return
-        }
+		flash.message = message(code: 'default.updated.message', args: [message(code: 'menuItem.label', default: 'Menu Item'), menuItemInstance.id])
+		redirect(action: "show", id: menuItemInstance.id)
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'menuItem.label', default: 'MenuItem'), menuItemInstance.id])
-        redirect(action: "show", id: menuItemInstance.id)
     }
 
     def delete(Long id) {

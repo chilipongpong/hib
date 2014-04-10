@@ -5,7 +5,6 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'menuItem.label', default: 'MenuItem')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
-		<r:require modules="uploadr"/>
 	</head>
 	<body>
 		<a href="#edit-menuItem" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -28,29 +27,17 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form method="post" >
+			<g:uploadForm method="post" enctype="multipart/form-data" action="update">
 				<g:hiddenField name="id" value="${menuItemInstance?.id}" />
 				<g:hiddenField name="version" value="${menuItemInstance?.version}" />
 				<fieldset class="form">
 					<g:render template="form"/>
-					<div class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'images', 'error')}">
-						<label for="status" style="margin-top: 1em">
-							<g:message code="menuItem.images.label" default="Images" />
-						</label>
-						<uploadr:add name="menuItemUploadr${menuItemInstance.id}" path="${imagesPath}" maxVisible="8" unsupported="/my/controller/action" allowedExtensions="gif,png,jpg,jpeg,GIF,PNG,JPG,JPEG" viewable="false" downloadable="false" maxSize="${imageMaxSize}">
-							<g:each in="${images}" var="image">
-							    <uploadr:file name="${image.name}">
-							        <uploadr:fileSize>${image.size()}</uploadr:fileSize>
-							    </uploadr:file>
-							</g:each>
-						</uploadr:add>
-					</div>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" formnovalidate="" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
-			</g:form>
+			</g:uploadForm>
 		</div>
 	</body>
 </html>

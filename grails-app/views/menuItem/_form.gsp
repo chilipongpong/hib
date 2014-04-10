@@ -42,3 +42,21 @@
 	</label>
 	<g:select id="menuCategory" name="menuCategory.id" from="${MenuCategory.findAllByStatus(Status.ACTIVE)}" optionKey="id" required="" value="${menuItemInstance?.menuCategory?.id}" class="many-to-one"/>
 </div>
+
+<div class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'image', 'error')} required">
+<label for="image">
+		<g:message code="menuItem.image.label" default="Image" />
+		<span class="required-indicator">*</span>
+	</label>
+	<input type="file" name="newImage" />
+</div>
+
+<g:if test="${menuItemInstance?.image}">
+<div class="fieldcontain ${hasErrors(bean: menuItemInstance, field: 'image', 'error')} ">
+	<label for="image">
+		<g:message code="menuItem.originalImage.label" default="Original Image" />
+		
+	</label>
+	<span class="property-value" aria-labelledby="originalImage-label"><g:img dir="/uploaded-files" file="${menuItemInstance.image}" width="400" /></span>
+</div>
+</g:if>

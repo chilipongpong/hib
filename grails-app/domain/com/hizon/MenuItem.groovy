@@ -6,6 +6,7 @@ class MenuItem {
 	String description
 	Status status
 	Level level
+	String image
 
 	static belongsTo = [menuCategory: MenuCategory]
 	static constraints = {
@@ -13,6 +14,7 @@ class MenuItem {
 		description blank:true, nullable: true, size: 0..250
 		status blank:false
 		level nullable: true
+		image blank:false, nullable: false
 	}
 	
 	static searchable = true
