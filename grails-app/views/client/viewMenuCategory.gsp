@@ -14,15 +14,25 @@
 	<g:render template="../dashboard/navigation" />
 
 	<div>
-		<g:each>
+		<div>
+				<h2>
+					${menuCategory.name}
+				</h2>
+				<h3>
+					${menuCategory.description}
+				</h3>
+
+		</div>
+		<g:each in="${menuItems}" var="menuItem">
 			<div>
-				<h2>${menuItemInstance.name}</h2>
-				
+				<h3>
+					${menuItem.name}
+				</h3>
+				<h4>
+					${menuItem.description}
+				</h4>
+				<g:img dir="/uploaded-files" file="${menuItem.image}" width="280px" />
 			</div>
-		</g:each>
-		<g:each in="${images}" var="img">
-			<img width="400"
-				src='${createLink(controller: "client", action: "displayImage", params:[img: img.name, themeId: themeInstance?.id])}' />
 		</g:each>
 	</div>
 

@@ -188,4 +188,13 @@ class ClientController {
 		}
 		[activeMenuCategories: activeMenuCategories, activeMenuCategoriesTotal: activeMenuCategories.size()]
 	}
+	
+	def viewMenuCategory(long id){
+		
+		def menuCategoryInstance = MenuCategory.get(id)
+		
+		List<MenuItem> menuItems = MenuItem.findAllByStatusAndMenuCategory(Status.ACTIVE, menuCategoryInstance)
+		
+		[menuCategory: menuCategoryInstance, menuItems: menuItems, menuItemsSize: menuItems.size()]
+	}
 }
