@@ -14,8 +14,8 @@
 			</ul>
 		</div>
 		<div id="choose-colors" class="content scaffold-show" role="main">
-			<g:render template="nav"/>
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+			<g:render template="nav"/>			
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>

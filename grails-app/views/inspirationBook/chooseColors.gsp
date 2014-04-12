@@ -39,8 +39,8 @@
 			</ul>
 		</div>
 		<div id="choose-colors" class="content scaffold-show" role="main">
-			<g:render template="nav"/>
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+			<g:render template="nav"/>			
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -56,15 +56,16 @@
 				<g:hiddenField name="client.id" value="${inspirationBookInstance?.client?.id}" />
 				<g:hiddenField name="id" value="${inspirationBookInstance?.id}" />
 				<g:hiddenField name="version" value="${inspirationBookInstance?.version}" />
-				<div class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'colors', 'error')} ">
-					<div id="errorRandom"></div>
+				<div class="colorpicker fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'colors', 'error')} ">
+					<div id="errorRandom" style="text-align: center; color: red;"></div>
 					<label>
 						<g:message code="inspirationBook.color.label" default="Color" />
 					</label>
+					<br><br>
 					<g:select name="color1" from="${com.hizon.Color.listAllActive()}" optionKey="id" value="${color1}" noSelection="['':'-Choose a color-']"/>
-					<input type="button" class="random" id="random1" value="Randomize" />
+					<input type="button" class="random" id="random1" value="Randomize" /><br>
 					<g:select name="color2" from="${com.hizon.Color.listAllActive()}" optionKey="id" value="${color2}" noSelection="['':'-Choose a color-']"/>
-					<input type="button" class="random" id="random2" value="Randomize" />
+					<input type="button" class="random" id="random2" value="Randomize" /><br>
 					<g:select name="color3" from="${com.hizon.Color.listAllActive()}" optionKey="id" value="${color3}" noSelection="['':'-Choose a color-']"/>
 					<input type="button" class="random" id="random3" value="Randomize" />
 				</div>
