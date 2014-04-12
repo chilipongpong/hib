@@ -9,7 +9,7 @@
 <body>
 
 <p/>
-<div class="login s2ui_center ui-corner-all" style='text-align:center;'>
+<div class="login s2ui_center ui-corner-all" style='text-align:center;margin: 100px auto;'>
 	<div class="login-inner">
 	<form action='${postUrl}' method='POST' id="loginForm" name="loginForm" autocomplete='off'>
 	<div class="sign-in">
@@ -35,7 +35,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan='2'>
+			<td>
 				<!--<s2ui:linkButton elementId='register' controller='register' messageCode='spring.security.ui.login.register'/>-->
 				<s2ui:submitButton elementId='loginButton' form='loginForm' messageCode='spring.security.ui.login.login'/>
 			</td>

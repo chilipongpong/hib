@@ -17,7 +17,9 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'spectrum.css')}" type="text/css">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'superfish.css')}" type="text/css">		
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'superfish.css')}" type="text/css">
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'hoverstyle.css')}" type="text/css">
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'hoverstyle1.css')}" type="text/css">				
 		<link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
 		<g:javascript src="jquery-2.0.3.min.js" />
 		<g:layoutHead/>

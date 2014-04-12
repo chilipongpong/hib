@@ -20,5 +20,9 @@ section {
 }
 
 .search{
-	padding: 20px;
+    float: right;
+    position: relative;
+    top: -133px;
+    padding-right: 20px
+	
 }
