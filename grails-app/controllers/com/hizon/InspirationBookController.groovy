@@ -61,6 +61,11 @@ class InspirationBookController {
 		}
 		params."client.id" = client.id
 		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+ 			flash.message = "Choose colors first before choosing a theme."
+            redirect(action: "chooseColors")
+			return
+		}
 		
 		[inspirationBookInstance: inspirationBookInstance, themes: themeService.getThemesForInspirationBook(inspirationBookInstance)]
 	}
@@ -89,6 +94,9 @@ class InspirationBookController {
 		}
 		params."client.id" = client.id
 		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
 		
 		[inspirationBookInstance: inspirationBookInstance]
 	}
@@ -121,6 +129,9 @@ class InspirationBookController {
 		}
 		params."client.id" = client.id
 		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
 		
 		[inspirationBookInstance: inspirationBookInstance]
 	}
@@ -156,6 +167,9 @@ class InspirationBookController {
 		}
 		params."client.id" = client.id
 		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
 		
 		[inspirationBookInstance: inspirationBookInstance]
 	}
@@ -191,6 +205,9 @@ class InspirationBookController {
 		}
 		params."client.id" = client.id
 		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
 		
 		[inspirationBookInstance: inspirationBookInstance]
 	}
@@ -226,6 +243,9 @@ class InspirationBookController {
 		}
 		params."client.id" = client.id
 		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
 		
 		[inspirationBookInstance: inspirationBookInstance]
 	}
@@ -261,6 +281,9 @@ class InspirationBookController {
 		}
 		params."client.id" = client.id
 		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
 		
 		[inspirationBookInstance: inspirationBookInstance]
 	}
@@ -296,6 +319,9 @@ class InspirationBookController {
 		}
 		params."client.id" = client.id
 		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
 		
 		[inspirationBookInstance: inspirationBookInstance]
 	}
@@ -331,6 +357,9 @@ class InspirationBookController {
 		}
 		params."client.id" = client.id
 		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
 		
 		[inspirationBookInstance: inspirationBookInstance]
 	}
@@ -366,6 +395,9 @@ class InspirationBookController {
 		}
 		params."client.id" = client.id
 		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
 		
 		[inspirationBookInstance: inspirationBookInstance]
 	}
@@ -401,6 +433,9 @@ class InspirationBookController {
 		}
 		params."client.id" = client.id
 		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
 		
 		[inspirationBookInstance: inspirationBookInstance]
 	}
@@ -436,6 +471,9 @@ class InspirationBookController {
 		}
 		params."client.id" = client.id
 		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
 		
 		[inspirationBookInstance: inspirationBookInstance]
 	}
@@ -471,6 +509,9 @@ class InspirationBookController {
 		}
 		params."client.id" = client.id
 		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
 		
 		[inspirationBookInstance: inspirationBookInstance]
 	}
