@@ -6,7 +6,8 @@ class InspirationBookController {
 	def themeService
 	def colorService
 	
-    def index() { 
+    def index() {
+		println "here"
 		redirect(action: "chooseColors", params: params)
 	}
 	
@@ -117,10 +118,10 @@ class InspirationBookController {
 			return
 		}
 		flash.message = "Number of guests and sponsors saved"
-		redirect(action: "chooseAppetizers")
+		redirect(action: "chooseAppetizer")
 	}
 	
-	def chooseAppetizers() {
+	def chooseAppetizer() {
 		Client client = getClient()
 		if (client == null) {
 			flash.message = "Only clients can create their inspiartion book"
@@ -151,14 +152,14 @@ class InspirationBookController {
 		}
 		
 		if (!inspirationBookInstance.save(flush: true)) {
-			render(view: "chooseAppetizers", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			render(view: "chooseAppetizer", model: [inspirationBookInstance: inspirationBookInstance], params: params)
 			return
 		}
 		flash.message = "Chosen appetizers saved"
-		redirect(action: "choosePastas")
+		redirect(action: "choosePasta")
 	}
 	
-	def chooseSoups() {
+	def chooseSoup() {
 		Client client = getClient()
 		if (client == null) {
 			flash.message = "Only clients can create their inspiartion book"
@@ -189,14 +190,14 @@ class InspirationBookController {
 		}
 		
 		if (!inspirationBookInstance.save(flush: true)) {
-			render(view: "chooseSoups", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			render(view: "chooseSoup", model: [inspirationBookInstance: inspirationBookInstance], params: params)
 			return
 		}
 		flash.message = "Chosen soups saved"
-		redirect(action: "chooseSalads")
+		redirect(action: "chooseSalad")
 	}
 	
-	def chooseSalads() {
+	def chooseSalad() {
 		Client client = getClient()
 		if (client == null) {
 			flash.message = "Only clients can create their inspiartion book"
@@ -227,14 +228,14 @@ class InspirationBookController {
 		}
 		
 		if (!inspirationBookInstance.save(flush: true)) {
-			render(view: "chooseAppetizers", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			render(view: "chooseAppetizer", model: [inspirationBookInstance: inspirationBookInstance], params: params)
 			return
 		}
 		flash.message = "Chosen salads saved"
-		redirect(action: "choosePastas")
+		redirect(action: "choosePasta")
 	}
 	
-	def choosePastas() {
+	def choosePasta() {
 		Client client = getClient()
 		if (client == null) {
 			flash.message = "Only clients can create their inspiartion book"
@@ -265,14 +266,14 @@ class InspirationBookController {
 		}
 		
 		if (!inspirationBookInstance.save(flush: true)) {
-			render(view: "choosePastas", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			render(view: "choosePasta", model: [inspirationBookInstance: inspirationBookInstance], params: params)
 			return
 		}
 		flash.message = "Chosen pastas saved"
-		redirect(action: "chooseBeefs")
+		redirect(action: "chooseBeef")
 	}
 	
-	def chooseBeefs() {
+	def chooseBeef() {
 		Client client = getClient()
 		if (client == null) {
 			flash.message = "Only clients can create their inspiartion book"
@@ -303,14 +304,14 @@ class InspirationBookController {
 		}
 		
 		if (!inspirationBookInstance.save(flush: true)) {
-			render(view: "chooseBeefs", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			render(view: "chooseBeef", model: [inspirationBookInstance: inspirationBookInstance], params: params)
 			return
 		}
 		flash.message = "Chosen beefs saved"
-		redirect(action: "choosePorks")
+		redirect(action: "choosePork")
 	}
 	
-	def choosePorks() {
+	def choosePork() {
 		Client client = getClient()
 		if (client == null) {
 			flash.message = "Only clients can create their inspiartion book"
@@ -341,14 +342,14 @@ class InspirationBookController {
 		}
 		
 		if (!inspirationBookInstance.save(flush: true)) {
-			render(view: "choosePorks", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			render(view: "choosePork", model: [inspirationBookInstance: inspirationBookInstance], params: params)
 			return
 		}
 		flash.message = "Chosen porks saved"
-		redirect(action: "chooseChickens")
+		redirect(action: "chooseChicken")
 	}
 	
-	def chooseChickens() {
+	def chooseChicken() {
 		Client client = getClient()
 		if (client == null) {
 			flash.message = "Only clients can create their inspiartion book"
@@ -379,14 +380,14 @@ class InspirationBookController {
 		}
 		
 		if (!inspirationBookInstance.save(flush: true)) {
-			render(view: "chooseChickens", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			render(view: "chooseChicken", model: [inspirationBookInstance: inspirationBookInstance], params: params)
 			return
 		}
 		flash.message = "Chosen chickens saved"
-		redirect(action: "chooseSeafoods")
+		redirect(action: "chooseSeafood")
 	}
 	
-	def chooseSeafoods() {
+	def chooseSeafood() {
 		Client client = getClient()
 		if (client == null) {
 			flash.message = "Only clients can create their inspiartion book"
@@ -417,14 +418,14 @@ class InspirationBookController {
 		}
 		
 		if (!inspirationBookInstance.save(flush: true)) {
-			render(view: "chooseSeafoods", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			render(view: "chooseSeafood", model: [inspirationBookInstance: inspirationBookInstance], params: params)
 			return
 		}
 		flash.message = "Chosen seafoods saved"
-		redirect(action: "chooseVegetables")
+		redirect(action: "chooseVegetable")
 	}
 	
-	def chooseVegetables() {
+	def chooseVegetable() {
 		Client client = getClient()
 		if (client == null) {
 			flash.message = "Only clients can create their inspiartion book"
@@ -455,14 +456,14 @@ class InspirationBookController {
 		}
 		
 		if (!inspirationBookInstance.save(flush: true)) {
-			render(view: "chooseVegetables", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			render(view: "chooseVegetable", model: [inspirationBookInstance: inspirationBookInstance], params: params)
 			return
 		}
 		flash.message = "Chosen vegetables saved"
-		redirect(action: "chooseDesserts")
+		redirect(action: "chooseDessert")
 	}
 	
-	def chooseDesserts() {
+	def chooseDessert() {
 		Client client = getClient()
 		if (client == null) {
 			flash.message = "Only clients can create their inspiartion book"
@@ -493,7 +494,7 @@ class InspirationBookController {
 		}
 		
 		if (!inspirationBookInstance.save(flush: true)) {
-			render(view: "chooseDesserts", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			render(view: "chooseDessert", model: [inspirationBookInstance: inspirationBookInstance], params: params)
 			return
 		}
 		flash.message = "Chosen desserts saved"
@@ -535,7 +536,25 @@ class InspirationBookController {
 			return
 		}
 		flash.message = "Number of guests and sponsors saved"
-		redirect(action: "indicateSuppliers")
+		redirect(action: "viewCollage")
+	}
+	
+	def viewCollage() {
+		Client client = getClient()
+		if (client == null) {
+			flash.message = "Only clients can view their inspiartion book"
+			redirect(action: "index", controller: "client")
+			return
+		}
+		params."client.id" = client.id
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			flash.message = "Create your inspiration book before viewing it."
+            redirect(action: "chooseColors")
+			return
+		}
+		
+		[inspirationBookInstance: inspirationBookInstance]
 	}
 	
 	def getRandomColor(params) {
