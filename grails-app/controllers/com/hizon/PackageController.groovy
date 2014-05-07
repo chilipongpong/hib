@@ -20,7 +20,42 @@ class PackageController {
     }
 
     def save() {
+		params."appetizer.number" = params."appetizer.number" ? params."appetizer.number" : 0
+		params."soup.number" = params."soup.number" ? params."soup.number" : 0
+		params."salad.number" = params."salad.number" ? params."salad.number" : 0
+		params."pasta.number" = params."pasta.number" ? params."pasta.number" : 0
+		params."beef.number" = params."beef.number" ? params."beef.number" : 0
+		params."pork.number" = params."pork.number" ? params."pork.number" : 0
+		params."chicken.number" = params."chicken.number" ? params."chicken.number" : 0
+		params."seafood.number" = params."seafood.number" ? params."seafood.number" : 0
+		params."vegetable.number" = params."vegetable.number" ? params."vegetable.number" : 0
+		params."dessert.number" = params."dessert.number" ? params."dessert.number" : 0
+		
         def packageInstance = new Package(params)
+		
+		def foodPackages = [packageInstance.appetizer,
+			packageInstance.soup,
+			packageInstance.salad,
+			packageInstance.pasta,
+			packageInstance.beef,
+			packageInstance.pork,
+			packageInstance.chicken,
+			packageInstance.seafood,
+			packageInstance.vegetable,
+			packageInstance.dessert]
+		
+		for (FoodPackage foodPackage: foodPackages) {
+			foodPackage.save()
+		}
+		
+//		if (params.freebies) {
+//			def freebies = [] as Set
+//			for(freebie in params.freebies) {
+//				freebies.add(Color.get(freebie))
+//			}
+//			packageInstance.freebies = freebies;
+//		}
+		
         if (!packageInstance.save(flush: true)) {
             render(view: "create", model: [packageInstance: packageInstance])
             return
@@ -90,6 +125,16 @@ class PackageController {
         }
 
         try {
+			packageInstance.appetizer.delete()
+			packageInstance.soup.delete()
+			packageInstance.salad.delete()
+			packageInstance.pasta.delete()
+			packageInstance.beef.delete()
+			packageInstance.pork.delete()
+			packageInstance.chicken.delete()
+			packageInstance.seafood.delete()
+			packageInstance.vegetable.delete()
+			packageInstance.dessert.delete()
             packageInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'package.label', default: 'Package'), id])
             redirect(action: "list")

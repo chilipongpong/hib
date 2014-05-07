@@ -38,6 +38,7 @@
 					</li>
 					<li><g:link uri="/color">Colors</g:link></li>
 					<li><g:link uri="/theme">Themes</g:link></li>
+					<li><g:link uri="/package">Packages</g:link></li>
 					<li><g:link uri="/bundledItem">Bundled Items</g:link></li>
 					<li><g:link uri="/level">Levels</g:link></li>
 					<li><g:link uri="/valueRange">Value Range</g:link></li>

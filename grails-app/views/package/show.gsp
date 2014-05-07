@@ -32,46 +32,38 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${packageInstance?.appetizers}">
+				<g:if test="${packageInstance?.appetizer}">
 				<li class="fieldcontain">
-					<span id="appetizers-label" class="property-label"><g:message code="package.appetizers.label" default="Appetizers" /></span>
+					<span id="appetizer-label" class="property-label"><g:message code="package.appetizer.label" default="Appetizer" /></span>
 					
-						<g:each in="${packageInstance.appetizers}" var="a">
-						<span class="property-value" aria-labelledby="appetizers-label"><g:link controller="menuItem" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="appetizer-label"><g:link controller="foodPackage" action="show" id="${packageInstance?.appetizer?.id}">${packageInstance?.appetizer?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${packageInstance?.beefs}">
+				<g:if test="${packageInstance?.beef}">
 				<li class="fieldcontain">
-					<span id="beefs-label" class="property-label"><g:message code="package.beefs.label" default="Beefs" /></span>
+					<span id="beef-label" class="property-label"><g:message code="package.beef.label" default="Beef" /></span>
 					
-						<g:each in="${packageInstance.beefs}" var="b">
-						<span class="property-value" aria-labelledby="beefs-label"><g:link controller="menuItem" action="show" id="${b.id}">${b?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="beef-label"><g:link controller="foodPackage" action="show" id="${packageInstance?.beef?.id}">${packageInstance?.beef?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${packageInstance?.chickens}">
+				<g:if test="${packageInstance?.chicken}">
 				<li class="fieldcontain">
-					<span id="chickens-label" class="property-label"><g:message code="package.chickens.label" default="Chickens" /></span>
+					<span id="chicken-label" class="property-label"><g:message code="package.chicken.label" default="Chicken" /></span>
 					
-						<g:each in="${packageInstance.chickens}" var="c">
-						<span class="property-value" aria-labelledby="chickens-label"><g:link controller="menuItem" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="chicken-label"><g:link controller="foodPackage" action="show" id="${packageInstance?.chicken?.id}">${packageInstance?.chicken?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${packageInstance?.desserts}">
+				<g:if test="${packageInstance?.dessert}">
 				<li class="fieldcontain">
-					<span id="desserts-label" class="property-label"><g:message code="package.desserts.label" default="Desserts" /></span>
+					<span id="dessert-label" class="property-label"><g:message code="package.dessert.label" default="Dessert" /></span>
 					
-						<g:each in="${packageInstance.desserts}" var="d">
-						<span class="property-value" aria-labelledby="desserts-label"><g:link controller="menuItem" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="dessert-label"><g:link controller="foodPackage" action="show" id="${packageInstance?.dessert?.id}">${packageInstance?.dessert?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -80,16 +72,9 @@
 				<li class="fieldcontain">
 					<span id="freebies-label" class="property-label"><g:message code="package.freebies.label" default="Freebies" /></span>
 					
-						<span class="property-value" aria-labelledby="freebies-label"><g:fieldValue bean="${packageInstance}" field="freebies"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${packageInstance?.level}">
-				<li class="fieldcontain">
-					<span id="level-label" class="property-label"><g:message code="package.level.label" default="Level" /></span>
-					
-						<span class="property-value" aria-labelledby="level-label"><g:link controller="level" action="show" id="${packageInstance?.level?.id}">${packageInstance?.level?.encodeAsHTML()}</g:link></span>
+						<g:each in="${packageInstance.freebies}" var="f">
+						<span class="property-value" aria-labelledby="freebies-label"><g:link controller="bundledItem" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></span>
+						</g:each>
 					
 				</li>
 				</g:if>
@@ -103,24 +88,20 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${packageInstance?.pastas}">
+				<g:if test="${packageInstance?.pasta}">
 				<li class="fieldcontain">
-					<span id="pastas-label" class="property-label"><g:message code="package.pastas.label" default="Pastas" /></span>
+					<span id="pasta-label" class="property-label"><g:message code="package.pasta.label" default="Pasta" /></span>
 					
-						<g:each in="${packageInstance.pastas}" var="p">
-						<span class="property-value" aria-labelledby="pastas-label"><g:link controller="menuItem" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="pasta-label"><g:link controller="foodPackage" action="show" id="${packageInstance?.pasta?.id}">${packageInstance?.pasta?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${packageInstance?.porks}">
+				<g:if test="${packageInstance?.pork}">
 				<li class="fieldcontain">
-					<span id="porks-label" class="property-label"><g:message code="package.porks.label" default="Porks" /></span>
+					<span id="pork-label" class="property-label"><g:message code="package.pork.label" default="Pork" /></span>
 					
-						<g:each in="${packageInstance.porks}" var="p">
-						<span class="property-value" aria-labelledby="porks-label"><g:link controller="menuItem" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="pork-label"><g:link controller="foodPackage" action="show" id="${packageInstance?.pork?.id}">${packageInstance?.pork?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -134,24 +115,20 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${packageInstance?.salads}">
+				<g:if test="${packageInstance?.salad}">
 				<li class="fieldcontain">
-					<span id="salads-label" class="property-label"><g:message code="package.salads.label" default="Salads" /></span>
+					<span id="salad-label" class="property-label"><g:message code="package.salad.label" default="Salad" /></span>
 					
-						<g:each in="${packageInstance.salads}" var="s">
-						<span class="property-value" aria-labelledby="salads-label"><g:link controller="menuItem" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="salad-label"><g:link controller="foodPackage" action="show" id="${packageInstance?.salad?.id}">${packageInstance?.salad?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${packageInstance?.seafoods}">
+				<g:if test="${packageInstance?.seafood}">
 				<li class="fieldcontain">
-					<span id="seafoods-label" class="property-label"><g:message code="package.seafoods.label" default="Seafoods" /></span>
+					<span id="seafood-label" class="property-label"><g:message code="package.seafood.label" default="Seafood" /></span>
 					
-						<g:each in="${packageInstance.seafoods}" var="s">
-						<span class="property-value" aria-labelledby="seafoods-label"><g:link controller="menuItem" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="seafood-label"><g:link controller="foodPackage" action="show" id="${packageInstance?.seafood?.id}">${packageInstance?.seafood?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -165,24 +142,29 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${packageInstance?.soups}">
+				<g:if test="${packageInstance?.soup}">
 				<li class="fieldcontain">
-					<span id="soups-label" class="property-label"><g:message code="package.soups.label" default="Soups" /></span>
+					<span id="soup-label" class="property-label"><g:message code="package.soup.label" default="Soup" /></span>
 					
-						<g:each in="${packageInstance.soups}" var="s">
-						<span class="property-value" aria-labelledby="soups-label"><g:link controller="menuItem" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="soup-label"><g:link controller="foodPackage" action="show" id="${packageInstance?.soup?.id}">${packageInstance?.soup?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${packageInstance?.vegetables}">
+				<g:if test="${packageInstance?.themeLevel}">
 				<li class="fieldcontain">
-					<span id="vegetables-label" class="property-label"><g:message code="package.vegetables.label" default="Vegetables" /></span>
+					<span id="themeLevel-label" class="property-label"><g:message code="package.themeLevel.label" default="Theme Level" /></span>
 					
-						<g:each in="${packageInstance.vegetables}" var="v">
-						<span class="property-value" aria-labelledby="vegetables-label"><g:link controller="menuItem" action="show" id="${v.id}">${v?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="themeLevel-label"><g:link controller="level" action="show" id="${packageInstance?.themeLevel?.id}">${packageInstance?.themeLevel?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${packageInstance?.vegetable}">
+				<li class="fieldcontain">
+					<span id="vegetable-label" class="property-label"><g:message code="package.vegetable.label" default="Vegetable" /></span>
+					
+						<span class="property-value" aria-labelledby="vegetable-label"><g:link controller="foodPackage" action="show" id="${packageInstance?.vegetable?.id}">${packageInstance?.vegetable?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

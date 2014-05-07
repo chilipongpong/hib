@@ -26,15 +26,15 @@
 					
 						<g:sortableColumn property="name" title="${message(code: 'package.name.label', default: 'Name')}" />
 					
-						<g:sortableColumn property="freebies" title="${message(code: 'package.freebies.label', default: 'Freebies')}" />
+						<th><g:message code="package.appetizer.label" default="Appetizer" /></th>
 					
-						<th><g:message code="package.level.label" default="Level" /></th>
+						<th><g:message code="package.beef.label" default="Beef" /></th>
+					
+						<th><g:message code="package.chicken.label" default="Chicken" /></th>
+					
+						<th><g:message code="package.dessert.label" default="Dessert" /></th>
 					
 						<g:sortableColumn property="numberOfGuests" title="${message(code: 'package.numberOfGuests.label', default: 'Number Of Guests')}" />
-					
-						<g:sortableColumn property="price" title="${message(code: 'package.price.label', default: 'Price')}" />
-					
-						<g:sortableColumn property="serviceStyle" title="${message(code: 'package.serviceStyle.label', default: 'Service Style')}" />
 					
 					</tr>
 				</thead>
@@ -44,15 +44,15 @@
 					
 						<td><g:link action="show" id="${packageInstance.id}">${fieldValue(bean: packageInstance, field: "name")}</g:link></td>
 					
-						<td>${fieldValue(bean: packageInstance, field: "freebies")}</td>
+						<td>${fieldValue(bean: packageInstance, field: "appetizer")}</td>
 					
-						<td>${fieldValue(bean: packageInstance, field: "level")}</td>
+						<td>${fieldValue(bean: packageInstance, field: "beef")}</td>
+					
+						<td>${fieldValue(bean: packageInstance, field: "chicken")}</td>
+					
+						<td>${fieldValue(bean: packageInstance, field: "dessert")}</td>
 					
 						<td>${fieldValue(bean: packageInstance, field: "numberOfGuests")}</td>
-					
-						<td>${fieldValue(bean: packageInstance, field: "price")}</td>
-					
-						<td>${fieldValue(bean: packageInstance, field: "serviceStyle")}</td>
 					
 					</tr>
 				</g:each>
