@@ -36,4 +36,8 @@ class Package {
 		vegetable nullable:true
 		dessert nullable:true
     }
+	
+	String toString() {
+		return name
+	}
 }

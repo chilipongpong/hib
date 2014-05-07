@@ -8,4 +8,8 @@ class FoodPackage {
 	
     static constraints = {
     }
+	
+	String toString() {
+		return name + ", " + level + ", " + number
+	}
 }
