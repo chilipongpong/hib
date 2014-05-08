@@ -13,7 +13,7 @@
 		<g:render template="../dashboard/navigation" />
 		
 		<div id="show-client" class="content scaffold-show" role="main">
-			<sec:ifAnyGranted roles="ROLE_USER_ADMIN, ROLE_SUPER_ADMIN">
+			<sec:ifAnyGranted roles="ROLE_USER_ADMIN, ROLE_SUPER_ADMIN, ROLE_PLANNER_SUPERVISOR">
 				<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			</sec:ifAnyGranted>
 			<sec:ifAnyGranted roles="ROLE_CLIENT">
