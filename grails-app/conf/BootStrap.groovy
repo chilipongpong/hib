@@ -35,15 +35,114 @@ class BootStrap {
 		new RequestMap(url: '/favicon.ico', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save(flush:true)
 		new RequestMap(url: '/', configAttribute: 'ROLE_CLIENT, ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
 		new RequestMap(url: '/inspirationBook/**', configAttribute: 'ROLE_CLIENT, ROLE_SUPER_ADMIN').save(flush:true)
-		new RequestMap(url: '/userAdmin/**', configAttribute: 'ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
-		new RequestMap(url: '/client/**', configAttribute: 'ROLE_CLIENT, ROLE_SUPER_ADMIN').save(flush:true)
-		new RequestMap(url: '/planner/**', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
-		new RequestMap(url: '/plannerSupervisor/**', configAttribute: 'ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
-		new RequestMap(url: '/contentManager/**', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
-		new RequestMap(url: '/userAdmin/**', configAttribute: 'ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+//		new RequestMap(url: '/userAdmin/**', configAttribute: 'ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+//		new RequestMap(url: '/client/**', configAttribute: 'ROLE_CLIENT, ROLE_SUPER_ADMIN').save(flush:true)
+//		new RequestMap(url: '/planner/**', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
+//		new RequestMap(url: '/plannerSupervisor/**', configAttribute: 'ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
+//		new RequestMap(url: '/contentManager/**', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+//		new RequestMap(url: '/userAdmin/**', configAttribute: 'ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
 		new RequestMap(url: '/superAdmin/**', configAttribute: 'ROLE_SUPER_ADMIN').save(flush:true)
 		new RequestMap(url: '/*/**', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
 		new RequestMap(url: '/dashboard/**', configAttribute: 'ROLE_CLIENT, ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		
+		
+		//user admin
+		new RequestMap(url: '/useradmin/create', configAttribute: 'ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/useradmin/edit/*', configAttribute: 'ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/useradmin/show/*', configAttribute: 'ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/useradmin/list*', configAttribute: 'ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/useradmin/dashboard', configAttribute: 'ROLE_USER_ADMIN').save(flush:true)
+		
+		//planner supervisor
+		new RequestMap(url: '/plannerSupervisor/create', configAttribute: 'ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/plannerSupervisor/edit/*', configAttribute: 'ROLE_PLANNER_SUPERVISOR, ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/plannerSupervisor/show/*', configAttribute: 'ROLE_PLANNER_SUPERVISOR, ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/plannerSupervisor/search*', configAttribute: 'ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/plannerSupervisor/list', configAttribute: 'ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/plannerSupervisor/dashboard', configAttribute: 'ROLE_PLANNER_SUPERVISOR').save(flush:true)
+				
+		//planner
+		new RequestMap(url: '/planner/create', configAttribute: 'ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/planner/edit/*', configAttribute: 'ROLE_PLANNER, ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/planner/show/*', configAttribute: 'ROLE_PLANNER, ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/planner/search*', configAttribute: 'ROLE_PLANNER_SUPERVISOR, ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/planner/list', configAttribute: 'ROLE_PLANNER_SUPERVISOR, ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/planner/dashboard', configAttribute: 'ROLE_PLANNER').save(flush:true)
+		
+		//content manager
+		new RequestMap(url: '/contentManager/create', configAttribute: 'ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/contentManager/edit/*', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/contentManager/show/*', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/contentManager/list', configAttribute: 'ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/contentManager/dashboard', configAttribute: 'ROLE_CONTENT_MANAGER').save(flush:true)
+		
+		//content manager
+		new RequestMap(url: '/client/create', configAttribute: 'ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/client/edit/*', configAttribute: 'ROLE_CLIENT, ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/client/show/*', configAttribute: 'ROLE_CLIENT, ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/client/list', configAttribute: 'ROLE_PLANNER_SUPERVISOR, ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/client/myPlanner', configAttribute: 'ROLE_CLIENT').save(flush:true)
+		new RequestMap(url: '/client/themesGallery', configAttribute: 'ROLE_CLIENT').save(flush:true)
+		new RequestMap(url: '/client/viewMenuCategory', configAttribute: 'ROLE_CLIENT').save(flush:true)
+		new RequestMap(url: '/client/viewTheme', configAttribute: 'ROLE_CLIENT').save(flush:true)
+		new RequestMap(url: '/client/menu', configAttribute: 'ROLE_CLIENT').save(flush:true)
+		new RequestMap(url: '/client/dashboard', configAttribute: 'ROLE_CLIENT').save(flush:true)
+		
+		//level
+		new RequestMap(url: '/level/show/*', configAttribute: 'ROLE_CLIENT, ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/level/create', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/level/edit/*', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/level/search*', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/level/list', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		
+		//colors
+		new RequestMap(url: '/color/show/*', configAttribute: 'ROLE_CLIENT, ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/color/create', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/color/edit/*', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/color/search*', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/color/list', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		
+		//bundled items
+		new RequestMap(url: '/bundledItem/show/*', configAttribute: 'ROLE_CLIENT, ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/bundledItem/create', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/bundledItem/edit/*', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/bundledItem/search*', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/bundledItem/list', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		
+		//themes
+		new RequestMap(url: '/theme/show/*', configAttribute: 'ROLE_CLIENT, ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/theme/create', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/theme/edit/*', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/theme/search*', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/theme/list', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		
+		//food package
+		new RequestMap(url: '/foodPackage/show/*', configAttribute: 'ROLE_CLIENT, ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/foodPackage/create', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/foodPackage/edit/*', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/foodPackage/search*', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/foodPackage/list', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		
+		//menu item
+		new RequestMap(url: '/menuItem/show/*', configAttribute: 'ROLE_CLIENT, ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/menuItem/create', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/menuItem/edit/*', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/menuItem/search*', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/menuItem/list', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		
+		//menu category
+		new RequestMap(url: '/menuCategory/show/*', configAttribute: 'ROLE_CLIENT, ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/menuCategory/create', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/menuCategory/edit/*', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/menuCategory/search*', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/menuCategory/list', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		
+		//project
+		new RequestMap(url: '/project/show/*', configAttribute: 'ROLE_CLIENT, ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/project/create', configAttribute: 'ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/project/edit/*', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/project/search*', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/project/list', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
     }
     def destroy = {
     }
