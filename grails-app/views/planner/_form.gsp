@@ -64,10 +64,12 @@
 	<g:textField name="user.phone" pattern="${plannerInstance?.user?.constraints?.phone?.matches}" value="${plannerInstance?.user?.phone}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: plannerInstance, field: 'plannerSupervisor', 'error')} required">
-	<label for="Planner Supervisor">
-		<g:message code="planner.plannerSupervisor.label" default="Planner Supervisor" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="plannerSupervisor" name="plannerSupervisor.id" from="${PlannerSupervisor.list()}" optionKey="id" required="" value="${plannerInstance?.plannerSupervisor?.id}" class="many-to-one"/>
-</div>
+<sec:ifAnyGranted roles="ROLE_USER_ADMIN, ROLE_SUPER_ADMIN">
+	<div class="fieldcontain ${hasErrors(bean: plannerInstance, field: 'plannerSupervisor', 'error')} required">
+		<label for="Planner Supervisor">
+			<g:message code="planner.plannerSupervisor.label" default="Planner Supervisor" />
+			<span class="required-indicator">*</span>
+		</label>
+		<g:select id="plannerSupervisor" name="plannerSupervisor.id" from="${PlannerSupervisor.list()}" optionKey="id" required="" value="${plannerInstance?.plannerSupervisor?.id}" class="many-to-one"/>
+	</div>
+</sec:ifAnyGranted>
