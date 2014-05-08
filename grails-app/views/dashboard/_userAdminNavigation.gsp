@@ -49,6 +49,6 @@
 					</ul></li>
 			</ul>
 		</li>
-		<li><g:link action="show" id="${userAdminId}">My Profile</g:link></li>
+		<li><g:link action="show" id="${userAdminId}" controller="userAdmin">My Profile</g:link></li>
 	</ul>
 </div>
