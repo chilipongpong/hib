@@ -69,15 +69,18 @@
 				</g:if>
 			
 			</ol>
-			<sec:ifAnyGranted roles="ROLE_SUPER_ADMIN, ROLE_USER_ADMIN">
+			
 				<g:form>
 					<fieldset class="buttons">
 						<g:hiddenField name="id" value="${plannerSupervisorInstance?.id}" />
-						<g:link class="edit" action="edit" id="${plannerSupervisorInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						<sec:ifAnyGranted roles="ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN, ROLE_USER_ADMIN">
+							<g:link class="edit" action="edit" id="${plannerSupervisorInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						</sec:ifAnyGranted>
+						<sec:ifAnyGranted roles="ROLE_SUPER_ADMIN, ROLE_USER_ADMIN">
 							<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+						</sec:ifAnyGranted>
 					</fieldset>
 				</g:form>
-			</sec:ifAnyGranted>
 		</div>
 	</body>
 </html>
