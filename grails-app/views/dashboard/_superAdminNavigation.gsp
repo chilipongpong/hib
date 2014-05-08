@@ -24,6 +24,16 @@
 							</g:link></li>
 					</ul>
 				</li>
+				<li><g:link uri="/foodPackage">Food Packages</g:link>
+					<ul>
+						<li><g:link class="create" action="create" controller="FoodPackage">
+								<g:message code="default.new.label" args="['Food Package']" />
+							</g:link></li>
+						<li><g:link class="list" action="list" controller="FoodPackage">
+								<g:message code="default.list.label" args="['Food Packages']" />
+							</g:link></li>
+					</ul>
+				</li>
 			</ul></li>
 		<li><g:link uri="/color">Colors</g:link>
 			<ul>
