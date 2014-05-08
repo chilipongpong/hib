@@ -95,6 +95,16 @@
 					</g:link></li>
 			</ul>
 		</li>
+		<li><g:link uri="/project">Projects</g:link>
+			<ul>
+				<li><g:link class="create" action="create" controller="Project">
+						<g:message code="default.new.label" args="['Project']" />
+					</g:link></li>
+				<li><g:link class="list" action="list" controller="Project">
+						<g:message code="default.list.label" args="['Projects']" />
+					</g:link></li>
+			</ul>
+		</li>
 		<li><a href="#">User</a>
 			<ul>
 				<li><g:link uri="/client">Client</g:link>
@@ -140,9 +150,19 @@
 								<g:message code="default.list.label" args="['User Admins']" />
 							</g:link></li>
 					</ul></li>
+				<li><g:link uri="/contentManager">Content Manager</g:link>
+					<ul>
+						<li><g:link class="create" action="create"
+								controller="ContentManager">
+								<g:message code="default.new.label" args="['Content Manager']" />
+							</g:link></li>
+						<li><g:link class="list" action="list" controller="ContentManager">
+								<g:message code="default.list.label" args="['Content Managers']" />
+							</g:link></li>
+					</ul></li>
 			</ul>
 		</li>
-		<li><g:link action="show" id="${superAdminId}">My Profile</g:link></li>
+		<li><g:link action="show" id="${superAdminId}">Profile</g:link></li>
 	</ul>
 
 </div>
