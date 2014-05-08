@@ -162,7 +162,7 @@
 					</ul></li>
 			</ul>
 		</li>
-		<li><g:link action="show" id="${superAdminId}">Profile</g:link></li>
+		<li><g:link action="show" id="${superAdminId}">My Profile</g:link></li>
 	</ul>
 
 </div>
