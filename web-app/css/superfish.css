@@ -4,10 +4,12 @@
 	margin:			0;
 	padding:		0;
 	list-style:		none;
+	
 }
 .sf-menu {
 	line-height:	1.5em;
 	width: 950px;
+	background: #ff851b;
 }
 .sf-menu ul {
 	position:		absolute;
@@ -23,7 +25,6 @@
 .sf-menu li {
 	float:			left;
 	position:		relative;
-	width: 101px;
 }
 .sf-menu a {
 	display:		block;
@@ -64,6 +65,7 @@ ul.sf-menu li li li.sfHover ul {
 	border-top:		1px solid #CFDEFF;*/
 	padding: 		1em;
 	text-decoration:none;
+	
 }
 .sf-menu a, .sf-menu a:visited  { /* visited pseudo selector so IE6 applies text colour*/
 	color:			#fff;

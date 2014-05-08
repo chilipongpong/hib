@@ -27,34 +27,8 @@
 	</head>
 	<body>
 		<section>
-			<div role="banner"><a class="hizonsLogo" href="/hib"> </a></div>
+			<div><a class="hizonsLogo" href="/hib"> </a></div>
 			<div id="navi">
-				<ul class="sf-menu">
-					<li><a href="#">Food Menu</a>
-						<ul>
-							<li><g:link uri="/menuCategory">Menu Categories</g:link></li>
-							<li><g:link uri="/menuItem">Food Items</g:link></li>					
-						</ul>
-					</li>
-					<li><g:link uri="/color">Colors</g:link></li>
-					<li><g:link uri="/theme">Themes</g:link></li>
-					<li><g:link uri="/package">Packages</g:link></li>
-					<li><g:link uri="/bundledItem">Bundled Items</g:link></li>
-					<li><g:link uri="/level">Levels</g:link></li>
-					<li><g:link uri="/valueRange">Value Range</g:link></li>
-					<li><g:link uri="/inspirationBook">Inspiration Book</g:link></li>
-					<li><g:link uri="/event">Events</g:link></li>
-					<li><a href="#">User</a>
-						<ul>
-							<li><g:link uri="/client">Client</g:link></li>
-							<li><g:link uri="/planner">Planner</g:link></li>
-							<li><g:link uri="/plannerSupervisor">Planner Supervisor</g:link></li>
-							<li><g:link uri="/userAdmin">User Admin</g:link></li>
-							<li><g:link uri="/superAdmin">Super Admin</g:link></li>				
-						</ul>
-					</li>
-					
-				</ul>
 			</div>
 			<div style="clear:both"></div>
 		</section>
