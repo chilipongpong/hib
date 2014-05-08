@@ -1,11 +1,11 @@
-<%@ page import="com.hizon.Planner"%>
+<%@ page import="com.hizon.Client"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="layout" content="main">
 <g:set var="entityName"
-	value="${message(code: 'planner.label', default: 'Planner')}" />
-<title><g:message code="default.create.label"
+	value="${message(code: 'client.label', default: 'Client')}" />
+<title><g:message code="default.dashboard.label"
 		args="[entityName]" /></title>
 </head>
 <body>
