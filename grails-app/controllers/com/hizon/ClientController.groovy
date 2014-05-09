@@ -136,7 +136,13 @@ class ClientController {
 		def user = (User) springSecurityService.getCurrentUser()
 		def loggedInClient = Client.findByUser(user)
 		
-		[clientId: loggedInClient.id, firstName: loggedInClient.getUser().getFirstName()]
+		if (loggedInClient.planner != null){
+			[clientId: loggedInClient.id, firstName: loggedInClient.getUser().getFirstName(), myPlannerId: loggedInClient.planner.id]
+		}
+		else {
+			[clientId: loggedInClient.id, firstName: loggedInClient.getUser().getFirstName()]
+		}
+		
 		
 	}
 	
@@ -144,7 +150,9 @@ class ClientController {
 		def user = (User) springSecurityService.getCurrentUser()
 		def loggedInClient = Client.findByUser(user)
 		
-		[plannerInstance: loggedInClient.planner]
+		if (id != null){
+			[plannerInstance: loggedInClient.planner]
+		} 
 		
 	}
 	

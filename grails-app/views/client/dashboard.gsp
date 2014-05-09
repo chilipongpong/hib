@@ -10,6 +10,7 @@
 </head>
 <body>
 	<g:set var="loggedInClientId" value="${clientId}" scope="session"></g:set>
+	<g:set var="plannerId" value="${myPlannerId}" scope="session"></g:set>
 	<a href="#create-client" class="skip" tabindex="-1"><g:message
 			code="default.link.skip.label" default="Skip to content&hellip;" /></a>
 	<h1>
@@ -36,7 +37,7 @@
 		</div>
 		<div class="row">
 			<div class="span4 shrink">
-				<g:link action="myPlanner" params="${clientId}" controller="client">
+				<g:link action="myPlanner" controller="client">
 					<img src="../images/btn-planner.png" alt="My Planner">
 				</g:link>
 			</div>
