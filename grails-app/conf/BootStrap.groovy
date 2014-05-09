@@ -117,6 +117,15 @@ class BootStrap {
 		new RequestMap(url: '/bundledItem/list', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
 		new RequestMap(url: '/bundledItem', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
 		
+		//value range
+		new RequestMap(url: '/valueRange/show/*', configAttribute: 'ROLE_CLIENT, ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/valueRange/create', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/valueRange/edit/*', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/valueRange/search*', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/valueRange/list', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/valueRange', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
+		
+		
 		//themes
 		new RequestMap(url: '/theme/show/*', configAttribute: 'ROLE_CLIENT, ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
 		new RequestMap(url: '/theme/create', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
@@ -155,7 +164,15 @@ class BootStrap {
 		new RequestMap(url: '/project/edit/*', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
 		new RequestMap(url: '/project/search*', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
 		new RequestMap(url: '/project/list', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
-		new RequestMap(url: '/project/list', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/project', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
+		
+		//event
+		new RequestMap(url: '/event/show/*', configAttribute: 'ROLE_CLIENT, ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/event/create', configAttribute: 'ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/event/edit/*', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/event/search*', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/event/list', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/event', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
     }
     def destroy = {
     }

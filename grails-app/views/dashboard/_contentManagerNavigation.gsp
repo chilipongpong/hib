@@ -105,6 +105,6 @@
 					</g:link></li>
 			</ul>
 		</li>
-		<li><g:link action="show" id="${contentManagerId}">My Profile</g:link></li>
+		<li><g:link action="show" id="${contentManagerId}" controller="contentManager">My Profile</g:link></li>
 	</ul>
 </div>
