@@ -9,6 +9,7 @@
 		args="[entityName]" /></title>
 </head>
 <body>
+	<g:set var="loggedInClientId" value="${clientId}" scope="session"></g:set>
 	<a href="#create-client" class="skip" tabindex="-1"><g:message
 			code="default.link.skip.label" default="Skip to content&hellip;" /></a>
 	<h1>
@@ -18,7 +19,7 @@
 	<div id="clientdash">
 		<div class="row">
 			<div class="span4 shrink">
-				<g:link action="show" id="${clientId}" controller="client">
+				<g:link action="show" id="${session.loggedInClientId}" controller="client">
 					<img src="../images/btn-profile.png" alt="My Profile">
 				</g:link>
 			</div>
