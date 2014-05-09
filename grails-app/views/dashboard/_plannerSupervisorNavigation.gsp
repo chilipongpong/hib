@@ -101,6 +101,6 @@
 					</ul></li>
 			</ul>
 		</li>
-		<li><g:link action="show" controller="plannerSupervisor" id="${plannerSupervisorId}">My Profile</g:link></li>
+		<li><g:link action="show" controller="plannerSupervisor" id="${session.loggedInPlannerSupervisorId}">My Profile</g:link></li>
 	</ul>
 </div>

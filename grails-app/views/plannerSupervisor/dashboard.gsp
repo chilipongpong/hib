@@ -7,6 +7,7 @@
 		<title><g:message code="default.dashboard.label" args="[entityName]" /></title>
 	</head>
 	<body>
+	<g:set var="loggedInPlannerSupervisorId" value="${plannerSupervisorId}" scope="session"></g:set>
 		<a href="#create-plannerSupervisor" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<g:render template="../dashboard/navigation" />
 		<h3>Clients Without Planners</h3>
