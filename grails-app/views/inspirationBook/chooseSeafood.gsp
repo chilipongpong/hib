@@ -8,11 +8,7 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-			</ul>
-		</div>
+		<g:render template="../dashboard/navigation" />
 		<div id="choose-colors" class="content scaffold-show" role="main">		
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:render template="nav"/>
