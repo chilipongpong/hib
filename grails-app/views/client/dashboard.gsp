@@ -41,7 +41,7 @@
 				</g:link>
 			</div>
 			<div class="span4 shrink">
-				<g:link action="inspirationBook" controller="client">
+				<g:link controller="inspirationBook">
 					<img src="../images/btn-book.png" alt="My Inspiration Book">
 				</g:link>
 			</div>
