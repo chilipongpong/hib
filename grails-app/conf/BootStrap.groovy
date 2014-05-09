@@ -49,7 +49,7 @@ class BootStrap {
 		//user admin
 		new RequestMap(url: '/useradmin/create', configAttribute: 'ROLE_SUPER_ADMIN').save(flush:true)
 		new RequestMap(url: '/useradmin/edit/*', configAttribute: 'ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
-		new RequestMap(url: '/useradmin/show/*', configAttribute: 'ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/useradmin/show/*', configAttribute: 'ROLE_USER_ADMIN, ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
 		new RequestMap(url: '/useradmin/list', configAttribute: 'ROLE_SUPER_ADMIN').save(flush:true)
 		new RequestMap(url: '/useradmin', configAttribute: 'ROLE_SUPER_ADMIN').save(flush:true)
 		new RequestMap(url: '/useradmin/dashboard', configAttribute: 'ROLE_USER_ADMIN').save(flush:true)
@@ -88,8 +88,9 @@ class BootStrap {
 		new RequestMap(url: '/client', configAttribute: 'ROLE_PLANNER_SUPERVISOR, ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
 		new RequestMap(url: '/client/myPlanner', configAttribute: 'ROLE_CLIENT').save(flush:true)
 		new RequestMap(url: '/client/themesGallery', configAttribute: 'ROLE_CLIENT').save(flush:true)
-		new RequestMap(url: '/client/viewMenuCategory', configAttribute: 'ROLE_CLIENT').save(flush:true)
-		new RequestMap(url: '/client/viewTheme', configAttribute: 'ROLE_CLIENT').save(flush:true)
+		new RequestMap(url: '/client/viewMenuCategory/*', configAttribute: 'ROLE_CLIENT').save(flush:true)
+		new RequestMap(url: '/client/viewTheme/*', configAttribute: 'ROLE_CLIENT').save(flush:true)
+		new RequestMap(url: '/client/displayImage*', configAttribute: 'ROLE_CLIENT').save(flush:true)
 		new RequestMap(url: '/client/menu', configAttribute: 'ROLE_CLIENT').save(flush:true)
 		new RequestMap(url: '/client/dashboard', configAttribute: 'ROLE_CLIENT').save(flush:true)
 		
