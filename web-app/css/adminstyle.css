@@ -136,11 +136,3 @@ padding-right: 60px;
 padding-left: 120px;
 }
 
-#show-client, #list-theme, #list-menuCategory, #show-planner{
-	margin-top: -140px;
-}
-
-#list-theme h1, #list-menuCategory h1{
-    border-width: 1px 0px 1px 0px;
-    border-style: solid;
-}
