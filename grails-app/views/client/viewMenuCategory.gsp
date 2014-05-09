@@ -21,7 +21,6 @@
 				<h2>
 					${menuCategory.description}
 				</h2>
-
 		</div>
 		<g:each in="${menuItems}" var="menuItem">
 			<div>

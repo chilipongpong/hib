@@ -18,7 +18,7 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<g:each in="${activeThemes}" var="activeTheme">
-				<div>
+				<div class="span4 view view-first">
 				<h3>${activeTheme.name}</h3>
 				<h4>${activeTheme.description}</h4>
 				<g:link controller="client" action="viewTheme" id="${activeTheme.id}"><g:img dir="/uploaded-files" file="${activeTheme.primaryImage}" width="280px" /></g:link>
