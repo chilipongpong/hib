@@ -18,7 +18,7 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<g:each in="${activeMenuCategories}" var="activeMenuCategory">
-				<div>
+				<div class="span4 view view-first">
 				<h3>${activeMenuCategory.name}</h3>
 				<g:link controller="client" action="viewMenuCategory" id="${activeMenuCategory.id}"><g:img dir="/uploaded-files" file="${activeMenuCategory.image}" width="280px" /></g:link>
 				</div>
