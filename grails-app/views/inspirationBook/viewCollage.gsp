@@ -6,6 +6,17 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'inspirationBook.label', default: 'Inspiration Book')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
+		<script type="text/javascript">
+
+		    // All images need to be loaded for this plugin to work so
+		    // we end up waiting for the whole window to load in this example
+		    $(window).load(function () {
+		        $(document).ready(function(){
+		            collage();
+		            $('.Collage').collageCaption();
+		        });
+		    });
+		</script>
 	</head>
 	<body>
 		<g:render template="../dashboard/navigation" />
@@ -23,88 +34,92 @@
 			</ul>
 			</g:hasErrors>
 			
-			<div><label>Theme</label><g:img dir="/uploaded-files" file="${inspirationBookInstance.theme?.primaryImage}" width="400" alt=""/></div>
-			<div><label>Number of Guests</label>${inspirationBookInstance.numberOfGuests}</div>
-			<g:if test="${inspirationBookInstance.appetizers}">
-				<div>
-					<label>Appetizer</label>
-					<g:each in="${inspirationBookInstance.appetizers}" status="i" var="appetizer">
-						<g:img dir="/uploaded-files" file="${appetizer.image}" width="400" alt=""/>
-					</g:each>
-				</div>
-			</g:if>
-			<g:if test="${inspirationBookInstance.soups}">
-				<div>
-					<label>Soup</label>
-					<g:each in="${inspirationBookInstance.soups}" status="i" var="soup">
-						<g:img dir="/uploaded-files" file="${soup.image}" width="400" alt=""/>
-					</g:each>
-				</div>
-			</g:if>
-			<g:if test="${inspirationBookInstance.salads}">
-				<div>
-					<label>Salad</label>
-					<g:each in="${inspirationBookInstance.salads}" status="i" var="salad">
-						<g:img dir="/uploaded-files" file="${salad.image}" width="400" alt=""/>
-					</g:each>
-				</div>
-			</g:if>
-			<g:if test="${inspirationBookInstance.pastas}">
-				<div>
-					<label>Pasta</label>
-					<g:each in="${inspirationBookInstance.pastas}" status="i" var="pasta">
-						<g:img dir="/uploaded-files" file="${pasta.image}" width="400" alt=""/>
-					</g:each>
-				</div>
-			</g:if>
-			<g:if test="${inspirationBookInstance.beefs}">
-				<div>
-					<label>Beef</label>
-					<g:each in="${inspirationBookInstance.beefs}" status="i" var="beef">
-						<g:img dir="/uploaded-files" file="${beef.image}" width="400" alt=""/>
-					</g:each>
-				</div>
-			</g:if>
-			<g:if test="${inspirationBookInstance.porks}">
-				<div>
-					<label>Pork</label>
-					<g:each in="${inspirationBookInstance.porks}" status="i" var="pork">
-						<g:img dir="/uploaded-files" file="${pork.image}" width="400" alt=""/>
-					</g:each>
-				</div>
-			</g:if>
-			<g:if test="${inspirationBookInstance.chickens}">
-				<div>
-					<label>Chicken</label>
-					<g:each in="${inspirationBookInstance.chickens}" status="i" var="chicken">
-						<g:img dir="/uploaded-files" file="${chicken.image}" width="400" alt=""/>
-					</g:each>
-				</div>
-			</g:if>
-			<g:if test="${inspirationBookInstance.seafoods}">
-				<div>
-					<label>Seafood</label>
-					<g:each in="${inspirationBookInstance.seafoods}" status="i" var="seafood">
-						<g:img dir="/uploaded-files" file="${seafood.image}" width="400" alt=""/>
-					</g:each>
-				</div>
-			</g:if>
-			<g:if test="${inspirationBookInstance.vegetables}">
-				<div>
-					<label>Vegetable</label>
-					<g:each in="${inspirationBookInstance.vegetables}" status="i" var="vegetable">
-						<g:img dir="/uploaded-files" file="${vegetable.image}" width="400" alt=""/>
-					</g:each>
-				</div>
-			</g:if>
-			<g:if test="${inspirationBookInstance.desserts}">
-				<div>
-					<label>Dessert</label>
-					<g:each in="${inspirationBookInstance.desserts}" status="i" var="dessert">
-						<g:img dir="/uploaded-files" file="${dessert.image}" width="400" alt=""/>
-					</g:each>
-				</div>
-			</g:if>
+			<br><br>
+			
+			<div class="Collage">
+				<div><label>Theme</label><g:img dir="/uploaded-files" file="${inspirationBookInstance.theme?.primaryImage}" width="400" alt=""/></div>
+				<div><label>Number of Guests</label>${inspirationBookInstance.numberOfGuests}</div>
+				<g:if test="${inspirationBookInstance.appetizers}">
+					<div>
+						<label>Appetizer</label>
+						<g:each in="${inspirationBookInstance.appetizers}" status="i" var="appetizer">
+							<g:img dir="/uploaded-files" file="${appetizer.image}" width="400" alt=""/>
+						</g:each>
+					</div>
+				</g:if>
+				<g:if test="${inspirationBookInstance.soups}">
+					<div>
+						<label>Soup</label>
+						<g:each in="${inspirationBookInstance.soups}" status="i" var="soup">
+							<g:img dir="/uploaded-files" file="${soup.image}" width="400" alt=""/>
+						</g:each>
+					</div>
+				</g:if>
+				<g:if test="${inspirationBookInstance.salads}">
+					<div>
+						<label>Salad</label>
+						<g:each in="${inspirationBookInstance.salads}" status="i" var="salad">
+							<g:img dir="/uploaded-files" file="${salad.image}" width="400" alt=""/>
+						</g:each>
+					</div>
+				</g:if>
+				<g:if test="${inspirationBookInstance.pastas}">
+					<div>
+						<label>Pasta</label>
+						<g:each in="${inspirationBookInstance.pastas}" status="i" var="pasta">
+							<g:img dir="/uploaded-files" file="${pasta.image}" width="400" alt=""/>
+						</g:each>
+					</div>
+				</g:if>
+				<g:if test="${inspirationBookInstance.beefs}">
+					<div>
+						<label>Beef</label>
+						<g:each in="${inspirationBookInstance.beefs}" status="i" var="beef">
+							<g:img dir="/uploaded-files" file="${beef.image}" width="400" alt=""/>
+						</g:each>
+					</div>
+				</g:if>
+				<g:if test="${inspirationBookInstance.porks}">
+					<div>
+						<label>Pork</label>
+						<g:each in="${inspirationBookInstance.porks}" status="i" var="pork">
+							<g:img dir="/uploaded-files" file="${pork.image}" width="400" alt=""/>
+						</g:each>
+					</div>
+				</g:if>
+				<g:if test="${inspirationBookInstance.chickens}">
+					<div>
+						<label>Chicken</label>
+						<g:each in="${inspirationBookInstance.chickens}" status="i" var="chicken">
+							<g:img dir="/uploaded-files" file="${chicken.image}" width="400" alt=""/>
+						</g:each>
+					</div>
+				</g:if>
+				<g:if test="${inspirationBookInstance.seafoods}">
+					<div>
+						<label>Seafood</label>
+						<g:each in="${inspirationBookInstance.seafoods}" status="i" var="seafood">
+							<g:img dir="/uploaded-files" file="${seafood.image}" width="400" alt=""/>
+						</g:each>
+					</div>
+				</g:if>
+				<g:if test="${inspirationBookInstance.vegetables}">
+					<div>
+						<label>Vegetable</label>
+						<g:each in="${inspirationBookInstance.vegetables}" status="i" var="vegetable">
+							<g:img dir="/uploaded-files" file="${vegetable.image}" width="400" alt=""/>
+						</g:each>
+					</div>
+				</g:if>
+				<g:if test="${inspirationBookInstance.desserts}">
+					<div>
+						<label>Dessert</label>
+						<g:each in="${inspirationBookInstance.desserts}" status="i" var="dessert">
+							<g:img dir="/uploaded-files" file="${dessert.image}" width="400" alt=""/>
+						</g:each>
+					</div>
+				</g:if>
+			</div>
 		</div>
 	</body>
 </html>

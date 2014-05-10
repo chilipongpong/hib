@@ -21,6 +21,7 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'hoverstyle.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'hoverstyle1.css')}" type="text/css">				
 		<link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+		<g:javascript src="jquery.collagePlus.min.js" />
 		<g:javascript src="jquery-2.0.3.min.js" />
 		<g:layoutHead/>
 		<r:layoutResources />
