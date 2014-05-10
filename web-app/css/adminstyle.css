@@ -113,6 +113,9 @@ top: -195px;
 
 #clientnav a {
 	color: #fff;
+	text-decoration: none;
+	position: relative;
+	font-size: 16px;
 }
 
 #clientnav li{
@@ -134,5 +137,16 @@ padding-right: 60px;
 
 #clientnav li:nth-child(4) {
 padding-left: 120px;
+}
+
+#list-theme h1, #list-menuCategory h1{
+	font-family: 'Grand Hotel', cursive;
+	font-weight: 400;
+	font-size: 60px;
+	border-style: solid;
+	border-width: 1px 0px 1px 0px;
+	margin: 30px 10px 0px 0px;
+	padding: 20px 10px;
+}
 }
 

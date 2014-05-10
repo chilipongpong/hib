@@ -23,9 +23,9 @@
 				<g:link controller="client" action="viewMenuCategory" id="${activeMenuCategory.id}"><g:img dir="/uploaded-files" file="${activeMenuCategory.image}" width="280px" /></g:link>
 				</div>
 			</g:each>
-			<div class="pagination">
+		<!-- 	<div class="pagination">
 				<g:paginate total="${activeMenuCategoriesTotal}" action="menu" controller="client" next="Forward" prev="Back"/>
-			</div>
+			</div> -->
 		</div>
 	</body>
 </html>

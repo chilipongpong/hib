@@ -7,7 +7,7 @@
 		<g:set var="entityName" value="${message(code: 'theme.label', default: 'Theme')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
-	<body>
+	<body class=".clientDash">
 		<a href="#list-theme" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		
 		<g:render template="../dashboard/navigation" />
@@ -24,9 +24,9 @@
 				<g:link controller="client" action="viewTheme" id="${activeTheme.id}"><g:img dir="/uploaded-files" file="${activeTheme.primaryImage}" width="280px" /></g:link>
 				</div>
 			</g:each>
-			<div class="pagination">
+		<!--  	<div class="pagination">
 				<g:paginate total="${activeThemesTotal}" action="themesGallery" controller="client" next="Forward" prev="Back"/>
-			</div>
+			</div> -->
 		</div>
 	</body>
 </html>

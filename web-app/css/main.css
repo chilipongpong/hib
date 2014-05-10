@@ -70,6 +70,7 @@ body {
 	height: 163px;
 	left: 45%;
 	position: absolute;
+	z-index: 1;
 }
 
 /* replace with .no-boxshadow body if you have modernizr available */
