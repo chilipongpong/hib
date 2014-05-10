@@ -34,11 +34,10 @@
 			</ul>
 			</g:hasErrors>
 			
-			<br><br>
 			
 			<div class="Collage">
-				<div><label>Theme</label><g:img dir="/uploaded-files" file="${inspirationBookInstance.theme?.primaryImage}" width="400" alt=""/></div>
-				<div><label>Number of Guests</label>${inspirationBookInstance.numberOfGuests}</div>
+				<div><label>Theme</label><br><g:img dir="/uploaded-files" file="${inspirationBookInstance.theme?.primaryImage}" width="400" alt=""/></div>
+				<div><label>Number of Guests</label><br>${inspirationBookInstance.numberOfGuests}</div>
 				<g:if test="${inspirationBookInstance.appetizers}">
 					<div>
 						<label>Appetizer</label>

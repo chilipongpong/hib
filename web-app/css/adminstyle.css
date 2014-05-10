@@ -148,5 +148,14 @@ padding-left: 120px;
 	margin: 30px 10px 0px 0px;
 	padding: 20px 10px;
 }
+
+.Collage{
+	padding:20px;
 }
 
+.Collage div{
+	padding: 10px;
+	margin-bottom: 20px;
+	float: left;
+	display: block;
+}
