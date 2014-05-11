@@ -158,3 +158,11 @@
 	</label>
 	<g:select name="freebies" from="${com.hizon.BundledItem.list()}" multiple="multiple" optionKey="id" size="5" value="${packageInstance?.freebies*.id}" class="many-to-many"/>
 </div>
+
+<div class="fieldcontain ${hasErrors(bean: packageInstance, field: 'client', 'error')} ">
+	<label for="client">
+		<g:message code="package.client.label" default="Client" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="client" name="client.id" from="${com.hizon.Client.list()}" optionKey="id" value="${packageInstance?.client?.id}" class="one-to-one" noSelection="['null': '']"/>
+</div>

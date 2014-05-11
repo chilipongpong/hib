@@ -92,6 +92,7 @@ class BootStrap {
 		new RequestMap(url: '/client/list', configAttribute: 'ROLE_PLANNER_SUPERVISOR, ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
 		new RequestMap(url: '/client', configAttribute: 'ROLE_PLANNER_SUPERVISOR, ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
 		new RequestMap(url: '/client/myPlanner/*', configAttribute: 'ROLE_CLIENT').save(flush:true)
+		new RequestMap(url: '/client/myPackage', configAttribute: 'ROLE_CLIENT').save(flush:true)
 		new RequestMap(url: '/client/themesGallery', configAttribute: 'ROLE_CLIENT').save(flush:true)
 		new RequestMap(url: '/client/viewMenuCategory/*', configAttribute: 'ROLE_CLIENT').save(flush:true)
 		new RequestMap(url: '/client/viewTheme/*', configAttribute: 'ROLE_CLIENT').save(flush:true)

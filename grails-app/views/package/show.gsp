@@ -131,6 +131,13 @@
 						</g:each>
 				</li>
 				</g:if>
+				
+				<g:if test="${packageInstance?.client}">
+				<li class="fieldcontain">
+					<span id="name-label" class="property-label"><g:message code="package.client.label" default="Client" /></span>
+						<span class="property-value" aria-labelledby="client-label"><g:fieldValue bean="${packageInstance}" field="client"/></span>
+				</li>
+				</g:if>
 			
 			</ol>
 			<g:form>

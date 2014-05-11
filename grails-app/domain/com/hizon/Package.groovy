@@ -18,6 +18,7 @@ class Package {
 	FoodPackage seafood
 	FoodPackage vegetable
 	FoodPackage dessert
+	Client client
 		
 	static transients = ['pricePerHead']
 	

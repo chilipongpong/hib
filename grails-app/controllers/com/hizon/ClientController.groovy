@@ -205,4 +205,12 @@ class ClientController {
 		
 		[menuCategory: menuCategoryInstance, menuItems: menuItems, menuItemsSize: menuItems.size()]
 	}
+	
+	def myPackage(long id){
+		def user = (User) springSecurityService.getCurrentUser()
+		def loggedInClient = Client.findByUser(user)
+		def clientPackage = Package.findByClient(loggedInClient)
+		
+		[packageInstance: clientPackage]
+	}
 }
