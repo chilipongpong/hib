@@ -5,6 +5,8 @@ import org.springframework.dao.DataIntegrityViolationException
 class ProjectController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	
+	def mailService
 
     def index() {
         redirect(action: "list", params: params)
@@ -46,6 +48,16 @@ class ProjectController {
             return
         }
 
+		// send email notification to the planner if a project is assigned to him/her
+		mailService.sendMail {
+			to projectInstance.getPlanner().getUser().getEmail()
+			bcc "lorence.delrosario@orangeandbronze.com"
+			subject "New Project was assigned to you: " + projectInstance.getName()
+			body(view: "/emailNotification/newProjectAssigned",
+				plugin: "email-confirmation",
+				model: [projectInstance: projectInstance])
+		}
+		
         flash.message = message(code: 'default.created.message', args: [message(code: 'project.label', default: 'Project'), projectInstance.id])
         redirect(action: "show", id: projectInstance.id)
     }

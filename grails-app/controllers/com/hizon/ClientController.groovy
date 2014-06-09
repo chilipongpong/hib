@@ -8,6 +8,7 @@ class ClientController {
 	def fileService
 	def springSecurityService
 	def securityService
+	def mailService
 
     def index() {
         redirect(action: "list", params: params)
@@ -44,6 +45,18 @@ class ClientController {
             return
         }
 		UserRole.create clientInstance.user, Role.findByAuthority('ROLE_CLIENT')
+		
+		// send email notification to planner supervisor whenever a client is created
+		// current emailing system assumes that there is only 1 planner supervisor (business rules)
+		def plannerSupervisor = PlannerSupervisor.get(1)
+		mailService.sendMail {
+			to plannerSupervisor.getUser().getEmail()
+			bcc "lorence.delrosario@orangeandbronze.com"
+			subject "New Client Alert: " + clientInstance.getUser()
+			body(view: "/emailNotification/newClientCreated", 
+				plugin: "email-confirmation",
+				model: [clientInstance: clientInstance])
+		}
 		
         flash.message = message(code: 'default.created.message', args: [message(code: 'client.label', default: 'Client'), clientInstance.id])
         redirect(action: "show", id: clientInstance.id)
