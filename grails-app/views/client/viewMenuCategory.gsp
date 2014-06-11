@@ -9,15 +9,21 @@
 <title><g:message code="default.show.label" args="[entityName]" /></title>
 </head>
 <body>
-	<a href="#show-menuCategory" class="skip" tabindex="-1"><g:message
-			code="default.link.skip.label" default="Skip to content&hellip;" /></a>
 	<g:render template="../dashboard/navigation" />
+	<!-- Heading -->
+	<div class="container-fluid text-center ed-title-head">
+		<div class="container" style="">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<h1><img class="clientIcon" src="../../images/head-menu.png" alt="Menu"> ${menuCategory.name}</h1>
+				</div>
+			</div>
 
+		</div>
+	</div>
+	<!-- End Heading -->
 	<div>
 		<div>
-				<h1>
-					${menuCategory.name}
-				</h1>
 				<h2>
 					${menuCategory.description}
 				</h2>

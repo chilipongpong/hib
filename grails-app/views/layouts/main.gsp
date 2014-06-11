@@ -12,37 +12,54 @@
 		<link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
 		<link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
 		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'adminstyle.css')}" type="text/css">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap.css')}" type="text/css">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'spectrum.css')}" type="text/css">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'superfish.css')}" type="text/css">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'hoverstyle.css')}" type="text/css">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'hoverstyle1.css')}" type="text/css">				
+			
+		
+		<!-- from Edwin -->
+		<link rel="stylesheet" href="${resource(dir: 'css/ed', file: 'bootstrap.min.css')}" type="text/css">
+		<link rel="stylesheet" href="${resource(dir: 'css/ed', file: 'layout.css')}" type="text/css">
+		
+		<link rel="stylesheet" href="${resource(dir: 'css/ed', file: 'messages-errors.css')}" type="text/css">
+		
+		
+					
 		<link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
-		<g:javascript src="jquery.collagePlus.min.js" />
-		<g:javascript src="jquery-2.0.3.min.js" />
+		<!-- <g:javascript src="jquery.collagePlus.min.js" />
+		<g:javascript src="jquery-2.0.3.min.js" /> -->
+		
 		<g:layoutHead/>
 		<r:layoutResources />
 	</head>
 	<body>
-		<section>
-			<div><a class="hizonsLogo" href="/hib"> </a></div>
-			<div id="navi">
-			</div>
-			<div style="clear:both"></div>
-		</section>
-		<g:layoutBody/>
-		<div class="footer" role="contentinfo">
-		<g:form controller="logout">
-				<fieldset class="buttons">
-					<g:submitButton name="logout" class="logout" value="${message(code: 'default.button.logout.label', default: 'Logout')}" />
-				</fieldset>
-			</g:form>
-		</div>
-		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+		<div class="container-fluid ed-header">
+        <div class="container" style="height: 177px">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 text-center">
+                    <img src="../images/hizons-logo.png">
+                </div>
+            </div>
+        </div>
+    </div>
+	<g:layoutBody/>
+	
+	<!-- FOOTER -->
+    <div class="container-fluid text-center ed-footer">
+        <div class="container" >
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                	<g:form controller="logout">
+						<fieldset class="buttons">
+							<g:submitButton name="logout" class="ed-button" value="${message(code: 'default.button.logout.label', default: 'Logout')}" />
+						</fieldset>
+					</g:form>
+				</div>
+            </div>
+        </div>
+    </div> 
+    <!-- END FOOTER -->
+	<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 		<g:javascript library="application"/>
-		<r:layoutResources />
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		 <script src="js/bootstrap.min.js"></script>
+		<r:layoutResources />	
 	</body>
 </html>

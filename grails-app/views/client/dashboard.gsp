@@ -11,47 +11,52 @@
 <body>
 	<g:set var="loggedInClientId" value="${clientId}" scope="session"></g:set>
 	<g:set var="plannerId" value="${myPlannerId}" scope="session"></g:set>
-	<a href="#create-client" class="skip" tabindex="-1"><g:message
-			code="default.link.skip.label" default="Skip to content&hellip;" /></a>
-	<h1>
-		Hello,
-		${firstName}!
-	</h1>
-	<div id="clientdash">
-		<div class="row">
-			<div class="span4 shrink">
-				<g:link action="show" id="${session.loggedInClientId}" controller="client">
-					<img src="../images/btn-profile.png" alt="My Profile">
-				</g:link>
-			</div>
-			<div class="span4 shrink">
-				<g:link action="themesGallery" controller="client">
-					<img src="../images/btn-themes.png" alt="Themes">
-				</g:link>
-			</div>
-			<div class="span4 shrink">
-				<g:link action="menu" controller="client">
-					<img src="../images/btn-menu.png" alt="Menu">
-				</g:link>
-			</div>
-		</div>
-		<div class="row">
-			<div class="span4 shrink">
-				<g:link action="myPlanner" controller="client">
-					<img src="../images/btn-planner.png" alt="My Planner">
-				</g:link>
-			</div>
-			<div class="span4 shrink">
-				<g:link controller="inspirationBook">
-					<img src="../images/btn-book.png" alt="My Inspiration Book">
-				</g:link>
-			</div>
-			<div class="span4 shrink">
-				<g:link action="myPackage" controller="client">
-					<img src="../images/btn-package.png" alt="My Package">
-				</g:link>
-			</div>
-		</div>
+	<div class="container-fluid text-center ed-menu">
+		<div class="container" style="height: 15px"></div>
 	</div>
+	<!-- Heading -->
+	    <div class="container-fluid text-center ed-title-head">
+	        <div class="container" style="">
+	            <div class="row">
+	                <div class="col-md-12 col-lg-12"><h1>Dashboard</h1></div>
+	            </div>
+	
+	        </div>
+	    </div>
+	    <!-- End Heading -->
+
+	<!-- MAIN CONTENT -->
+	<div class="container-fluid text-center" style="">
+		<div class="container" style=>
+			<div class="row">
+				
+					<!-- first row -->
+							<g:link action="show" id="${session.loggedInClientId}" controller="client">
+								<img src="../images/btn-profile.png" alt="My Profile">
+							</g:link>
+							<g:link action="themesGallery" controller="client">
+								<img src="../images/btn-themes.png" alt="Themes">
+							</g:link>
+							<g:link action="menu" controller="client">
+								<img src="../images/btn-menu.png" alt="Menu">
+							</g:link>
+							<g:link action="myPlanner" controller="client">
+								<img src="../images/btn-planner.png" alt="My Planner">
+							</g:link>
+							<g:link controller="inspirationBook">
+								<img src="../images/btn-book.png" alt="My Inspiration Book">
+							</g:link>
+							<g:link action="myPackage" controller="client">
+								<img src="../images/btn-package.png" alt="My Package">
+							</g:link>
+						</div>
+				
+			</div>
+			<!--  end row -->
+		</div>
+		<!-- end container -->
+	</div>
+	<!--  end MAIN CONTENT -->
+
 </body>
 </html>

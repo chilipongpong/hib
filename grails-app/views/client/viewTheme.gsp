@@ -9,12 +9,23 @@
 <title><g:message code="default.show.label" args="[entityName]" /></title>
 </head>
 <body>
-	<a href="#show-theme" class="skip" tabindex="-1"><g:message
-			code="default.link.skip.label" default="Skip to content&hellip;" /></a>
 	<g:render template="../dashboard/navigation" />
+	<!-- Heading -->
+	<div class="container-fluid text-center ed-title-head">
+		<div class="container" style="">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<h1><img class="clientIcon" src="../../images/head-themes.png" alt="Themes"> ${themeInstance.name}</h1>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- End Heading -->
+	
 
 	<h2>
-		${themeInstance.name}
+		${themeInstance.description}
 	</h2>
 	<div>
 		<g:each in="${images}" var="img">
