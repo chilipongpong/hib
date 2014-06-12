@@ -15,7 +15,7 @@
 		<div class="container" style="">
 			<div class="row">
 				<div class="col-md-12 col-lg-12">
-					<h1><img class="clientIcon" src="../images/head-themes.png" alt="Themes"> Themes Gallery</h1>
+					<h1><img style="height: 40px" src="../images/head-themes.png" alt="Themes">Themes Gallery</h1>
 				</div>
 			</div>
 

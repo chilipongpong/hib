@@ -8,7 +8,7 @@ body {
 
 	.ed-header img {
 		position: relative;
-		top: 90px;
+		top: 10px;
 
 		-webkit-border-radius: 3px;
 		-moz-border-radius: 3px;
@@ -23,25 +23,25 @@ body {
 
 .ed-menu {
 	background: #4f3856;
-	height: 35px;
+	height: 50px;
 	
 }
 	.ed-menu ul {
-		margin: 8px 0 0 0;
+		/*margin: 8px 0 0 0;*/
 		padding: 0;
 	}
 
 		.ed-menu li {
-			display: inline;
+			/*display: inline;
 			color: #676767;
 			font-size: 14px;
 			line-height: 18px;
 			padding: 9px 0px;
-			margin: 0 20px;
+			margin: 0 20px;*/
 		}
 
 		.ed-menu li.active {
-			border-bottom: 2px solid #ff8004;
+			/*border-bottom: 2px solid #ff8004;*/
 		}
 
 			.ed-menu li:first-child {
@@ -76,7 +76,7 @@ body {
 		text-transform: uppercase;
 		height: 112px;
 		margin: 0;
-		padding-top: 61px;
+		padding-top: 41px;
 	}	
 	
 	.ed-title-head p.breadcrumbs {
@@ -130,12 +130,15 @@ body {
 			.ed-content-nav ul li a {
 				color: #bebebe;
 				cursor: default;
+				text-align: left;
+				paddinf-left: 0;
 			}
 
 			.ed-content-nav ul li.active a {
 				/*font-weight: bold;*/
 				cursor: default;
 				color: #676767;
+				
 			}
 
 				.ed-content-nav ul li a:hover {
@@ -185,19 +188,12 @@ body {
 		color: #fff;
 		font: 300 15px/23px 'Open Sans', sans-serif !important;
 	}
-	
-	.ed-action-btn .ed-random {
-		background: #5d4664;
-		color: #fff;
-		font: 300 15px/23px 'Open Sans', sans-serif !important;
-	}
 
 	.ed-action-btn .ed-save {
 		background: #31b484;
 		color: #fff;
 		font: 300 15px/23px 'Open Sans', sans-serif !important;
 	}
-	
 
 .ed-button 	{
 	background: #5d4664;
@@ -226,10 +222,102 @@ body {
 
 /*End footer*/
 
+#nav ul li{
+	border-right:none;
+	border-bottom:1px solid #e6e6e6;
+	min-width:170px;
+	min-height:20px;
+	padding: 10px;
+	display:block;
+	visibility:visible}
+#nav ul li a{
+	border-right:none;
+	color:#6791AD;
+	text-shadow:1px 1px 1px #FFF;
+	/*border-bottom:1px solid #FFF;*/
+}
+#nav ul li:hover{background:#DFEEF0}
+#nav ul{display:none;visibility:hidden;position:absolute;top:40px;z-index:1;background:#f2f5f6;border-bottom:1px solid #DDD;border-right:1px solid #DDD;border-left:1px solid #DDD;border-radius:0 0 3px 3px;box-shadow:2px 2px 3px #ECECEC;-webkit-box-shadow:2px 2px 3px #ECECEC;-moz-box-shadow:2px 2px 3px #ECECEC;width:170px;padding:0}
+#nav li:hover > ul{display:block;visibility:visible}
+#nav{
+
+	/*height:39px;*/
+	/*font:12px Geneva, Arial, Helvetica, sans-serif;*/
+	/*background:#3AB3A9;
+	border:1px solid #30A097;
+	border-radius:3px;
+	min-width:500px;*/
+	margin-left:0;
+	padding-left:0
+}
+#nav li{
+	list-style:none;
+	/*display:block;
+	float:left;*/
+	padding-bottom: 20px;
+	padding-top: 10px;
+	display: inline-block;
+	/*height:40px;*/
+	line-height: 20px;
+	position:relative;
+	/*border-right:1px solid #52BDB5*/;
+}
+#nav li a {
+	line-height:20px;
+	text-decoration:none;
+	/*border-right:1px solid #389E96;
+	height:40px;*/
+	color:#FFF;
+	/*text-shadow:1px 1px 1px #66696B;*/
+	display:block;
+	margin:0;
+	padding:0 10px 0 20px;
+}
+#nav .site-name,#nav .site-name:hover{
+	padding-left:10px;
+	padding-right:10px;
+	color:#FFF;
+	text-shadow:1px 1px 1px #66696B;
+	font:italic 20px/38px Georgia, "Times New Roman", Times, serif;
+	/*background:url(images/saaraan.png) no-repeat 10px 5px;*/
+	/*min-width:160px;*/
+	border-right:1px solid #52BDB5;
+}
+
+#nav .site-name a{
+	min-width:129px;overflow:hidden}
+/*#nav li.facebook{background:url(images/facebook.png) no-repeat 9px 12px}
+#nav li.facebook:hover{background:url(images/facebook.png) no-repeat 9px 12px #3BA39B}
+#nav li.yahoo{background:url(images/yahoo.png) no-repeat 9px 12px}
+#nav li.yahoo:hover{background:url(images/yahoo.png) no-repeat 9px 12px #3BA39B}
+#nav li.google{background:url(images/google.png) no-repeat 9px 12px}
+#nav li.google:hover{background:url(images/google.png) no-repeat 9px 12px #3BA39B}
+#nav li.twitter{background:url(images/twitter.png) no-repeat 9px 12px}
+#nav li.twitter:hover{background:url(images/twitter.png) no-repeat 9px 12px #3BA39B}*/
+#nav li:hover{background:#3BA39B;}
+#nav ul li:last-child,#nav ul li:last-child a{border-bottom:none}
+#nav ul ul,#nav ul ul ul{top:0;left:170px;display:none;visibility:hidden;border:1px solid #DDD;z-index:1}
+<!--[if IE 7]>
+<style>
+#nav{
+	margin-left:0px
+}
+#nav ul{
+	left:-40px;
+}
+#nav ul ul{
+	left:130px;
+
+}
+#nav ul ul ul{
+	left:130px;
+
+}
+</style>
+<![endif]-->
 
 
 /* client icons*/
 .clientIcon {
-	vertical-align: baseline;
-	height: 30px;	
+	height: 10px;	
 }

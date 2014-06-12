@@ -1,5 +1,6 @@
 <ul id="navInspi">
-	<li><g:link uri="/inspirationBook/chooseColors">Choose Colors</g:link></li>
+<h3 class="active">Wedding Scheme</h3>
+	<li class="active"><g:link uri="/inspirationBook/chooseColors">Choose Colors</g:link></li>
 	<li><g:link uri="/inspirationBook/chooseTheme">Choose Theme</g:link></li>
 	<li><g:link uri="/inspirationBook/indicateGuests">Indicate Guests</g:link></li>
 	<li><g:link uri="/inspirationBook/chooseAppetizer">Choose Appetizer</g:link></li>
