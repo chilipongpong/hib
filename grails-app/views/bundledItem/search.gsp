@@ -9,23 +9,27 @@
 <title><g:message code="default.list.label" args="[entityName]" /></title>
 </head>
 <body>
-	<a href="#list-bundledItem" class="skip" tabindex="-1"><g:message
-			code="default.link.skip.label" default="Skip to content&hellip;" /></a>
 	<g:render template="../dashboard/navigation" />
-	<div id="list-bundledItem" class="content scaffold-list" role="main">
-		<h1>
-			<g:message code="default.list.label" args="[entityName]" />
-		</h1>
+	<g:render template="../dashboard/heading" />
+
+	<!-- MAIN CONTENT -->
+	<div class="container-fluid text-center" style="">
+		<div class="container" style=>
+			<div class="row">
+				<!-- main content area -->
+				<div class="col-md-12 col-lg-12 ed-main-content" style="">
+					<div id="list-bundledItem" class="content scaffold-list" role="main">
 		<g:if test="${flash.message}">
 			<div class="message" role="status">
 				${flash.message}
 			</div>
 		</g:if>
+		<h3>Search Results</h3>
 		<g:form action="search" method="get" class="search">
 			<g:textField name="q" value="${params.q}" />
 			<g:submitButton name="search" />
 		</g:form>
-		
+		<br />
 		<g:set var="haveResults" value="${bundledItemInstanceList?.results}" />
 		
 		<g:if test="${haveResults}">
@@ -73,8 +77,16 @@
 		</g:if>
 		<g:else>
 			<br />
-			<h3>Sorry, no Bundled Items found</h3>
+			<p>Sorry, no Bundled Items found.</p>
 		</g:else>
 	</div>
+				</div>
+				<!--  end main content area -->
+			</div>
+			<!--  end row -->
+		</div>
+		<!-- end container -->
+	</div>
+	<!--  end MAIN CONTENT -->
 </body>
 </html>

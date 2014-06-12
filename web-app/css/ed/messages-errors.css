@@ -197,6 +197,8 @@ th.desc a {
 	background: #ffffff;
 }
 
+
+/*CHANGE THIS FOR TABLE HIGHLIGHT SOMETHING*/
 th:hover, tr:hover {
 	background: #E1F2B6;
 }
@@ -299,4 +301,8 @@ ul.one-to-many {
 
 ul.one-to-many li.add {
 	list-style-type: none;
+}
+
+h3 {
+	color: #ae895e;
 }

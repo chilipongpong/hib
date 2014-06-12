@@ -194,6 +194,19 @@ body {
 		color: #fff;
 		font: 300 15px/23px 'Open Sans', sans-serif !important;
 	}
+	
+	.ed-action-btn .ed-edit {
+		background: #31b484;
+		color: #fff;
+		font: 300 15px/23px 'Open Sans', sans-serif !important;
+	}
+	
+	.ed-action-btn .ed-delete {
+		background: #8b8b8b;
+		color: #fff;
+		font: 300 15px/23px 'Open Sans', sans-serif !important;
+	}
+	
 
 .ed-button 	{
 	background: #5d4664;
