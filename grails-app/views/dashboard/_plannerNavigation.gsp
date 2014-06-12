@@ -1,5 +1,8 @@
-<div class="navi">
-	<ul class="sf-menu">
+<div class="container-fluid text-center ed-menu">
+	<div class="container" style="height: 15px">
+		<div class="row">
+			<div class="col-md-12 col-lg-12">
+				<ul id="nav">
 		<li><a class="home" href="${createLink(uri: '/')}"><g:message
 					code="default.home.label" /></a></li>
 		<li><a href="#">Menu</a>
@@ -84,4 +87,7 @@
 		</li>
 		<li><g:link action="show" id="${session.loggedInPlannerId}" controller="planner">My Profile</g:link></li>
 	</ul>
+			</div>
+		</div>
+	</div>
 </div>

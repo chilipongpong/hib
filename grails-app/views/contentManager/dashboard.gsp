@@ -8,7 +8,16 @@
 	</head>
 	<body>
 		<g:set var="loggedInContentManager" value="${contentManagerId}" scope="session"></g:set>
-		<a href="#create-contentManager" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<g:render template="../dashboard/navigation" />
+		<!-- Heading -->
+	    <div class="container-fluid text-center ed-title-head">
+	        <div class="container" style="">
+	            <div class="row">
+	                <div class="col-md-12 col-lg-12"><h1>Dashboard</h1></div>
+	            </div>
+	
+	        </div>
+	    </div>
+	    <!-- End Heading -->
 	</body>
 </html>
