@@ -95,6 +95,8 @@ log4j = {
 hib.images.upload.directory = "${userHome}" + "/images/upload"
 hib.images.max.size= 1024 * 1024 * 5
 
+// logout link
+grails.plugin.springsecurity.logout.postOnly = false
 
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.hizon.User'

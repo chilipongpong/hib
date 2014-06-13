@@ -42,21 +42,24 @@
 <r:layoutResources />
 </head>
 <body>
-<div class="container-fluid ed-logout">
+
+	<div class="container-fluid ed-logout" style="background: #ff8004;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-lg-12 text-right">
-                    <span>Welcome Chorva!</span>
-                    <span><a href="">Logout</a></span>
+                    <span style="color: #fff; padding: 10px 5px 10px 10px;font-size: 12px; display: inline-block;">
+						<g:link controller="logout" style="color: #fff;text-decoration: none;font-weight: bold;">logout</g:link>
+                    </span>
                 </div>
             </div>
         </div>
     </div>
+    
 	<div class="container-fluid ed-header">
 		<div class="container" style="height: 177px">
 			<div class="row">
 				<div class="col-md-12 col-lg-12 text-center">
-					<img src="../images/hizons-logo.png">
+					<g:img dir="images" file="hizons-logo.png" />
 				</div>
 			</div>
 		</div>
@@ -68,12 +71,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 col-lg-12">
-					<g:form controller="logout">
-						<fieldset class="buttons">
-							<g:submitButton name="logout" class="ed-button"
-								value="${message(code: 'default.button.logout.label', default: 'Logout')}" />
-						</fieldset>
-					</g:form>
+					<!-- insert future footer content -->
 				</div>
 			</div>
 		</div>
