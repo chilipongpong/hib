@@ -35,8 +35,8 @@
 
 <link href='http://fonts.googleapis.com/css?family=Grand+Hotel'
 	rel='stylesheet' type='text/css'>
-<!-- <g:javascript src="jquery.collagePlus.min.js" />
-		<g:javascript src="jquery-2.0.3.min.js" /> -->
+	<g:javascript src="jquery.collagePlus.min.js" />
+	<g:javascript src="jquery-2.0.3.min.js" />
 
 <g:layoutHead />
 <r:layoutResources />
