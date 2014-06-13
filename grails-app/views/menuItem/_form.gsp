@@ -48,7 +48,7 @@
 		<g:message code="menuItem.image.label" default="Image" />
 		<span class="required-indicator">*</span>
 	</label>
-	<input type="file" name="newImage" />
+	<input type="file" name="newImage" style="margin-left: 222px" />
 </div>
 
 <g:if test="${menuItemInstance?.image}">
