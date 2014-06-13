@@ -1,3 +1,4 @@
+import com.hizon.SuperAdmin
 import com.hizon.User
 import com.hizon.Role
 import com.hizon.UserRole
@@ -22,6 +23,9 @@ class BootStrap {
 			lastName: 'admin',
 			enabled: true).save(failOnError: true)
 
+		def superAdmin = SuperAdmin.findByUser(superAdminUser) ?: new SuperAdmin(
+			user: superAdminUser).save(failOnError: true)
+			
 		if (!superAdminUser.authorities.contains(superAdminRole)) {
 			UserRole.create superAdminUser, superAdminRole
 		}
