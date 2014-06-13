@@ -11,7 +11,7 @@
 	$(document)
 			.ready(
 					function() {
-						$(".btn ed-button")
+						$(".ed-button")
 								.click(
 										function() {
 											$("#errorRandom").html("")
