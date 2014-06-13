@@ -19,12 +19,12 @@
 				<!-- main content area -->
 				<div class="col-md-12 col-lg-12 ed-main-content" style="">
 					<div id="list-bundledItem" class="content scaffold-list" role="main">
+					<h3>Search Results</h3>
 		<g:if test="${flash.message}">
 			<div class="message" role="status">
 				${flash.message}
 			</div>
 		</g:if>
-		<h3>Search Results</h3>
 		<g:form action="search" method="get" class="search">
 			<g:textField name="q" value="${params.q}" />
 			<g:submitButton name="search" />
