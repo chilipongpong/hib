@@ -42,24 +42,18 @@
 		
 	</label>
 
-	<div class="selectionMultipleBox">
-		<select id="colorSelectionFrom" size="8" multiple>
+		<select id="colorSelectionFrom" size="8" multiple style="width: 200px">
 			<g:each var="color" in="${Color.findAllByStatus(Status.ACTIVE) - themeInstance?.colors}">
 				<option value="${color.id}">${color.name}</option>
 			</g:each>
 		</select>
-	</div>
-	<div class="selectionMultipleArrows">
 		<input type="button" id="colorMoveRight" value="&#62" />
 		<input type="button" id="colorMoveLeft" value="&#60" />
-	</div>
-	<div class="selectionMultipleBox">
-		<select id="colorSelectionTo" size="8" multiple>
+		<select id="colorSelectionTo" size="8" multiple style="width: 200px">
 			<g:each var="color" in="${themeInstance?.colors}">
 				<option value="${color.id}">${color.name}</option>
 			</g:each>
 		</select>
-	</div>
 	<g:hiddenField id="colorsId" name="colorsId" value=""/>
 </div>
 
@@ -69,7 +63,7 @@
 		<g:message code="theme.primaryImage.label" default="Primary Image" />
 		<span class="required-indicator">*</span>
 	</label>
-	<input type="file" name="newPrimaryImage" />
+	<input type="file" name="newPrimaryImage" style="margin-left: 222px" />
 </div>
 
 <g:if test="${themeInstance?.primaryImage}">
