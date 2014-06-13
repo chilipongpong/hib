@@ -42,6 +42,16 @@
 <r:layoutResources />
 </head>
 <body>
+<div class="container-fluid ed-logout">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 text-right">
+                    <span>Welcome Chorva!</span>
+                    <span><a href="">Logout</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
 	<div class="container-fluid ed-header">
 		<div class="container" style="height: 177px">
 			<div class="row">

@@ -68,7 +68,7 @@
 	</div>
 </g:if>
 
-<sec:ifAnyGranted roles="ROLE_USER_ADMIN, ROLE_SUPER_ADMIN">
+<sec:ifAnyGranted roles="ROLE_SUPER_ADMIN">
 <div class="fieldcontain ${hasErrors(bean: clientInstance, field: 'planner', 'error')} ">
 	<label for="planner">
 		<g:message code="client.planner.label" default="Planner" />
