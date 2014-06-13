@@ -31,12 +31,13 @@
 	href="${resource(dir: 'css/ed', file: 'messages-errors.css')}"
 	type="text/css">
 
-
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'spectrum.css')}" type="text/css">
 
 <link href='http://fonts.googleapis.com/css?family=Grand+Hotel'
 	rel='stylesheet' type='text/css'>
-	<g:javascript src="jquery.collagePlus.min.js" />
 	<g:javascript src="jquery-2.0.3.min.js" />
+	<g:javascript src="jquery.collagePlus.min.js" />
+	<g:javascript src="bootstrap.min.js" />
 
 <g:layoutHead />
 <r:layoutResources />
@@ -83,9 +84,6 @@
 		<g:message code="spinner.alt" default="Loading&hellip;" />
 	</div>
 	<g:javascript library="application" />
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
 	<r:layoutResources />
 </body>
 </html>
