@@ -48,14 +48,6 @@ class PackageController {
 			foodPackage.save()
 		}
 		
-//		if (params.freebies) {
-//			def freebies = [] as Set
-//			for(freebie in params.freebies) {
-//				freebies.add(Color.get(freebie))
-//			}
-//			packageInstance.freebies = freebies;
-//		}
-		
         if (!packageInstance.save(flush: true)) {
             render(view: "create", model: [packageInstance: packageInstance])
             return

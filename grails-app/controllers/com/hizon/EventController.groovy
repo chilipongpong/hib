@@ -6,6 +6,8 @@ class EventController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+	def mailService
+	
     def index() {
         redirect(action: "list", params: params)
     }
@@ -30,6 +32,16 @@ class EventController {
             render(view: "create", model: [eventInstance: eventInstance])
             return
         }
+		
+		// send email notification to planner whenever an event is created
+		def planner = eventInstance.planner
+		mailService.sendMail {
+			to planner.user.email
+			subject "New Event Alert: " + eventInstance.name
+			body(view: "/emailNotification/newProjectAssigned",
+				plugin: "email-confirmation",
+				model: [eventInstance: eventInstance])
+		}
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'event.label', default: 'Event'), eventInstance.id])
         redirect(action: "show", id: eventInstance.id)

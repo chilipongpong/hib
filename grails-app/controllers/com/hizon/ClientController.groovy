@@ -51,7 +51,6 @@ class ClientController {
 		def plannerSupervisor = PlannerSupervisor.get(1)
 		mailService.sendMail {
 			to plannerSupervisor.getUser().getEmail()
-			bcc "lorence.delrosario@orangeandbronze.com"
 			subject "New Client Alert: " + clientInstance.getUser()
 			body(view: "/emailNotification/newClientCreated", 
 				plugin: "email-confirmation",
