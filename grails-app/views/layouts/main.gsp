@@ -32,6 +32,7 @@
 	type="text/css">
 
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'spectrum.css')}" type="text/css">
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'uploader-override.css')}" type="text/css">
 
 <link href='http://fonts.googleapis.com/css?family=Grand+Hotel'
 	rel='stylesheet' type='text/css'>
