@@ -122,22 +122,6 @@
 								</g:if>
 							</sec:ifAnyGranted>
 
-
-							<g:if test="${clientInstance?.planner}">
-								<li class="fieldcontain"><span id="planner-label"
-									class="property-label"><g:message
-											code="client.planner.label" default="Planner" /></span> 
-									<span class="property-value" aria-labelledby="planner-label">
-									<sec:ifAnyGranted roles="ROLE_USER_ADMIN, ROLE_SUPER_ADMIN, ROLE_PLANNER_SUPERVISOR">
-										<g:link controller="planner" action="show" id="${clientInstance?.planner?.id}">${clientInstance?.planner?.encodeAsHTML()}</g:link>
-									</sec:ifAnyGranted>
-									<sec:ifAnyGranted roles="ROLE_CLIENT">
-										${clientInstance?.planner}
-									</sec:ifAnyGranted>
-									</span>
-								</li>
-							</g:if>
-
 						</ol>
 						<g:form>
 							<!--Interaction buttons-->

@@ -2,10 +2,8 @@ package com.hizon
 
 class Client {
 	User user
-	Planner planner
 	
     static constraints = {
-		planner nullable:true
     }
 	
 	static mapping = {
