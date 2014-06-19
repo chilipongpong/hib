@@ -4,7 +4,7 @@ class Planner {
 	User user
 	
 	static belongsTo = [plannerSupervisor: PlannerSupervisor]
-	static hasMany = [clients: Client]
+	static hasMany = [events: Event]
 
     static constraints = {
     }
