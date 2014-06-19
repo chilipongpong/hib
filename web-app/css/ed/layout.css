@@ -354,3 +354,13 @@ body {
 .clientIcon {
 	height: 10px;	
 }
+
+.files.uploadr-dropable {
+	margin: 0px !important;
+	margin-top: 50px !important;
+	margin-left: 25px !important
+}
+
+.files.uploadr-dropable .file .info {
+	margin-top: -60px !important;
+}
