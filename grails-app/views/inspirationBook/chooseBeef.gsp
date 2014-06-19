@@ -94,7 +94,7 @@
 							class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'beefs', 'error')} ">
 							<div id="errorRandom"></div>
 							<span class="property-label"><g:message
-									code="inspirationBook.beef.label" default="Beef 2" />
+									code="inspirationBook.beef.label" default="Beef 1" />
 							</span>
 							<span class="property-value">
 							<g:select name="beef1" from="${com.hizon.MenuItem.listBeefs()}"
