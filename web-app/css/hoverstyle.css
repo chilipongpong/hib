@@ -16,7 +16,7 @@
    height: 230px;
    position: absolute;
 
-   top: 0;
+   top: -120px;
    left: 0;
 }
 .view img {
@@ -32,6 +32,8 @@
    padding: 10px;
    background: rgba(0, 0, 0, 0.8);
    margin: 20px 0;
+   z-index: 1;
+   top: 150px;
 }
 .view p {
    font-family: Georgia, serif;
@@ -67,3 +69,4 @@ h3{
 	width: 840px;
 	margin: 0 auto;
 }
+

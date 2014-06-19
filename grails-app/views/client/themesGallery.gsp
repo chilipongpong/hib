@@ -39,12 +39,12 @@
 		<g:each in="${activeThemes}" var="activeTheme">
 			<div class="span4 view view-first" style="float:left">
 				<div class="mask">
-					<h3>
+					<h2>
 						${activeTheme.name}
-					</h3>
-					<h4>
+					</h2>
+					<p>
 						${activeTheme.description}
-					</h4>
+					</p>
 					<g:link controller="client" action="viewTheme"
 						id="${activeTheme.id}">
 						<g:img dir="/uploaded-files" file="${activeTheme.primaryImage}"
@@ -52,6 +52,7 @@
 					</g:link>
 				</div>
 			</div>
+
 		</g:each>
 		<!--  	<div class="pagination">
 				<g:paginate total="${activeThemesTotal}" action="themesGallery" controller="client" next="Forward" prev="Back"/>
