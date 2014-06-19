@@ -122,6 +122,18 @@
 								</g:if>
 							</sec:ifAnyGranted>
 
+							<g:if test="${clientInstance?.planner}">
+								<div class="fieldcontain">
+									<span id="planner-label" class="property-label"><g:message
+											code="client.planner.label" default="Planner" /></span> <span
+										class="property-value" aria-labelledby="planner-label"><g:link
+											controller="planner" action="show"
+											id="${clientInstance?.planner?.id}">
+											${clientInstance?.planner?.encodeAsHTML()}
+										</g:link></span>
+								</div>
+							</g:if>
+
 						</ol>
 						<g:form>
 							<!--Interaction buttons-->

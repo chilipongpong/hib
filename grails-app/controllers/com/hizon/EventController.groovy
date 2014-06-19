@@ -21,6 +21,11 @@ class EventController {
 
     def save() {
         def eventInstance = new Event(params)
+		
+		def client = eventInstance.client
+		client.event = eventInstance
+		client.save()
+		
         if (!eventInstance.save(flush: true)) {
             render(view: "create", model: [eventInstance: eventInstance])
             return
@@ -43,7 +48,8 @@ class EventController {
 
     def edit(Long id) {
         def eventInstance = Event.get(id)
-        if (!eventInstance) {
+		
+		if (!eventInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'event.label', default: 'Event'), id])
             redirect(action: "list")
             return
@@ -54,6 +60,7 @@ class EventController {
 
     def update(Long id, Long version) {
         def eventInstance = Event.get(id)
+		
         if (!eventInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'event.label', default: 'Event'), id])
             redirect(action: "list")
@@ -71,8 +78,12 @@ class EventController {
         }
 
         eventInstance.properties = params
-
-        if (!eventInstance.save(flush: true)) {
+		
+		def client = eventInstance.client
+		client.event = eventInstance
+		client.save()
+		
+		if (!eventInstance.save(flush: true)) {
             render(view: "edit", model: [eventInstance: eventInstance])
             return
         }
