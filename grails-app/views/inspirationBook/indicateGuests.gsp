@@ -59,6 +59,7 @@
 
 				<!-- main content area -->
 				<div class="col-md-9 col-lg-9 ed-main-content" style="">
+					<h1>Step 3 of 15</h1>
 					<h2>Indicate your number of guests and sponsors:</h2>
 					<g:if test="${flash.message}">
 						<div class="message" role="status">

@@ -58,6 +58,7 @@
 
 				<!-- main content area -->
 				<div class="col-md-9 col-lg-9 ed-main-content" style="">
+					<h1>Step 10 of 15</h1>
 					<h2>Choose your chicken dishes:</h2>
 					<div id="choose-colors" class="content scaffold-show" role="main">
 						<g:if test="${flash.message}">

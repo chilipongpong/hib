@@ -65,6 +65,7 @@
 
 				<!-- main content area -->
 				<div class="col-md-9 col-lg-9 ed-main-content" style="">
+					<h1>Step 8 of 15</h1>
 					<h2>Choose your beef dishes:</h2>
 					<g:if test="${flash.message}">
 						<div class="message" role="status">
