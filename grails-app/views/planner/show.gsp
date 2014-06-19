@@ -79,15 +79,6 @@
 								</li>
 								</g:if>
 								
-								<g:if test="${plannerInstance?.clients}">
-								<li class="fieldcontain">
-									<span id="clients-label" class="property-label"><g:message code="planner.clients.label" default="Clients" /></span>
-										<g:each in="${plannerInstance.clients}" var="c">
-										<span class="property-value" aria-labelledby="clients-label"><g:link controller="client" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-										</g:each>
-								</li>
-								</g:if>
-							
 							</ol>
 							
 							<g:form>
