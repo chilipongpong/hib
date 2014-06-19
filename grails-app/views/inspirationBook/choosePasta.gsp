@@ -29,36 +29,38 @@
 			<div class="row">
 				<!-- Left Menu -->
 				<div class="col-md-3 col-lg-3 ed-content-nav">
-					<h3>Wedding Scheme</h3>
+					<h3 class="active">Wedding Scheme</h3>
 					<ul>
-						<li><g:link uri="/inspirationBook/chooseColors">Choose Colors</g:link></li>
-						<li><g:link uri="/inspirationBook/chooseTheme">Choose Theme</g:link></li>
+						<li class="${inspirationBookInstance.colors ? "finished" : ""}"><g:link uri="/inspirationBook/chooseColors">Choose Colors</g:link></li>
+						<li class="active ${inspirationBookInstance.theme != null ? "finished" : ""}"><g:link uri="/inspirationBook/chooseTheme">Choose Theme</g:link></li>
 					</ul>
 					<h3>Guest List</h3>
 					<ul>
-						<li><g:link uri="/inspirationBook/indicateGuests">Indicate Guests</g:link></li>
+						<li class="active ${inspirationBookInstance.numberOfGuests != 0 ? "finished" : ""}"><g:link uri="/inspirationBook/indicateGuests">Indicate Guests</g:link></li>
 					</ul>
-					<h3 class="active">Food</h3>
+					<h3>Food</h3>
 					<ul>
-						<li><g:link uri="/inspirationBook/chooseAppetizer">Choose Appetizer</g:link></li>
-						<li><g:link uri="/inspirationBook/chooseSoup">Choose Soup</g:link></li>
-						<li><g:link uri="/inspirationBook/chooseSalad">Choose Salad</g:link></li>
-						<li class="active"><g:link uri="/inspirationBook/choosePasta">Choose Pasta</g:link></li>
-						<li><g:link uri="/inspirationBook/chooseBeef">Choose Beef</g:link></li>
-						<li><g:link uri="/inspirationBook/choosePork">Choose Pork</g:link></li>
-						<li><g:link uri="/inspirationBook/chooseChicken">Choose Chicken</g:link></li>
-						<li><g:link uri="/inspirationBook/chooseSeafood">Choose Seafood</g:link></li>
-						<li><g:link uri="/inspirationBook/chooseVegetable">Choose Vegetable</g:link></li>
-						<li><g:link uri="/inspirationBook/chooseDessert">Choose Dessert</g:link></li>
+						<li class="${inspirationBookInstance.appetizers ? "finished" : ""}"><g:link uri="/inspirationBook/chooseAppetizer">Choose Appetizer</g:link></li>
+						<li class="${inspirationBookInstance.soups ? "finished" : ""}"><g:link uri="/inspirationBook/chooseSoup">Choose Soup</g:link></li>
+						<li class="${inspirationBookInstance.salads ? "finished" : ""}"><g:link uri="/inspirationBook/chooseSalad">Choose Salad</g:link></li>
+						<li class="active ${inspirationBookInstance.pastas ? "finished" : ""}"><g:link uri="/inspirationBook/choosePasta">Choose Pasta</g:link></li>
+						<li class="${inspirationBookInstance.beefs ? "finished" : ""}"><g:link uri="/inspirationBook/chooseBeef">Choose Beef</g:link></li>
+						<li class="${inspirationBookInstance.porks ? "finished" : ""}"><g:link uri="/inspirationBook/choosePork">Choose Pork</g:link></li>
+						<li class="${inspirationBookInstance.chickens ? "finished" : ""}"><g:link uri="/inspirationBook/chooseChicken">Choose Chicken</g:link></li>
+						<li class="${inspirationBookInstance.seafoods ? "finished" : ""}"><g:link uri="/inspirationBook/chooseSeafood">Choose Seafood</g:link></li>
+						<li class="${inspirationBookInstance.vegetables ? "finished" : ""}"><g:link uri="/inspirationBook/chooseVegetable">Choose Vegetable</g:link></li>
+						<li class="${inspirationBookInstance.desserts ? "finished" : ""}"><g:link uri="/inspirationBook/chooseDessert">Choose Dessert</g:link></li>
 					</ul>
 					<h3>Supplier</h3>
 					<ul>
-						<li><g:link uri="/inspirationBook/indicateSuppliers">Indicate Suppliers</g:link></li>
+						<li class="${(inspirationBookInstance.hasFlowers || inspirationBookInstance.hasBridalCar || inspirationBookInstance.hasEmcee || inspirationBookInstance.hasCake ||
+							inspirationBookInstance.hasFlowersForEntourage || inspirationBookInstance.hasPhotoBooth || inspirationBookInstance.hasMobileBar || inspirationBookInstance.hasVenue) ? "finished" : ""}">
+							<g:link uri="/inspirationBook/indicateSuppliers">Indicate Suppliers</g:link>
+						</li>
 					</ul>
 					<h3>
 						<g:link uri="/inspirationBook/viewCollage">View Collage</g:link>
 					</h3>
-
 				</div>
 				<!-- End left menu -->
 
