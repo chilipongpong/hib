@@ -79,7 +79,7 @@
 		<g:message code="event.appetizers.label" default="Appetizers" />
 		
 	</label>
-	<g:select name="appetizers" from="${com.hizon.MenuItem.list()}" multiple="multiple" optionKey="id" size="5" value="${eventInstance?.appetizers*.id}" class="many-to-many"/>
+	<g:select name="appetizers" from="${com.hizon.MenuItem.listAppetizers()}" multiple="multiple" optionKey="id" size="5" value="${eventInstance?.appetizers*.id}" class="many-to-many"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: eventInstance, field: 'beefs', 'error')} ">
@@ -87,7 +87,7 @@
 		<g:message code="event.beefs.label" default="Beefs" />
 		
 	</label>
-	<g:select name="beefs" from="${com.hizon.MenuItem.list()}" multiple="multiple" optionKey="id" size="5" value="${eventInstance?.beefs*.id}" class="many-to-many"/>
+	<g:select name="beefs" from="${com.hizon.MenuItem.listBeefs()}" multiple="multiple" optionKey="id" size="5" value="${eventInstance?.beefs*.id}" class="many-to-many"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: eventInstance, field: 'chickens', 'error')} ">
@@ -95,7 +95,7 @@
 		<g:message code="event.chickens.label" default="Chickens" />
 		
 	</label>
-	<g:select name="chickens" from="${com.hizon.MenuItem.list()}" multiple="multiple" optionKey="id" size="5" value="${eventInstance?.chickens*.id}" class="many-to-many"/>
+	<g:select name="chickens" from="${com.hizon.MenuItem.listChickens()}" multiple="multiple" optionKey="id" size="5" value="${eventInstance?.chickens*.id}" class="many-to-many"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: eventInstance, field: 'desserts', 'error')} ">
@@ -103,7 +103,7 @@
 		<g:message code="event.desserts.label" default="Desserts" />
 		
 	</label>
-	<g:select name="desserts" from="${com.hizon.MenuItem.list()}" multiple="multiple" optionKey="id" size="5" value="${eventInstance?.desserts*.id}" class="many-to-many"/>
+	<g:select name="desserts" from="${com.hizon.MenuItem.listDesserts()}" multiple="multiple" optionKey="id" size="5" value="${eventInstance?.desserts*.id}" class="many-to-many"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: eventInstance, field: 'pastas', 'error')} ">
@@ -111,7 +111,7 @@
 		<g:message code="event.pastas.label" default="Pastas" />
 		
 	</label>
-	<g:select name="pastas" from="${com.hizon.MenuItem.list()}" multiple="multiple" optionKey="id" size="5" value="${eventInstance?.pastas*.id}" class="many-to-many"/>
+	<g:select name="pastas" from="${com.hizon.MenuItem.listPastas()}" multiple="multiple" optionKey="id" size="5" value="${eventInstance?.pastas*.id}" class="many-to-many"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: eventInstance, field: 'porks', 'error')} ">
@@ -119,7 +119,7 @@
 		<g:message code="event.porks.label" default="Porks" />
 		
 	</label>
-	<g:select name="porks" from="${com.hizon.MenuItem.list()}" multiple="multiple" optionKey="id" size="5" value="${eventInstance?.porks*.id}" class="many-to-many"/>
+	<g:select name="porks" from="${com.hizon.MenuItem.listPorks()}" multiple="multiple" optionKey="id" size="5" value="${eventInstance?.porks*.id}" class="many-to-many"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: eventInstance, field: 'salads', 'error')} ">
@@ -127,7 +127,7 @@
 		<g:message code="event.salads.label" default="Salads" />
 		
 	</label>
-	<g:select name="salads" from="${com.hizon.MenuItem.list()}" multiple="multiple" optionKey="id" size="5" value="${eventInstance?.salads*.id}" class="many-to-many"/>
+	<g:select name="salads" from="${com.hizon.MenuItem.listSalads()}" multiple="multiple" optionKey="id" size="5" value="${eventInstance?.salads*.id}" class="many-to-many"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: eventInstance, field: 'seafoods', 'error')} ">
@@ -135,7 +135,7 @@
 		<g:message code="event.seafoods.label" default="Seafoods" />
 		
 	</label>
-	<g:select name="seafoods" from="${com.hizon.MenuItem.list()}" multiple="multiple" optionKey="id" size="5" value="${eventInstance?.seafoods*.id}" class="many-to-many"/>
+	<g:select name="seafoods" from="${com.hizon.MenuItem.listSeafoods()}" multiple="multiple" optionKey="id" size="5" value="${eventInstance?.seafoods*.id}" class="many-to-many"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: eventInstance, field: 'soups', 'error')} ">
@@ -143,7 +143,7 @@
 		<g:message code="event.soups.label" default="Soups" />
 		
 	</label>
-	<g:select name="soups" from="${com.hizon.MenuItem.list()}" multiple="multiple" optionKey="id" size="5" value="${eventInstance?.soups*.id}" class="many-to-many"/>
+	<g:select name="soups" from="${com.hizon.MenuItem.listSoups()}" multiple="multiple" optionKey="id" size="5" value="${eventInstance?.soups*.id}" class="many-to-many"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: eventInstance, field: 'vegetables', 'error')} ">
@@ -151,5 +151,5 @@
 		<g:message code="event.vegetables.label" default="Vegetables" />
 		
 	</label>
-	<g:select name="vegetables" from="${com.hizon.MenuItem.list()}" multiple="multiple" optionKey="id" size="5" value="${eventInstance?.vegetables*.id}" class="many-to-many"/>
+	<g:select name="vegetables" from="${com.hizon.MenuItem.listVegetables()}" multiple="multiple" optionKey="id" size="5" value="${eventInstance?.vegetables*.id}" class="many-to-many"/>
 </div>

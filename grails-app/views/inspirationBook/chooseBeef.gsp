@@ -67,7 +67,7 @@
 
 				<!-- main content area -->
 				<div class="col-md-9 col-lg-9 ed-main-content" style="">
-					<h1>Step 8 of 15</h1>
+					<h3 class="ed-progress">Step 8 of 15</h3>
 					<h2>Choose your beef dishes:</h2>
 					<g:if test="${flash.message}">
 						<div class="message" role="status">
@@ -94,7 +94,7 @@
 							class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'beefs', 'error')} ">
 							<div id="errorRandom"></div>
 							<span class="property-label"><g:message
-									code="inspirationBook.beef.label" default="Beef 2" />
+									code="inspirationBook.beef.label" default="Beef 1" />
 							</span>
 							<span class="property-value">
 							<g:select name="beef1" from="${com.hizon.MenuItem.listBeefs()}"

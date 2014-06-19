@@ -367,3 +367,15 @@ body {
 .clientIcon {
 	height: 10px;	
 }
+
+h3.ed-progress {
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+
+	background: #eac3a4;
+	padding: 7px 15px;
+	font-size: 12px;
+	width: 150px;
+	color: #fff;
+}

@@ -269,7 +269,7 @@ class InspirationBookController {
 			render(view: "choosePasta", model: [inspirationBookInstance: inspirationBookInstance], params: params)
 			return
 		}
-		flash.message = "Chosen pastas saved"
+		flash.message = "Chosen pasta dishes saved"
 		redirect(action: "chooseBeef")
 	}
 	
@@ -307,7 +307,7 @@ class InspirationBookController {
 			render(view: "chooseBeef", model: [inspirationBookInstance: inspirationBookInstance], params: params)
 			return
 		}
-		flash.message = "Chosen beefs saved"
+		flash.message = "Chosen beef dishes saved"
 		redirect(action: "choosePork")
 	}
 	
@@ -345,7 +345,7 @@ class InspirationBookController {
 			render(view: "choosePork", model: [inspirationBookInstance: inspirationBookInstance], params: params)
 			return
 		}
-		flash.message = "Chosen porks saved"
+		flash.message = "Chosen pork dishes saved"
 		redirect(action: "chooseChicken")
 	}
 	
@@ -383,7 +383,7 @@ class InspirationBookController {
 			render(view: "chooseChicken", model: [inspirationBookInstance: inspirationBookInstance], params: params)
 			return
 		}
-		flash.message = "Chosen chickens saved"
+		flash.message = "Chosen chicken dishes saved"
 		redirect(action: "chooseSeafood")
 	}
 	
@@ -421,7 +421,7 @@ class InspirationBookController {
 			render(view: "chooseSeafood", model: [inspirationBookInstance: inspirationBookInstance], params: params)
 			return
 		}
-		flash.message = "Chosen seafoods saved"
+		flash.message = "Chosen seafood dishes saved"
 		redirect(action: "chooseVegetable")
 	}
 	
@@ -459,7 +459,7 @@ class InspirationBookController {
 			render(view: "chooseVegetable", model: [inspirationBookInstance: inspirationBookInstance], params: params)
 			return
 		}
-		flash.message = "Chosen vegetables saved"
+		flash.message = "Chosen vegetable dishes saved"
 		redirect(action: "chooseDessert")
 	}
 	
