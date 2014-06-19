@@ -173,6 +173,14 @@ body {
 				
 				vertical-align: middle;
 			}
+			
+			.ed-content-nav ul li.finished a:before {
+				content: url('../../../images/check-active.png');
+				display: inline-block;
+				margin-left: -25px; margin-right: 5px;
+				
+				vertical-align: middle;
+			}
 
 /*End left navigation*/			
 
