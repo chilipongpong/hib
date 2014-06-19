@@ -36,7 +36,7 @@
 					</ul>
 					<h3>Guest List</h3>
 					<ul>
-						<li class="active ${inspirationBookInstance.numberOfGuests != 0 ? "finished" : ""}"><g:link uri="/inspirationBook/indicateGuests">Indicate Guests</g:link></li>
+						<li class="${inspirationBookInstance.numberOfGuests != 0 ? "finished" : ""}"><g:link uri="/inspirationBook/indicateGuests">Indicate Guests</g:link></li>
 					</ul>
 					<h3>Food</h3>
 					<ul>

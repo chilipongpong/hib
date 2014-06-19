@@ -32,7 +32,7 @@
 					<h3 class="active">Wedding Scheme</h3>
 					<ul>
 						<li class="${inspirationBookInstance.colors ? "finished" : ""}"><g:link uri="/inspirationBook/chooseColors">Choose Colors</g:link></li>
-						<li class="active ${inspirationBookInstance.theme != null ? "finished" : ""}"><g:link uri="/inspirationBook/chooseTheme">Choose Theme</g:link></li>
+						<li class="${inspirationBookInstance.theme != null ? "finished" : ""}"><g:link uri="/inspirationBook/chooseTheme">Choose Theme</g:link></li>
 					</ul>
 					<h3>Guest List</h3>
 					<ul>
@@ -53,7 +53,7 @@
 					</ul>
 					<h3>Supplier</h3>
 					<ul>
-						<li class="active ${(inspirationBookInstance.hasFlowers || inspirationBookInstance.hasBridalCar || inspirationBookInstance.hasEmcee || inspirationBookInstance.hasCake ||
+						<li class="${(inspirationBookInstance.hasFlowers || inspirationBookInstance.hasBridalCar || inspirationBookInstance.hasEmcee || inspirationBookInstance.hasCake ||
 							inspirationBookInstance.hasFlowersForEntourage || inspirationBookInstance.hasPhotoBooth || inspirationBookInstance.hasMobileBar || inspirationBookInstance.hasVenue) ? "finished" : ""}">
 							<g:link uri="/inspirationBook/indicateSuppliers">Indicate Suppliers</g:link>
 						</li>
