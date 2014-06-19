@@ -9,20 +9,34 @@
 <title><g:message code="default.show.label" args="[entityName]" /></title>
 <script>
 	$(document).ready(function() {
+		if($("#theme").val()) {
+			$("#save").prop("disabled", false);
+			$(".theme-image").each(function() {
+				var id = $(this).find("#theme-id").val();
+				if ($("#theme").val() == id) {
+					selectImage($(this));
+				} 
+			});
+			var id = $(".selected").find("#theme-id").val();
+			$("#theme").val(id);
+		}
 		$(".theme-image").click(function() {
 			$(".theme-image").each(function() {
 				$(this).removeClass("selected");
 				$(this).css("background-color", "white");
 				$("#save").prop("disabled", false);
 			});
-			$(this).css("background-color", "red");
-			$(this).addClass("selected");
+			selectImage($(this));
 		});
 		$("#save").click(function() {
 			var id = $(".selected").find("#theme-id").val();
 			$("#theme").val(id);
 		});
 	});
+	var selectImage = function(element) {
+		element.css("background-color", "red");
+		element.addClass("selected");
+	};
 </script>
 </head>
 <body>
@@ -101,7 +115,7 @@
 						<g:hiddenField name="client.id"
 							value="${inspirationBookInstance?.client?.id}" />
 						<g:hiddenField name="id" value="${inspirationBookInstance?.id}" />
-						<g:hiddenField name="theme" />
+						<g:hiddenField name="theme" value="${inspirationBookInstance?.theme?.id}" />
 						<g:hiddenField name="version"
 							value="${inspirationBookInstance?.version}" />
 						<div
