@@ -7,6 +7,23 @@
 <g:set var="entityName"
 	value="${message(code: 'inspirationBook.label', default: 'Inspiration Book')}" />
 <title><g:message code="default.show.label" args="[entityName]" /></title>
+<script>
+	$(document).ready(function() {
+		$(".theme-image").click(function() {
+			$(".theme-image").each(function() {
+				$(this).removeClass("selected");
+				$(this).css("background-color", "white");
+				$("#save").prop("disabled", false);
+			});
+			$(this).css("background-color", "red");
+			$(this).addClass("selected");
+		});
+		$("#save").click(function() {
+			var id = $(".selected").find("#theme-id").val();
+			$("#theme").val(id);
+		});
+	});
+</script>
 </head>
 <body>
 	<g:render template="../dashboard/navigation" />
@@ -84,15 +101,29 @@
 						<g:hiddenField name="client.id"
 							value="${inspirationBookInstance?.client?.id}" />
 						<g:hiddenField name="id" value="${inspirationBookInstance?.id}" />
+						<g:hiddenField name="theme" />
 						<g:hiddenField name="version"
 							value="${inspirationBookInstance?.version}" />
 						<div
 							class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'theme', 'error')} ">
 							<span class="property-label"> <g:message
 									code="inspirationBook.theme.label" default="Theme" />
-							</span> <span class="property-value"> <g:select name="theme"
-									from="${themes}" optionKey="id" value="${theme}"
-									noSelection="['':'-Choose a theme-']" />
+							</span>
+							<span class="property-value"> 
+							<g:each in="${themes}" var="theme">
+								<div class="theme-image">
+									<g:hiddenField name="theme-id" value="${theme.id}"/>
+									<h3>
+										${theme.name}
+									</h3>
+									<h4>
+										${theme.description}
+									</h4>
+									<span>
+										<g:img dir="/uploaded-files" file="${theme.primaryImage}" width="280px" />
+									</span>
+								</div>
+							</g:each>
 							</span>
 						</div>
 						<br />
@@ -102,8 +133,7 @@
 								style="border-top: 1px solid #fff;">
 								<div class="row">
 									<div class="col-md-12 col-lg-12 ed-action-btn">
-										<g:submitButton name="save" class="btn ed-save"
-											value="${message(code: 'default.button.save.label', default: 'Save')}" />
+										<g:submitButton name="save" class="btn ed-save" value="${message(code: 'default.button.save.label', default: 'Save')}" disabled="true" />
 									</div>
 								</div>
 							</div>
