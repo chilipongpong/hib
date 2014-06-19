@@ -4,13 +4,17 @@
 .message {
 	font-size: 0.8em;
 	line-height: 2;
-	margin: 1em 2em;
+	margin: 1em 0;
 	padding: 0.25em;
+
+	-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
 }
 
 .message {
 	background: #f3f3ff;
-	border: 1px solid #b2d1ff;
+	border: 1px solid #C8E2EC;
 	color: #006dba;
 	   -moz-box-shadow: 0 0 0.25em #b2d1ff;
 	-webkit-box-shadow: 0 0 0.25em #b2d1ff;
@@ -28,17 +32,18 @@
 
 .errors ul,
 .message {
-	padding: 0;
+	padding: 10px 30px;
 }
 
 .errors li {
 	list-style: none;
-	background: transparent url(../../images/skin/exclamation.png) 0.5em 50% no-repeat;
+	background: transparent url(../../images/skin/exclamation.png) .5em 50% no-repeat;
 	text-indent: 2.2em;
+	padding-left: 15px;
 }
 
 .message {
-	background: transparent url(../../images/skin/information.png) 0.5em 50% no-repeat;
+	background: transparent url(../../images/skin/img/information.png) 2.5em 50% no-repeat;
 	text-indent: 2.2em;
 }
 
