@@ -65,6 +65,7 @@
 
 				<!-- main content area -->
 				<div class="col-md-9 col-lg-9 ed-main-content" style="">
+					<h1>Step 10 of 15</h1>
 					<h2>Choose your chicken dishes:</h2>
 					<div id="choose-colors" class="content scaffold-show" role="main">
 						<g:if test="${flash.message}">
@@ -105,8 +106,9 @@
 								style="border-top: 1px solid #fff;">
 								<div class="row">
 									<div class="col-md-12 col-lg-12 ed-action-btn">
+										<input type="button" value="Back" class="btn ed-back" onclick="window.history.back()" />
 										<g:submitButton name="save" class="btn ed-save"
-											value="${message(code: 'default.button.save.label', default: 'Save')}" />
+											value="${message(code: 'default.button.save.label', default: 'Save and Continue')}" />
 									</div>
 								</div>
 							</div>

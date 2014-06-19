@@ -66,6 +66,7 @@
 
 				<!-- main content area -->
 				<div class="col-md-9 col-lg-9 ed-main-content" style="">
+					<h1>Step 7 of 15</h1>
 					<h2>Choose your pasta:</h2>
 					<g:if test="${flash.message}">
 						<div class="message" role="status">
@@ -115,9 +116,10 @@
 							<div class="col-md-12 col-lg-12"
 								style="border-top: 1px solid #fff;">
 								<div class="row">
+									<input type="button" value="Back" class="btn ed-back" onclick="window.history.back()" />
 									<div class="col-md-12 col-lg-12 ed-action-btn">
 										<g:submitButton name="save" class="btn ed-save"
-											value="${message(code: 'default.button.save.label', default: 'Save')}" />
+											value="${message(code: 'default.button.save.label', default: 'Save and Continue')}" />
 									</div>
 								</div>
 							</div>
