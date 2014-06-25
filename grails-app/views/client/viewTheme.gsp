@@ -23,7 +23,7 @@
 	</div>
 	<!-- End Heading -->
 	
-
+	
 	<h2>
 		${themeInstance.description}
 	</h2>

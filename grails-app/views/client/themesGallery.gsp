@@ -7,6 +7,14 @@
 <g:set var="entityName"
 	value="${message(code: 'theme.label', default: 'Theme')}" />
 <title><g:message code="default.list.label" args="[entityName]" /></title>
+
+<link rel="stylesheet"
+	href="${resource(dir: 'css', file: 'hoverstyle.css')}"
+	type="text/css">
+<link rel="stylesheet"
+	href="${resource(dir: 'css', file: 'hoverstyle1.css')}"
+	type="text/css">
+
 </head>
 <body class=".clientDash">
 	<g:render template="../dashboard/navigation" />
@@ -29,19 +37,22 @@
 			</div>
 		</g:if>
 		<g:each in="${activeThemes}" var="activeTheme">
-			<div class="span4 view view-first">
-				<h3>
-					${activeTheme.name}
-				</h3>
-				<h4>
-					${activeTheme.description}
-				</h4>
-				<g:link controller="client" action="viewTheme"
-					id="${activeTheme.id}">
-					<g:img dir="/uploaded-files" file="${activeTheme.primaryImage}"
-						width="280px" />
-				</g:link>
+			<div class="span4 view view-first" style="float:left">
+				<div class="mask">
+					<h2>
+						${activeTheme.name}
+					</h2>
+					<p>
+						${activeTheme.description}
+					</p>
+					<g:link controller="client" action="viewTheme"
+						id="${activeTheme.id}">
+						<g:img dir="/uploaded-files" file="${activeTheme.primaryImage}"
+							width="280px" />
+					</g:link>
+				</div>
 			</div>
+
 		</g:each>
 		<!--  	<div class="pagination">
 				<g:paginate total="${activeThemesTotal}" action="themesGallery" controller="client" next="Forward" prev="Back"/>
