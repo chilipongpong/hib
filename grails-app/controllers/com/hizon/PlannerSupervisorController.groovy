@@ -110,7 +110,7 @@ class PlannerSupervisorController {
 		def user = (User) springSecurityService.getCurrentUser()
 		def loggedInPlannerSupervisor = PlannerSupervisor.findByUser(user)
 		
-		def List<Client> clientsWithoutPlanners = Client.findAllByPlanner(null)
+		def List<Client> clientsWithoutPlanners = Client.findAllByEvent(null)
 		
 		[plannerSupervisorId: loggedInPlannerSupervisor.id, clientsWithoutPlanners: clientsWithoutPlanners, clientsWithoutPlannersTotal: clientsWithoutPlanners.size()]
 		
