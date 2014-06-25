@@ -24,42 +24,42 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="name" title="${message(code: 'project.name.label', default: 'Name')}" />
+						<g:sortableColumn property="name" title="${message(code: 'event.name.label', default: 'Name')}" />
 					
-						<g:sortableColumn property="craNumber" title="${message(code: 'project.craNumber.label', default: 'Cra Number')}" />
+						<g:sortableColumn property="craNumber" title="${message(code: 'event.craNumber.label', default: 'Cra Number')}" />
 					
-						<th><g:message code="project.client.label" default="Client" /></th>
+						<th><g:message code="event.client.label" default="Client" /></th>
 					
-						<th><g:message code="project.planner.label" default="Planner" /></th>
+						<th><g:message code="event.planner.label" default="Planner" /></th>
 					
-						<g:sortableColumn property="venue" title="${message(code: 'project.venue.label', default: 'Venue')}" />
+						<g:sortableColumn property="venue" title="${message(code: 'event.venue.label', default: 'Venue')}" />
 					
-						<g:sortableColumn property="salesAgent" title="${message(code: 'project.salesAgent.label', default: 'Sales Agent')}" />
+						<g:sortableColumn property="salesAgent" title="${message(code: 'event.salesAgent.label', default: 'Sales Agent')}" />
 					
 					</tr>
 				</thead>
 				<tbody>
-				<g:each in="${projectsAssignedToMe}" status="i" var="projectInstance">
+				<g:each in="${eventsAssignedToMe}" status="i" var="eventInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${projectInstance.id}">${fieldValue(bean: projectInstance, field: "name")}</g:link></td>
+						<td><g:link action="show" id="${eventInstance.id}">${fieldValue(bean: eventInstance, field: "name")}</g:link></td>
 					
-						<td>${fieldValue(bean: projectInstance, field: "craNumber")}</td>
+						<td>${fieldValue(bean: eventInstance, field: "craNumber")}</td>
 					
-						<td>${fieldValue(bean: projectInstance, field: "client")}</td>
+						<td>${fieldValue(bean: eventInstance, field: "client")}</td>
 					
-						<td>${fieldValue(bean: projectInstance, field: "planner")}</td>
+						<td>${fieldValue(bean: eventInstance, field: "planner")}</td>
 					
-						<td>${fieldValue(bean: projectInstance, field: "venue")}</td>
+						<td>${fieldValue(bean: eventInstance, field: "venue")}</td>
 					
-						<td>${fieldValue(bean: projectInstance, field: "salesAgent")}</td>
+						<td>${fieldValue(bean: eventInstance, field: "salesAgent")}</td>
 					
 					</tr>
 				</g:each>
 				</tbody>
 			</table>
 			<div class="pagination">
-			<g:paginate total="${projectsAssignedToMeCount}" controller="planner"
+			<g:paginate total="${eventsAssignedToMeCount}" controller="planner"
 				action="dashboard" next="Forward" prev="Back" />
 		</div>
 	</body>

@@ -114,12 +114,12 @@ class PlannerController {
 		def user = (User) springSecurityService.getCurrentUser()
 		def loggedInPlanner = Planner.findByUser(user)
 		
-		def projectsAssignedToMeCriteria = Project.createCriteria()
-		def projectsAssignedToMe = projectsAssignedToMeCriteria.list {
+		def eventsAssignedToMeCriteria = Event.createCriteria()
+		def eventsAssignedToMe = eventsAssignedToMeCriteria.list {
 			eq("planner", loggedInPlanner)
 			eq("status", Status.ACTIVE)
 		} 
-		[plannerId: loggedInPlanner.id, projectsAssignedToMe: projectsAssignedToMe, projectsAssignedToMeCount: projectsAssignedToMe.size()]
+		[plannerId: loggedInPlanner.id, eventsAssignedToMe: eventsAssignedToMe, eventsAssignedToMeCount: eventsAssignedToMe.size()]
 		
 	}
 }
