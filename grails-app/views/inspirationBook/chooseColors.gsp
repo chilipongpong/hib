@@ -11,6 +11,9 @@
 	$(document)
 			.ready(
 					function() {
+						$(".colorSelect").change(function(){
+							$(this).css("background-color", $(this).children(":selected").css("background-color"));
+						});
 						$(".ed-button")
 								.click(
 										function() {
@@ -141,9 +144,12 @@
 								<g:message code="inspirationBook.color1.label" default="Color 1" />
 							</span>
 							<span class="property-value">
-								<g:select name="color1" from="${com.hizon.Color.listAllActive()}"
-									optionKey="id" value="${color1}"
-									noSelection="['':'-Choose a color-']" />
+								<select class="colorSelect" name="color1" id="color1" style="background-color: ${color1 ? color1.hex : ""}">
+									<option value style="background-color: white">-Choose a color-</option>
+									<g:each in="${com.hizon.Color.listAllActive()}" var="color">
+										<option class="colorOption" value="${color.id}" ${color1 && color1.id == color.id ? 'selected="selected"' : ""} style="background-color: ${color.hex}">${color.name}</option>
+									</g:each>
+								</select>
 								<input type="button" class="btn ed-button" id="random1"
 								value="Randomize" />
 							</span>							
@@ -151,19 +157,26 @@
 							<span class="property-label">
 								<g:message code="inspirationBook.color2.label" default="Color 2" />
 							</span>
-							<span class="property-value"> <g:select name="color2"
-									from="${com.hizon.Color.listAllActive()}" optionKey="id"
-									value="${color2}" noSelection="['':'-Choose a color-']" /> <input
-								type="button" class="btn ed-button" id="random2" value="Randomize" /><br />
+							<span class="property-value"> 
+								<select class="colorSelect" name="color2" id="color2" style="background-color: ${color2 ? color2.hex : ""}">
+									<option value style="background-color: white">-Choose a color-</option>
+									<g:each in="${com.hizon.Color.listAllActive()}" var="color">
+										<option value="${color.id}" ${color2 && color2.id == color.id ? 'selected="selected"' : ""} style="background-color: ${color.hex}">${color.name}</option>
+									</g:each>
+								</select>
+								<input type="button" class="btn ed-button" id="random2" value="Randomize" /><br />
 							</span>
 							<br /><br />
 							<span class="property-label">
 								<g:message code="inspirationBook.color3.label" default="Color 3" />
 							</span>
 							<span class="property-value">
-								<g:select name="color3" from="${com.hizon.Color.listAllActive()}"
-									optionKey="id" value="${color3}"
-									noSelection="['':'-Choose a color-']" />
+								<select class="colorSelect" name="color3" id="color3" style="background-color: ${color3 ? color3.hex : ""}">
+									<option value style="background-color: white">-Choose a color-</option>
+									<g:each in="${com.hizon.Color.listAllActive()}" var="color">
+										<option value="${color.id}" ${color3 && color3.id == color.id ? 'selected="selected"' : ""} style="background-color: ${color.hex}">${color.name}</option>
+									</g:each>
+								</select>
 								<input type="button" class="btn ed-button" id="random3"
 									value="Randomize" />
 							</span>

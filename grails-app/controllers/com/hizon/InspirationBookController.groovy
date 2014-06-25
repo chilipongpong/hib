@@ -23,7 +23,7 @@ class InspirationBookController {
 		def colors = [:]
 		if (inspirationBookInstance) {
 			for (int i = 0; i < inspirationBookInstance.colors.size(); i++) {
-				colors.((i + 1) + "") = inspirationBookInstance.colors.asList().get(i).id
+				colors.((i + 1) + "") = inspirationBookInstance.colors.asList().get(i)
 			}
 		} else {
 			inspirationBookInstance = new InspirationBook(params)
