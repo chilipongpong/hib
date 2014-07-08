@@ -76,6 +76,9 @@
 			<div class="row">
 				<!-- Left Menu -->
 				<div class="col-md-3 col-lg-3 ed-content-nav">
+					<ul>
+						<li><g:link uri="/inspirationBook/welcome">Welcome</g:link></li>
+					</ul>
 					<h3 class="active">Wedding Scheme</h3>
 					<ul>
 						<li class="active ${inspirationBookInstance.colors ? "finished" : ""}"><g:link uri="/inspirationBook/chooseColors">Choose Colors</g:link></li>

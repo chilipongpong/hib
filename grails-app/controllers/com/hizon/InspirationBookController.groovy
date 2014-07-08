@@ -7,8 +7,22 @@ class InspirationBookController {
 	def colorService
 	
     def index() {
-		println "here"
-		redirect(action: "chooseColors", params: params)
+		redirect(action: "welcome", params: params)
+	}
+	
+	def welcome() {
+		Client client = getClient()
+		if (client == null) {
+			flash.message = "Only clients can create their inspiartion book"
+			redirect(action: "index", controller: "client")
+			return
+		}
+		params."client.id" = client.id
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
+		[inspirationBookInstance: inspirationBookInstance]
 	}
 	
 	def chooseColors() {
