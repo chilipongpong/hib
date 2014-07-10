@@ -7,6 +7,7 @@
 <g:set var="entityName"
 	value="${message(code: 'inspirationBook.label', default: 'Inspiration Book')}" />
 <title><g:message code="default.show.label" args="[entityName]" /></title>
+	<g:javascript src="imageSelector.js" />
 </head>
 
 <body>
@@ -88,31 +89,31 @@
 					</g:hasErrors>
 
 					<g:form action="saveBeefs">
-						<g:hiddenField name="client.id"
-							value="${inspirationBookInstance?.client?.id}" />
+						<g:hiddenField name="client.id" value="${inspirationBookInstance?.client?.id}" />
 						<g:hiddenField name="id" value="${inspirationBookInstance?.id}" />
-						<g:hiddenField name="version"
-							value="${inspirationBookInstance?.version}" />
+						<g:hiddenField name="version" value="${inspirationBookInstance?.version}" />
+						<g:hiddenField name="selectedItems" value="${inspirationBookInstance?.beefs.id}" />
 						<div
 							class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'beefs', 'error')} ">
 							<div id="errorRandom"></div>
 							<span class="property-label"><g:message
-									code="inspirationBook.beef.label" default="Beef 1" />
+									code="inspirationBook.beef.label" default="Beef" />
 							</span>
 							<span class="property-value">
-							<g:select name="beef1" from="${com.hizon.MenuItem.listBeefs()}"
-								optionKey="id" value="${beef1}"
-								noSelection="['':'-Choose a beef dish-']" />
-							</span>
-							<br /><br />
-							<span class="property-label">
-								<g:message
-									code="inspirationBook.beef.label" default="Beef 2" />
-							</span>
-							<span class="property-value">
-							<g:select name="beef2" from="${com.hizon.MenuItem.listBeefs()}"
-								optionKey="id" value="${beef2}"
-								noSelection="['':'-Choose a beef dish-']" />
+								<g:each in="${com.hizon.MenuItem.listBeefs()}" var="beef">
+									<div class="image">
+										<g:hiddenField name="image-id" value="${beef.id}"/>
+										<h3>
+											${beef.name}
+										</h3>
+										<h4>
+											${beef.description}
+										</h4>
+										<span>
+											<g:img dir="/uploaded-files" file="${beef.image}" width="280px" />
+										</span>
+									</div>
+								</g:each>
 							</span>
 						</div>
 						<br />
@@ -124,7 +125,7 @@
 									<div class="col-md-12 col-lg-12 ed-action-btn">
 										<input type="button" value="Back" class="btn ed-back" onclick="window.history.back()" />
 										<g:submitButton name="save" class="btn ed-save"
-											value="${message(code: 'default.button.save.label', default: 'Save and Continue')}" />
+											value="${message(code: 'default.button.save.label', default: 'Save and Continue')}" disabled="true" />
 									</div>
 								</div>
 							</div>
