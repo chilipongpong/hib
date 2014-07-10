@@ -93,12 +93,8 @@
 						<g:hiddenField name="id" value="${inspirationBookInstance?.id}" />
 						<g:hiddenField name="version" value="${inspirationBookInstance?.version}" />
 						<g:hiddenField name="selectedItems" value="${inspirationBookInstance?.beefs.id}" />
-						<div
-							class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'beefs', 'error')} ">
+						<div class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'beefs', 'error')} ">
 							<div id="errorRandom"></div>
-							<span class="property-label"><g:message
-									code="inspirationBook.beef.label" default="Beef" />
-							</span>
 							<span class="property-value">
 								<g:each in="${com.hizon.MenuItem.listBeefs()}" var="beef">
 									<div class="image">

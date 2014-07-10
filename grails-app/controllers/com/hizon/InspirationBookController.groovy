@@ -164,7 +164,8 @@ class InspirationBookController {
 		}
 		inspirationBookInstance.appetizers = new HashSet<MenuItem>();
 
-		for (String appetizer: params.selectedItems) {
+		def selectedItems = params.selectedItems.split(",")
+		for (String appetizer: selectedItems) {
 			if (appetizer.isLong()) {
 				inspirationBookInstance.appetizers.add(MenuItem.get(appetizer))
 			}
@@ -201,7 +202,8 @@ class InspirationBookController {
 		}
 		inspirationBookInstance.soups = new HashSet<MenuItem>();
 
-		for (String soup: params.selectedItems) {
+		def selectedItems = params.selectedItems.split(",")
+		for (String soup: selectedItems) {
 			if (soup.isLong()) {
 				inspirationBookInstance.soups.add(MenuItem.get(soup))
 			}
@@ -238,14 +240,15 @@ class InspirationBookController {
 		}
 		inspirationBookInstance.salads = new HashSet<MenuItem>();
 
-		for (String salad: params.selectedItems) {
+		def selectedItems = params.selectedItems.split(",")
+		for (String salad: selectedItems) {
 			if (salad.isLong()) {
 				inspirationBookInstance.salads.add(MenuItem.get(salad))
 			}
 		}
 		
 		if (!inspirationBookInstance.save(flush: true)) {
-			render(view: "chooseAppetizer", model: [inspirationBookInstance: inspirationBookInstance], params: params)
+			render(view: "chooseSalad", model: [inspirationBookInstance: inspirationBookInstance], params: params)
 			return
 		}
 		flash.message = "Chosen salads saved"
@@ -275,7 +278,8 @@ class InspirationBookController {
 		}
 		inspirationBookInstance.pastas = new HashSet<MenuItem>();
 
-		for (String pasta: params.selectedItems) {
+		def selectedItems = params.selectedItems.split(",")
+		for (String pasta: selectedItems) {
 			if (pasta.isLong()) {
 				inspirationBookInstance.pastas.add(MenuItem.get(pasta))
 			}
@@ -312,7 +316,8 @@ class InspirationBookController {
 		}
 		inspirationBookInstance.beefs = new HashSet<MenuItem>();
 
-		for (String beef: params.selectedItems) {
+		def selectedItems = params.selectedItems.split(",")
+		for (String beef: selectedItems) {
 			if (beef.isLong()) {
 				inspirationBookInstance.beefs.add(MenuItem.get(beef))
 			}
@@ -349,7 +354,8 @@ class InspirationBookController {
 		}
 		inspirationBookInstance.porks = new HashSet<MenuItem>();
 
-		for (String pork: params.selectedItems) {
+		def selectedItems = params.selectedItems.split(",")
+		for (String pork: selectedItems) {
 			if (pork.isLong()) {
 				inspirationBookInstance.porks.add(MenuItem.get(pork))
 			}
@@ -386,7 +392,8 @@ class InspirationBookController {
 		}
 		inspirationBookInstance.chickens = new HashSet<MenuItem>();
 
-		for (String chicken: params.selectedItems) {
+		def selectedItems = params.selectedItems.split(",")
+		for (String chicken: selectedItems) {
 			if (chicken.isLong()) {
 				inspirationBookInstance.chickens.add(MenuItem.get(chicken))
 			}
@@ -423,7 +430,8 @@ class InspirationBookController {
 		}
 		inspirationBookInstance.seafoods = new HashSet<MenuItem>();
 
-		for (String seafood: params.selectedItems) {
+		def selectedItems = params.selectedItems.split(",")
+		for (String seafood: selectedItems) {
 			if (seafood.isLong()) {
 				inspirationBookInstance.seafoods.add(MenuItem.get(seafood))
 			}
@@ -460,7 +468,8 @@ class InspirationBookController {
 		}
 		inspirationBookInstance.vegetables = new HashSet<MenuItem>();
 
-		for (String vegetable: params.selectedItems) {
+		def selectedItems = params.selectedItems.split(",")
+		for (String vegetable: selectedItems) {
 			if (vegetable.isLong()) {
 				inspirationBookInstance.vegetables.add(MenuItem.get(vegetable))
 			}
@@ -497,7 +506,8 @@ class InspirationBookController {
 		}
 		inspirationBookInstance.desserts = new HashSet<MenuItem>();
 
-		for (String dessert: params.selectedItems) {
+		def selectedItems = params.selectedItems.split(",")
+		for (String dessert: selectedItems) {
 			if (dessert.isLong()) {
 				inspirationBookInstance.desserts.add(MenuItem.get(dessert))
 			}

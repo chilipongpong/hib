@@ -7,6 +7,7 @@
 <g:set var="entityName"
 	value="${message(code: 'inspirationBook.label', default: 'Inspiration Book')}" />
 <title><g:message code="default.show.label" args="[entityName]" /></title>
+	<g:javascript src="imageSelector.js" />
 </head>
 <body>
 	<g:render template="../dashboard/navigation" />
@@ -87,31 +88,27 @@
 					</g:hasErrors>
 
 					<g:form action="saveSalads">
-						<g:hiddenField name="client.id"
-							value="${inspirationBookInstance?.client?.id}" />
+						<g:hiddenField name="client.id" value="${inspirationBookInstance?.client?.id}" />
 						<g:hiddenField name="id" value="${inspirationBookInstance?.id}" />
-						<g:hiddenField name="version"
-							value="${inspirationBookInstance?.version}" />
-						<div
-							class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'salads', 'error')} ">
+						<g:hiddenField name="version" value="${inspirationBookInstance?.version}" />
+						<g:hiddenField name="selectedItems" value="${inspirationBookInstance?.salads.id}" />
+						<div class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'salads', 'error')} ">
 							<div id="errorRandom"></div>
-							<span class="property-label"><g:message
-									code="inspirationBook.appertizer.label" default="Salad 1" />
-							</span>
 							<span class="property-value">
-							<g:select name="salad1" from="${com.hizon.MenuItem.listSalads()}"
-								optionKey="id" value="${salad1}"
-								noSelection="['':'-Choose a salad-']" />
-							</span>
-							<br /><br />
-							<span class="property-label">
-								<g:message
-									code="inspirationBook.appertizer.label" default="Salad 2" />
-							</span>
-							<span class="property-value">
-							<g:select name="salad2" from="${com.hizon.MenuItem.listSalads()}"
-								optionKey="id" value="${salad2}"
-								noSelection="['':'-Choose a salad-']" />
+								<g:each in="${com.hizon.MenuItem.listSalads()}" var="salad">
+									<div class="image">
+										<g:hiddenField name="image-id" value="${salad.id}"/>
+										<h3>
+											${salad.name}
+										</h3>
+										<h4>
+											${salad.description}
+										</h4>
+										<span>
+											<g:img dir="/uploaded-files" file="${salad.image}" width="280px" />
+										</span>
+									</div>
+								</g:each>
 							</span>
 						</div>
 						<br />
@@ -123,7 +120,7 @@
 									<div class="col-md-12 col-lg-12 ed-action-btn">
 										<input type="button" value="Back" class="btn ed-back" onclick="window.history.back()" />
 										<g:submitButton name="save" class="btn ed-save"
-											value="${message(code: 'default.button.save.label', default: 'Save and Continue')}" />
+											value="${message(code: 'default.button.save.label', default: 'Save and Continue')}" disabled="true" />
 									</div>
 								</div>
 							</div>

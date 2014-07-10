@@ -7,6 +7,7 @@
 <g:set var="entityName"
 	value="${message(code: 'inspirationBook.label', default: 'Inspiration Book')}" />
 <title><g:message code="default.show.label" args="[entityName]" /></title>
+	<g:javascript src="imageSelector.js" />
 </head>
 <body>
 	<g:render template="../dashboard/navigation" />
@@ -87,27 +88,27 @@
 					</g:hasErrors>
 
 					<g:form action="saveVegetables">
-						<g:hiddenField name="client.id"
-							value="${inspirationBookInstance?.client?.id}" />
+						<g:hiddenField name="client.id" value="${inspirationBookInstance?.client?.id}" />
 						<g:hiddenField name="id" value="${inspirationBookInstance?.id}" />
-						<g:hiddenField name="version"
-							value="${inspirationBookInstance?.version}" />
-						<div
-							class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'vegetables', 'error')} ">
+						<g:hiddenField name="version" value="${inspirationBookInstance?.version}" />
+						<g:hiddenField name="selectedItems" value="${inspirationBookInstance?.vegetables.id}" />
+						<div class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'vegetables', 'error')} ">
 							<div id="errorRandom"></div>
-							<span class="property-label"> <g:message
-									code="inspirationBook.vegetable1.label" default="Vegetable 1" />
-							</span> <span class="property-value"> <g:select name="vegetable1"
-									from="${com.hizon.MenuItem.listVegetables()}" optionKey="id"
-									value="${vegetable1}"
-									noSelection="['':'-Choose a vegetable dish-']" />
-							</span> <br />
-							<br /> <span class="property-label"> <g:message
-									code="inspirationBook.vegetable2.label" default="Vegetable 2" />
-							</span> <span class="property-value"> <g:select name="vegetable2"
-									from="${com.hizon.MenuItem.listVegetables()}" optionKey="id"
-									value="${vegetable2}"
-									noSelection="['':'-Choose a vegetable dish-']" />
+							<span class="property-value"> 
+								<g:each in="${com.hizon.MenuItem.listVegetables()}" var="vegetable">
+									<div class="image">
+										<g:hiddenField name="image-id" value="${vegetable.id}"/>
+										<h3>
+											${vegetable.name}
+										</h3>
+										<h4>
+											${vegetable.description}
+										</h4>
+										<span>
+											<g:img dir="/uploaded-files" file="${vegetable.image}" width="280px" />
+										</span>
+									</div>
+								</g:each>
 							</span>
 						</div>
 						<br />
@@ -119,7 +120,7 @@
 									<div class="col-md-12 col-lg-12 ed-action-btn">
 										<input type="button" value="Back" class="btn ed-back" onclick="window.history.back()" />
 										<g:submitButton name="save" class="btn ed-save"
-											value="${message(code: 'default.button.save.label', default: 'Save and Continue')}" />
+											value="${message(code: 'default.button.save.label', default: 'Save and Continue')}" disabled="true" />
 									</div>
 								</div>
 							</div>

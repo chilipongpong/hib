@@ -7,6 +7,7 @@
 <g:set var="entityName"
 	value="${message(code: 'inspirationBook.label', default: 'Inspiration Book')}" />
 <title><g:message code="default.show.label" args="[entityName]" /></title>
+	<g:javascript src="imageSelector.js" />
 </head>
 <body>
 	<g:render template="../dashboard/navigation" />
@@ -87,30 +88,27 @@
 					</g:hasErrors>
 
 					<g:form action="savePastas">
-						<g:hiddenField name="client.id"
-							value="${inspirationBookInstance?.client?.id}" />
+						<g:hiddenField name="client.id" value="${inspirationBookInstance?.client?.id}" />
 						<g:hiddenField name="id" value="${inspirationBookInstance?.id}" />
-						<g:hiddenField name="version"
-							value="${inspirationBookInstance?.version}" />
-						<div
-							class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'pastas', 'error')} ">
+						<g:hiddenField name="version" value="${inspirationBookInstance?.version}" />
+						<g:hiddenField name="selectedItems" value="${inspirationBookInstance?.pastas.id}" />
+						<div class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'pastas', 'error')} ">
 							<div id="errorRandom"></div>
-							<span class="property-label"><g:message
-									code="inspirationBook.pasta.label" default="Pasta 1" />
-							</span>
 							<span class="property-value">
-							<g:select name="pasta1" from="${com.hizon.MenuItem.listPastas()}"
-								optionKey="id" value="${pasta1}"
-								noSelection="['':'-Choose a pasta-']" />
-							</span>
-							<br /><br>
-							<span class="property-label"><g:message
-									code="inspirationBook.pasta.label" default="Pasta 2" />
-							</span>
-							<span class="property-value">
-							<g:select name="pasta2" from="${com.hizon.MenuItem.listPastas()}"
-								optionKey="id" value="${pasta2}"
-								noSelection="['':'-Choose a pasta-']" />
+								<g:each in="${com.hizon.MenuItem.listPastas()}" var="pasta">
+									<div class="image">
+										<g:hiddenField name="image-id" value="${pasta.id}"/>
+										<h3>
+											${pasta.name}
+										</h3>
+										<h4>
+											${pasta.description}
+										</h4>
+										<span>
+											<g:img dir="/uploaded-files" file="${pasta.image}" width="280px" />
+										</span>
+									</div>
+								</g:each>
 							</span>
 						</div>
 						<br />
@@ -122,7 +120,7 @@
 									<div class="col-md-12 col-lg-12 ed-action-btn">
 										<input type="button" value="Back" class="btn ed-back" onclick="window.history.back()" />
 										<g:submitButton name="save" class="btn ed-save"
-											value="${message(code: 'default.button.save.label', default: 'Save and Continue')}" />
+											value="${message(code: 'default.button.save.label', default: 'Save and Continue')}" disabled="true" />
 									</div>
 								</div>
 							</div>

@@ -7,6 +7,7 @@
 <g:set var="entityName"
 	value="${message(code: 'inspirationBook.label', default: 'Inspiration Book')}" />
 <title><g:message code="default.show.label" args="[entityName]" /></title>
+	<g:javascript src="imageSelector.js" />
 </head>
 
 <body>
@@ -88,25 +89,28 @@
 					</g:hasErrors>
 
 					<g:form action="saveSoups">
-						<g:hiddenField name="client.id"
-							value="${inspirationBookInstance?.client?.id}" />
+						<g:hiddenField name="client.id" value="${inspirationBookInstance?.client?.id}" />
 						<g:hiddenField name="id" value="${inspirationBookInstance?.id}" />
-						<g:hiddenField name="version"
-							value="${inspirationBookInstance?.version}" />
+						<g:hiddenField name="version" value="${inspirationBookInstance?.version}" />
+						<g:hiddenField name="selectedItems" value="${inspirationBookInstance?.soups.id}" />
 						<div
 							class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'soups', 'error')} ">
 							<div id="errorRandom"></div>
-							<span class="property-label"><g:message code="inspirationBook.soup.label" default="Soup 1" /></span> 
 							<span class="property-value">
-								<g:select name="soup1"
-									from="${com.hizon.MenuItem.listSoups()}" optionKey="id"
-									value="${soup1}" noSelection="['':'-Choose a soup-']" />
-							</span>
-							<br /><br />
-							<span class="property-label"><g:message code="inspirationBook.soup.label" default="Soup 2" /> </span> 
-							<span class="property-value"> <g:select name="soup2"
-									from="${com.hizon.MenuItem.listSoups()}" optionKey="id"
-									value="${soup2}" noSelection="['':'-Choose a soup-']" />
+								<g:each in="${com.hizon.MenuItem.listSoups()}" var="soup">
+									<div class="image">
+										<g:hiddenField name="image-id" value="${soup.id}"/>
+										<h3>
+											${soup.name}
+										</h3>
+										<h4>
+											${soup.description}
+										</h4>
+										<span>
+											<g:img dir="/uploaded-files" file="${soup.image}" width="280px" />
+										</span>
+									</div>
+								</g:each>
 							</span>
 						</div>
 						<br />
@@ -118,7 +122,7 @@
 									<div class="col-md-12 col-lg-12 ed-action-btn">
 										<input type="button" value="Back" class="btn ed-back" onclick="window.history.back()" />
 										<g:submitButton name="save" class="btn ed-save"
-											value="${message(code: 'default.button.save.label', default: 'Save and Continue')}" />
+											value="${message(code: 'default.button.save.label', default: 'Save and Continue')}" disabled="true" />
 									</div>
 								</div>
 							</div>
