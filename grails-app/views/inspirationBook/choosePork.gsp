@@ -35,7 +35,7 @@
 					<h3 class="active">Wedding Scheme</h3>
 					<ul>
 						<li class="${inspirationBookInstance.colors ? "finished" : ""}"><g:link uri="/inspirationBook/chooseColors">Choose Colors</g:link></li>
-						<li class="${inspirationBookInstance.theme != null ? "finished" : ""}"><g:link uri="/inspirationBook/chooseTheme">Choose Theme</g:link></li>
+						<li class="${inspirationBookInstance.themes ? "finished" : ""}"><g:link uri="/inspirationBook/chooseTheme">Choose Theme</g:link></li>
 					</ul>
 					<h3>Guest List</h3>
 					<ul>

@@ -7,37 +7,7 @@
 <g:set var="entityName"
 	value="${message(code: 'inspirationBook.label', default: 'Inspiration Book')}" />
 <title><g:message code="default.show.label" args="[entityName]" /></title>
-<script>
-	$(document).ready(function() {
-		if($("#theme").val()) {
-			$("#save").prop("disabled", false);
-			$(".theme-image").each(function() {
-				var id = $(this).find("#theme-id").val();
-				if ($("#theme").val() == id) {
-					selectImage($(this));
-				} 
-			});
-			var id = $(".selected").find("#theme-id").val();
-			$("#theme").val(id);
-		}
-		$(".theme-image").click(function() {
-			$(".theme-image").each(function() {
-				$(this).removeClass("selected");
-				$(this).css("background-color", "white");
-				$("#save").prop("disabled", false);
-			});
-			selectImage($(this));
-		});
-		$("#save").click(function() {
-			var id = $(".selected").find("#theme-id").val();
-			$("#theme").val(id);
-		});
-	});
-	var selectImage = function(element) {
-		element.css("background-color", "red");
-		element.addClass("selected");
-	};
-</script>
+	<g:javascript src="imageSelector.js" />
 </head>
 <body>
 	<g:render template="../dashboard/navigation" />
@@ -66,7 +36,7 @@
 					<h3 class="active">Wedding Scheme</h3>
 					<ul>
 						<li class="${inspirationBookInstance.colors ? "finished" : ""}"><g:link uri="/inspirationBook/chooseColors">Choose Colors</g:link></li>
-						<li class="active ${inspirationBookInstance.theme != null ? "finished" : ""}"><g:link uri="/inspirationBook/chooseTheme">Choose Theme</g:link></li>
+						<li class="active ${inspirationBookInstance.themes ? "finished" : ""}"><g:link uri="/inspirationBook/chooseTheme">Choose Theme</g:link></li>
 					</ul>
 					<h3>Guest List</h3>
 					<ul>
@@ -118,12 +88,10 @@
 					</g:hasErrors>
 
 					<g:form action="saveTheme">
-						<g:hiddenField name="client.id"
-							value="${inspirationBookInstance?.client?.id}" />
+						<g:hiddenField name="client.id" value="${inspirationBookInstance?.client?.id}" />
 						<g:hiddenField name="id" value="${inspirationBookInstance?.id}" />
-						<g:hiddenField name="theme" value="${inspirationBookInstance?.theme?.id}" />
-						<g:hiddenField name="version"
-							value="${inspirationBookInstance?.version}" />
+						<g:hiddenField name="version" value="${inspirationBookInstance?.version}" />
+						<g:hiddenField name="selectedItems" value="${inspirationBookInstance?.themes?.id}" />
 						<div
 							class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'theme', 'error')} ">
 							<span class="property-label"> <g:message
@@ -131,8 +99,8 @@
 							</span>
 							<span class="property-value"> 
 							<g:each in="${themes}" var="theme">
-								<div class="theme-image">
-									<g:hiddenField name="theme-id" value="${theme.id}"/>
+								<div class="image">
+									<g:hiddenField name="image-id" value="${theme.id}"/>
 									<h3>
 										${theme.name}
 									</h3>

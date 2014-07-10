@@ -90,13 +90,19 @@ class InspirationBookController {
 		if (!inspirationBookInstance) {
 			inspirationBookInstance = new InspirationBook(params)
 		}
-		inspirationBookInstance.theme = Theme.get(params.theme)
+		inspirationBookInstance.themes = new HashSet<Theme>();
+		
+		for (String theme: params.selectedItems) {
+			if (theme.isLong()) {
+				inspirationBookInstance.themes.add(Theme.get(theme))
+			}
+		}
 		
 		if (!inspirationBookInstance.save(flush: true)) {
 			render(view: "chooseTheme", model: [inspirationBookInstance: inspirationBookInstance], params: params)
 			return
 		}
-		flash.message = "Chosen theme saved"
+		flash.message = "Chosen themes saved"
 		redirect(action: "indicateGuests")
 	}
 	
@@ -158,8 +164,7 @@ class InspirationBookController {
 		}
 		inspirationBookInstance.appetizers = new HashSet<MenuItem>();
 
-		def appetizers = [params.appetizer1, params.appetizer2]
-		for (String appetizer: appetizers) {
+		for (String appetizer: params.selectedItems) {
 			if (appetizer.isLong()) {
 				inspirationBookInstance.appetizers.add(MenuItem.get(appetizer))
 			}

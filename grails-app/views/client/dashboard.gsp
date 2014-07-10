@@ -44,9 +44,6 @@
 								<img src="../images/btn-planner.png" alt="My Planner">
 							</g:link>
 							<g:link controller="inspirationBook">
-								<img src="../images/btn-book.png" alt="My Inspiration Book">
-							</g:link>
-							<g:link action="myPackage" controller="client">
 								<img src="../images/btn-package.png" alt="My Package">
 							</g:link>
 						</div>

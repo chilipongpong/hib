@@ -7,6 +7,7 @@
 <g:set var="entityName"
 	value="${message(code: 'inspirationBook.label', default: 'Inspiration Book')}" />
 <title><g:message code="default.show.label" args="[entityName]" /></title>
+	<g:javascript src="imageSelector.js" />
 </head>
 <body>
 	<g:render template="../dashboard/navigation" />
@@ -35,7 +36,7 @@
 					<h3 class="active">Wedding Scheme</h3>
 					<ul>
 						<li class="${inspirationBookInstance.colors ? "finished" : ""}"><g:link uri="/inspirationBook/chooseColors">Choose Colors</g:link></li>
-						<li class="${inspirationBookInstance.theme != null ? "finished" : ""}"><g:link uri="/inspirationBook/chooseTheme">Choose Theme</g:link></li>
+						<li class="${inspirationBookInstance.themes ? "finished" : ""}"><g:link uri="/inspirationBook/chooseTheme">Choose Theme</g:link></li>
 					</ul>
 					<h3>Guest List</h3>
 					<ul>
@@ -87,27 +88,29 @@
 					</g:hasErrors>
 
 					<g:form action="saveAppetizers">
-						<g:hiddenField name="client.id"
-							value="${inspirationBookInstance?.client?.id}" />
+						<g:hiddenField name="client.id" value="${inspirationBookInstance?.client?.id}" />
 						<g:hiddenField name="id" value="${inspirationBookInstance?.id}" />
-						<g:hiddenField name="version"
-							value="${inspirationBookInstance?.version}" />
-						<div
-							class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'appetizers', 'error')} ">
+						<g:hiddenField name="version" value="${inspirationBookInstance?.version}" />
+						<g:hiddenField name="selectedItems" value="${inspirationBookInstance?.appetizers.id}" />
+						<div class="fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'appetizers', 'error')} ">
 							<div id="errorRandom"></div>
 							<span class="property-label"><g:message
 									code="inspirationBook.appertizer.label" default="Appetizer 1" /></span>
-							<span class="property-value"> <g:select name="appetizer1"
-									from="${com.hizon.MenuItem.listAppetizers()}" optionKey="id"
-									value="${appetizer1}"
-									noSelection="['':'-Choose an appetizer-']" />
-							<br /><br />
-							</span> <span id="appetizer2-label" class="property-label"><g:message
-									code="inspirationBook.appertizer.label" default="Appetizer 2" />
-							</span> <span class="property-value"> <g:select name="appetizer2"
-									from="${com.hizon.MenuItem.listAppetizers()}" optionKey="id"
-									value="${appetizer2}"
-									noSelection="['':'-Choose an appetizer-']" />
+							<span class="property-value">
+								<g:each in="${com.hizon.MenuItem.listAppetizers()}" var="appetizer">
+									<div class="image">
+										<g:hiddenField name="image-id" value="${appetizer.id}"/>
+										<h3>
+											${appetizer.name}
+										</h3>
+										<h4>
+											${appetizer.description}
+										</h4>
+										<span>
+											<g:img dir="/uploaded-files" file="${appetizer.image}" width="280px" />
+										</span>
+									</div>
+								</g:each>
 							</span>
 						</div>
 						<br />
@@ -119,7 +122,7 @@
 									<div class="col-md-12 col-lg-12 ed-action-btn">
 										<input type="button" value="Back" class="btn ed-back" onclick="window.history.back()" />
 										<g:submitButton name="save" class="btn ed-save"
-											value="${message(code: 'default.button.save.label', default: 'Save and Continue')}" />
+											value="${message(code: 'default.button.save.label', default: 'Save and Continue')}" disabled="true" />
 									</div>
 								</div>
 							</div>

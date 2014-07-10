@@ -2,7 +2,6 @@ package com.hizon
 
 class InspirationBook {
 	Client client;
-	Theme theme;
 	int numberOfGuests
 	ValueRange sponsorRange
 	boolean hasFlowers
@@ -15,7 +14,8 @@ class InspirationBook {
 	boolean hasVenue
 	
 	static hasMany = [
-		colors: Color, 
+		colors: Color,
+		themes: Theme,
 		appetizers: MenuItem, 
 		soups: MenuItem, 
 		salads: MenuItem, 
@@ -29,7 +29,6 @@ class InspirationBook {
 	
     static constraints = {
 		client blank:false
-		theme nullable:true
 		numberOfGuests nullable:true, matches:"[0-9]*"
 		sponsorRange nullable:true
 		hasFlowers nullable:true
