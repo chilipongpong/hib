@@ -9,6 +9,8 @@ class ClientController {
 	def springSecurityService
 	def securityService
 	def mailService
+	def clientService
+	def inspirationBookService
 
     def index() {
         redirect(action: "list", params: params)
@@ -194,11 +196,49 @@ class ClientController {
 		if (!themeInstance) {
 			flash.message = message(code: 'default.not.found.message', args: [message(code: 'theme.label', default: 'Theme'), id])
 			redirect(action: "list")
-			
+		}
+		
+		Client client = getClient()
+		if (client == null) {
+			flash.message = "Only clients can view theme gallery"
+			redirect(action: "index", controller: "client")
+			return
 		}
 		
 		def imagesDirectory = new File(fileService.imagesRootPath + File.separator + 'theme' + File.separator + themeInstance.id)
 		[themeInstance: themeInstance, images: imagesDirectory.listFiles()]
+	}
+	
+	def saveTheme() {
+		def inspirationBookInstance = InspirationBook.findByClient(getClient())
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook(params)
+		}
+		
+		def themeInstance = Theme.get(params.id);
+		if (!themeInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'theme.label', default: 'Theme'), id])
+			redirect(action: "themesGallery")
+		}
+		
+		if (inspirationBookInstance.themes) {
+			def alreadyInThemes = false
+			for (def theme: inspirationBookInstance.themes) {
+				if (themeInstance.id == theme.id) {
+					alreadyInThemes = true
+				} 
+			}
+			if (!alreadyInThemes) {
+				inspirationBookInstance.themes.add(themeInstance)
+			}
+		}
+
+		if (!inspirationBookInstance.save(flush: true)) {
+			render(view: "viewTheme", model: [themeInstance: themeInstance], params: params)
+			return
+		}
+		flash.message = "Theme " + themeInstance.name + " added to inspiration book"
+		redirect(action: "themesGallery")
 	}
 	
 	def menu(){
@@ -210,12 +250,74 @@ class ClientController {
 	}
 	
 	def viewMenuCategory(long id){
-		
 		def menuCategoryInstance = MenuCategory.get(id)
 		
 		List<MenuItem> menuItems = MenuItem.findAllByStatusAndMenuCategory(Status.ACTIVE, menuCategoryInstance)
 		
-		[menuCategory: menuCategoryInstance, menuItems: menuItems, menuItemsSize: menuItems.size()]
+		def inspirationBookInstance = InspirationBook.findByClient(getClient())
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook()
+		}
+		def inspirationBookItems = inspirationBookService.listMenuItems(inspirationBookInstance, menuCategoryInstance)
+		
+		[menuCategory: menuCategoryInstance, menuItems: menuItems, menuItemsSize: menuItems.size(), inspirationBookItems: inspirationBookItems]
+	}
+	
+	def saveMenuCategories() {
+		def menuCategoryInstance = MenuCategory.get(params.id)
+		
+		def inspirationBookInstance = InspirationBook.findByClient(getClient())
+		if (!inspirationBookInstance) {
+			inspirationBookInstance = new InspirationBook()
+		}
+		
+		def inspirationBookItems = new HashSet<MenuItem>()
+		def selectedItems = params.selectedItems.split(",")
+		for (String item: selectedItems) {
+			if (item.isLong()) {
+				inspirationBookItems.add(MenuItem.get(item))
+			}
+		}
+		
+		switch (menuCategoryInstance.name) {
+			case ("Appetizer"):
+				inspirationBookInstance.appetizers = inspirationBookItems
+				break
+			case ("Soup"):
+				return inspirationBookInstance.soups = inspirationBookItems
+				break
+			case ("Salad"):
+				return inspirationBookInstance.salads = inspirationBookItems
+				break
+			case ("Pasta"):
+				return inspirationBookInstance.pastas = inspirationBookItems
+				break
+			case ("Beef"):
+				return inspirationBookInstance.beefs = inspirationBookItems
+				break
+			case ("Pork"):
+				return inspirationBookInstance.porks = inspirationBookItems
+				break
+			case ("Chicken"):
+				return inspirationBookInstance.chickens = inspirationBookItems
+				break
+			case ("Seafood"):
+				return inspirationBookInstance.seafoods = inspirationBookItems
+				break
+			case ("Vegetable"):
+				return inspirationBookInstance.vegetables = inspirationBookItems
+				break
+			case ("Dessert"):
+				return inspirationBookInstance.desserts = inspirationBookItems
+				break
+		}
+		
+		if (!inspirationBookInstance.save(flush: true)) {
+			render(view: "viewMenuCategory", model: [inspirationBookInstance: inspirationBookInstance], params: params, id: menuCategoryInstance.id)
+			return
+		}
+		flash.message = "Chosen menu items saved"
+		redirect(action: "viewMenuCategory", id: menuCategoryInstance.id)
 	}
 	
 	def myPackage(long id){
@@ -225,5 +327,11 @@ class ClientController {
 		def clientPackage = event.getPack()
 		
 		[packageInstance: clientPackage]
+	}
+	
+	private Client getClient() {
+		User loggedInUser = User.get(springSecurityService.principal.id)
+		Client client = clientService.getClient(loggedInUser);
+		return client
 	}
 }
