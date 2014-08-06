@@ -76,13 +76,18 @@ class InspirationBookController {
 		}
 		params."client.id" = client.id
 		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
-		if (!inspirationBookInstance) {
- 			flash.message = "Choose colors first before choosing a theme."
+		def colors = [:]
+		if (inspirationBookInstance) {
+			for (int i = 0; i < inspirationBookInstance.colors.size(); i++) {
+				colors.((i + 1) + "") = inspirationBookInstance.colors.asList().get(i)
+			}
+		} else {
+			flash.message = "Choose colors first before choosing a theme."
             redirect(action: "chooseColors")
 			return
 		}
 		
-		[inspirationBookInstance: inspirationBookInstance, themes: themeService.getThemesForInspirationBook(inspirationBookInstance)]
+		[inspirationBookInstance: inspirationBookInstance, themes: themeService.getThemesForInspirationBook(inspirationBookInstance), color1: colors."1", color2: colors."2", color3: colors."3"]
 	}
 	
 	def saveTheme() {

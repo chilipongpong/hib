@@ -8,6 +8,7 @@
 	value="${message(code: 'inspirationBook.label', default: 'Inspiration Book')}" />
 <title><g:message code="default.show.label" args="[entityName]" /></title>
 	<g:javascript src="imageSelector.js" />
+	<g:javascript src="colorRandomizer.js" />
 </head>
 <body>
 	<g:render template="../dashboard/navigation" />
@@ -87,6 +88,70 @@
 						</ul>
 					</g:hasErrors>
 
+					<g:form action="saveColors">
+						<g:hiddenField name="client.id" value="${inspirationBookInstance?.client?.id}" />
+						<g:hiddenField name="id" value="${inspirationBookInstance?.id}" />
+						<g:hiddenField name="version" value="${inspirationBookInstance?.version}" />
+						<div
+							class="colorpicker fieldcontain ${hasErrors(bean: inspirationBookInstance, field: 'colors', 'error')} ">
+							<div id="errorRandom" style="text-align: center; color: red;"></div>
+							
+							<span class="property-label">
+								<g:message code="inspirationBook.color1.label" default="Color 1" />
+							</span>
+							<span class="property-value">
+								<select class="colorSelect" name="color1" id="color1" style="background-color: ${color1 ? color1.hex : ""}">
+									<option value style="background-color: white">-Choose a color-</option>
+									<g:each in="${com.hizon.Color.listAllActive()}" var="color">
+										<option class="colorOption" value="${color.id}" ${color1 && color1.id == color.id ? 'selected="selected"' : ""} style="background-color: ${color.hex}">${color.name}</option>
+									</g:each>
+								</select>
+								<input type="button" class="btn ed-button" id="random1"
+								value="Randomize" />
+							</span>							
+							<br /><br />
+							<span class="property-label">
+								<g:message code="inspirationBook.color2.label" default="Color 2" />
+							</span>
+							<span class="property-value"> 
+								<select class="colorSelect" name="color2" id="color2" style="background-color: ${color2 ? color2.hex : ""}">
+									<option value style="background-color: white">-Choose a color-</option>
+									<g:each in="${com.hizon.Color.listAllActive()}" var="color">
+										<option value="${color.id}" ${color2 && color2.id == color.id ? 'selected="selected"' : ""} style="background-color: ${color.hex}">${color.name}</option>
+									</g:each>
+								</select>
+								<input type="button" class="btn ed-button" id="random2" value="Randomize" /><br />
+							</span>
+							<br /><br />
+							<span class="property-label">
+								<g:message code="inspirationBook.color3.label" default="Color 3" />
+							</span>
+							<span class="property-value">
+								<select class="colorSelect" name="color3" id="color3" style="background-color: ${color3 ? color3.hex : ""}">
+									<option value style="background-color: white">-Choose a color-</option>
+									<g:each in="${com.hizon.Color.listAllActive()}" var="color">
+										<option value="${color.id}" ${color3 && color3.id == color.id ? 'selected="selected"' : ""} style="background-color: ${color.hex}">${color.name}</option>
+									</g:each>
+								</select>
+								<input type="button" class="btn ed-button" id="random3"
+									value="Randomize" />
+							</span>
+						</div>
+						<br />
+						<!--Interaction buttons-->
+						<div class="row">
+							<div class="col-md-12 col-lg-12"
+								style="border-top: 1px solid #fff;">
+								<div class="row">
+									<div class="col-md-12 col-lg-12 ed-action-btn">
+										<g:submitButton name="save" class="btn ed-save" value="${message(code: 'default.button.save.label', default: 'Save Colors')}" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--/Interaction buttons-->
+					</g:form>
+					
 					<g:form action="saveTheme">
 						<g:hiddenField name="client.id" value="${inspirationBookInstance?.client?.id}" />
 						<g:hiddenField name="id" value="${inspirationBookInstance?.id}" />
