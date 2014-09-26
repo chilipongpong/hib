@@ -97,11 +97,14 @@ class InspirationBookController {
 		}
 		inspirationBookInstance.themes = new HashSet<Theme>();
 		
-		for (String theme: params.selectedItems) {
+		def selectedItems = params.selectedItems.split(",")
+		
+		for (String theme: selectedItems) {
 			if (theme.isLong()) {
 				inspirationBookInstance.themes.add(Theme.get(theme))
 			}
 		}
+		
 		
 		if (!inspirationBookInstance.save(flush: true)) {
 			render(view: "chooseTheme", model: [inspirationBookInstance: inspirationBookInstance], params: params)
@@ -114,7 +117,7 @@ class InspirationBookController {
 	def indicateGuests() {
 		Client client = getClient()
 		if (client == null) {
-			flash.message = "Only clients can create their inspiartion book"
+			flash.message = "Only clients can create their inspiration book"
 			redirect(action: "index", controller: "client")
 			return
 		}

@@ -88,7 +88,7 @@
 						</ul>
 					</g:hasErrors>
 
-					<g:form action="saveColors">
+					<g:form action="saveColors" id="color-form" >
 						<g:hiddenField name="client.id" value="${inspirationBookInstance?.client?.id}" />
 						<g:hiddenField name="id" value="${inspirationBookInstance?.id}" />
 						<g:hiddenField name="version" value="${inspirationBookInstance?.version}" />
@@ -144,7 +144,7 @@
 								style="border-top: 1px solid #fff;">
 								<div class="row">
 									<div class="col-md-12 col-lg-12 ed-action-btn">
-										<g:submitButton name="save" class="btn ed-save" value="${message(code: 'default.button.save.label', default: 'Save Colors')}" />
+										<g:submitButton name="save-colors" class="btn ed-save" value="${message(code: 'default.button.save.label', default: 'Save Colors')}" />
 									</div>
 								</div>
 							</div>
@@ -152,7 +152,7 @@
 						<!--/Interaction buttons-->
 					</g:form>
 					
-					<g:form action="saveTheme">
+					<g:form action="saveTheme" id="theme-form">
 						<g:hiddenField name="client.id" value="${inspirationBookInstance?.client?.id}" />
 						<g:hiddenField name="id" value="${inspirationBookInstance?.id}" />
 						<g:hiddenField name="version" value="${inspirationBookInstance?.version}" />
@@ -187,7 +187,7 @@
 								<div class="row">
 									<div class="col-md-12 col-lg-12 ed-action-btn">
 										<input type="button" value="Back" class="btn ed-back" onclick="window.history.back()" />
-										<g:submitButton name="save" class="btn ed-save" value="${message(code: 'default.button.save.label', default: 'Save and Continue')}" disabled="true" />
+										<g:submitButton name="save" class="btn ed-save" value="${message(code: 'default.button.save.label', default: 'Save and Continue')}" disabled="false" />
 									</div>
 								</div>
 							</div>
