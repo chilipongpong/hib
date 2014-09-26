@@ -182,10 +182,10 @@ h2.ed-collage {
 					<div class="panel panel-default">
 						<div class="panel-heading">Has suppliers for the following:</div>
 						<table class="table" style="border: none !important;">
-							<tr style="">
+							<tr style="background-color: white">
 								<td>
 									<table class="table table-responsive">
-										<tr style="">
+										<tr style="background-color: white">
 											<td>Flowers</td>
 											<td><g:if test="${inspirationBookInstance.hasFlowers}">
 													<g:img dir="images" file="check-active.png" />
@@ -201,7 +201,7 @@ h2.ed-collage {
 								</td>
 								<td>
 									<table class="table table-responsive">
-										<tr style="">
+										<tr style="background-color: white">
 											<td>Bridal car</td>
 											<td><g:if test="${inspirationBookInstance.hasBridalCar}">
 													<g:img dir="images" file="check-active.png" />
@@ -217,7 +217,7 @@ h2.ed-collage {
 								</td>
 								<td>
 									<table class="table table-responsive">
-										<tr style="">
+										<tr style="background-color: white">
 											<td>Emcee</td>
 											<td><g:if test="${inspirationBookInstance.hasEmcee}">
 													<g:img dir="images" file="check-active.png" />
@@ -233,7 +233,7 @@ h2.ed-collage {
 								</td>
 								<td>
 									<table class="table table-responsive">
-										<tr style="">
+										<tr style="background-color: white">
 											<td>Mobile Bar</td>
 											<td><g:if test="${inspirationBookInstance.hasMobileBar}">
 													<g:img dir="images" file="check-active.png" />
