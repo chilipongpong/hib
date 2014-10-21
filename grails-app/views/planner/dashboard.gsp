@@ -42,7 +42,7 @@
 				<g:each in="${eventsAssignedToMe}" status="i" var="eventInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${eventInstance.id}">${fieldValue(bean: eventInstance, field: "name")}</g:link></td>
+						<td><g:link action="show" controller="event" id="${eventInstance.id}">${fieldValue(bean: eventInstance, field: "name")}</g:link></td>
 					
 						<td>${fieldValue(bean: eventInstance, field: "craNumber")}</td>
 					
