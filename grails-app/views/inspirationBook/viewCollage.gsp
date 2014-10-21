@@ -161,8 +161,8 @@ h2.ed-collage {
 									<g:img dir="/uploaded-files" file="${theme.primaryImage}" class="img-responsive" />
 									<div class="caption">
 										<p>
-											<a href="#"> ${theme.name}
-											</a>
+											<a href="#" class="bold-name">${theme.name}</a><br />
+											<a href="#">${theme.description}</a>
 										</p>
 									</div>
 								</div>
@@ -174,8 +174,8 @@ h2.ed-collage {
 					<div class="panel-heading ed-collage_panel">
 						<span><g:img dir="images" file="guests-icon.png" /></span>
 						<p>
-							<strong> ${inspirationBookInstance.numberOfGuests}
-							</strong> Number of guests
+							<strong>${inspirationBookInstance.numberOfGuests}
+							</strong>Number of guests
 						</p>
 					</div>
 
@@ -263,8 +263,8 @@ h2.ed-collage {
 									<g:img dir="/uploaded-files" file="${appetizer.image}" class="img-responsive" />
 									<div class="caption">
 										<p>
-											<a href="#"> ${appetizer.name}
-											</a>
+											<a href="#" class="bold-name">${appetizer.name}</a><br />
+											<a href="#">${appetizer.description}</a>
 										</p>
 									</div>
 								</div>
@@ -284,8 +284,8 @@ h2.ed-collage {
 									<g:img dir="/uploaded-files" file="${soup.image}" class="img-responsive" />
 									<div class="caption">
 										<p>
-											<a href="#"> ${soup.name}
-											</a>
+											<a href="#" class="bold-name">${soup.name}</a><br />
+											<a href="#">${soup.description}</a>
 										</p>
 									</div>
 								</div>
@@ -305,8 +305,8 @@ h2.ed-collage {
 									<g:img dir="/uploaded-files" file="${salad.image}" class="img-responsive" />
 									<div class="caption">
 										<p>
-											<a href="#"> ${salad.name}
-											</a>
+											<a href="#" class="bold-name">${salad.name}</a><br />
+											<a href="#">${salad.description}</a>
 										</p>
 									</div>
 								</div>
@@ -326,8 +326,8 @@ h2.ed-collage {
 									<g:img dir="/uploaded-files" file="${pasta.image}" class="img-responsive" />
 									<div class="caption">
 										<p>
-											<a href="#"> ${pasta.name}
-											</a>
+											<a href="#" class="bold-name">${pasta.name}</a><br />
+											<a href="#">${pasta.description}</a>
 										</p>
 									</div>
 								</div>
@@ -347,8 +347,8 @@ h2.ed-collage {
 									<g:img dir="/uploaded-files" file="${beef.image}" class="img-responsive" />
 									<div class="caption">
 										<p>
-											<a href="#"> ${beef.name}
-											</a>
+											<a href="#" class="bold-name">${beef.name}</a><br />
+											<a href="#">${beef.description}</a>
 										</p>
 									</div>
 								</div>
@@ -368,8 +368,8 @@ h2.ed-collage {
 									<g:img dir="/uploaded-files" file="${pork.image}" class="img-responsive" />
 									<div class="caption">
 										<p>
-											<a href="#"> ${pork.name}
-											</a>
+											<a href="#" class="bold-name">${pork.name}</a><br />
+											<a href="#">${pork.description}</a>
 										</p>
 									</div>
 								</div>
@@ -389,8 +389,8 @@ h2.ed-collage {
 									<g:img dir="/uploaded-files" file="${chicken.image}" class="img-responsive" />
 									<div class="caption">
 										<p>
-											<a href="#"> ${chicken.name}
-											</a>
+											<a href="#" class="bold-name">${chicken.name}</a><br />
+											<a href="#">${chicken.description}</a>
 										</p>
 									</div>
 								</div>
@@ -410,8 +410,8 @@ h2.ed-collage {
 									<g:img dir="/uploaded-files" file="${seafood.image}" class="img-responsive" />
 									<div class="caption">
 										<p>
-											<a href="#"> ${seafood.name}
-											</a>
+											<a href="#" class="bold-name">${seafood.name}</a><br />
+											<a href="#">${seafood.description}</a>
 										</p>
 									</div>
 								</div>
@@ -431,8 +431,8 @@ h2.ed-collage {
 									<g:img dir="/uploaded-files" file="${vegetable.image}" class="img-responsive" />
 									<div class="caption">
 										<p>
-											<a href="#"> ${vegetable.name}
-											</a>
+											<a href="#" class="bold-name">${vegetable.name}</a><br />
+											<a href="#">${vegetable.description}</a>
 										</p>
 									</div>
 								</div>
@@ -452,8 +452,8 @@ h2.ed-collage {
 									<g:img dir="/uploaded-files" file="${dessert.image}" class="img-responsive" />
 									<div class="caption">
 										<p>
-											<a href="#"> ${dessert.name}
-											</a>
+											<a href="#" class="bold-name">${dessert.name}</a><br />
+											<a href="#">${dessert.description}</a>
 										</p>
 									</div>
 								</div>

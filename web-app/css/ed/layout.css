@@ -379,3 +379,7 @@ h3.ed-progress {
 	width: 150px;
 	color: #fff;
 }
+
+.bold-name {
+	font-weight: bold;
+}
