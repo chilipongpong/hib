@@ -91,7 +91,7 @@ h2.ed-collage {
 			<div class="row">
 				<div class="col-md-12 col-lg-12">
 					<h1>
-						<img style="height: 40px" src="../images/head-book.png" alt="book"> Inspiration Book
+						<img style="height: 40px" src="../images/head-book.png"> Inspiration Book
 					</h1>
 				</div>
 			</div>
@@ -104,6 +104,8 @@ h2.ed-collage {
 	<div class="container-fluid text-center" style="">
 		<div class="container" style=>
 			<div class="row">
+			
+				<sec:ifAllGranted roles="ROLE_CLIENT">
 				<!-- Left Menu -->
 				<div class="col-md-3 col-lg-3 ed-content-nav">
 					<ul>
@@ -143,12 +145,18 @@ h2.ed-collage {
 						<g:link uri="/inspirationBook/viewCollage">View Collage</g:link>
 					</h3>
 				</div>
+				</sec:ifAllGranted>
 				<!-- End left menu -->
 
 				<!-- main collage content area -->
 				<div class="col-md-9 col-lg-9 ed-main-content" style="">
-					<h3 class="ed-progress">Step 15 of 15</h3>
-					<h2>My wedding collage</h2>
+					<sec:ifAllGranted roles="ROLE_CLIENT">
+						<h3 class="ed-progress">Step 15 of 15</h3>
+						<h2>My Wedding Collage</h2>
+					</sec:ifAllGranted>
+					<sec:ifAnyGranted roles="ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN">
+						<h2>${inspirationBookInstance.client.user.firstName} ${inspirationBookInstance.client.user.lastName}'s Wedding Collage</h2>
+					</sec:ifAnyGranted>
 					
 					<!--THEME ROW-->
 					<div class="row">

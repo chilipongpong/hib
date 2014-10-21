@@ -182,6 +182,12 @@
 										</g:each>
 								</li>
 								</g:if>
+								
+								<sec:ifAnyGranted roles="ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN">
+									<li class="fieldcontain">
+										<g:link controller="inspirationBook" action="viewCollage" params="${[id:eventInstance.client.id]}">View Client's Inspiration Book</g:link>
+									</li>
+								</sec:ifAnyGranted>
 							
 							</ol>
 							<g:form>
