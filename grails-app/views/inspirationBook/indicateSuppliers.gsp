@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'inspirationBook.label', default: 'Inspiration Book')}" />
+		<g:set var="entityName" value="${message(code: 'inspirationBook.label', default: 'My Package')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -14,7 +14,7 @@
 		<div class="container" style="">
 			<div class="row">
 				<div class="col-md-12 col-lg-12">
-					<h1><img style="height: 40px" src="../images/head-book.png" alt="book"> Inspiration Book</h1>
+					<h1><img style="height: 40px" src="../images/head-book.png" alt="book">My Package</h1>
 				</div>
 			</div>
 

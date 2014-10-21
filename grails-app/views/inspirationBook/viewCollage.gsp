@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta name="layout" content="main">
-<g:set var="entityName" value="${message(code: 'inspirationBook.label', default: 'Inspiration Book')}" />
+<g:set var="entityName" value="Inspiration Book / My Package" />
 <title><g:message code="default.show.label" args="[entityName]" /></title>
 <script type="text/javascript">
 	// All images need to be loaded for this plugin to work so
@@ -90,9 +90,12 @@ h2.ed-collage {
 		<div class="container" style="">
 			<div class="row">
 				<div class="col-md-12 col-lg-12">
-					<h1>
-						<img style="height: 40px" src="../images/head-book.png"> Inspiration Book
-					</h1>
+					<sec:ifAllGranted roles="ROLE_CLIENT">
+						<h1><img style="height: 40px" src="../images/head-book.png">My Package</h1>
+					</sec:ifAllGranted>
+					<sec:ifAnyGranted roles="ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN">
+						<h1><img style="height: 40px" src="../images/head-book.png">Inspiration Book</h1>
+					</sec:ifAnyGranted>
 				</div>
 			</div>
 

@@ -385,7 +385,7 @@ class InspirationBookController {
 			return
 		}
 		params."client.id" = client.id
-		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))coll
 		if (!inspirationBookInstance) {
 			inspirationBookInstance = new InspirationBook(params)
 		}
@@ -567,15 +567,21 @@ class InspirationBookController {
 		redirect(action: "viewCollage")
 	}
 	
-	def viewCollage() {
-		Client client = getClient()
+	def viewCollage(Long id) {
+		
+		Client client = Client.get(id)
+		
+		if (client == null){
+			client = getClient()
+		}
+		
 		if (client == null) {
-			flash.message = "Only clients can view their inspiartion book"
+			flash.message = "Sorry you are not allowed to view the inspiration book"
 			redirect(action: "index", controller: "client")
 			return
 		}
 		params."client.id" = client.id
-		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(client)
 		if (!inspirationBookInstance) {
 			flash.message = "Create your inspiration book before viewing it."
             redirect(action: "chooseColors")
