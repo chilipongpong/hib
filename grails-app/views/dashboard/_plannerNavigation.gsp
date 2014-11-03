@@ -78,13 +78,6 @@
 					</g:link></li>
 			</ul>
 		</li>
-		<li><g:link uri="/project">Projects</g:link>
-			<ul>
-				<li><g:link class="list" action="list" controller="Project">
-						<g:message code="default.list.label" args="['Projects']" />
-					</g:link></li>
-			</ul>
-		</li>
 		<li><g:link action="show" id="${session.loggedInPlannerId}" controller="planner">My Profile</g:link></li>
 	</ul>
 			</div>

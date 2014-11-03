@@ -74,16 +74,6 @@
 									<g:message code="default.list.label" args="['Events']" />
 								</g:link></li>
 						</ul></li>
-					<li><g:link uri="/project">Projects</g:link>
-						<ul>
-							<li><g:link class="create" action="create"
-									controller="Project">
-									<g:message code="default.new.label" args="['Project']" />
-								</g:link></li>
-							<li><g:link class="list" action="list" controller="Project">
-									<g:message code="default.list.label" args="['Projects']" />
-								</g:link></li>
-						</ul></li>
 					<li><a href="#">User</a>
 						<ul>
 							<li><g:link uri="/client">Client</g:link>
