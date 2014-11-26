@@ -45,7 +45,7 @@
 			</div>
 		</g:each>
 	</div>
-	<div>
+	<div align="right">
 		<g:form action="saveMenuCategories">
 			<g:hiddenField name="id" value="${menuCategory.id}" />
 			<g:hiddenField name="selectedItems" value="${inspirationBookItems.id}" />

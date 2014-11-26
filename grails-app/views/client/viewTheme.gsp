@@ -33,7 +33,7 @@
 				src='${createLink(controller: "client", action: "displayImage", params:[img: img.name, themeId: themeInstance?.id])}' />
 		</g:each>
 	</div>
-	<div>
+	<div align="right">
 		<g:form action="saveTheme">
 			<g:hiddenField name="id" value="${themeInstance?.id}" />
 			<g:submitButton name="save" class="btn ed-save" value="${message(code: 'default.button.save.label', default: 'Add to Inspiration Book')}" />
