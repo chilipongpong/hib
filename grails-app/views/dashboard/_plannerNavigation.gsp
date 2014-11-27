@@ -66,9 +66,6 @@
 		</li>
 		<li><g:link uri="/event">Events</g:link>
 			<ul>
-				<li><g:link class="create" action="create" controller="Event">
-						<g:message code="default.new.label" args="['Event']" />
-					</g:link></li>
 				<li><g:link class="list" action="list" controller="Event">
 						<g:message code="default.list.label" args="['Events']" />
 					</g:link></li>
