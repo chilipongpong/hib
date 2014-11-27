@@ -31,11 +31,13 @@
 
 	/* functions */
 	var selectImage = function(element) {
-		element.css("background-color", "red");
+		//element.css("background-color", "red");
+		element.css("border", "3px solid #fb5825");
 		element.addClass("selected");
 	};
 	var deselectImage = function(element) {
-		element.css("background-color", "white");
+//		element.css("background-color", "white");
+		element.css("border", "none");
 		element.removeClass("selected");
 	};
 	var toggleSaveButton = function() {
