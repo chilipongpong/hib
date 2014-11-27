@@ -194,7 +194,7 @@ class BootStrap {
 		new RequestMap(url: '/event/save', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
 		new RequestMap(url: '/event/search*', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
 		new RequestMap(url: '/event/list', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
-		new RequestMap(url: '/event', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
+		new RequestMap(url: '/event/*', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
     }
     def destroy = {
     }
