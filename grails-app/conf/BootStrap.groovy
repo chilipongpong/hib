@@ -38,7 +38,9 @@ class BootStrap {
 		new RequestMap(url: '/register/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save(flush:true)
 		new RequestMap(url: '/favicon.ico', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save(flush:true)
 		new RequestMap(url: '/', configAttribute: 'ROLE_CLIENT, ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
+
 		new RequestMap(url: '/inspirationBook/**', configAttribute: 'ROLE_CLIENT, ROLE_SUPER_ADMIN, ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR').save(flush:true)
+
 //		new RequestMap(url: '/userAdmin/**', configAttribute: 'ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
 //		new RequestMap(url: '/client/**', configAttribute: 'ROLE_CLIENT, ROLE_SUPER_ADMIN').save(flush:true)
 //		new RequestMap(url: '/planner/**', configAttribute: 'ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN').save(flush:true)
@@ -48,8 +50,7 @@ class BootStrap {
 		new RequestMap(url: '/superAdmin/**', configAttribute: 'ROLE_SUPER_ADMIN').save(flush:true)
 		new RequestMap(url: '/*/**', configAttribute: 'ROLE_CONTENT_MANAGER, ROLE_SUPER_ADMIN').save(flush:true)
 		new RequestMap(url: '/dashboard/**', configAttribute: 'ROLE_CLIENT, ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_CONTENT_MANAGER, ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
-		
-		
+	
 		//user admin
 		new RequestMap(url: '/useradmin/create', configAttribute: 'ROLE_SUPER_ADMIN').save(flush:true)
 		new RequestMap(url: '/useradmin/edit/*', configAttribute: 'ROLE_USER_ADMIN, ROLE_SUPER_ADMIN').save(flush:true)
