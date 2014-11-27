@@ -53,6 +53,13 @@
 				<!-- main content area -->
 				<div class="col-md-9 col-lg-9 ed-main-content" style="">
 					<div id="show-client" class="content scaffold-show" role="main">
+						<g:if test="${flash.error}">
+							<div class="errors" style="display: block">
+								<ul>
+									<li>${flash.error}</li>
+								</ul>
+							</div>
+						</g:if>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">
 								${flash.message}

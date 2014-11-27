@@ -51,14 +51,19 @@ class ClientController {
 		// send email notification to planner supervisor whenever a client is created
 		// current emailing system assumes that there is only 1 planner supervisor (business rules)
 		def plannerSupervisor = PlannerSupervisor.get(1)
-		mailService.sendMail {
-			to plannerSupervisor.getUser().getEmail()
-			subject "New Client Alert: " + clientInstance.getUser()
-			body(view: "/emailNotification/newClientCreated", 
+		
+		try {
+			mailService.sendMail {
+				to plannerSupervisor.getUser().getEmail()
+				subject "New Client Alert: " + clientInstance.getUser()
+				body(view: "/emailNotification/newClientCreated",
 				plugin: "email-confirmation",
 				model: [clientInstance: clientInstance])
+			}
+		} catch (Exception e){
+			flash.error = "Sorry. Email Notification could not be sent. Please check your internet connection."
 		}
-		
+
         flash.message = message(code: 'default.created.message', args: [message(code: 'client.label', default: 'Client'), clientInstance.id])
         redirect(action: "show", id: clientInstance.id)
     }

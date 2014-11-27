@@ -25,7 +25,14 @@
 					<div class="col-md-10 col-lg-10 ed-main-content" style="">
 						<div id="show-event" class="content scaffold-show" role="main">
 							<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-							<g:if test="${flash.message}">
+						<g:if test="${flash.error}">
+							<div class="errors" style="display: block">
+								<ul>
+									<li>${flash.error}</li>
+								</ul>
+							</div>
+						</g:if>
+						<g:if test="${flash.message}">
 							<div class="message" role="status">${flash.message}</div>
 							</g:if>
 							<ol class="property-list event">
@@ -185,7 +192,7 @@
 								
 								<sec:ifAnyGranted roles="ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN">
 									<li class="fieldcontain">
-										<g:link controller="inspirationBook" action="viewCollage" params="${[id:eventInstance.client.id]}">View Client's Inspiration Book</g:link>
+										<g:link controller="inspirationBook" action="viewCollage" params="${[id:eventInstance.client.id]}">View Client's Package</g:link>
 									</li>
 								</sec:ifAnyGranted>
 							

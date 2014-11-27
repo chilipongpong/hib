@@ -35,12 +35,16 @@ class EventController {
 		
 		// send email notification to planner whenever an event is created
 		def planner = eventInstance.planner
-		mailService.sendMail {
-			to planner.user.email
-			subject "New Event Alert: " + eventInstance.name
-			body(view: "/emailNotification/newProjectAssigned",
-				plugin: "email-confirmation",
-				model: [eventInstance: eventInstance])
+		try {
+			mailService.sendMail {
+				to planner.user.email
+				subject "New Event Alert: " + eventInstance.name
+				body(view: "/emailNotification/newProjectAssigned",
+					plugin: "email-confirmation",
+					model: [eventInstance: eventInstance])
+			}
+		} catch (Exception e){
+			flash.error = "Sorry. Email Notification could not be sent. Please check your internet connection."
 		}
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'event.label', default: 'Event'), eventInstance.id])
