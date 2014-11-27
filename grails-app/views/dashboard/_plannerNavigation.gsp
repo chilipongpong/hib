@@ -43,13 +43,6 @@
 					</g:link></li>
 			</ul>
 		</li>
-		<li><g:link uri="/package">Packages</g:link>
-			<ul>
-				<li><g:link class="list" action="list" controller="Package">
-						<g:message code="default.list.label" args="['Packages']" />
-					</g:link></li>
-			</ul>
-		</li>
 		<li><g:link uri="/bundledItem">Bundled Items</g:link>
 			<ul>
 				<li><g:link class="list" action="list" controller="BundledItem">
