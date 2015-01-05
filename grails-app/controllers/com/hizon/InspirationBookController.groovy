@@ -385,7 +385,7 @@ class InspirationBookController {
 			return
 		}
 		params."client.id" = client.id
-		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))coll
+		InspirationBook inspirationBookInstance = InspirationBook.findByClient(Client.get(params."client.id"))
 		if (!inspirationBookInstance) {
 			inspirationBookInstance = new InspirationBook(params)
 		}
