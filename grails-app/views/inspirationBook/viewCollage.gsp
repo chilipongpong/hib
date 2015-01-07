@@ -16,6 +16,7 @@
 		});
 	});
 </script>
+<link rel="stylesheet" type="text/css" href="${resource(dir: 'css/ed', file: 'ed-print.css')}" media="print">
 <style type="text/css">
 .thumbnail {
 	padding: 3px;

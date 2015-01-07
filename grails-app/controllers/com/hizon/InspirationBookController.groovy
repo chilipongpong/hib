@@ -13,7 +13,7 @@ class InspirationBookController {
 	def welcome() {
 		Client client = getClient()
 		if (client == null) {
-			flash.message = "Only clients can create their inspiartion book"
+			flash.message = "Only clients can create their inspiration book"
 			redirect(action: "index", controller: "client")
 			return
 		}
@@ -28,7 +28,7 @@ class InspirationBookController {
 	def chooseColors() {
 		Client client = getClient()
 		if (client == null) {
-			flash.message = "Only clients can create their inspiartion book"
+			flash.message = "Only clients can create their inspiration book"
 			redirect(action: "index", controller: "client")
 			return
 		}
@@ -70,7 +70,7 @@ class InspirationBookController {
 	def chooseTheme() {
 		Client client = getClient()
 		if (client == null) {
-			flash.message = "Only clients can create their inspiartion book"
+			flash.message = "Only clients can create their inspiration book"
 			redirect(action: "index", controller: "client")
 			return
 		}
@@ -152,7 +152,7 @@ class InspirationBookController {
 	def chooseAppetizer() {
 		Client client = getClient()
 		if (client == null) {
-			flash.message = "Only clients can create their inspiartion book"
+			flash.message = "Only clients can create their inspiration book"
 			redirect(action: "index", controller: "client")
 			return
 		}
@@ -190,7 +190,7 @@ class InspirationBookController {
 	def chooseSoup() {
 		Client client = getClient()
 		if (client == null) {
-			flash.message = "Only clients can create their inspiartion book"
+			flash.message = "Only clients can create their inspiration book"
 			redirect(action: "index", controller: "client")
 			return
 		}
@@ -228,7 +228,7 @@ class InspirationBookController {
 	def chooseSalad() {
 		Client client = getClient()
 		if (client == null) {
-			flash.message = "Only clients can create their inspiartion book"
+			flash.message = "Only clients can create their inspiration book"
 			redirect(action: "index", controller: "client")
 			return
 		}
@@ -266,7 +266,7 @@ class InspirationBookController {
 	def choosePasta() {
 		Client client = getClient()
 		if (client == null) {
-			flash.message = "Only clients can create their inspiartion book"
+			flash.message = "Only clients can create their inspiration book"
 			redirect(action: "index", controller: "client")
 			return
 		}
@@ -304,7 +304,7 @@ class InspirationBookController {
 	def chooseBeef() {
 		Client client = getClient()
 		if (client == null) {
-			flash.message = "Only clients can create their inspiartion book"
+			flash.message = "Only clients can create their inspiration book"
 			redirect(action: "index", controller: "client")
 			return
 		}
@@ -342,7 +342,7 @@ class InspirationBookController {
 	def choosePork() {
 		Client client = getClient()
 		if (client == null) {
-			flash.message = "Only clients can create their inspiartion book"
+			flash.message = "Only clients can create their inspiration book"
 			redirect(action: "index", controller: "client")
 			return
 		}
@@ -380,7 +380,7 @@ class InspirationBookController {
 	def chooseChicken() {
 		Client client = getClient()
 		if (client == null) {
-			flash.message = "Only clients can create their inspiartion book"
+			flash.message = "Only clients can create their inspiration book"
 			redirect(action: "index", controller: "client")
 			return
 		}
@@ -418,7 +418,7 @@ class InspirationBookController {
 	def chooseSeafood() {
 		Client client = getClient()
 		if (client == null) {
-			flash.message = "Only clients can create their inspiartion book"
+			flash.message = "Only clients can create their inspiration book"
 			redirect(action: "index", controller: "client")
 			return
 		}
@@ -456,7 +456,7 @@ class InspirationBookController {
 	def chooseVegetable() {
 		Client client = getClient()
 		if (client == null) {
-			flash.message = "Only clients can create their inspiartion book"
+			flash.message = "Only clients can create their inspiration book"
 			redirect(action: "index", controller: "client")
 			return
 		}
@@ -494,7 +494,7 @@ class InspirationBookController {
 	def chooseDessert() {
 		Client client = getClient()
 		if (client == null) {
-			flash.message = "Only clients can create their inspiartion book"
+			flash.message = "Only clients can create their inspiration book"
 			redirect(action: "index", controller: "client")
 			return
 		}
@@ -532,7 +532,7 @@ class InspirationBookController {
 	def indicateSuppliers() {
 		Client client = getClient()
 		if (client == null) {
-			flash.message = "Only clients can create their inspiartion book"
+			flash.message = "Only clients can create their inspiration book"
 			redirect(action: "index", controller: "client")
 			return
 		}
