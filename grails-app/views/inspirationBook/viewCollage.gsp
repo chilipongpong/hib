@@ -161,7 +161,9 @@ h2.ed-collage {
 					<sec:ifAnyGranted roles="ROLE_PLANNER, ROLE_PLANNER_SUPERVISOR, ROLE_SUPER_ADMIN">
 						<h2>${inspirationBookInstance.client.user.firstName} ${inspirationBookInstance.client.user.lastName}'s Wedding Collage</h2>
 					</sec:ifAnyGranted>
-					
+		
+					<input type="button" value="Print" class="btn ed-button" onclick="window.print()" />
+								
 					<!--THEME ROW-->
 					<div class="row">
 						<div class="col-md-12 col-lg-12">
